@@ -172,16 +172,18 @@ var Main = (function (_super) {
         var stageH = this.stage.stageHeight;
         sky.width = stageW;
         sky.height = stageH;
-        var topMask = new egret.Shape();
-        topMask.graphics.beginFill(0x000000, 0.5);
-        topMask.graphics.drawRect(0, 0, stageW, 172);
-        topMask.graphics.endFill();
-        topMask.y = 33;
-        this.addChild(topMask);
+        // let topMask = new egret.Shape();
+        // topMask.graphics.beginFill(0x000000, 0.5);
+        // topMask.graphics.drawRect(0, 0, stageW, 172);
+        // topMask.graphics.endFill();
+        // //topMask.y = 33;
+        // this.addChild(topMask);
         var icon = this.createBitmapByName("p_jpg");
+        icon.width = 120;
+        icon.height = 120;
         this.addChild(icon);
-        icon.x = 26;
-        icon.y = 33;
+        icon.x = 33;
+        icon.y = 50;
         var line = new egret.Shape();
         line.graphics.lineStyle(2, 0xffffff);
         line.graphics.moveTo(0, 0);
@@ -195,22 +197,24 @@ var Main = (function (_super) {
         colorLabel.width = stageW - 172;
         colorLabel.textAlign = "center";
         colorLabel.text = "许愿树";
-        colorLabel.size = 24;
+        colorLabel.size = 50;
         colorLabel.x = 172;
-        colorLabel.y = 80;
+        colorLabel.y = 50;
         this.addChild(colorLabel);
         var textfield = new egret.TextField();
         this.addChild(textfield);
         textfield.alpha = 0;
         textfield.width = stageW - 172;
         textfield.textAlign = egret.HorizontalAlign.CENTER;
-        textfield.size = 24;
+        textfield.size = 50;
         textfield.textColor = 0xffffff;
         textfield.x = 172;
         textfield.y = 135;
         this.textfield = textfield;
         var button = new eui.Button();
-        button.label = "Click!";
+        button.label = "许愿";
+        button.width = 300;
+        button.height = 100;
         button.horizontalCenter = 0;
         button.verticalCenter = 0;
         this.addChild(button);
@@ -279,20 +283,21 @@ var Main = (function (_super) {
      * Click the button
      */
     Main.prototype.onClickPayBtn = function (e) {
-        var orderData = new OrderBodyConfig();
-        orderData.appId = "wxba773081caf99027";
-        orderData.mch_id = "1501253171";
-        orderData.nonce_str = this.getNonceStr();
-        orderData.sign = "null";
-        orderData.sign_type = "MD5";
-        orderData.body = "心愿订单";
-        orderData.out_trade_no = "123456";
-        orderData.total_fee = 2;
-        orderData.spbill_create_ip = "null";
-        orderData.notify_url = "null";
-        orderData.trade_type = "JSAPI";
+        // var orderData: OrderBodyConfig = new OrderBodyConfig();
+        // orderData.appId = "wxba773081caf99027";
+        // orderData.mch_id = "1501253171";
+        // orderData.nonce_str = this.getNonceStr();
+        // orderData.sign = "null";
+        // orderData.sign_type = "MD5";
+        // orderData.body = "心愿订单";
+        // orderData.out_trade_no = "123456";
+        // orderData.total_fee = 2;
+        // orderData.spbill_create_ip = "null";
+        // orderData.notify_url = "null";
+        // orderData.trade_type = "MWEB";
         //拼接参数 
-        var params = "?body=心愿订单&total_fee=0.01&trade_type=JSAPI";
+        //var params = "?body=心愿订单&total_fee=1&trade_type=JSAPI";   // jsapi 支付；
+        var params = "?body=心愿订单&total_fee=1&trade_type=MWEB";
         var request = new egret.HttpRequest();
         request.responseType = egret.HttpResponseType.TEXT;
         //将参数拼接到url
@@ -303,92 +308,79 @@ var Main = (function (_super) {
         // request.open("http:///kh.chitugame.com/ct-admin/weixin/create", egret.HttpMethod.GET);
         // request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         // request.send(orderData);
-        console.log("Send Success!! orderData.total_fee   :" + orderData.total_fee);
+        //console.log("Send Success!! orderData.total_fee   :" + orderData.total_fee);
         request.addEventListener(egret.Event.COMPLETE, this.onGetComplete, this);
         request.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onGetIOError, this);
         request.addEventListener(egret.ProgressEvent.PROGRESS, this.onGetProgress, this);
-        // let panel = new eui.Panel();
-        // panel.title = "Title";
-        // panel.horizontalCenter = 0;
-        // panel.verticalCenter = 0;
-        // this.addChild(panel);
-        //var curNoncestr = this.getNonceStr();
-        //var curTimestamp = this.getCurrentTime();
-        //var curSignature = this.getSignature();
+    };
+    Main.prototype.onGetComplete = function (event) {
+        console.log("Send Success!!!");
+        var request = event.currentTarget;
+        console.log("get data : ", request.response);
+        var data = JSON.parse(request.response).data;
+        var newrequest = new egret.HttpRequest();
+        newrequest.responseType = egret.HttpResponseType.TEXT;
+        newrequest.withCredentials = false;
+        newrequest.open(data.map.mweb_url, egret.HttpMethod.GET);
+        newrequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+        newrequest.send();
+        // console.log("data.appId  " + data.appId);
+        // console.log("data.prepayId  " + data.prepayId);
+        // console.log("data.timeStamp  " + data.timeStamp);
+        // console.log("data.nonceStr  " + data.nonceStr);
+        // //var prepayID = data.prepayId;
+        // var stringA = "appid=wxba773081caf99027&nonceStr=" + data.nonceStr + "&package=prepay_id=" + data.prepayId + "&signType=MD5&timeStamp=" + data.timeStamp;   // 64E30514F4D38511B4CCBA99D29CD717
+        // var stringSignTemp = stringA + "&key=Miaomiaomiao258Miaomiaomiao25888";
+        // var md5Str: string = new md5().hex_md5(stringSignTemp).toUpperCase();
         // var bodyConfig: BodyConfig = new BodyConfig();
-        // bodyConfig.appId = "wxba773081caf99027";
+        // bodyConfig.appId = data.appId;
         // bodyConfig.debug = true;
-        // bodyConfig.timestamp = this.getCurrentTime();
-        // bodyConfig.nonceStr = this.getNonceStr();
-        // bodyConfig.signature = this.getSignature();
-        // bodyConfig.timestamp = 10000100;
-        // bodyConfig.nonceStr = "test";
-        // bodyConfig.signature = this.getSignature();
-        // bodyConfig.jsApiList= [
-        // 	"checkJsApi",
-        // 	"chooseWXPay",
-        // 	'onMenuShareTimeline',//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+        // bodyConfig.timestamp = data.timeStamp;
+        // bodyConfig.nonceStr = data.nonceStr;
+        // bodyConfig.signature = md5Str;
+        // bodyConfig.jsApiList = [
+        //     "checkJsApi",
+        //     "chooseWXPay",
+        //     'onMenuShareTimeline',//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
         //     'onMenuShareAppMessage',//获取“分享给朋友”按钮点击状态及自定义分享内容接口
         //     'onMenuShareQQ',	//获取“分享到QQ”按钮点击状态及自定义分享内容接口
         //     'onMenuShareWeibo',//获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
-        // 	"hideOptionMenu",
-        // 	"hideMenuItems",						
-        // 	];
-        // console.log(this.getSignature());// 64E30514F4D38511B4CCBA99D29CD717
-        //bodyConfig.jsApiList = ;
-        /// ... 其他的配置属性赋值
-        /// 通过config接口注入权限验证配置
+        //     "hideOptionMenu",
+        //     "hideMenuItems",
+        // ];
+        // // console.log("bodyConfig.appId  " + bodyConfig.appId);
+        // // console.log("bodyConfig.debug  " + bodyConfig.debug);
+        // // console.log("bodyConfig.timestamp  " + bodyConfig.timestamp);
+        // // console.log("bodyConfig.nonceStr  " + bodyConfig.nonceStr);
+        // // console.log("bodyConfig.signature  " + bodyConfig.signature);
+        // // ... 其他的配置属性赋值
+        // // 通过config接口注入权限验证配置
         // if (wx) {
         //     wx.config(bodyConfig);
         //     wx.ready(function () {
-        //         /// 在这里调用微信相关功能的 API
-        //         //var bodywxPay = 
+        //         // 在这里调用微信相关功能的 API
         //         // 调起微信支付接口
-        //         //wx.chooseWXPay(bodyConfig);
-        //         var bodyMenuShareTimeline = new BodyMenuShareTimeline();
-        // 			bodyMenuShareTimeline.title = "喵喵喵";
-        // 			bodyMenuShareTimeline.link = "http://kh.chitugame.com/game/1.0.1/index.html";
-        // 			bodyMenuShareTimeline.imgUrl = "http://kh.chitugame.com/game/girl.jpg";
-        // 			// bodyMenuShareTimeline.trigger=()=>{
-        // 			// 	if(!this.curMenName) {
-        // 			// 		wx.hideOptionMenu("");
-        // 			// 	}
-        // 			// 	alert("")
-        // 			// };
-        // 			// bodyMenuShareTimeline.success = ()=>{
-        // 			// 	// alert("已经分享")
-        // 			// };
-        // 			// bodyMenuShareTimeline.fail = (res)=>{
-        // 			// 	// alert("分享失败" + res);
-        // 			// };				
-        // 			wx.onMenuShareTimeline(bodyMenuShareTimeline);
-        // 			var bodyMenuShareAppMessage = new BodyMenuShareAppMessage();
-        // 			bodyMenuShareAppMessage.title = "喵喵喵";
-        // 			bodyMenuShareAppMessage.link = "http://kh.chitugame.com/game/1.0.1/index.html";
-        // 			bodyMenuShareAppMessage.imgUrl = "http://kh.chitugame.com/game/girl.jpg";
-        // 			wx.onMenuShareAppMessage(bodyMenuShareAppMessage);
-        // 			var bodyMenuShareQQ = new BodyMenuShareQQ();
-        // 			bodyMenuShareQQ.title = "喵喵喵";
-        // 			bodyMenuShareQQ.link = "http://kh.chitugame.com/game/1.0.1/index.html";
-        // 			bodyMenuShareQQ.imgUrl = "http://kh.chitugame.com/game/girl.jpg";
-        // 			wx.onMenuShareQQ(bodyMenuShareQQ);
-        // 			var bodyMenuWeoBo = new BodyMenuShareWeibo();
-        // 			bodyMenuWeoBo.title = "喵喵喵";
-        // 			bodyMenuWeoBo.link = "http://kh.chitugame.com/game/1.0.1/index.html";
-        // 			bodyMenuWeoBo.imgUrl = "http://kh.chitugame.com/game/girl.jpg";
-        // 			wx.onMenuShareWeibo(bodyMenuWeoBo);		
-        //    });
-        //}
+        //         wx.chooseWXPay({
+        //             appId: bodyConfig.appId,
+        //             timestamp: bodyConfig.timestamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+        //             nonceStr: bodyConfig.nonceStr, // 支付签名随机串，不长于 32 位
+        //             package: "prepay_id=" + data.prepayId, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+        //             signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+        //             paySign: md5Str, // 支付签名
+        //             success: function (res) {
+        //                 // 支付成功后的回调函数
+        //                 this.completePay();
+        //             }
+        //         });
+        //     });
+        // }
     };
-    Main.prototype.onGetComplete = function (event) {
-        var request = event.currentTarget;
-        console.log("get data : ", request.response);
-        var responseLabel = new egret.TextField();
-        responseLabel.size = 18;
-        responseLabel.text = "GET response: \n" + request.response.substring(0, 50) + "...";
-        this.addChild(responseLabel);
-        responseLabel.x = 50;
-        responseLabel.y = 70;
+    Main.prototype.completePay = function () {
+        var panel = new eui.Panel();
+        panel.title = "支付成功！！";
+        panel.horizontalCenter = 0;
+        panel.verticalCenter = 0;
+        this.addChild(panel);
     };
     Main.prototype.onGetIOError = function (event) {
         console.log("get error : " + event);

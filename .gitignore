@@ -1,7 +1,9 @@
-/StickPinProject/Library
-/StickPinProject/obj
+/haifeng/bin-release
+/rouge_c/bin-release
 *.suo
 *.bak
 *.exe
-/StickPinProject/.vs
-/StickPinProject/Temp
+/haifeng/.wing
+/rouge_c/.wing
+/haifeng/template
+/rouge_c/template

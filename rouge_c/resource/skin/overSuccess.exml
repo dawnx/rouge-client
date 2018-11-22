@@ -4,7 +4,7 @@
 	<e:Image id="img_juzi" source="mmm_youxi_picture_03_png" x="375" y="550" width="380" height="380" anchorOffsetX="190" anchorOffsetY="190"/>
 	<e:Image source="mmm_dating_picture_04_png" x="0" y="0"/>
 	<e:Label id="lb_score" text="好厉害！恭喜你获得奖品" x="215" y="132.55" textColor="0x000000"/>
-	<e:Label id="lb_score0" text="口红3号" x="345" y="234.98" textColor="0x000000"/>
+	<e:Label id="lb_score0" text="口红3号" x="321" y="233.46" textColor="0x000000"/>
 	<e:Button id="btn_share" label="分享" x="119.5" y="1014.79"/>
 	<e:Button id="btn_reset" label="再玩一次" x="530.5" y="1014.79"/>
 	<e:Group id="gp_tiyan" width="750" height="1334" x="0" y="0" visible="false">

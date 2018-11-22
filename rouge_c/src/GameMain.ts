@@ -19,7 +19,7 @@ class GameMain extends eui.Component {
     //判断针碰撞圆的距离
     private juli: number = 500;
     //飞行距离
-    private fly_juli: number = 700;
+    private fly_juli: number = 650;
     private lb_rougeNum: eui.Label;
     //反转方向
     private _fangxiang: number = 360;
@@ -57,9 +57,6 @@ class GameMain extends eui.Component {
             this.init();
             this.lb_guan.visible = true;
         }
-
-
-
 
         egret.Ticker.getInstance().register(function () {
             this.rect_dangban.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickInsert, this);
@@ -263,26 +260,59 @@ class GameMain extends eui.Component {
             }
             this.rotateArr.push(ro);
             console.log(this.rotateArr);
-
-
             this.rArr = this.rotateArr;
             //上帝视角
             console.log(this.score)
-            // if (this.score > 4) {
+            if (this.score <= 4 && this.score > 0) {
+                this.rouge.scaleX = 1;
+                this.rouge.scaleY = 1;
+                this.jiaodu = 10;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                    let a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 1;
+                    a.scaleY = 1;
+                }
+            } else if (this.score <= 6 && this.score > 4) {
+                this.rouge.scaleX = 0.8;
+                this.rouge.scaleY = 0.8;
+                this.jiaodu = 8;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                    let a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 0.8;
+                    a.scaleY = 0.8;
+                }
+            } else if (this.score <= 8 && this.score > 6) {
+                this.rouge.scaleX = 0.6;
+                this.rouge.scaleY = 0.6;
+                this.jiaodu = 6;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                    let a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 0.6;
+                    a.scaleY = 0.6;
+                }
+            } else if (this.score > 8) {
+                this.rouge.scaleX = 0.4;
+                this.rouge.scaleY = 0.4;
+                this.jiaodu = 4;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                    let a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 0.4;
+                    a.scaleY = 0.4;
+                }
+            }
 
-            //     this.rouge.scaleX = 0.5;
-            //     this.rouge.scaleY = 0.5;
-            //     this.jiaodu = 6;
-            //     this.juli = 800;
-            //     //获取已经扎过的口红 变小
-            //     for (let i = 0; i < this.gp_circle.numChildren; i++) {
-            //         let a = this.gp_circle.getChildAt(i);
-            //         // console.log(a);
-            //         a.scaleX = 0.5;
-            //         a.scaleY = 0.5;
-            //     }
-
-            // }
             let num: number = this.gp_circle.numChildren;
             let rouNum: number = this.getRougeNum(this._level);
 
@@ -320,10 +350,6 @@ class GameMain extends eui.Component {
                         }, this, 3000, "egret");
                     }
                     console.log(this._level + "关")
-
-
-
-
 
                 }
                 //判断数组中所有角度，如果角度之差小于定值，游戏失败

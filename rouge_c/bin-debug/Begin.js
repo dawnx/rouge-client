@@ -20,11 +20,20 @@ var Begin = (function (_super) {
     }
     Begin.prototype.childrenCreated = function () {
         _super.prototype.childrenCreated.call(this);
+        console.log(this._goodsType);
+        if (this._freeType) {
+            console.log("免费的" + this._freeType);
+        }
+        else {
+            console.log("付费的");
+            this.onClickBegin();
+        }
         this.init();
         this.btn_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickShare, this);
         this.btn_begin.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBegin, this);
     };
     Begin.prototype.init = function () {
+        console.log("gao" + this.stage.stageHeight + "#@!#@!#@!#" + this.btn_share.y);
     };
     //分享
     Begin.prototype.onClickShare = function () {

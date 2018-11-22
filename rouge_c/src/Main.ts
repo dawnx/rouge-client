@@ -135,6 +135,10 @@ class Main extends eui.UILayer {
     protected createGameScene(): void {
         utils.SoundUtils.instance().initSound();
         this.addChild(new MainSence());
+
+
+
+        
     }
 
     /**

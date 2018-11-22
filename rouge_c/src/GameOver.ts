@@ -8,7 +8,7 @@ class GameOver extends eui.Component {
     private _level: number;
     private _type: number;
     private gp_tiyan: eui.Group;
-
+    private img_shibai: eui.Image;
     public constructor(gamemain: GameMain, score: number, type: number, level: number) {
         super()
         this._score = score;
@@ -28,6 +28,7 @@ class GameOver extends eui.Component {
     private init() {
         if (this._type == 1) {
             this.gp_tiyan.visible = true;
+            this.img_shibai.visible = false;
         } else if (this._type == 2) {
             // this.lb_score.text = "游戏结束！恭喜您闯过了了" + (this._level - 1) + "关!";
             this.gp_tiyan.visible = false;

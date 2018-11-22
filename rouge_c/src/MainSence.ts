@@ -393,14 +393,14 @@ class MainSence extends eui.Component {
             this.img_bg.source = "resource/assets/dating/lunbo_1.png";
             this.rad1.selected = true;
             this.rad2.selected = false;
-            this.rad3.selected = false;
+            // this.rad3.selected = false;
 
         }
         else if (this.index == 2) {
             this.img_bg.source = "resource/assets/dating/lunbo_2.png";
             this.rad2.selected = true;
             this.rad1.selected = false;
-            this.rad3.selected = false;
+            // this.rad3.selected = false;
         }
         // else if (this.index == 3) {
         //     this.img_bg.source = "resource/assets/img1.jpg";

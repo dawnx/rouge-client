@@ -27,7 +27,7 @@ var XsOver = (function (_super) {
     };
     XsOver.prototype.init = function () {
         egret.log(this._score);
-        // this.lb_score.text = "游戏结束！恭喜您获得了" + this._score + "分!";
+        this.lb_score.text = "游戏结束！恭喜您获得了" + this._score + "分!";
     };
     XsOver.prototype.onClickFangqi = function () {
         this.addChild(new MainSence());

@@ -18,7 +18,7 @@ var GameMain = (function (_super) {
         //判断针碰撞圆的距离
         _this.juli = 500;
         //飞行距离
-        _this.fly_juli = 700;
+        _this.fly_juli = 650;
         //反转方向
         _this._fangxiang = 360;
         _this.rotateArr = [];
@@ -248,19 +248,58 @@ var GameMain = (function (_super) {
             this.rArr = this.rotateArr;
             //上帝视角
             console.log(this.score);
-            // if (this.score > 4) {
-            //     this.rouge.scaleX = 0.5;
-            //     this.rouge.scaleY = 0.5;
-            //     this.jiaodu = 6;
-            //     this.juli = 800;
-            //     //获取已经扎过的口红 变小
-            //     for (let i = 0; i < this.gp_circle.numChildren; i++) {
-            //         let a = this.gp_circle.getChildAt(i);
-            //         // console.log(a);
-            //         a.scaleX = 0.5;
-            //         a.scaleY = 0.5;
-            //     }
-            // }
+            if (this.score <= 4 && this.score > 0) {
+                this.rouge.scaleX = 1;
+                this.rouge.scaleY = 1;
+                this.jiaodu = 10;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (var i = 0; i < this.gp_circle.numChildren; i++) {
+                    var a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 1;
+                    a.scaleY = 1;
+                }
+            }
+            else if (this.score <= 6 && this.score > 4) {
+                this.rouge.scaleX = 0.8;
+                this.rouge.scaleY = 0.8;
+                this.jiaodu = 8;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (var i = 0; i < this.gp_circle.numChildren; i++) {
+                    var a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 0.8;
+                    a.scaleY = 0.8;
+                }
+            }
+            else if (this.score <= 8 && this.score > 6) {
+                this.rouge.scaleX = 0.6;
+                this.rouge.scaleY = 0.6;
+                this.jiaodu = 6;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (var i = 0; i < this.gp_circle.numChildren; i++) {
+                    var a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 0.6;
+                    a.scaleY = 0.6;
+                }
+            }
+            else if (this.score > 8) {
+                this.rouge.scaleX = 0.4;
+                this.rouge.scaleY = 0.4;
+                this.jiaodu = 4;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (var i = 0; i < this.gp_circle.numChildren; i++) {
+                    var a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 0.4;
+                    a.scaleY = 0.4;
+                }
+            }
             var num = this.gp_circle.numChildren;
             var rouNum = this.getRougeNum(this._level);
             if (this._type != 3) {
@@ -450,6 +489,9 @@ var GameMain = (function (_super) {
         return this.config["lev" + num]['zhuansu'];
     };
     GameMain.prototype.getRougeNum = function (num) {
+        return this.config["lev" + num]['rougeNum'];
+    };
+    GameMain.prototype.getRotate = function (num) {
         return this.config["lev" + num]['rougeNum'];
     };
     return GameMain;

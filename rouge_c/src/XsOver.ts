@@ -27,7 +27,7 @@ class XsOver extends eui.Component {
     }
     private init() {
         egret.log(this._score)
-        // this.lb_score.text = "游戏结束！恭喜您获得了" + this._score + "分!";
+        this.lb_score.text = "游戏结束！恭喜您获得了" + this._score + "分!";
 
     }
     private onClickFangqi() {

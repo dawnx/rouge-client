@@ -29,6 +29,7 @@ var GameOver = (function (_super) {
     GameOver.prototype.init = function () {
         if (this._type == 1) {
             this.gp_tiyan.visible = true;
+            this.img_shibai.visible = false;
         }
         else if (this._type == 2) {
             // this.lb_score.text = "游戏结束！恭喜您闯过了了" + (this._level - 1) + "关!";

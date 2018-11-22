@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="gamemain" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image source="mmm_youxi_background_01_png" x="0" y="79"/>
-	<e:Image id="img_juzi" source="mmm_youxi_picture_03_png" x="375" y="550" width="380" height="380" anchorOffsetX="190" anchorOffsetY="190"/>
-	<e:Group id="gp_circle" width="100" height="100" anchorOffsetX="50" anchorOffsetY="50" y="550" x="375">
-	</e:Group>
-	<e:Rect id="rect_dangban" width="750" height="1334" x="0" y="0" fillAlpha="0" fillColor="0x000000"/>
-	<e:Image source="mmm_dating_picture_04_png" x="0" y="0"/>
-	<e:Image source="mmm_youxi_Backplane_01_png" x="42" y="100"/>
-	<e:Image source="mmm_youxi_Special effect_01_png" x="42" y="100.01"/>
-	<e:Label id="lb_time" text="" y="120.51" textColor="0x000000" size="45" x="59.51" width="51" height="51" textAlign="center" verticalAlign="middle"/>
-	<e:Button id="btn_back" label="" y="23" horizontalCenter="-316.5">
-		<e:skinName>
+	<e:Group left="0" bottom="0" right="0" top="0" anchorOffsetX="0">
+		<e:Image source="mmm_youxi_background_01_png" x="0" y="79" scaleX="1" scaleY="1"/>
+		<e:Image id="img_juzi" source="mmm_youxi_picture_03_png" x="375" y="500" width="380" height="380" anchorOffsetX="190" anchorOffsetY="190" scaleX="1" scaleY="1"/>
+		<e:Group id="gp_circle" width="100" height="100" anchorOffsetX="50" anchorOffsetY="50" y="500" x="375" scaleX="1" scaleY="1"/>
+		<e:Rect id="rect_dangban" width="750" height="1334" x="0" y="0" fillAlpha="0" fillColor="0x000000" scaleX="1" scaleY="1"/>
+		<e:Image source="mmm_dating_picture_04_png" x="0" y="0" scaleX="1" scaleY="1"/>
+		<e:Image source="mmm_youxi_Backplane_01_png" x="42" y="100" scaleX="1" scaleY="1"/>
+		<e:Image source="mmm_youxi_Special effect_01_png" x="42" y="100.01" scaleX="1" scaleY="1"/>
+		<e:Label id="lb_time" text="" y="120.51" textColor="0x000000" size="45" x="59.51" width="51" height="51" textAlign="center" verticalAlign="middle" scaleX="1" scaleY="1"/>
+		<e:Button id="btn_back" label="" y="23" horizontalCenter="-316.5" x="42" scaleX="1" scaleY="1">
+			<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="mmm_youxi_button_04_png"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				<e:Image width="100%" height="100%" source="mmm_youxi_button_04_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
-		</e:skinName>
-	</e:Button>
-	<e:Label id="lb_guan" text="第1关" x="475" y="17" textColor="0x000000" size="45"/>
-	<e:Label id="lb_rougeNum" text="" y="1160.81" size="30" x="24.6" height="51" textAlign="center" verticalAlign="middle" textColor="0xffffff"/>
-	<e:Group id="gp_rouge" width="200" height="573.39" x="0" y="760.61" anchorOffsetY="0" visible="false"/>
-	<e:Group id="gp_guan" width="750" height="1334" x="0" y="0">
-		<e:Rect id="rect_guan" width="750" height="1334" x="0" y="0" fillColor="0x000000" fillAlpha="0.7"/>
-		<e:Image id="img_guan" source="guan2_png" x="272" y="500"/>
+			</e:skinName>
+		</e:Button>
+		<e:Label id="lb_guan" text="第1关" x="475" y="17" textColor="0x000000" size="45" scaleX="1" scaleY="1"/>
+		<e:Label id="lb_rougeNum" text="" y="1160.81" size="30" x="24.6" height="51" textAlign="center" verticalAlign="middle" textColor="0xffffff" scaleX="1" scaleY="1"/>
+		<e:Group id="gp_rouge" width="200" height="573.39" x="0" y="760.61" anchorOffsetY="0" scaleX="1" scaleY="1" visible="false"/>
+		<e:Group id="gp_guan" width="750" height="1334" x="0" y="0" scaleX="1" scaleY="1">
+			<e:Rect id="rect_guan" width="750" height="1334" x="0" y="0" fillColor="0x000000" fillAlpha="0.7"/>
+			<e:Image id="img_guan" source="guan2_png" x="272" y="500"/>
+		</e:Group>
 	</e:Group>
 
 </e:Skin>

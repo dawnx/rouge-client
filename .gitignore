@@ -1,0 +1,7 @@
+/StickPinProject/Library
+/StickPinProject/obj
+*.suo
+*.bak
+*.exe
+/StickPinProject/.vs
+/StickPinProject/Temp

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="mainsence" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="mmm_dating_Backplane_04_png" x="0" y="0" scale9Grid="10,10,60,60" width="750" height="1334"/>
+	<e:Group id="top" width="750" height="323" x="0" y="0" anchorOffsetY="0" anchorOffsetX="0">
+		<e:Image source="mmm_dating_picture_04_png" x="0" y="0"/>
+		<e:Image source="mmm_dating_Backplane_02_png" x="115.98" y="17" scale9Grid="19,14,5,1" anchorOffsetX="0" width="129.33" height="34"/>
+		<e:Label id="lb_gold" text="999999" y="17" size="24" x="129.68" scaleX="1" scaleY="1" textColor="0xffffff" height="34" verticalAlign="middle"/>
+		<e:Button label="" x="211.01" y="17" scaleX="1" scaleY="1">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="mmm_dating_button_01_png" source.down="mmm_dating_button_01_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Image id="img_bg" y="79" anchorOffsetY="0" scaleX="1" scaleY="1" x="0" width="750" source="lunbo_1_png" height="244"/>
+		<e:Image source="mmm_dating_icon_01_png" x="74" y="15"/>
+		<e:Image source="mmm_dating_Backplane_02_png" x="331.4" y="17" scale9Grid="19,14,5,1" anchorOffsetX="0" width="101.33" height="34"/>
+		<e:Label id="lb_gold0" text="999999" y="17" size="24" x="339.75" scaleX="1" scaleY="1" textColor="0xFFFFFF" height="34" verticalAlign="middle"/>
+		<e:Image x="293.4" y="15" source="mmm_dating_icon_02_png"/>
+		<e:Image source="mmm_dating_Backplane_02_png" x="524.74" y="17" scale9Grid="19,14,5,1" anchorOffsetX="0" width="101.33" height="34"/>
+		<e:Label id="lb_gold1" text="999999" y="17" size="24" x="533.09" scaleX="1" scaleY="1" textColor="0xFFFFFF" height="34" verticalAlign="middle"/>
+		<e:Image x="486.74" y="15" source="mmm_dating_icon_03_png"/>
+		<e:Group width="50" height="24" x="350" y="277">
+			<e:RadioButton id="rad1" label="" x="334" y="45.73000000000002" scaleX="1" scaleY="1" selected="true" width="22" height="22"/>
+			<e:RadioButton id="rad2" label="" x="364" y="45.73000000000002" scaleX="1" scaleY="1" width="22" height="22"/>
+			<e:RadioButton id="rad3" label="" x="394" y="45.73000000000002" scaleX="1" scaleY="1" width="22" height="22" visible="false"/>
+			<e:layout>
+				<e:HorizontalLayout horizontalAlign="center" verticalAlign="justify"/>
+			</e:layout>
+		</e:Group>
+	</e:Group>
+	<e:Group id="daohang" width="750" height="56" x="0" y="328" anchorOffsetY="0">
+		<e:Image source="mmm_dating_Backplane_03_png" x="0" y="0" scale9Grid="7,7,42,42" width="750" scaleX="1" scaleY="1"/>
+		<e:Label id="lb_kh" text="口红" x="56" y="13" name="btn_kh" size="28"/>
+		<e:Label id="lb_lp" text="礼品" x="206" y="13" name="btn_lp" size="28"/>
+		<e:Label id="lb_pf" text="皮肤" x="352.06" y="14.34" name="btn_pf" size="28"/>
+	</e:Group>
+	<e:Group width="750" height="58" x="0" y="402">
+		<e:Image source="mmm_dating_Backplane_05_png" x="0" y="0" scale9Grid="7,7,44,44" anchorOffsetX="0" width="750"/>
+		<e:Label id="lb_0" text="免费区" x="56" y="14" name="btn_0" scaleX="1" scaleY="1" textColor="0x333333" size="26"/>
+		<e:Label id="lb_100" text="100金币区" x="206" y="14" name="btn_100" scaleX="1" scaleY="1" textColor="0x333333" size="26"/>
+		<e:Label id="lb_300" text="300金币区" x="375.01" y="14" name="btn_300" scaleX="1" scaleY="1" textColor="0x333333" size="26"/>
+		<e:Label id="lb_500" text="300金币区" x="560.07" y="14" name="btn_500" scaleX="1" scaleY="1" textColor="0x333333" size="26"/>
+	</e:Group>
+	<e:Group id="gp_0" width="750" height="394" y="460" anchorOffsetX="0" x="0" anchorOffsetY="0">
+		<e:Image source="mmm_dating_Backplane_01_png" y="18" width="226" height="318" x="18"/>
+		<e:Image source="mmm_dating_Backplane_01_png" x="262" y="18" width="226" height="318"/>
+		<e:Image source="mmm_dating_Backplane_01_png" x="506" y="18" width="226" height="318"/>
+		<e:Image source="mmm_dating_picture_08_png" x="79" y="33.64"/>
+		<e:Label text="啊实打实大苏打按说" x="50" y="189.31" textColor="0x333333" size="18" width="152"/>
+		<e:Image id="btn1" source="mmm_dating_button_04_png" x="37" y="276.32" name="btn1"/>
+		<e:Image x="320" y="37.64" source="mmm_dating_picture_09_png"/>
+		<e:Label text="撒大苏打实打实啊实打实的" x="293" y="194.31" textColor="0x333333" size="18" width="152"/>
+		<e:Image id="btn2" source="mmm_dating_button_04_png" x="281.01" y="276.32" name="btn2"/>
+		<e:Image x="575.41" y="37.64" source="mmm_dating_picture_09_png"/>
+		<e:Label text="阿三大苏打实打实大大" x="543" y="194.31" textColor="0x333333" size="18" width="152"/>
+		<e:Label text="￥: 300" x="293" y="242.67" size="18" textColor="0xef0057"/>
+		<e:Label text="￥: 300" x="543.42" y="242.67" size="18" textColor="0xef0057"/>
+		<e:Label text="体验模式" x="79" y="287.32" textColor="0xffffff" size="28" touchEnabled="false"/>
+		<e:Label text="闯关挑战" x="326.07" y="287.32" textColor="0xffffff" size="28" touchEnabled="false"/>
+		<e:Image id="btn3" source="mmm_dating_button_04_png" x="525" y="276.32" name="btn3"/>
+		<e:Label text="限时挑战" x="570.07" y="287.32" textColor="0xffffff" size="28" touchEnabled="false"/>
+	</e:Group>
+	<e:Group id="gp_100" width="750" height="394" y="460" anchorOffsetX="0" x="0" anchorOffsetY="0" visible="false">
+		<e:Image source="mmm_dating_Backplane_01_png" x="18.05" y="18" width="226" height="318"/>
+		<e:Image source="mmm_dating_Backplane_01_png" x="262.05" y="18" width="226" height="318"/>
+		<e:Image x="76.05" y="37.64" source="mmm_dating_picture_09_png"/>
+		<e:Label text="撒大苏打实打实啊实打实的" x="49.05" y="194.31" textColor="0x333333" size="18" width="152"/>
+		<e:Image id="btn4" source="mmm_dating_button_04_png" x="37.06" y="276.32" name="btn4"/>
+		<e:Image x="331.46" y="37.64" source="mmm_dating_picture_09_png"/>
+		<e:Label text="阿三大苏打实打实大大" x="299.05" y="194.31" textColor="0x333333" size="18" width="152"/>
+		<e:Label text="￥: 300" x="49.05" y="242.67" size="18" textColor="0xEF0057"/>
+		<e:Label text="￥: 300" x="299.47" y="242.67" size="18" textColor="0xEF0057"/>
+		<e:Label text="闯关挑战" x="82.12" y="287.32" textColor="0xFFFFFF" size="28" touchEnabled="false"/>
+		<e:Image id="btn5" source="mmm_dating_button_04_png" x="281.05" y="276.32" name="btn5"/>
+		<e:Label text="限时挑战" x="326.12" y="287.32" textColor="0xFFFFFF" size="28" touchEnabled="false"/>
+	</e:Group>
+	<e:Group id="gp_300" width="750" height="394" y="460" anchorOffsetX="0" x="0" anchorOffsetY="0" visible="false">
+		<e:Image source="mmm_dating_Backplane_01_png" x="18.05" y="18" width="226" height="318"/>
+		<e:Image source="mmm_dating_Backplane_01_png" x="262.05" y="18" width="226" height="318"/>
+		<e:Image x="76.05" y="37.64" source="mmm_dating_picture_09_png"/>
+		<e:Label text="撒大苏打实打实啊实打实的" x="49.05" y="194.31" textColor="0x333333" size="18" width="152"/>
+		<e:Image id="btn6" source="mmm_dating_button_04_png" x="37.06" y="276.32" name="btn6"/>
+		<e:Image x="331.46" y="37.64" source="mmm_dating_picture_09_png"/>
+		<e:Label text="阿三大苏打实打实大大" x="299.05" y="194.31" textColor="0x333333" size="18" width="152"/>
+		<e:Label text="￥: 300" x="49.05" y="242.67" size="18" textColor="0xEF0057"/>
+		<e:Label text="￥: 300" x="299.47" y="242.67" size="18" textColor="0xEF0057"/>
+		<e:Label text="闯关挑战" x="82.12" y="287.32" textColor="0xFFFFFF" size="28" touchEnabled="false"/>
+		<e:Image id="btn7" source="mmm_dating_button_04_png" x="281.05" y="276.32" name="btn7"/>
+		<e:Label text="限时挑战" x="326.12" y="287.32" textColor="0xFFFFFF" size="28" touchEnabled="false"/>
+	</e:Group>
+	<e:Group id="gp_500" width="750" height="394" y="460" anchorOffsetX="0" x="0" anchorOffsetY="0" visible="false">
+		<e:Image source="mmm_dating_Backplane_01_png" x="18.05" y="18" width="226" height="318"/>
+		<e:Image source="mmm_dating_Backplane_01_png" x="262.05" y="18" width="226" height="318"/>
+		<e:Image x="76.05" y="37.64" source="mmm_dating_picture_09_png"/>
+		<e:Label text="撒大苏打实打实啊实打实的" x="49.05" y="194.31" textColor="0x333333" size="18" width="152"/>
+		<e:Image id="btn8" source="mmm_dating_button_04_png" x="37.06" y="276.32" name="btn8"/>
+		<e:Image x="331.46" y="37.64" source="mmm_dating_picture_09_png"/>
+		<e:Label text="阿三大苏打实打实大大" x="299.05" y="194.31" textColor="0x333333" size="18" width="152"/>
+		<e:Label text="￥: 300" x="49.05" y="242.67" size="18" textColor="0xEF0057"/>
+		<e:Label text="￥: 300" x="299.47" y="242.67" size="18" textColor="0xEF0057"/>
+		<e:Label text="闯关挑战" x="82.12" y="287.32" textColor="0xFFFFFF" size="28" touchEnabled="false"/>
+		<e:Image id="btn9" source="mmm_dating_button_04_png" x="281.05" y="276.32" name="btn9"/>
+		<e:Label text="限时挑战" x="326.12" y="287.32" textColor="0xFFFFFF" size="28" touchEnabled="false"/>
+	</e:Group>
+</e:Skin>

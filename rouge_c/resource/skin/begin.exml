@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="begin" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect width="750" height="1334" x="0" y="0" fillColor="0xe88f8f"/>
+	<e:Button id="btn_share" label="分享游戏" y="1208" horizontalCenter="-170"/>
+	<e:Button id="btn_begin" label="开始游戏" y="1208" horizontalCenter="170"/>
+	<e:Scroller id="scroller" width="640" height="824" x="52" y="296" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Group id="group" anchorOffsetX="0" width="858.33" anchorOffsetY="0" height="1150"/>
+	</e:Scroller>
+	<e:Label text="排行榜" x="310.5" y="44" textColor="0x000000" size="40" bold="true"/>
+	<e:Label text="名次" x="82" y="166" textColor="0x000000" size="40" bold="true"/>
+	<e:Label text="头像" x="223" y="166" textColor="0x000000" size="40" bold="true"/>
+	<e:Label text="名字" x="375" y="166" textColor="0x000000" size="40" bold="true"/>
+	<e:Label text="成绩" x="545" y="166" textColor="0x000000" size="40" bold="true"/>
+	<e:Label text="发奖倒计时：" x="190" y="104" textColor="0x000000" size="26"/>
+	<e:Label text="131322132" x="342" y="104" textColor="0x000000" size="26"/>
+</e:Skin>

@@ -452,6 +452,9 @@ var GameMain = (function (_super) {
     GameMain.prototype.getRougeNum = function (num) {
         return this.config["lev" + num]['rougeNum'];
     };
+    GameMain.prototype.getRotate = function (num) {
+        return this.config["lev" + num]['rougeNum'];
+    };
     return GameMain;
 }(eui.Component));
 __reflect(GameMain.prototype, "GameMain");

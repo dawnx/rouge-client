@@ -73,6 +73,7 @@ class Main extends eui.UILayer {
         var request = new egret.HttpRequest();
         request.responseType = egret.HttpResponseType.TEXT;
         let openId = egret.getOption("openId");  //取url后边的openid
+        
         // let _url: string = "kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
         let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
         request.open(_url, egret.HttpMethod.GET);

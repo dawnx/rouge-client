@@ -110,9 +110,13 @@ class MainSence extends eui.Component {
 
     }
     private onClickChongzhi() {
+        
+        let openId = egret.getOption("openId");  //取url后边的openid
+        console.log("openId   " + openId);
+        var totalFee:number = 1; 
         //拼接参数 
-        //var params = "?body=心愿订单&total_fee=1&trade_type=JSAPI";   // jsapi 支付；
-        var params = "?body=心愿订单&total_fee=1&trade_type=MWEB";
+        var params = "?openId=" + openId + "&body=心愿订单&total_fee=" + totalFee + "&trade_type=JSAPI";   // jsapi 支付；
+        //var params = "?body=心愿订单&total_fee=1&trade_type=MWEB";
         var request = new egret.HttpRequest();
         request.responseType = egret.HttpResponseType.TEXT;
         //将参数拼接到url
@@ -132,23 +136,23 @@ class MainSence extends eui.Component {
         // 解析
         var data = JSON.parse(request.response).data;
         // 调H5支付；
-        var newrequest = new egret.HttpRequest();
-        newrequest.responseType = egret.HttpResponseType.TEXT;
-        newrequest.withCredentials = false;
-        newrequest.open(data.map.mweb_url, egret.HttpMethod.GET);
-        newrequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
-        newrequest.send();
+        // var newrequest = new egret.HttpRequest();
+        // newrequest.responseType = egret.HttpResponseType.TEXT;
+        // newrequest.withCredentials = false;
+        // newrequest.open(data.map.mweb_url, egret.HttpMethod.GET);
+        // newrequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+        // newrequest.send();
         // 重签名；
         // var stringA = "appid=wxba773081caf99027&nonceStr=" + data.nonceStr + "&package=prepay_id=" + data.prepayId + "&signType=MD5&timeStamp=" + data.timeStamp;   // 64E30514F4D38511B4CCBA99D29CD717
         // var stringSignTemp = stringA + "&key=Miaomiaomiao258Miaomiaomiao25888";
         // var md5Str: string = new md5().hex_md5(stringSignTemp).toUpperCase();
 
-        // var bodyConfig: BodyConfig = new BodyConfig();
-        // bodyConfig.appId = data.appId;
+        var bodyConfig: BodyConfig = new BodyConfig();
+        bodyConfig.appId = data.appId;
         // bodyConfig.debug = true;
         // bodyConfig.timestamp = data.timeStamp;
         // bodyConfig.nonceStr = data.nonceStr;
-        // bodyConfig.signature = md5Str;
+        // bodyConfig.signature = data.sign;
         // bodyConfig.jsApiList = [
         //     "checkJsApi",
         //     "chooseWXPay",
@@ -159,30 +163,47 @@ class MainSence extends eui.Component {
         //     "hideOptionMenu",
         //     "hideMenuItems",
         // ];
+        // 调试面板；
 
-        // // ... 其他的配置属性赋值
-        // // 通过config接口注入权限验证配置
-        // if (wx) {
-        //     wx.config(bodyConfig);
-        //     wx.ready(function () {
-        //         // 在这里调用微信相关功能的 API
-        //         // 调起微信支付接口
-        //         wx.chooseWXPay({
-        //             appId: bodyConfig.appId,
-        //             timestamp: bodyConfig.timestamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
-        //             nonceStr: bodyConfig.nonceStr, // 支付签名随机串，不长于 32 位
-        //             package: "prepay_id=" + data.prepayId, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
-        //             signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
-        //             paySign: md5Str, // 支付签名
-        //             success: function (res) {
-        //                 // 支付成功后的回调函数
-        //                 this.completePay();
-        //             }
-        //         });
+        var label: eui.Label = new eui.Label();
+        label.text = "data.appId   " + data.appId + "   data.timeStamp     " + data.timeStamp 
+        + "  \r\n data.nonceStr  " + data.nonceStr + "    data.sign   " + data.sign + "   \r\ndata.prepayId   " + data.package;
+        //设置颜色等文本属性
+        label.textColor = 0xff0000;
+        label.size = 16;
+        label.lineSpacing = 20;
+        label.textAlign = egret.HorizontalAlign.JUSTIFY;
+        this.addChild(label);
+        // label.verticalCenter = 0;
+        // label.horizontalCenter = 0;
+        label.y = 850;
 
-        //     });
-        // }
+
+        // ... 其他的配置属性赋值
+        // 通过config接口注入权限验证配置
+        if (wx) {
+            wx.config(bodyConfig);
+            wx.ready(function () {
+                // 在这里调用微信相关功能的 API
+                // 调起微信支付接口
+                wx.chooseWXPay({
+                    appId: data.appId,
+                    timestamp: data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                    nonceStr: data.nonceStr, // 支付签名随机串，不长于 32 位
+                    package: data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+                    signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                    paySign: data.sign, // 支付签名
+                    success: function (res) {
+                        // 支付成功后的回调函数
+                        this.completePay();
+                    }
+                });
+
+            });
+        }
     }
+
+
     ///支付成功的回调函数；
     private completePay() {
         let panel = new eui.Panel();

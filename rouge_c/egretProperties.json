@@ -23,6 +23,14 @@
     },
     {
       "name": "promise"
+    },
+    {
+      "name": "weixinapi",
+      "path": "../libsrc"
+    },
+    {
+      "name": "md5",
+      "path": "../md5"
     }
   ]
 }

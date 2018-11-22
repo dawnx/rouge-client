@@ -226,6 +226,38 @@ class Main extends eui.UILayer {
      */
     private onClickPayBtn(e: egret.TouchEvent) {
 
+        var orderData: OrderBodyConfig = new OrderBodyConfig();
+        orderData.appId = "wxba773081caf99027";
+        orderData.mch_id = "1501253171";
+        orderData.nonce_str = this.getNonceStr();
+        orderData.sign = "null";
+        orderData.sign_type = "MD5";
+        orderData.body = "心愿订单";
+        orderData.out_trade_no = "123456";
+        orderData.total_fee = 2;
+        orderData.spbill_create_ip = "null";
+        orderData.notify_url = "null";
+        orderData.trade_type = "JSAPI";
+
+        //拼接参数 
+        var params = "?body=心愿订单&total_fee=0.01&trade_type=JSAPI";
+        var request = new egret.HttpRequest();
+        request.responseType = egret.HttpResponseType.TEXT;
+        //将参数拼接到url
+        request.open("http:///kh.chitugame.com/ct-admin/weixin/create" + params, egret.HttpMethod.GET);
+        request.send();
+
+        // var request = new egret.HttpRequest();
+        // request.responseType = egret.HttpResponseType.TEXT;
+        // request.open("http:///kh.chitugame.com/ct-admin/weixin/create", egret.HttpMethod.GET);
+        // request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        // request.send(orderData);
+        console.log("Send Success!! orderData.total_fee   :" + orderData.total_fee);
+        request.addEventListener(egret.Event.COMPLETE, this.onGetComplete, this);
+        request.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onGetIOError, this);
+        request.addEventListener(egret.ProgressEvent.PROGRESS, this.onGetProgress, this);
+
+
         // let panel = new eui.Panel();
         // panel.title = "Title";
         // panel.horizontalCenter = 0;
@@ -308,30 +340,6 @@ class Main extends eui.UILayer {
         // 			wx.onMenuShareWeibo(bodyMenuWeoBo);		
         //    });
         //}
-        var orderData: OrderBodyConfig = new OrderBodyConfig();
-        orderData.appId = "wxba773081caf99027";
-        orderData.mch_id = "1501253171";
-        orderData.nonce_str = this.getNonceStr();
-        orderData.sign = "null";
-        orderData.sign_type = "MD5";
-        orderData.body = "心愿订单";
-        orderData.out_trade_no = "123456";
-        orderData.total_fee = 2;
-        orderData.spbill_create_ip = "null";
-        orderData.notify_url = "null";
-        orderData.trade_type = "JSAPI";
-
-        var request = new egret.HttpRequest();
-        request.responseType = egret.HttpResponseType.TEXT;
-        request.open("https:///kh.chitugame.com/weixin/weixin/create", egret.HttpMethod.GET);
-        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        request.send(orderData);
-        console.log("orderData.total_fee   :" + orderData.total_fee);
-        request.addEventListener(egret.Event.COMPLETE, this.onGetComplete, this);
-        request.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onGetIOError, this);
-        request.addEventListener(egret.ProgressEvent.PROGRESS, this.onGetProgress, this);
-        
-        
 
     }
 

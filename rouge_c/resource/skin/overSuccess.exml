@@ -3,11 +3,10 @@
 	<e:Image source="mmm_youxi_background_01_png" x="0" y="79"/>
 	<e:Image id="img_juzi" source="mmm_youxi_picture_03_png" x="375" y="550" width="380" height="380" anchorOffsetX="190" anchorOffsetY="190"/>
 	<e:Image source="mmm_dating_picture_04_png" x="0" y="0"/>
-	<e:Label id="lb_score" text="游戏结束！恭喜您获得了100分" x="169.5" y="124.55" textColor="0x000000"/>
-	<e:Label text="排行榜第一可以获得以下奖励哟" x="167.5" y="180.55" textColor="0x000000"/>
-	<e:Label text="距开奖时间还有   01 : 15 : 33" x="169.5" y="244.55" textColor="0x000000"/>
-	<e:Button id="btn_fangqi" label="放弃重玩" x="119.5" y="1014.79"/>
-	<e:Button id="btn_reset" label="金币继续" x="530.5" y="1014.79"/>
+	<e:Label id="lb_score" text="好厉害！恭喜你获得奖品" x="215" y="132.55" textColor="0x000000"/>
+	<e:Label id="lb_score0" text="口红3号" x="345" y="234.98" textColor="0x000000"/>
+	<e:Button id="btn_share" label="分享" x="119.5" y="1014.79"/>
+	<e:Button id="btn_reset" label="再玩一次" x="530.5" y="1014.79"/>
 	<e:Group id="gp_tiyan" width="750" height="1334" x="0" y="0" visible="false">
 		<e:Image source="mmm_youxi_background_01_png" x="0" y="79" scaleX="1" scaleY="1"/>
 		<e:Image id="img_juzi0" source="mmm_youxi_picture_03_png" x="375" y="550" width="380" height="380" anchorOffsetX="190" anchorOffsetY="190" scaleX="1" scaleY="1"/>

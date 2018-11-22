@@ -107,6 +107,21 @@ class GameMain extends eui.Component {
         //转速
         this.speed = this.getSpeed(this._level);
         console.log("速度" + this.speed)
+        let random = Math.random();
+        console.log(random)
+        if (random < 0.01)//1%
+        {
+            this.rotation
+        }
+        else if (random < 0.025)//1.5%
+        {
+
+
+        }
+        else if (random < 0.04)//1.5%
+        {
+
+        }
 
 
 
@@ -193,10 +208,16 @@ class GameMain extends eui.Component {
 
     //每帧调用
     private update() {
+
         this.gp_circle.rotation += this.speed;
         this.img_juzi.rotation += this.speed;
-        this.lb_guan.text = "第" + this._level + "关";
 
+
+
+
+
+
+        this.lb_guan.text = "第" + this._level + "关";
         if (this.isMoving) {
             this.rouge.y -= this.moveSpeed;
             this.rect_dangban.touchEnabled = false;
@@ -283,20 +304,26 @@ class GameMain extends eui.Component {
                         //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
                         console.log("体验模式结束 ")
                         this.GameOver();
-                    } else if (this._level >= 4 && this._type == 2) {
+                    }
+                    this.timer.stop();
+                    if (this._level >= 4 && this._type == 2) {
                         //弹出弹窗 付费模式结束
                         console.log("通关 获得奖励")
-                        
+                        this.addChild(new OverSuccess(this, this.score, this._type, this._level))
+                        this.timer.stop();
+
+                    } else {
+                        this.gp_guan.visible = true;
+                        var idTimeout: number = egret.setTimeout(function (arg) {
+                            console.log("延时三秒:", arg);
+                            this.initGame();
+                        }, this, 3000, "egret");
                     }
                     console.log(this._level + "关")
-                    this.timer.stop();
 
 
-                    this.gp_guan.visible = true;
-                    var idTimeout: number = egret.setTimeout(function (arg) {
-                        console.log("延时三秒:", arg);
-                        this.initGame();
-                    }, this, 3000, "egret");
+
+
 
                 }
                 //判断数组中所有角度，如果角度之差小于定值，游戏失败
@@ -305,7 +332,7 @@ class GameMain extends eui.Component {
                         if (Math.abs(this.rArr[i] - this.rArr[j]) <= this.jiaodu) {
 
                             this.timer.stop();
-                            //碰到圆盘上口红 直接失败
+                            //碰到圆盘上口红 直接失败  如果是体验和闯关 就用gameover  如果是限时  就用xsOver
                             if (this._type == 1 || this._type == 2) {
                                 this.GameOver();
                             } else {
@@ -315,7 +342,7 @@ class GameMain extends eui.Component {
                         }
                     }
                 }
-                
+
             }
 
         }
@@ -417,7 +444,7 @@ class GameMain extends eui.Component {
             item.y = item.height * i + 5 * i;
         }
     }
-    //限时模式
+    //限时模式重玩
     public initGame2() {  //游戏初始化 消耗金币重新玩，分数砍一半
         console.log("游戏初始化")
         console.log(this._level)
@@ -425,9 +452,11 @@ class GameMain extends eui.Component {
         // this.gp_circle.removeChildren();
         // this.rArr = [];
         // this.rotateArr = [];
+        for (let i = 0; i < this.rArr.length; i++) {
+
+        }
 
         this.rect_dangban.visible = true;
-
         let time = this.getTime(this._level);
         console.log("倒计时" + time)
         this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
@@ -507,6 +536,9 @@ class GameMain extends eui.Component {
         return this.config["lev" + num]['zhuansu'];
     }
     private getRougeNum(num: number) {
+        return this.config["lev" + num]['rougeNum'];
+    }
+    private getRotate(num: number) {
         return this.config["lev" + num]['rougeNum'];
     }
 

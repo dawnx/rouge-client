@@ -20,11 +20,12 @@ var MainSence = (function (_super) {
     MainSence.prototype.childrenCreated = function () {
         _super.prototype.childrenCreated.call(this);
         this.init();
-        // this.lunbo();
+        //充值
+        this.img_chongzhi.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickChongzhi, this);
+        //轮播图
         this.rad1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickRad1, this);
         this.rad2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickRad2, this);
         // this.rad3.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickRad3, this);
-        //轮播图
         this.img_bg.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickImg_bg, this);
         // 不同模式
         this.btn1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
@@ -37,14 +38,14 @@ var MainSence = (function (_super) {
         this.btn8.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
         this.btn9.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
         // 奖励方式
-        this.lb_kh.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
-        this.lb_lp.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
-        this.lb_pf.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect_kh.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect_lp.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect_pf.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
         //付费还是免费
-        this.lb_0.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
-        this.lb_100.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
-        this.lb_300.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
-        this.lb_500.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect0.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect100.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect300.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect500.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
     };
     // private lunbo() {
     //     var context = this;
@@ -73,6 +74,8 @@ var MainSence = (function (_super) {
         if (this.index > 2) {
             this.index = 1;
         }
+    };
+    MainSence.prototype.onClickChongzhi = function () {
     };
     MainSence.prototype.onClickRad1 = function () {
         this.index = 1;
@@ -103,7 +106,7 @@ var MainSence = (function (_super) {
         var img = e.target;
         switch (img.name) {
             //口红
-            case "btn_kh":
+            case "rect_kh":
                 console.log("口红");
                 this.goodsType = 1; //口红
                 this.lb_kh.textColor = 0x9e023e;
@@ -111,7 +114,7 @@ var MainSence = (function (_super) {
                 this.lb_pf.textColor = 0xffffff;
                 break;
             //礼品
-            case "btn_lp":
+            case "rect_lp":
                 console.log("礼品");
                 this.goodsType = 2; //礼品
                 this.lb_kh.textColor = 0xffffff;
@@ -119,7 +122,7 @@ var MainSence = (function (_super) {
                 this.lb_pf.textColor = 0xffffff;
                 break;
             //皮肤
-            case "btn_pf":
+            case "rect_pf":
                 console.log("皮肤");
                 this.goodsType = 3; //皮肤
                 this.lb_kh.textColor = 0xffffff;
@@ -190,7 +193,7 @@ var MainSence = (function (_super) {
                 this.addChild(new Begin(this.freeType, this.type, this.goodsType));
                 break;
             //免费区
-            case "btn_0":
+            case "rect0":
                 this.gp_0.visible = true;
                 this.gp_100.visible = false;
                 this.gp_300.visible = false;
@@ -203,7 +206,7 @@ var MainSence = (function (_super) {
                 this.lb_500.textColor = 0x333333;
                 break;
             //100
-            case "btn_100":
+            case "rect100":
                 console.log("100积分 付费模式");
                 this.gp_0.visible = false;
                 this.gp_100.visible = true;
@@ -216,7 +219,7 @@ var MainSence = (function (_super) {
                 this.lb_500.textColor = 0x333333;
                 break;
             //300
-            case "btn_300":
+            case "rect300":
                 console.log("300积分 付费模式");
                 this.gp_0.visible = false;
                 this.gp_100.visible = false;
@@ -229,7 +232,7 @@ var MainSence = (function (_super) {
                 this.lb_500.textColor = 0x333333;
                 break;
             //500
-            case "btn_500":
+            case "rect500":
                 console.log("500积分 付费模式");
                 this.gp_0.visible = false;
                 this.gp_100.visible = false;

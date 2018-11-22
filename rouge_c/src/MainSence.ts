@@ -5,6 +5,7 @@ class MainSence extends eui.Component {
     private img_bg: eui.Image;
     private index: number = 1;
     private group: eui.Group;
+    private img_chongzhi: eui.Button;
     // private scroller: eui.Scroller;
     private btn1: eui.Image;
     private btn2: eui.Image;
@@ -18,6 +19,9 @@ class MainSence extends eui.Component {
     private lb_kh: eui.Label;
     private lb_lp: eui.Label;
     private lb_pf: eui.Label;
+    private rect_kh: eui.Rect;
+    private rect_lp: eui.Rect;
+    private rect_pf: eui.Rect;
     private gp_0: eui.Group;
     private gp_100: eui.Group;
     private gp_300: eui.Group;
@@ -27,6 +31,11 @@ class MainSence extends eui.Component {
     private lb_100: eui.Label;
     private lb_300: eui.Label;
     private lb_500: eui.Label;
+
+    private rect0: eui.Rect;
+    private rect100: eui.Rect;
+    private rect300: eui.Rect;
+    private rect500: eui.Rect;
     //倒计时
     private daojishi: number;
     //转速
@@ -39,13 +48,15 @@ class MainSence extends eui.Component {
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();
-        
+
         this.init();
-        // this.lunbo();
+        //充值
+        this.img_chongzhi.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickChongzhi, this);
+        //轮播图
         this.rad1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickRad1, this);
         this.rad2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickRad2, this);
         // this.rad3.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickRad3, this);
-        //轮播图
+
         this.img_bg.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickImg_bg, this);
         // 不同模式
         this.btn1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
@@ -58,14 +69,14 @@ class MainSence extends eui.Component {
         this.btn8.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
         this.btn9.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
         // 奖励方式
-        this.lb_kh.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
-        this.lb_lp.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
-        this.lb_pf.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect_kh.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect_lp.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect_pf.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
         //付费还是免费
-        this.lb_0.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
-        this.lb_100.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
-        this.lb_300.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
-        this.lb_500.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect0.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect100.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect300.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
+        this.rect500.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
     }
     // private lunbo() {
     //     var context = this;
@@ -97,6 +108,9 @@ class MainSence extends eui.Component {
             this.index = 1;
         }
 
+    }
+    private onClickChongzhi() {
+        
     }
     private onClickRad1() {
         this.index = 1;
@@ -137,7 +151,7 @@ class MainSence extends eui.Component {
         var img: eui.Image = e.target;
         switch (img.name) {
             //口红
-            case "btn_kh":
+            case "rect_kh":
                 console.log("口红")
                 this.goodsType = 1;//口红
                 this.lb_kh.textColor = 0x9e023e;
@@ -145,7 +159,7 @@ class MainSence extends eui.Component {
                 this.lb_pf.textColor = 0xffffff;
                 break;
             //礼品
-            case "btn_lp":
+            case "rect_lp":
                 console.log("礼品")
                 this.goodsType = 2;//礼品
                 this.lb_kh.textColor = 0xffffff;
@@ -153,7 +167,7 @@ class MainSence extends eui.Component {
                 this.lb_pf.textColor = 0xffffff;
                 break;
             //皮肤
-            case "btn_pf":
+            case "rect_pf":
                 console.log("皮肤")
                 this.goodsType = 3;//皮肤
                 this.lb_kh.textColor = 0xffffff;
@@ -229,7 +243,7 @@ class MainSence extends eui.Component {
                 break;
 
             //免费区
-            case "btn_0":
+            case "rect0":
 
                 this.gp_0.visible = true;
                 this.gp_100.visible = false;
@@ -243,7 +257,7 @@ class MainSence extends eui.Component {
                 this.lb_500.textColor = 0x333333;
                 break;
             //100
-            case "btn_100":
+            case "rect100":
                 console.log("100积分 付费模式")
                 this.gp_0.visible = false;
                 this.gp_100.visible = true;
@@ -256,7 +270,7 @@ class MainSence extends eui.Component {
                 this.lb_500.textColor = 0x333333;
                 break;
             //300
-            case "btn_300":
+            case "rect300":
                 console.log("300积分 付费模式")
                 this.gp_0.visible = false;
                 this.gp_100.visible = false;
@@ -269,7 +283,7 @@ class MainSence extends eui.Component {
                 this.lb_500.textColor = 0x333333;
                 break;
             //500
-            case "btn_500":
+            case "rect500":
                 console.log("500积分 付费模式")
                 this.gp_0.visible = false;
                 this.gp_100.visible = false;

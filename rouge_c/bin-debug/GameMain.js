@@ -131,6 +131,15 @@ var GameMain = (function (_super) {
         //转速
         this.speed = this.getSpeed(this._level);
         console.log("速度" + this.speed);
+        var random = Math.random();
+        console.log(random);
+        if (random < 0.01) {
+            this.rotation;
+        }
+        else if (random < 0.025) {
+        }
+        else if (random < 0.04) {
+        }
     };
     GameMain.prototype.initXS = function () {
         console.log(this._type);
@@ -273,24 +282,28 @@ var GameMain = (function (_super) {
                         console.log("体验模式结束 ");
                         this.GameOver();
                     }
-                    else if (this._level >= 4 && this._type == 2) {
+                    this.timer.stop();
+                    if (this._level >= 4 && this._type == 2) {
                         //弹出弹窗 付费模式结束
                         console.log("通关 获得奖励");
+                        this.addChild(new OverSuccess(this, this.score, this._type, this._level));
+                        this.timer.stop();
+                    }
+                    else {
+                        this.gp_guan.visible = true;
+                        var idTimeout = egret.setTimeout(function (arg) {
+                            console.log("延时三秒:", arg);
+                            this.initGame();
+                        }, this, 3000, "egret");
                     }
                     console.log(this._level + "关");
-                    this.timer.stop();
-                    this.gp_guan.visible = true;
-                    var idTimeout = egret.setTimeout(function (arg) {
-                        console.log("延时三秒:", arg);
-                        this.initGame();
-                    }, this, 3000, "egret");
                 }
                 //判断数组中所有角度，如果角度之差小于定值，游戏失败
                 for (var i = 0; i < this.rArr.length - 1; i++) {
                     for (var j = i + 1; j < this.rArr.length; j++) {
                         if (Math.abs(this.rArr[i] - this.rArr[j]) <= this.jiaodu) {
                             this.timer.stop();
-                            //碰到圆盘上口红 直接失败
+                            //碰到圆盘上口红 直接失败  如果是体验和闯关 就用gameover  如果是限时  就用xsOver
                             if (this._type == 1 || this._type == 2) {
                                 this.GameOver();
                             }
@@ -389,7 +402,7 @@ var GameMain = (function (_super) {
             item.y = item.height * i + 5 * i;
         }
     };
-    //限时模式
+    //限时模式重玩
     GameMain.prototype.initGame2 = function () {
         console.log("游戏初始化");
         console.log(this._level);
@@ -397,6 +410,8 @@ var GameMain = (function (_super) {
         // this.gp_circle.removeChildren();
         // this.rArr = [];
         // this.rotateArr = [];
+        for (var i = 0; i < this.rArr.length; i++) {
+        }
         this.rect_dangban.visible = true;
         var time = this.getTime(this._level);
         console.log("倒计时" + time);

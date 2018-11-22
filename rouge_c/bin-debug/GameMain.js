@@ -348,6 +348,7 @@ var GameMain = (function (_super) {
                             }
                             else {
                                 this.addChild(new XsOver(this, this.score, this._type));
+                                console.log("限时模式 游戏结束");
                             }
                         }
                     }
@@ -446,11 +447,9 @@ var GameMain = (function (_super) {
         console.log("游戏初始化");
         console.log(this._level);
         this.gp_guan.visible = false;
-        // this.gp_circle.removeChildren();
-        // this.rArr = [];
-        // this.rotateArr = [];
-        for (var i = 0; i < this.rArr.length; i++) {
-        }
+        this.gp_circle.removeChildAt(this.gp_circle.numChildren - 1);
+        this.rArr = this.rArr.splice(this.gp_circle.numChildren - 1, 1);
+        this.rotateArr = this.rotateArr.splice(this.gp_circle.numChildren - 1, 1);
         this.rect_dangban.visible = true;
         var time = this.getTime(this._level);
         console.log("倒计时" + time);
@@ -470,7 +469,7 @@ var GameMain = (function (_super) {
         function onTimerComplete(evt) {
             console.log("结束");
             this.rect_dangban.visible = false;
-            this.GameOver();
+            this.XSOver();
             this.timer.stop();
             console.log("定时器停止");
         }

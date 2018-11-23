@@ -379,13 +379,7 @@ class GameMain extends eui.Component {
         console.log("游戏初始化")
         console.log(this._level)
         console.log(this.speed)
-        //group转动
-        // egret.Tween.get(this.gp_circle, { loop: true })
-        //     .to({ rotation: this._fangxiang }, this.speed);
-        // console.log(this.speed)
-        // //橘子转动
-        // egret.Tween.get(this.img_juzi, { loop: true })
-        //     .to({ rotation: this._fangxiang }, this.speed);
+
         this.gp_guan.visible = false;
         this.gp_circle.removeChildren();
         this.rArr = [];
@@ -477,9 +471,11 @@ class GameMain extends eui.Component {
         console.log(this._level)
         this.gp_guan.visible = false;
         this.gp_circle.removeChildAt(this.gp_circle.numChildren - 1);
-        this.rArr = this.rArr.splice(this.gp_circle.numChildren - 1, 1);
-        this.rotateArr = this.rotateArr.splice(this.gp_circle.numChildren - 1, 1);
+        this.rArr.splice(this.gp_circle.numChildren , 1);
+        this.rotateArr.splice(this.gp_circle.numChildren , 1);
 
+        console.log(this.rArr)
+        console.log(this.gp_circle.numChildren)
 
         this.rect_dangban.visible = true;
         let time = this.getTime(this._level);

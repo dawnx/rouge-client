@@ -1,0 +1,70 @@
+// TypeScript file
+class NetSend extends egret.DisplayObjectContainer {
+    public static SendSuccess:boolean = false;
+    public static SendCallBack = null;
+
+    public static InitNetSend() {
+        this.getInstance();
+        console.log("NetSend Init   !");
+    }
+
+    private static instance: NetSend;
+    public static getInstance(): NetSend {
+        if (!this.instance) {
+            this.instance = new NetSend();
+        }
+        return this.instance;
+    }
+
+    public static SendToNet (bodyStr:string,totalFee:number)
+    {
+        let openId = egret.getOption("openId");  //取url后边的openid
+        console.log("openId   " + openId);
+        //var totalFee:number = 1; 
+        //拼接参数 
+        var params = "?openId=" + openId + "&body=" + bodyStr + "&total_fee=" + totalFee + "&trade_type=JSAPI";   // jsapi 支付；
+        //var params = "?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g&body=心愿订单&total_fee=1&trade_type=JSAPI";
+        var request = new egret.HttpRequest();
+        request.responseType = egret.HttpResponseType.TEXT;
+        //将参数拼接到url
+        request.open("http:///kh.chitugame.com/ct-admin/weixin/create" + params, egret.HttpMethod.GET);
+        request.send();
+        // 监听回调函数
+        request.addEventListener(egret.Event.COMPLETE, this.onGetComplete, this);
+        request.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onGetIOError, this);
+        request.addEventListener(egret.ProgressEvent.PROGRESS, this.onGetProgress, this);
+    }
+    private static onGetComplete(event: egret.Event): void {
+        console.log("Send Success!!!");
+        // 获取到后台传回来的数据；
+        var request = <egret.HttpRequest>event.currentTarget;
+        console.log("get data : ", request.response);
+        // 解析
+        var data = JSON.parse(request.response).data;
+        // 调H5支付；
+        // var newrequest = new egret.HttpRequest();
+        // newrequest.responseType = egret.HttpResponseType.TEXT;
+        // newrequest.withCredentials = false;
+        // newrequest.open(data.map.mweb_url, egret.HttpMethod.GET);
+        // newrequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+        // newrequest.send();
+        // 重签名；
+        // var stringA = "appid=wxba773081caf99027&nonceStr=" + data.nonceStr + "&package=prepay_id=" + data.prepayId + "&signType=MD5&timeStamp=" + data.timeStamp;   // 64E30514F4D38511B4CCBA99D29CD717
+        // var stringSignTemp = stringA + "&key=Miaomiaomiao258Miaomiaomiao25888";
+        // var md5Str: string = new md5().hex_md5(stringSignTemp).toUpperCase();
+
+        this.SendSuccess = true;
+        this.SendCallBack = data;
+        WeChatMoudle.WeChatPay(data);
+        console.log ("下单成功  调起支付请求！");
+    }
+
+    // HTTP发送错误回调；
+    private static onGetIOError(event: egret.IOErrorEvent): void {
+        console.log("get error : " + event);
+    }
+
+    private static onGetProgress(event: egret.ProgressEvent): void {
+        console.log("get progress : " + Math.floor(100 * event.bytesLoaded / event.bytesTotal) + "%");
+    }
+}

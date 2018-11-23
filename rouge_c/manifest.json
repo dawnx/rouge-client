@@ -11,7 +11,7 @@
 		"libs/modules/md5/md5.js"
 	],
 	"game": [
-		"bin-debug/OverSuccess.js",
+		"bin-debug/SoundBase.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/GameMain.js",
 		"bin-debug/GameOver.js",
@@ -19,13 +19,19 @@
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
 		"bin-debug/MainSence.js",
-		"bin-debug/Begin.js",
+		"bin-debug/OverSuccess.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ShouChong.js",
-		"bin-debug/SoundBase.js",
+		"bin-debug/Begin.js",
 		"bin-debug/SoundUtils.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/XsOver.js",
-		"bin-debug/YaoQing.js"
+		"bin-debug/YaoQing.js",
+		"bin-debug/Util/AccountData.js",
+		"bin-debug/Util/EventData.js",
+		"bin-debug/Util/EventManager.js",
+		"bin-debug/Util/NetSend.js",
+		"bin-debug/Util/OrderData.js",
+		"bin-debug/Util/WeChatMoudle.js"
 	]
 }

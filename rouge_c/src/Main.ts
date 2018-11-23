@@ -32,7 +32,12 @@ class Main extends eui.UILayer {
 
     protected createChildren(): void {
         super.createChildren();
-
+        // 初始化框架系统；
+        NetSend.InitNetSend();
+        EventManager.InitEventManager();
+        AccountData.InitAccountData();
+        WeChatMoudle.InitWeChatMoudle();        // 初始化WeChat模块；   这里可以选择不初始化这个模块 根据需要；
+        console.log("Main Init !   1");
         egret.lifecycle.addLifecycleListener((context) => {
             // custom lifecycle plugin
         })
@@ -59,7 +64,7 @@ class Main extends eui.UILayer {
 
     private async runGame() {
         await this.loadResource()
-        this.GetInfo(this, this.GetInfoCallBack);
+        this.GetInfo();
         this.createGameScene();
         const result = await RES.getResAsync("description_json")
 
@@ -69,36 +74,10 @@ class Main extends eui.UILayer {
 
     }
 
-    public GetInfo(_theObj: any, _callback: Function) {
-        var request = new egret.HttpRequest();
-        request.responseType = egret.HttpResponseType.TEXT;
-        let openId = egret.getOption("openId");  //取url后边的openid
-        
-        // let _url: string = "kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
-        let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
-        request.open(_url, egret.HttpMethod.GET);
-        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        request.send();
-        console.log("wxGetOpenShare!!!");
-
-        request.addEventListener(egret.Event.COMPLETE, _callback, _theObj);
-        request.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onPostIOError, this);
-        request.addEventListener(egret.ProgressEvent.PROGRESS, this.onPostProgress, this);
-    }
-    private onPostIOError(event: egret.IOErrorEvent): void {
-        //this.hidePopLoading();
-        console.log("post error : " + event);
-    }
-    private onPostProgress(event: egret.ProgressEvent): void {
-        //this.hidePopLoading();
-        console.log("post progress : " + Math.floor(100 * event.bytesLoaded / event.bytesTotal) + "%");
-    }
-    private GetInfoCallBack(event: egret.Event) {
-        let request = <egret.HttpRequest>event.currentTarget;
-        let txt: string = request.response.toString();
-
-        console.log("LoginCallBack:" + txt);
-        let objResponse = JSON.parse(txt);
+    public GetInfo() {
+        // 获取用户信息；暂时用作刷新用；
+        var account: AccountData = new AccountData();
+        account.RefreshAccount();
     }
 
     private async loadResource() {
@@ -136,10 +115,6 @@ class Main extends eui.UILayer {
     protected createGameScene(): void {
         utils.SoundUtils.instance().initSound();
         this.addChild(new MainSence());
-
-
-
-        
     }
 
     /**

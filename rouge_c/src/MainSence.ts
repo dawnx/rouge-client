@@ -19,6 +19,11 @@ class MainSence extends eui.Component {
     private lb_kh: eui.Label;
     private lb_lp: eui.Label;
     private lb_pf: eui.Label;
+    // 用户财产信息；
+    private lb_gold: eui.Label;// 金币
+    private lb_gold0: eui.Label;// 余额
+    private lb_gold1: eui.Label;// 幸运币
+
     private rect_kh: eui.Rect;
     private rect_lp: eui.Rect;
     private rect_pf: eui.Rect;
@@ -48,7 +53,6 @@ class MainSence extends eui.Component {
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();
-
         this.init();
         //充值
         this.img_chongzhi.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickChongzhi, this);
@@ -89,6 +93,12 @@ class MainSence extends eui.Component {
     //     // this.scroller.horizontalScrollBar = null;
     // }
     private init() {
+        this.RefeshAccountData();
+        // egret.setTimeout(function (arg) {
+        //     this.RefeshAccountData();
+        // }, this, 3000, "egret");
+
+        console.log("init   run");
         this.Clcik();
         this.lb_kh.textColor = 0x9e023e;
         this.lb_0.textColor = 0xef0057;
@@ -100,6 +110,19 @@ class MainSence extends eui.Component {
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
         timer.start();
     }
+    private RefeshAccountData() {
+        console.log("RefeshAccountData    !");
+        var account:AccountDatas = AccountData.accoundData;
+        if (account != null) {
+            console.log("accountData   " + account);
+            this.lb_gold.text = account.diamond.toString();
+            this.lb_gold0.text = account.gold.toString();
+            this.lb_gold1.text = account.luckycoin.toString();
+        }
+        else {
+            console.log("Error : Account is not Exit!");
+        }
+    }
     private timerFunc() {
         // console.log(this.index)
         this.Clcik();
@@ -110,115 +133,15 @@ class MainSence extends eui.Component {
 
     }
     private onClickChongzhi() {
-        
-        let openId = egret.getOption("openId");  //取url后边的openid
-        console.log("openId   " + openId);
-        var totalFee:number = 1; 
-        //拼接参数 
-        var params = "?openId=" + openId + "&body=心愿订单&total_fee=" + totalFee + "&trade_type=JSAPI";   // jsapi 支付；
-        //var params = "?body=心愿订单&total_fee=1&trade_type=MWEB";
-        var request = new egret.HttpRequest();
-        request.responseType = egret.HttpResponseType.TEXT;
-        //将参数拼接到url
-        request.open("http:///kh.chitugame.com/ct-admin/weixin/create" + params, egret.HttpMethod.GET);
-        request.send();
-        // 监听回调函数
-        request.addEventListener(egret.Event.COMPLETE, this.onGetComplete, this);
-        request.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onGetIOError, this);
-        request.addEventListener(egret.ProgressEvent.PROGRESS, this.onGetProgress, this);
-    }
+        // // 获取用户信息；暂时用作刷新用；
+        // var account: AccountData = new AccountData();
+        // var accountData = account.RefreshAccount();
+        // console.log("accountData   " + accountData);
 
-    private onGetComplete(event: egret.Event): void {
-        console.log("Send Success!!!");
-        // 获取到后台传回来的数据；
-        var request = <egret.HttpRequest>event.currentTarget;
-        console.log("get data : ", request.response);
-        // 解析
-        var data = JSON.parse(request.response).data;
-        // 调H5支付；
-        // var newrequest = new egret.HttpRequest();
-        // newrequest.responseType = egret.HttpResponseType.TEXT;
-        // newrequest.withCredentials = false;
-        // newrequest.open(data.map.mweb_url, egret.HttpMethod.GET);
-        // newrequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
-        // newrequest.send();
-        // 重签名；
-        // var stringA = "appid=wxba773081caf99027&nonceStr=" + data.nonceStr + "&package=prepay_id=" + data.prepayId + "&signType=MD5&timeStamp=" + data.timeStamp;   // 64E30514F4D38511B4CCBA99D29CD717
-        // var stringSignTemp = stringA + "&key=Miaomiaomiao258Miaomiaomiao25888";
-        // var md5Str: string = new md5().hex_md5(stringSignTemp).toUpperCase();
+        // 通知服务器下单；
+        NetSend.SendToNet("心愿订单", 1);
 
-        var bodyConfig: BodyConfig = new BodyConfig();
-        bodyConfig.appId = data.appId;
-        // bodyConfig.debug = true;
-        // bodyConfig.timestamp = data.timeStamp;
-        // bodyConfig.nonceStr = data.nonceStr;
-        // bodyConfig.signature = data.sign;
-        // bodyConfig.jsApiList = [
-        //     "checkJsApi",
-        //     "chooseWXPay",
-        //     'onMenuShareTimeline',//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
-        //     'onMenuShareAppMessage',//获取“分享给朋友”按钮点击状态及自定义分享内容接口
-        //     'onMenuShareQQ',	//获取“分享到QQ”按钮点击状态及自定义分享内容接口
-        //     'onMenuShareWeibo',//获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
-        //     "hideOptionMenu",
-        //     "hideMenuItems",
-        // ];
-        // 调试面板；
-
-        var label: eui.Label = new eui.Label();
-        label.text = "data.appId   " + data.appId + "   data.timeStamp     " + data.timeStamp 
-        + "  \r\n data.nonceStr  " + data.nonceStr + "    data.sign   " + data.sign + "   \r\ndata.prepayId   " + data.package;
-        //设置颜色等文本属性
-        label.textColor = 0xff0000;
-        label.size = 16;
-        label.lineSpacing = 20;
-        label.textAlign = egret.HorizontalAlign.JUSTIFY;
-        this.addChild(label);
-        // label.verticalCenter = 0;
-        // label.horizontalCenter = 0;
-        label.y = 850;
-
-
-        // ... 其他的配置属性赋值
-        // 通过config接口注入权限验证配置
-        if (wx) {
-            wx.config(bodyConfig);
-            wx.ready(function () {
-                // 在这里调用微信相关功能的 API
-                // 调起微信支付接口
-                wx.chooseWXPay({
-                    appId: data.appId,
-                    timestamp: data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
-                    nonceStr: data.nonceStr, // 支付签名随机串，不长于 32 位
-                    package: data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
-                    signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
-                    paySign: data.sign, // 支付签名
-                    success: function (res) {
-                        // 支付成功后的回调函数
-                        this.completePay();
-                    }
-                });
-
-            });
-        }
-    }
-
-
-    ///支付成功的回调函数；
-    private completePay() {
-        let panel = new eui.Panel();
-        panel.title = "支付成功！！";
-        panel.horizontalCenter = 0;
-        panel.verticalCenter = 0;
-        this.addChild(panel);
-    }
-    // HTTP发送错误回调；
-    private onGetIOError(event: egret.IOErrorEvent): void {
-        console.log("get error : " + event);
-    }
-
-    private onGetProgress(event: egret.ProgressEvent): void {
-        console.log("get progress : " + Math.floor(100 * event.bytesLoaded / event.bytesTotal) + "%");
+        this.RefeshAccountData();
     }
 
     private onClickRad1() {

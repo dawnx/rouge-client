@@ -93,7 +93,11 @@ class MainSence extends eui.Component {
     //     // this.scroller.horizontalScrollBar = null;
     // }
     private init() {
+
+        NetSend.SendToNetExchange(Item.Gold,1);
+        console.log("兑换  金币   1  个");
         this.RefeshAccountData();
+        console.log("刷新用户信息；");
         // egret.setTimeout(function (arg) {
         //     this.RefeshAccountData();
         // }, this, 3000, "egret");
@@ -133,10 +137,6 @@ class MainSence extends eui.Component {
 
     }
     private onClickChongzhi() {
-        // // 获取用户信息；暂时用作刷新用；
-        // var account: AccountData = new AccountData();
-        // var accountData = account.RefreshAccount();
-        // console.log("accountData   " + accountData);
 
         // 通知服务器下单；
         NetSend.SendToNetOrder("心愿订单", 1);

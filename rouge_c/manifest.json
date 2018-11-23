@@ -30,6 +30,7 @@
 		"bin-debug/Util/AccountData.js",
 		"bin-debug/Util/EventData.js",
 		"bin-debug/Util/EventManager.js",
+		"bin-debug/Util/Item.js",
 		"bin-debug/Util/NetSend.js",
 		"bin-debug/Util/OrderData.js",
 		"bin-debug/Util/WeChatMoudle.js"

@@ -15,7 +15,7 @@ class WeChatMoudle extends egret.DisplayObjectContainer {
         return this.instance;
     }
 
-    public static WeChatPay(data:any) {
+    public static WeChatPay(data: any) {
         var bodyConfig: BodyConfig = new BodyConfig();
         bodyConfig.appId = data.appId;
         // bodyConfig.debug = true;
@@ -50,7 +50,16 @@ class WeChatMoudle extends egret.DisplayObjectContainer {
                     paySign: data.sign, // 支付签名
                     success: function (res) {
                         // 支付成功后的回调函数
-                        // this.completePay();
+                        if ("get_brand_wcpay_request:ok" == res) {
+                            var label: eui.Label = new eui.Label();
+                            label.text = "充值成功！ \r\n 请等待。。。";
+                            //设置颜色等文本属性
+                            label.textColor = 0xff0000;
+                            label.size = 26;
+                            label.lineSpacing = 12;
+                            label.y = 800;
+                            //label.textAlign = egret.HorizontalAlign.JUSTIFY;
+                        }
                     }
                 });
             });

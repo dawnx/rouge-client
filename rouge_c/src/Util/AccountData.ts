@@ -3,6 +3,7 @@ class AccountDatas {
     diamond: number;
     gold: number;
     luckycoin: number;
+    uid: number;
 }
 class AccountData extends egret.DisplayObjectContainer {
     public openId: string;  //取url后边的openid 
@@ -50,8 +51,8 @@ class AccountData extends egret.DisplayObjectContainer {
         request.responseType = egret.HttpResponseType.TEXT;
         let openId = egret.getOption("openId");  //取url后边的openid
         // 测试用 openID = o9lTh0_-PeTGbC_4dLG_TRsQAY-g
-        //let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g";
-        let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
+        let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g";
+        //let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
         request.open(_url, egret.HttpMethod.GET);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.send();
@@ -71,8 +72,8 @@ class AccountData extends egret.DisplayObjectContainer {
         a.diamond = Data.diamond;
         a.gold = Data.goldNumber;
         a.luckycoin = Data.luckyCoin;
+        a.uid = Data.uid;
         this.accoundData = a;
-        console.log("this.accoundData : ", this.accoundData.diamond);
         //return this.Data;
     }
     private static onPostIOError(event: egret.IOErrorEvent): void {

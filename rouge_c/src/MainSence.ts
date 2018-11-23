@@ -139,7 +139,7 @@ class MainSence extends eui.Component {
         // console.log("accountData   " + accountData);
 
         // 通知服务器下单；
-        NetSend.SendToNet("心愿订单", 1);
+        NetSend.SendToNetOrder("心愿订单", 1);
 
         this.RefeshAccountData();
     }

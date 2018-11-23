@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="mainsence" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+<<<<<<< HEAD
 	<e:Group id="gp_main" left="0" top="0" bottom="0" right="0" anchorOffsetX="0">
 		<e:Image source="mmm_dating_Backplane_04_png" scale9Grid="10,10,60,60" left="0" right="0" top="0" bottom="0" anchorOffsetY="0"/>
 		<e:Group id="top" width="750" height="323" x="0" y="0" anchorOffsetY="0" anchorOffsetX="0" scaleX="1" scaleY="1">
@@ -7,6 +8,14 @@
 			<e:Image source="mmm_dating_Backplane_02_png" x="115.98" y="17" scale9Grid="19,14,5,1" anchorOffsetX="0" width="129.33" height="34"/>
 			<e:Label id="lb_gold" text="999999" y="17" size="24" x="129.68" scaleX="1" scaleY="1" textColor="0xffffff" height="34" verticalAlign="middle"/>
 			<e:Button id="img_chongzhi" label="" x="211.01" y="17" scaleX="1" scaleY="1">
+=======
+	<e:Image source="mmm_dating_Backplane_04_png" x="0" y="0" scale9Grid="10,10,60,60" width="750" height="1334"/>
+	<e:Group id="top" width="750" height="323" x="0" y="0" anchorOffsetY="0" anchorOffsetX="0">
+		<e:Image source="mmm_dating_picture_04_png" x="0" y="0"/>
+		<e:Image source="mmm_dating_Backplane_02_png" x="115.98" y="17" scale9Grid="19,14,5,1" anchorOffsetX="0" width="129.33" height="34"/>
+		<e:Label id="lb_gold" text="999999" y="17" size="24" x="129.68" scaleX="1" scaleY="1" textColor="0xffffff" height="34" verticalAlign="middle"/>
+		<e:Button id="img_chongzhi" label="" x="227.01" y="35" scaleX="1" scaleY="1" anchorOffsetX="16" anchorOffsetY="18">
+>>>>>>> e21f2720394d1716655ed3ee21c000551ebb1c15
 			<e:skinName>
 				<e:Skin states="up,down,disabled">
 				<e:Image width="100%" height="100%" source="mmm_dating_button_01_png" source.down="mmm_dating_button_01_png"/>

@@ -142,8 +142,8 @@ class NetSend extends egret.DisplayObjectContainer {
         var request = new egret.HttpRequest();
         request.responseType = egret.HttpResponseType.TEXT;
         //将参数拼接到url
-        //request.open("http:///kh.chitugame.com/ct-admin/gameRouge/startGame" + params, egret.HttpMethod.GET);
-        request.open("http:///192.168.1.112:8080/ct-admin/gameRouge/startGame" + params, egret.HttpMethod.GET);
+        request.open("http:///kh.chitugame.com/ct-admin/gameRouge/startGame" + params, egret.HttpMethod.GET);
+        // request.open("http:///192.168.1.112:8080/ct-admin/gameRouge/startGame" + params, egret.HttpMethod.GET);
         request.send();
         // 监听回调函数
         request.addEventListener(egret.Event.COMPLETE, this.onGetCompleteGameStart, this);
@@ -193,8 +193,8 @@ class NetSend extends egret.DisplayObjectContainer {
         var request = new egret.HttpRequest();
         request.responseType = egret.HttpResponseType.TEXT;
         //将参数拼接到url
-        //request.open("http:///kh.chitugame.com/ct-admin/gameRouge/endGame" + params, egret.HttpMethod.GET);
-        request.open("http:///192.168.1.112:8080/ct-admin/gameRouge/endGame" + params, egret.HttpMethod.GET);
+        request.open("http:///kh.chitugame.com/ct-admin/gameRouge/endGame" + params, egret.HttpMethod.GET);
+        // request.open("http:///192.168.1.112:8080/ct-admin/gameRouge/endGame" + params, egret.HttpMethod.GET);
         request.send();
         // 监听回调函数
         request.addEventListener(egret.Event.COMPLETE, this.onGetCompleteGameEnd, this);

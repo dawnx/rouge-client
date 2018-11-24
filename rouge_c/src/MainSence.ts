@@ -201,6 +201,7 @@ class MainSence extends eui.Component {
             case "rect0":
                 this.goodsFenQu = 0;
                 this.lb_0.textColor = 0x9e023e;
+                
                 break;
             //100
             case "rect100":

@@ -3,6 +3,7 @@ class Begin extends eui.Component {
     private btn_begin: eui.Button;
     private goodsItemData: Data.GoodsItemData;
     private gp_paihang: eui.Group;
+    private lb_tishi: eui.Label;
     public constructor(_itemData: Data.GoodsItemData) {
         super()
         this.goodsItemData = _itemData;
@@ -11,10 +12,26 @@ class Begin extends eui.Component {
     public childrenCreated() {     //自执行
         super.childrenCreated();
 
-        if (this.goodsItemData.gameType != Data.GameType.TI_YAN) {
+        if (this.goodsItemData.gameType == Data.GameType.TI_YAN
+        ) {
             // console.log("免费的" + this._freeType)
+            this.gp_paihang.visible = false;
+            this.lb_tishi.visible = true;
+
+        } else if (this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN ||
+            this.goodsItemData.gameType == Data.GameType.JING_SU) {
+
+            this.gp_paihang.visible = true;
+            this.lb_tishi.visible = false;
+        } else {
             this.onClickBegin();
         }
+
+        // if (this.goodsItemData.gameType == Data.GameType.TI_YAN) {
+        //     this.gp_paihang.visible = false;
+        //     this.lb_tishi.visible = true;
+        // }
+
         this.init();
         this.btn_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickShare, this);
         this.btn_begin.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBegin, this)

@@ -7,13 +7,14 @@ class XsOver extends eui.Component {
     private lb_score: eui.Label;
     private _level: number;
     private _type: number;
+
     private gp_tiyan: eui.Group;
 
-    public constructor(gamemain: GameMain, score: number, type: number,  ) {
+    public constructor(gamemain: GameMain, score: number, type: number, level: number) {
         super()
         this._score = score;
         this._type = type;
-        
+        this._level = level;
         this._gamemain = gamemain;
         this.skinName = "resource/skin/xsover.exml";
 

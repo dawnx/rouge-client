@@ -2,7 +2,7 @@
 <e:Skin class="goods_item" width="750" height="136" xmlns:e="http://ns.egret.com/eui">
 	<e:Image source="mmm_dating_Backplane_06_png" x="0" y="3" scale9Grid="39,39,51,46" width="750" height="130" scaleX="1" scaleY="1"/>
 	<e:Image source="mmm_dating_picture_02_png" x="230" y="18" width="100" height="100"/>
+	<e:Image source="mmm_dating_picture_02_png" x="87" y="22" width="100" height="100"/>
 	<e:Label text="阿达达" x="405" y="58" size="28" textColor="0x333333" fontFamily="SimHei"/>
-	<e:Label text="1" x="112" y="58" size="28" textColor="0x333333" fontFamily="SimHei"/>
 	<e:Label text="232" x="612" y="58" size="28" textColor="0x333333" fontFamily="SimHei"/>
 </e:Skin>

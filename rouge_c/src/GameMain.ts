@@ -203,12 +203,8 @@ class GameMain extends eui.Component {
 
     //每帧调用
     private update() {
-
         this.gp_circle.rotation += this.speed;
         this.img_juzi.rotation += this.speed;
-
-
-
 
 
 

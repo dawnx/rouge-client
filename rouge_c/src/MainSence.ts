@@ -125,6 +125,7 @@ class MainSence extends eui.Component {
         else {
             console.log("Error : Account is not Exit!");
         }
+        console.log("AccountData.accoundData.gold   :" + account.gold);
     }
     private timerFunc() {
         // console.log(this.index)
@@ -287,7 +288,7 @@ class MainSence extends eui.Component {
         this.gp_main.removeChildren();
         Data.DataManager.goodsDatas.forEach(item => {
             if (item.goodsType == this.goodsType && item.goodsFenqu == this.goodsFenQu) {
-                this.gp_main.addChild(new GoodsItem(item));
+                this.gp_main.addChild(new GoodsItem(item,this));
             }
         })
 

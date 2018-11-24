@@ -42,9 +42,9 @@ class GameMain extends eui.Component {
     }
     public childrenCreated() {
         super.childrenCreated();
-        console.log("金币区:" + this.goodsItemData.goodsFenqu + "%% 游戏模式"
-            + this.goodsItemData.gameType +
-            "&&& 礼品方式：" + this.goodsItemData.goodsType)
+        console.log("**********this.goodsItemData.gameType    " + this.goodsItemData.gameType
+            + "  goodsFenqu     " + this.goodsItemData.goodsFenqu
+            + "     goodsType     " + this.goodsItemData.goodsType)
         utils.SoundUtils.instance().playBg();
         if (this.goodsItemData.gameType == 3) {
             // 限时
@@ -357,8 +357,8 @@ class GameMain extends eui.Component {
 
                             this.timer.stop();
                             //碰到圆盘上口红 直接失败  如果是体验和闯关 就用gameover  如果是限时  就用xsOver
-                            if (this.goodsItemData.gameType == Data.GameType.TI_YAN 
-                            || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
+                            if (this.goodsItemData.gameType == Data.GameType.TI_YAN
+                                || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                                 this.GameOver();
                             } else {
                                 this.addChild(new XsOver(this, this.score, this.goodsItemData.gameType));

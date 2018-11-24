@@ -1,5 +1,6 @@
 //// 用户管理类；
 class AccountDatas {
+    openId: string;
     diamond: number;
     gold: number;
     luckycoin: number;

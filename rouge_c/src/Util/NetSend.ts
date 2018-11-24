@@ -131,4 +131,55 @@ class NetSend extends egret.DisplayObjectContainer {
     private static onGetProgressExchange(event: egret.ProgressEvent): void {
         console.log("get progress : " + Math.floor(100 * event.bytesLoaded / event.bytesTotal) + "%");
     }
+
+    /// 游戏入口调用；
+    public static SendToNetGameStart(subGameId: number, goodsType:number,goodsFenqu:number,gameType:number) {
+        let openId = egret.getOption("openId");  //取url后边的openid
+        console.log("openId   " + openId);
+        //拼接参数 
+        //var params = "?openId=" + openId + "&subGameId=" + subGameId + "&goodsType=" + goodsType + "&goodsFenqu=" + goodsFenqu + "&gameType=" + gameType;   
+        var params = "?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g" + "&subGameId=" + subGameId + "&goodsType=" + goodsType + "&goodsFenqu=" + goodsFenqu + "&gameType=" + gameType; 
+        var request = new egret.HttpRequest();
+        request.responseType = egret.HttpResponseType.TEXT;
+        //将参数拼接到url
+        //request.open("http:///kh.chitugame.com/ct-admin/gameRouge/startGame" + params, egret.HttpMethod.GET);
+        request.open("http:///192.168.1.112:8080/ct-admin/gameRouge/startGame" + params, egret.HttpMethod.GET);
+        request.send();
+        // 监听回调函数
+        request.addEventListener(egret.Event.COMPLETE, this.onGetCompleteGameStart, this);
+        request.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onGetIOErrorGameStart, this);
+        request.addEventListener(egret.ProgressEvent.PROGRESS, this.onGetProgressGameStart, this);
+    }
+    private static onGetCompleteGameStart(event: egret.Event): void {
+        console.log("Send Success!!!");
+        // 获取到后台传回来的数据；
+        var request = <egret.HttpRequest>event.currentTarget;
+        console.log("get data : ", request.response);
+        // 解析
+        var data = JSON.parse(request.response).data;
+        // 调H5支付；
+        // var newrequest = new egret.HttpRequest();
+        // newrequest.responseType = egret.HttpResponseType.TEXT;
+        // newrequest.withCredentials = false;
+        // newrequest.open(data.map.mweb_url, egret.HttpMethod.GET);
+        // newrequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+        // newrequest.send();
+        // 重签名；
+        // var stringA = "appid=wxba773081caf99027&nonceStr=" + data.nonceStr + "&package=prepay_id=" + data.prepayId + "&signType=MD5&timeStamp=" + data.timeStamp;   // 64E30514F4D38511B4CCBA99D29CD717
+        // var stringSignTemp = stringA + "&key=Miaomiaomiao258Miaomiaomiao25888";
+        // var md5Str: string = new md5().hex_md5(stringSignTemp).toUpperCase();
+
+        console.log("成功！ 调起Exchange请求！");
+        AccountData.GetInfo();
+        
+    }
+
+    // HTTP发送错误回调；
+    private static onGetIOErrorGameStart(event: egret.IOErrorEvent): void {
+        console.log("get error : " + event);
+    }
+
+    private static onGetProgressGameStart(event: egret.ProgressEvent): void {
+        console.log("get progress : " + Math.floor(100 * event.bytesLoaded / event.bytesTotal) + "%");
+    }
 }

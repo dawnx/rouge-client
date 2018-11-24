@@ -3,9 +3,11 @@ class Begin extends eui.Component {
     private btn_begin: eui.Button;
     private goodsItemData: Data.GoodsItemData;
     private gp_paihang: eui.Group;
-    public constructor(_itemData: Data.GoodsItemData) {
+    private m_mainsence: MainSence;
+    public constructor(_itemData: Data.GoodsItemData,mainsence: MainSence) {
         super()
         this.goodsItemData = _itemData;
+        this.m_mainsence = mainsence;
         this.skinName = "resource/skin/begin.exml";
     }
     public childrenCreated() {     //自执行
@@ -36,9 +38,28 @@ class Begin extends eui.Component {
     private onClickBegin() {
 
         if (this.gameMain == null) {
+            if (this.goodsItemData != null) {
+                var currentGolds = AccountData.accoundData.gold;
+                if ((currentGolds - this.goodsItemData.goodsFenqu) >= 0) {
+                    NetSend.SendToNetGameStart(this.goodsItemData.subGameId,this.goodsItemData.goodsType,this.goodsItemData.goodsFenqu,this.goodsItemData.gameType);
+                    console.log("*******Send   ed ");
+                     AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
+                     console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
+                     
+                    this.m_mainsence.RefeshAccountData();
+                    this.gameMain = new GameMain(this, this.goodsItemData);
+                    this.addChild(this.gameMain);
+                }
+                else {
+                    var panel = new eui.Panel();
+                    panel.title = "金币数量不足！";
+                    panel.horizontalCenter = 0;
+                    panel.verticalCenter = 0;
+                    this.addChild(panel);
+                }
+            }
 
-            this.gameMain = new GameMain(this, this.goodsItemData);
-            this.addChild(this.gameMain);
+
         } else {
             this.gameMain.visible = true;
 

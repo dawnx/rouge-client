@@ -5,7 +5,7 @@
 	<e:Image source="mmm_dating_header_01_png" x="148.5" y="283.5"/>
 	<e:Image id="img_close" source="mmm_dating_button_02_03_png" x="344" y="1020" visible="false"/>
 	<e:Group id="group" width="676" height="414" x="37" y="346">
-		<e:Label id="edu" text="金币不足，请充值" x="222" y="127" size="28" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0x333333"/>
+		<e:Label id="edu" text="金币不足，快去兑换吧" x="198" y="127" size="28" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0x333333"/>
 		<e:Image id="btnQueding" source="mmm_dating_button_03_png" x="230" y="266"/>
 		<e:Label text="确定" x="310" y="287" size="28" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0xffffff"/>
 	</e:Group>

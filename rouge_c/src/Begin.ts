@@ -15,7 +15,7 @@ class Begin extends eui.Component {
     public childrenCreated() {     //自执行
         super.childrenCreated();
         this.gp_bottom.y = this.stage.stageHeight - this.gp_bottom.height;
-        console.log("this.gp_bottom.y"+this.gp_bottom.y+"^^^^"+this.stage.stageHeight)
+        console.log("this.gp_bottom.y" + this.gp_bottom.y + "^^^^" + this.stage.stageHeight)
         if (this.goodsItemData.gameType == Data.GameType.TI_YAN
         ) {
             // console.log("免费的" + this._freeType)
@@ -56,15 +56,21 @@ class Begin extends eui.Component {
     }
     //开始游戏
     private onClickBegin() {
+        if ((AccountData.accoundData.gold - this.goodsItemData.goodsFenqu) >= 0) {
+            NetSend.SendToNetGameStart(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, 0);
+            console.log("*******Send   ed ");
+            AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
+            console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
 
-        NetSend.SendToNetGameStart(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, 0);
-        console.log("*******Send   ed ");
-        AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
-        console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
+            this.m_mainsence.RefeshAccountData();
+            var gameMain = new GameMain(this.goodsItemData, this.m_mainsence);
+            this.stage.addChild(gameMain);
+        }else{
+            this.addChild(new Tishi());
+        }
 
-        this.m_mainsence.RefeshAccountData();
-        var gameMain = new GameMain(this.goodsItemData, this.m_mainsence);
-        this.stage.addChild(gameMain);
+
+
 
     }
 }

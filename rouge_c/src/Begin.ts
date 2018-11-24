@@ -41,16 +41,18 @@ class Begin extends eui.Component {
             if (this.goodsItemData != null) {
                 var currentGolds = AccountData.accoundData.gold;
                 if ((currentGolds - this.goodsItemData.goodsFenqu) >= 0) {
-                    NetSend.SendToNetGameStart(this.goodsItemData.subGameId,this.goodsItemData.goodsType,this.goodsItemData.goodsFenqu,this.goodsItemData.gameType);
+                    var isreset:number = 0;
+                    NetSend.SendToNetGameStart(this.goodsItemData.subGameId,this.goodsItemData.goodsType,this.goodsItemData.goodsFenqu,this.goodsItemData.gameType,isreset);
                     console.log("*******Send   ed ");
                      AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
                      console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
                      
                     this.m_mainsence.RefeshAccountData();
-                    this.gameMain = new GameMain(this, this.goodsItemData);
+                    this.gameMain = new GameMain(this, this.goodsItemData,this.m_mainsence);
                     this.addChild(this.gameMain);
                 }
                 else {
+                    //  金币数量不足！t跳到充值界面；
                     var panel = new eui.Panel();
                     panel.title = "金币数量不足！";
                     panel.horizontalCenter = 0;

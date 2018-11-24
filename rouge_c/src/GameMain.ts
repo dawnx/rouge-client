@@ -33,11 +33,13 @@ class GameMain extends eui.Component {
     private gp_rouge: eui.Group;
     private img_guan: eui.Image;
     private goodsItemData: Data.GoodsItemData;
+    private m_mainsence: MainSence;
 
-    public constructor(begin: Begin, _goodsItemData: Data.GoodsItemData) {
+    public constructor(begin: Begin, _goodsItemData: Data.GoodsItemData,mainsence: MainSence) {
         super()
         this._begin = begin;
         this.goodsItemData = _goodsItemData;
+        this.m_mainsence = mainsence;
         this.skinName = "resource/skin/gamemain.exml";
     }
     public childrenCreated() {
@@ -157,7 +159,7 @@ class GameMain extends eui.Component {
             // this.GameOver();
             this.timer.stop();
             console.log("定时器停止");
-            this.addChild(new XsOver(this, this.score, this._type));
+            this.addChild(new XsOver(this, this.score, this._type , this.goodsItemData, this.m_mainsence));
         }
         //转速
         this.speed = this.getSpeed(this._level);
@@ -167,7 +169,7 @@ class GameMain extends eui.Component {
     public gameover: GameOver;
     private GameOver() {
         if (this.gameover == null) {
-            this.gameover = new GameOver(this, this.score, this.goodsItemData.gameType, this._level);
+            this.gameover = new GameOver(this, this.score, this.goodsItemData.gameType, this._level,this.goodsItemData,this.m_mainsence);
             this.addChild(this.gameover);
         } else {
             this.gameover.visible = true;
@@ -337,6 +339,8 @@ class GameMain extends eui.Component {
                     if (this._level >= 4 && this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                         //弹出弹窗 付费模式结束
                         console.log("通关 获得奖励")
+                        console.log("通关subGameId     " + this.goodsItemData.subGameId)
+                        NetSend.SendToNetGameEnd(this.goodsItemData.subGameId,GameEnd.RESULT_WIN);
                         this.addChild(new OverSuccess(this, this.score, this.goodsItemData.gameType, this._level))
                         this.timer.stop();
 
@@ -361,7 +365,7 @@ class GameMain extends eui.Component {
                                 || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                                 this.GameOver();
                             } else {
-                                this.addChild(new XsOver(this, this.score, this.goodsItemData.gameType));
+                                this.addChild(new XsOver(this, this.score, this.goodsItemData.gameType, this.goodsItemData, this.m_mainsence));
                                 console.log("限时模式 游戏结束")
                             }
 

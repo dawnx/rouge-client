@@ -9,12 +9,16 @@ class GameOver extends eui.Component {
     private _type: number;
     private gp_tiyan: eui.Group;
     private img_shibai: eui.Image;
-    public constructor(gamemain: GameMain, score: number, type: number, level: number) {
+    private goodsItemData: Data.GoodsItemData;
+    private m_mainsence: MainSence;
+    public constructor(gamemain: GameMain, score: number, type: number, level: number,goodsItemData: Data.GoodsItemData,m_mainsence: MainSence) {
         super()
         this._score = score;
         this._type = type;
         this._level = level;
         this._gamemain = gamemain;
+        this.goodsItemData = goodsItemData;
+        this.m_mainsence = m_mainsence;
         this.skinName = "resource/skin/gameover.exml";
 
     }
@@ -41,6 +45,12 @@ class GameOver extends eui.Component {
 
     private onClickReset() {
         this.visible = false;
+        NetSend.SendToNetGameStart(this.goodsItemData.subGameId,this.goodsItemData.goodsType,this.goodsItemData.goodsFenqu,this.goodsItemData.gameType,GameEnd.RESULT_RESET);
+                    console.log("*******Send   ed ");
+                     AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu/2;
+                     console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
+                     
+                    this.m_mainsence.RefeshAccountData();
         this._gamemain.initGame1();
     }
 

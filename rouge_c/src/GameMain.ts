@@ -34,7 +34,7 @@ class GameMain extends eui.Component {
     private goodsItemData: Data.GoodsItemData;
     private m_mainsence: MainSence;
 
-    public constructor(_goodsItemData: Data.GoodsItemData) {
+    public constructor(_goodsItemData: Data.GoodsItemData, mainsence: MainSence) {
         super()
         this.goodsItemData = _goodsItemData;
         this.m_mainsence = mainsence;
@@ -161,7 +161,7 @@ class GameMain extends eui.Component {
             // this.GameOver();
             this.timer.stop();
             console.log("定时器停止");
-            this.addChild(new XsOver(this, this.score, this._type , this.goodsItemData, this.m_mainsence));
+            this.addChild(new XsOver(this, this.score, this._type, this.goodsItemData, this.m_mainsence));
         }
         //转速
         this.speed = this.getSpeed(this._level);
@@ -171,7 +171,7 @@ class GameMain extends eui.Component {
     public gameover: GameOver;
     private GameOver() {
         if (this.gameover == null) {
-            this.gameover = new GameOver(this, this.score, this.goodsItemData.gameType, this._level,this.goodsItemData,this.m_mainsence);
+            this.gameover = new GameOver(this, this.score, this.goodsItemData.gameType, this._level, this.goodsItemData, this.m_mainsence);
             this.addChild(this.gameover);
         } else {
             this.gameover.visible = true;
@@ -309,7 +309,7 @@ class GameMain extends eui.Component {
                     a.scaleX = 0.4;
                     a.scaleY = 0.6;
                 }
-            }else if (this.score > 20) {
+            } else if (this.score > 20) {
                 this.rouge.scaleX = 0.2;
                 this.rouge.scaleY = 0.5;
                 this.jiaodu = 2;
@@ -350,7 +350,7 @@ class GameMain extends eui.Component {
                         //弹出弹窗 付费模式结束
                         console.log("通关 获得奖励")
                         console.log("通关subGameId     " + this.goodsItemData.subGameId)
-                        NetSend.SendToNetGameEnd(this.goodsItemData.subGameId,GameEnd.RESULT_WIN);
+                        NetSend.SendToNetGameEnd(this.goodsItemData.subGameId, GameEnd.RESULT_WIN);
                         this.addChild(new OverSuccess(this, this.score, this.goodsItemData.gameType, this._level))
                         this.timer.stop();
 

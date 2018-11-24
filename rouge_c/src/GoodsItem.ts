@@ -39,13 +39,13 @@ class GoodsItem extends eui.Component {
         if (this.itemData.goodsFenqu == 0) {
             this.stage.addChild(new Begin(this.itemData, this.m_mainsence));
         } else if (currentGolds >= this.itemData.goodsFenqu) {
-            NetSend.SendToNetGameStart(this.itemData.subGameId, this.itemData.goodsType, this.itemData.goodsFenqu, this.itemData.gameType);
+            NetSend.SendToNetGameStart(this.itemData.subGameId, this.itemData.goodsType, this.itemData.goodsFenqu, this.itemData.gameType, 0);
             console.log("*******Send   ed ");
             AccountData.accoundData.gold -= this.itemData.goodsFenqu;
             console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
 
             this.m_mainsence.RefeshAccountData();
-            var gameMain = new GameMain(this.itemData);
+            var gameMain = new GameMain(this.itemData, this.m_mainsence);
             this.stage.addChild(gameMain);
         } else {
             var panel = new eui.Panel();
@@ -57,7 +57,7 @@ class GoodsItem extends eui.Component {
         }
 
         if (this.itemData.goodsType == 2 || this.itemData.goodsType == 3) {
-            
+
         }
 
     }

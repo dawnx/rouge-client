@@ -11,7 +11,8 @@ class XsOver extends eui.Component {
     private gp_tiyan: eui.Group;
     private goodsItemData: Data.GoodsItemData;
     private m_mainsence: MainSence;
-    public constructor(gamemain: GameMain, score: number, type: number, goodsItemData: Data.GoodsItemData, m_mainsence: MainSence) {
+    public constructor(gamemain: GameMain, score: number, type: number,
+     goodsItemData: Data.GoodsItemData, m_mainsence: MainSence) {
         super()
         this._score = score;
         this._type = type;

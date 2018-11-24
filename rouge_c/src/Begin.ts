@@ -53,13 +53,13 @@ class Begin extends eui.Component {
     //开始游戏
     private onClickBegin() {
 
-        NetSend.SendToNetGameStart(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType);
+        NetSend.SendToNetGameStart(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, 0);
         console.log("*******Send   ed ");
         AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
         console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
 
         this.m_mainsence.RefeshAccountData();
-        var gameMain = new GameMain(this.goodsItemData);
+        var gameMain = new GameMain(this.goodsItemData, this.m_mainsence);
         this.stage.addChild(gameMain);
 
     }

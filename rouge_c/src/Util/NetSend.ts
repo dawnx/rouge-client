@@ -100,7 +100,7 @@ class NetSend extends egret.DisplayObjectContainer {
         request.addEventListener(egret.ProgressEvent.PROGRESS, this.onGetProgressExchange, this);
     }
     private static onGetCompleteExchange(event: egret.Event): void {
-        console.log("Send Success!!!");
+        console.log("*******Send Success!!!");
         // 获取到后台传回来的数据；
         var request = <egret.HttpRequest>event.currentTarget;
         console.log("get data : ", request.response);

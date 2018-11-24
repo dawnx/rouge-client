@@ -5,6 +5,7 @@ class Begin extends eui.Component {
     private gp_paihang: eui.Group;
     private lb_tishi: eui.Label;
     private m_mainsence: MainSence;
+    private gp_bottom: eui.Group;
     public constructor(_itemData: Data.GoodsItemData, mainsence: MainSence) {
         super()
         this.goodsItemData = _itemData;
@@ -13,7 +14,8 @@ class Begin extends eui.Component {
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();
-
+        this.gp_bottom.y = this.stage.stageHeight - this.gp_bottom.height;
+        console.log("this.gp_bottom.y"+this.gp_bottom.y+"^^^^"+this.stage.stageHeight)
         if (this.goodsItemData.gameType == Data.GameType.TI_YAN
         ) {
             // console.log("免费的" + this._freeType)
@@ -41,9 +43,11 @@ class Begin extends eui.Component {
     private init() {
         var context = this;
         for (let i = 0; i < 10; i++) {
-            var item = new Paihang_items();
+            var item = new Paihang_items(i);
             context.gp_paihang.addChild(item);
             item.y = item.height * i + 5 * i;
+
+
         }
     }
     //分享

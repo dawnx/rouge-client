@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="goods_item" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="mmm_youxi_background_01_png" x="0" y="79"/>
-	<e:Image id="img_juzi" source="mmm_youxi_picture_03_png" x="375" y="550" width="380" height="380" anchorOffsetX="190" anchorOffsetY="190"/>
+	<e:Image id="img_juzi" x="328" y="404" source="kouhong2_png"/>
 	<e:Image source="mmm_dating_picture_04_png" x="0" y="0"/>
 	<e:Label id="lb_score" text="好厉害！恭喜你获得奖品" x="215" y="132.55" textColor="0x000000"/>
-	<e:Label id="lb_score0" text="口红3号" x="321" y="233.46" textColor="0x000000"/>
+	<e:Label id="lb_score0" text="迪奥999系列" x="289" y="233.46" textColor="0x000000"/>
 	<e:Button id="btn_share" label="分享" x="50" y="1014.79">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">

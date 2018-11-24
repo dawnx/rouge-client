@@ -36,6 +36,7 @@ class GameOver extends eui.Component {
         } else if (this._type == 2) {
             // this.lb_score.text = "游戏结束！恭喜您闯过了了" + (this._level - 1) + "关!";
             this.gp_tiyan.visible = false;
+            
         }
 
     }

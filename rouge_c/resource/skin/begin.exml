@@ -11,12 +11,12 @@
 			<e:Label text="名字" x="426.66666666666663" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
 			<e:Label text="成绩" x="588.4" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
 		</e:Group>
-		<e:Scroller id="scroller" width="750" height="1062" x="0" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" y="136">
-			<e:Group id="gp_paihang" anchorOffsetX="0" width="789.39" anchorOffsetY="0" height="1162">
+		<e:Scroller id="scroller" width="750" height="1000" x="0" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" y="136">
+			<e:Group id="gp_paihang" anchorOffsetX="0" width="789.39" anchorOffsetY="0" height="962">
 			</e:Group>
 		</e:Scroller>
 		<e:Label id="lb_tishi" text="体验模式无收益，点击下方开始游戏" x="0" y="516" textColor="0x000000" width="750" textAlign="center" verticalAlign="middle"/>
-		<e:Group width="750" height="136" x="0" y="1198">
+		<e:Group id="gp_bottom" width="750" height="136" x="0" y="1198">
 			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
 			<e:Button id="btn_share" label="分享游戏" anchorOffsetX="0" anchorOffsetY="0" y="32" x="106" scaleX="1" scaleY="1">
 				<e:skinName>

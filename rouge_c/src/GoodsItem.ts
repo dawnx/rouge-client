@@ -48,12 +48,12 @@ class GoodsItem extends eui.Component {
             var gameMain = new GameMain(this.itemData, this.m_mainsence);
             this.stage.addChild(gameMain);
         } else {
-            var panel = new eui.Panel();
-            panel.title = "金币数量不足！";
-            panel.horizontalCenter = 0;
-            panel.verticalCenter = 0;
-            this.addChild(panel);
-            // this.addChild(new Tishi());
+            // var panel = new eui.Panel();
+            // panel.title = "金币数量不足！";
+            // panel.horizontalCenter = 0;
+            // panel.verticalCenter = 0;
+            // this.addChild(panel);
+            this.stage.addChild(new Tishi());
         }
 
         if (this.itemData.goodsType == 2 || this.itemData.goodsType == 3) {

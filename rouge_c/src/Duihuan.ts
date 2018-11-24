@@ -44,7 +44,14 @@ class Duihuan extends eui.Component {
     }
     //兑换
     private onclickDuihuan() {
+        
+        console.log(this.edu)
+        if (this.edu == null) {
+            console.log("不能为空啊")
+            this.edu = 0;
+        }
         this.addChild(new DuihuanItem(this._mainsence, this.edu));
+
         console.log("1111111AccountData.accoundData.diamond:       " + AccountData.accoundData.diamond)
     }
 

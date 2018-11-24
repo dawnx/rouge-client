@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="goods_item" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="mmm_youxi_background_01_png" x="0" y="79"/>
-	<e:Image id="img_juzi" source="mmm_youxi_picture_03_png" x="375" y="550" width="380" height="380" anchorOffsetX="190" anchorOffsetY="190"/>
+	<e:Image id="img_juzi" x="296.5" y="523" source="kouhong2_png" scaleX="1.5" scaleY="1.5"/>
 	<e:Image source="mmm_dating_picture_04_png" x="0" y="0"/>
-	<e:Label id="lb_score" text="游戏结束！恭喜您获得了100分" x="169.5" y="124.55" textColor="0x000000"/>
-	<e:Label text="排行榜第一可以获得以下奖励哟" x="167.5" y="180.55" textColor="0x000000"/>
-	<e:Label text="距开奖时间还有   01 : 15 : 33" x="169.5" y="244.55" textColor="0x000000"/>
+	<e:Label id="lb_score" text="游戏结束！恭喜您获得了100分" x="0" y="124.55" textColor="0x000000" width="750" textAlign="center"/>
+	<e:Label text="排行榜第一可以获得以下奖励哟" x="0" y="183.05" textColor="0x000000" width="750" textAlign="center" verticalAlign="middle"/>
+	<e:Label id="lb_time" text="每周六晚上8点发放奖励" x="0" y="241.52" textColor="0x000000" width="750" textAlign="center"/>
 	<e:Button id="btn_fangqi" label="放弃重玩" x="61.5" y="1014.79" width="216" height="72">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">

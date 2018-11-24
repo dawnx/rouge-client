@@ -7,7 +7,7 @@ class OverSuccess extends eui.Component {
     private _level: number;
     private _type: number;
     private gp_tiyan: eui.Group;
-
+    private img_juzi: eui.Image;
     public constructor(gamemain: GameMain, score: number, type: number, level: number) {
         super()
         this._score = score;
@@ -21,10 +21,12 @@ class OverSuccess extends eui.Component {
         super.childrenCreated();
         this.init();
         this.btn_reset.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickReset, this);
-        
+
         this.btn_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickShare, this);
     }
     private init() {
+        // this.img_juzi.source = this._gamemain.goodsItemData.img;
+        this.img_juzi.source = "resource/assets/kouhong2.png"
         if (this._type == 1) {
             this.gp_tiyan.visible = true;
         } else if (this._type == 2) {

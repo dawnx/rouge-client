@@ -20,10 +20,10 @@ class Tishi extends eui.Component {
 
     //前往充值
     private onclickQueding() {
-        this._mainsence.chongzhi.visible = true;
+        this.parent.removeChild(this);
     }
     private onclickClose() {
-        this.parent.removeChild(this);
+
     }
 
 

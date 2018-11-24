@@ -29,25 +29,26 @@ class DuihuanItem extends eui.Component {
     //     AccountData.GetInfo();
     //     this._mainsence.RefeshAccountData();
     //     this._mainsence.chongzhi.visible = false;
-private isExchange:boolean = false;
+    private isExchange: boolean = false;
     // }
     //兑换
     private onclickQueding() {
-        NetSend.SendToNetExchange(Item.Gold, this._edu);
+        console.log("ASDASD@#@!#"+this._edu)
+        NetSend.SendToNetExchange(Item.Gold, this._edu / 3);
         // this.parent.removeChild(this);
         console.log("dianjiOK     !!!!");
-        if ((AccountData.accoundData.diamond - this._edu/3) >= 0)
-        {
-            AccountData.accoundData.diamond -= this._edu/3; 
+        if ((AccountData.accoundData.diamond - this._edu / 3) >= 0) {
+            AccountData.accoundData.diamond -= this._edu / 3;
             this.isExchange = true;
         }
-        if (this.isExchange)
-        {
+        if (this.isExchange) {
             AccountData.accoundData.gold += this._edu;
             this.isExchange = false;
         }
         this._mainsence.RefeshAccountData();
+        this.parent.removeChild(this)
         this._mainsence.duihuan.visible = false;
+
 
     }
 

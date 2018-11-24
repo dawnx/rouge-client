@@ -6,12 +6,13 @@ class GoodsItem extends eui.Component {
     private btnText: eui.Label;
     private price: eui.Label;
     private itemData: Data.GoodsItemData;
+private m_mainsence: MainSence;
 
-
-    public constructor(_itemData: Data.GoodsItemData) {
+    public constructor(_itemData: Data.GoodsItemData,mainsence: MainSence) {
         super()
         this.skinName = "resource/skin/goodsItem.exml";
         this.itemData = _itemData;
+        this.m_mainsence = mainsence;
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();
@@ -33,7 +34,7 @@ class GoodsItem extends eui.Component {
 
     }
     private onClickBtn() {
-        this.stage.addChild(new Begin(this.itemData));
+        this.stage.addChild(new Begin(this.itemData,this.m_mainsence));
     }
 }
 

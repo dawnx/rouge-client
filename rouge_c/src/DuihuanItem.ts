@@ -44,6 +44,7 @@ private isExchange:boolean = false;
         if (this.isExchange)
         {
             AccountData.accoundData.gold += this._edu;
+            this.isExchange = false;
         }
         this._mainsence.RefeshAccountData();
         this._mainsence.duihuan.visible = false;

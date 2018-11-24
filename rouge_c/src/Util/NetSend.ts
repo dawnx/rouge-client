@@ -1,4 +1,11 @@
 // TypeScript file
+
+// 重签名；
+        // var stringA = "appid=wxba773081caf99027&nonceStr=" + data.nonceStr + "&package=prepay_id=" + data.prepayId + "&signType=MD5&timeStamp=" + data.timeStamp;   // 64E30514F4D38511B4CCBA99D29CD717
+        // var stringSignTemp = stringA + "&key=Miaomiaomiao258Miaomiaomiao25888";
+        // var md5Str: string = new md5().hex_md5(stringSignTemp).toUpperCase();
+
+
 class NetSend extends egret.DisplayObjectContainer {
     public static SendSuccess:boolean = false;
     public static SendCallBack = null;
@@ -48,11 +55,7 @@ class NetSend extends egret.DisplayObjectContainer {
         // newrequest.open(data.map.mweb_url, egret.HttpMethod.GET);
         // newrequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         // newrequest.send();
-        // 重签名；
-        // var stringA = "appid=wxba773081caf99027&nonceStr=" + data.nonceStr + "&package=prepay_id=" + data.prepayId + "&signType=MD5&timeStamp=" + data.timeStamp;   // 64E30514F4D38511B4CCBA99D29CD717
-        // var stringSignTemp = stringA + "&key=Miaomiaomiao258Miaomiaomiao25888";
-        // var md5Str: string = new md5().hex_md5(stringSignTemp).toUpperCase();
-
+        
         this.SendSuccess = true;
         this.SendCallBack = data;
         WeChatMoudle.WeChatPay(data);

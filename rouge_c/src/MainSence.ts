@@ -62,13 +62,13 @@ class MainSence extends eui.Component {
     public childrenCreated() {     //自执行
         super.childrenCreated();
         //进入页面默认选免费模式 默认礼品为口红
+        this.init();
 
         this.goodsFenQu = 0;
         console.log(this.goodsFenQu)
         //this.type = 1;
         this.goodsType = Data.GoodsType.KOU_HONG;//口红
         console.log("金币区:" + this.goodsFenQu + "%%" + "礼品方式：" + this.goodsType)
-        this.init();
         this.updateContent();
         //充值
         this.img_chongzhi.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickChongzhi, this);
@@ -92,15 +92,15 @@ class MainSence extends eui.Component {
 
     private init() {
 
+        // 返回到主界面的时候，调取用户信息，继续执行 刷新；
+        AccountData.GetInfo();
+        // 兑换接口；
         NetSend.SendToNetExchange(Item.Gold,1);
         console.log("兑换  金币   1  个");
+        //  刷新用户信息，调动此方法时必选先拉取用户信息，才能保证正确刷新；
         this.RefeshAccountData();
         console.log("刷新用户信息；");
-        // egret.setTimeout(function (arg) {
-        //     this.RefeshAccountData();
-        // }, this, 3000, "egret");
-
-        console.log("init   run");
+        
         this.Clcik();
         this.lb_kh.textColor = 0x9e023e;
         this.lb_0.textColor = 0xef0057;

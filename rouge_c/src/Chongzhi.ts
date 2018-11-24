@@ -31,7 +31,7 @@ class Chongzhi extends eui.Component {
     private onclickBack() {
         AccountData.GetInfo();
         this._mainsence.RefeshAccountData();
-        this._mainsence.chongzhi.visible = false;
+        this.visible = false;
     }
     private onclickCz1() {
         // 通知服务器下单；

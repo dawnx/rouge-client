@@ -11,7 +11,7 @@ class GameOver extends eui.Component {
     private img_shibai: eui.Image;
     private goodsItemData: Data.GoodsItemData;
     private m_mainsence: MainSence;
-    public constructor(gamemain: GameMain, score: number, type: number, level: number,goodsItemData: Data.GoodsItemData,m_mainsence: MainSence) {
+    public constructor(gamemain: GameMain, score: number, type: number, level: number, goodsItemData: Data.GoodsItemData, m_mainsence: MainSence) {
         super()
         this._score = score;
         this._type = type;
@@ -45,13 +45,21 @@ class GameOver extends eui.Component {
 
     private onClickReset() {
         this.visible = false;
-        NetSend.SendToNetGameStart(this.goodsItemData.subGameId,this.goodsItemData.goodsType,this.goodsItemData.goodsFenqu,this.goodsItemData.gameType,GameEnd.RESULT_RESET);
-                    console.log("*******Send   ed ");
-                     AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu/2;
-                     console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
-                     
-                    this.m_mainsence.RefeshAccountData();
-        this._gamemain.initGame1();
+        if ((AccountData.accoundData.gold - this.goodsItemData.goodsFenqu) >= 0) {
+
+            NetSend.SendToNetGameStart(this.goodsItemData.subGameId, this.goodsItemData.goodsType,
+                this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
+
+            console.log("*******Send   ed ");
+            AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
+            console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
+
+            this.m_mainsence.RefeshAccountData();
+            this._gamemain.initGame1();
+        }
+        else {
+            console.log("金币不足 ，此时应该跳到 金币不足的弹窗；");
+        }
     }
 
 }

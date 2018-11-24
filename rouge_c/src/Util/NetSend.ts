@@ -137,8 +137,8 @@ class NetSend extends egret.DisplayObjectContainer {
         let openId = egret.getOption("openId");  //取url后边的openid
         console.log("openId   " + openId);
         //拼接参数 
-        var params = "?openId=" + openId + "&subGameId=" + subGameId + "&goodsType=" + goodsType + "&goodsFenqu=" + goodsFenqu + "&gameType=" + gameType + "&reset=" + isReset;;   
-        // var params = "?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g" + "&subGameId=" + subGameId + "&goodsType=" + goodsType + "&goodsFenqu=" + goodsFenqu + "&gameType=" + gameType + "&reset=" + isReset; 
+        // var params = "?openId=" + openId + "&subGameId=" + subGameId + "&goodsType=" + goodsType + "&goodsFenqu=" + goodsFenqu + "&gameType=" + gameType + "&reset=" + isReset;;   
+        var params = "?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g" + "&subGameId=" + subGameId + "&goodsType=" + goodsType + "&goodsFenqu=" + goodsFenqu + "&gameType=" + gameType + "&reset=" + isReset; 
         var request = new egret.HttpRequest();
         request.responseType = egret.HttpResponseType.TEXT;
         //将参数拼接到url

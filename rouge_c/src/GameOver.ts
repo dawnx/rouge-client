@@ -60,6 +60,7 @@ class GameOver extends eui.Component {
         }
         else {
             console.log("金币不足 ，此时应该跳到 金币不足的弹窗；");
+            this.addChild(new Tishi());
         }
     }
 

@@ -59,8 +59,8 @@ class AccountData extends egret.DisplayObjectContainer {
         label.lineSpacing = 12;
         label.y = 1000;
         // 测试用 openID = o9lTh0_-PeTGbC_4dLG_TRsQAY-g
-        let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g";
-        //let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
+        // let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g";
+        let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
         request.open(_url, egret.HttpMethod.GET);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.send();

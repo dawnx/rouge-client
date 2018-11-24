@@ -32,23 +32,21 @@ class GameMain extends eui.Component {
     private rect_guan: eui.Rect;
     private gp_rouge: eui.Group;
     private img_guan: eui.Image;
-    private _freeType: boolean;
-    private _type: number;
-    private _goodsType: number;
+    private goodsItemData: Data.GoodsItemData;
 
-    public constructor(begin: Begin, freeType: boolean, type: number, goodsType: number) {
+    public constructor(begin: Begin, _goodsItemData: Data.GoodsItemData) {
         super()
         this._begin = begin;
-        this._freeType = freeType;
-        this._type = type;
-        this._goodsType = goodsType;
+        this.goodsItemData = _goodsItemData;
         this.skinName = "resource/skin/gamemain.exml";
     }
     public childrenCreated() {
         super.childrenCreated();
-        console.log("是否免费:" + this._freeType + "%%" + "游戏模式" + this._type + "&&&" + "礼品方式：" + this._goodsType)
+        console.log("金币区:" + this.goodsItemData.goodsFenqu + "%% 游戏模式"
+            + this.goodsItemData.gameType +
+            "&&& 礼品方式：" + this.goodsItemData.goodsType)
         utils.SoundUtils.instance().playBg();
-        if (this._type == 3) {
+        if (this.goodsItemData.gameType == 3) {
             // 限时
             this.initXS()
             this.lb_guan.visible = false;
@@ -67,14 +65,14 @@ class GameMain extends eui.Component {
     private miao: number;
     private init() {
         //显示口红数量
-        let RougeNum = this.getRougeNum(this._level);
+        // let RougeNum = this.getRougeNum(this._level);
 
-        var context = this;
-        for (let i = 0; i < RougeNum; i++) {
-            var item = new Goods_item();
-            context.gp_rouge.addChild(item);
-            item.y = item.height * i + 5 * i;
-        }
+        // var context = this;
+        // for (let i = 0; i < RougeNum; i++) {
+        //     var item = new Goods_item();
+        //     context.gp_rouge.addChild(item);
+        //     item.y = item.height * i + 5 * i;
+        // }
 
 
         this.gp_guan.visible = false;
@@ -124,7 +122,7 @@ class GameMain extends eui.Component {
 
     }
     private initXS() {
-        console.log(this._type)
+        console.log(this.goodsItemData.gameType)
         //显示口红数量
         // let RougeNum = this.getRougeNum(this._level);
 
@@ -169,7 +167,7 @@ class GameMain extends eui.Component {
     public gameover: GameOver;
     private GameOver() {
         if (this.gameover == null) {
-            this.gameover = new GameOver(this, this.score, this._type, this._level);
+            this.gameover = new GameOver(this, this.score, this.goodsItemData.gameType, this._level);
             this.addChild(this.gameover);
         } else {
             this.gameover.visible = true;
@@ -316,7 +314,7 @@ class GameMain extends eui.Component {
             let num: number = this.gp_circle.numChildren;
             let rouNum: number = this.getRougeNum(this._level);
 
-            if (this._type != 3) {
+            if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
                 this.lb_rougeNum.text = "剩余数量: " + (rouNum - num) + "/" + rouNum;
             } else {
                 this.lb_rougeNum.text = "分数: " + num;
@@ -324,22 +322,22 @@ class GameMain extends eui.Component {
 
             if (this.rArr.length > 1) {
                 //判断 已扎中口红数 如果已扎中数大于定值，则过关（type!=3）
-                if (num >= rouNum && this._type != 3) {
+                if (num >= rouNum && this.goodsItemData.gameType != Data.GameType.JING_SU) {
                     this._level++;
                     this.speed = this.getSpeed(this._level);
                     console.log("过关之后的速度" + this.speed)
                     this.img_guan.source = "resource/assets/game/guan" + this._level + ".png";
                     // 玩完三关的时候 
-                    if (this._level > 2 && this._type == 1) {
+                    if (this._level > 2 && this.goodsItemData.gameType == 1) {
                         //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
                         console.log("体验模式结束 ")
                         this.GameOver();
                     }
                     this.timer.stop();
-                    if (this._level >= 4 && this._type == 2) {
+                    if (this._level >= 4 && this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                         //弹出弹窗 付费模式结束
                         console.log("通关 获得奖励")
-                        this.addChild(new OverSuccess(this, this.score, this._type, this._level))
+                        this.addChild(new OverSuccess(this, this.score, this.goodsItemData.gameType, this._level))
                         this.timer.stop();
 
                     } else {
@@ -359,10 +357,11 @@ class GameMain extends eui.Component {
 
                             this.timer.stop();
                             //碰到圆盘上口红 直接失败  如果是体验和闯关 就用gameover  如果是限时  就用xsOver
-                            if (this._type == 1 || this._type == 2) {
+                            if (this.goodsItemData.gameType == Data.GameType.TI_YAN 
+                            || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                                 this.GameOver();
                             } else {
-                                this.addChild(new XsOver(this, this.score, this._type));
+                                this.addChild(new XsOver(this, this.score, this.goodsItemData.gameType));
                                 console.log("限时模式 游戏结束")
                             }
 
@@ -412,13 +411,13 @@ class GameMain extends eui.Component {
         }
 
 
-        let RougeNum = this.getRougeNum(this._level)
-        var context = this;
-        for (let i = 0; i < RougeNum; i++) {
-            var item = new Goods_item();
-            context.gp_rouge.addChild(item);
-            item.y = item.height * i + 5 * i;
-        }
+        // let RougeNum = this.getRougeNum(this._level)
+        // var context = this;
+        // for (let i = 0; i < RougeNum; i++) {
+        //     var item = new Goods_item();
+        //     context.gp_rouge.addChild(item);
+        //     item.y = item.height * i + 5 * i;
+        // }
 
 
     }
@@ -457,13 +456,13 @@ class GameMain extends eui.Component {
         }
 
 
-        let RougeNum = this.getRougeNum(this._level)
-        var context = this;
-        for (let i = 0; i < RougeNum; i++) {
-            var item = new Goods_item();
-            context.gp_rouge.addChild(item);
-            item.y = item.height * i + 5 * i;
-        }
+        // let RougeNum = this.getRougeNum(this._level)
+        // var context = this;
+        // for (let i = 0; i < RougeNum; i++) {
+        //     var item = new Goods_item();
+        //     context.gp_rouge.addChild(item);
+        //     item.y = item.height * i + 5 * i;
+        // }
     }
     //限时模式重玩
     public initGame2() {  //游戏初始化 消耗金币重新玩，分数砍一半
@@ -471,8 +470,8 @@ class GameMain extends eui.Component {
         console.log(this._level)
         this.gp_guan.visible = false;
         this.gp_circle.removeChildAt(this.gp_circle.numChildren - 1);
-        this.rArr.splice(this.gp_circle.numChildren , 1);
-        this.rotateArr.splice(this.gp_circle.numChildren , 1);
+        this.rArr.splice(this.gp_circle.numChildren, 1);
+        this.rotateArr.splice(this.gp_circle.numChildren, 1);
 
         console.log(this.rArr)
         console.log(this.gp_circle.numChildren)
@@ -502,13 +501,13 @@ class GameMain extends eui.Component {
         }
 
 
-        let RougeNum = this.getRougeNum(this._level)
-        var context = this;
-        for (let i = 0; i < RougeNum; i++) {
-            var item = new Goods_item();
-            context.gp_rouge.addChild(item);
-            item.y = item.height * i + 5 * i;
-        }
+        // let RougeNum = this.getRougeNum(this._level)
+        // var context = this;
+        // for (let i = 0; i < RougeNum; i++) {
+        //     var item = new Goods_item();
+        //     context.gp_rouge.addChild(item);
+        //     item.y = item.height * i + 5 * i;
+        // }
     }
 
     //关卡配置

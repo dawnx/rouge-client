@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,img3_jpg,img1_jpg,img2_jpg,mmm_dating_Art-word_01_png,mmm_dating_Art-word_02_png,mmm_dating_Backplane_01_png,mmm_dating_Backplane_02_png,mmm_dating_Backplane_03_png,mmm_dating_Backplane_04_png,mmm_dating_Backplane_05_png,mmm_dating_button_01_png,mmm_dating_button_02_03_png,mmm_dating_button_03_png,mmm_dating_button_04_png,mmm_dating_button_05_png,mmm_dating_header_01_png,mmm_dating_header_02_png,mmm_dating_icon_01_png,mmm_dating_icon_02_png,mmm_dating_icon_03_png,mmm_dating_picture_01_png,mmm_dating_picture_02_png,mmm_dating_picture_03_png,mmm_dating_picture_04_png,mmm_dating_picture_05_png,mmm_dating_picture_06_png,mmm_dating_picture_08_png,mmm_dating_picture_09_png,mmm_dating_Segmenting line_01_png,lunbo_2_png,lunbo_1_png,mmm_dating_Art-word_03_png,mmm_dating_Backplane_08_png,mmm_dating_Backplane_06_png,mmm_dating_Backplane_07_png,mmm_dating_frame_04_png,mmm_youxi_Art-word_03_png,mmm_youxi_background_01_png,mmm_youxi_Backplane_01_png,mmm_youxi_Backplane_03_png,mmm_youxi_Backplane_04_png,mmm_youxi_button_01_png,mmm_youxi_button_02_png,mmm_youxi_button_03_png,mmm_youxi_button_04_png,mmm_youxi_header_01_png,mmm_youxi_icon_01_png,mmm_youxi_icon_02_png,mmm_youxi_picture_02_png,mmm_youxi_picture_03_png,mmm_youxi_picture_04_png,mmm_youxi_picture_05_png,mmm_youxi_picture_06_png,mmm_youxi_Special effect_01_png,mmm_youxi_Special effect_02_png,mmm_youxi_Special effect_03_png,rouge_png,rouge1_png,guozhi_png,guan3_png,guan2_png,guan4_png,guan5_png,chenggong_png,tiyanjieshu_png,loading_mp3,daojishi_mp3,begin_mp3,success_mp3,shibai_mp3,bg_mp3,anniu_mp3",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,mmm_dating_Art-word_01_png,mmm_dating_Art-word_02_png,mmm_dating_Backplane_01_png,mmm_dating_Backplane_02_png,mmm_dating_Backplane_03_png,mmm_dating_Backplane_04_png,mmm_dating_Backplane_05_png,mmm_dating_button_01_png,mmm_dating_button_02_03_png,mmm_dating_button_03_png,mmm_dating_button_04_png,mmm_dating_button_05_png,mmm_dating_header_01_png,mmm_dating_header_02_png,mmm_dating_icon_01_png,mmm_dating_icon_02_png,mmm_dating_icon_03_png,mmm_dating_picture_01_png,mmm_dating_picture_02_png,mmm_dating_picture_03_png,mmm_dating_picture_04_png,mmm_dating_picture_05_png,mmm_dating_picture_06_png,mmm_dating_Segmenting line_01_png,lunbo_2_png,lunbo_1_png,mmm_dating_Art-word_03_png,mmm_dating_Backplane_08_png,mmm_dating_Backplane_06_png,mmm_dating_Backplane_07_png,mmm_dating_frame_04_png,mmm_youxi_Art-word_03_png,mmm_youxi_background_01_png,mmm_youxi_Backplane_01_png,mmm_youxi_Backplane_03_png,mmm_youxi_Backplane_04_png,mmm_youxi_button_01_png,mmm_youxi_button_02_png,mmm_youxi_button_03_png,mmm_youxi_button_04_png,mmm_youxi_header_01_png,mmm_youxi_icon_01_png,mmm_youxi_icon_02_png,mmm_youxi_picture_02_png,mmm_youxi_picture_03_png,mmm_youxi_picture_04_png,mmm_youxi_picture_05_png,mmm_youxi_picture_06_png,mmm_youxi_Special effect_01_png,mmm_youxi_Special effect_02_png,mmm_youxi_Special effect_03_png,rouge_png,rouge1_png,guozhi_png,guan3_png,guan2_png,guan4_png,guan5_png,chenggong_png,tiyanjieshu_png,loading_mp3,daojishi_mp3,begin_mp3,success_mp3,shibai_mp3,bg_mp3,anniu_mp3,ddgggg_03_png,dfefe_03_png,mmm_chongzhi_button_01_03_png,mmm_chongzhi_button_02_png,mmm_chongzhi_Floor_01_03_png,mmm_chongzhi_picture_01_png,mmm_chongzhi_picture_03_png,mmm_chongzhi_picture_07_png,mmm_chongzhi_picture_19_png,logo_png,main_img_png,dian_png,bg_png,pifu1_png,pifu2_png,pifu3_png,pifu4_png,pifu5_png,pifu6_png,pifu7_png,kouhong1_png,kouhong2_png,kouhong3_png,lipin1_png,lipin2_png,lipin3_png,lipin4_png,mmm_dating_bar_01_png,mmm_dating_button_07_png,mmm_dating_frame_01_png",
 			"name": "preload"
 		}
 	],
@@ -122,34 +122,9 @@
 			"name": "track_sb_png"
 		},
 		{
-			"url": "assets/bg.jpg",
-			"type": "image",
-			"name": "bg_jpg"
-		},
-		{
-			"url": "assets/egret_icon.png",
-			"type": "image",
-			"name": "egret_icon_png"
-		},
-		{
 			"url": "config/description.json",
 			"type": "json",
 			"name": "description_json"
-		},
-		{
-			"url": "assets/img3.jpg",
-			"type": "image",
-			"name": "img3_jpg"
-		},
-		{
-			"url": "assets/img1.jpg",
-			"type": "image",
-			"name": "img1_jpg"
-		},
-		{
-			"url": "assets/img2.jpg",
-			"type": "image",
-			"name": "img2_jpg"
 		},
 		{
 			"url": "assets/dating/mmm_dating_Art-word_01.png",
@@ -265,16 +240,6 @@
 			"url": "assets/dating/mmm_dating_picture_06.png",
 			"type": "image",
 			"name": "mmm_dating_picture_06_png"
-		},
-		{
-			"url": "assets/dating/mmm_dating_picture_08.png",
-			"type": "image",
-			"name": "mmm_dating_picture_08_png"
-		},
-		{
-			"url": "assets/dating/mmm_dating_picture_09.png",
-			"type": "image",
-			"name": "mmm_dating_picture_09_png"
 		},
 		{
 			"url": "assets/dating/mmm_dating_Segmenting line_01.png",
@@ -495,6 +460,156 @@
 			"name": "anniu_mp3",
 			"type": "sound",
 			"url": "assets/music/anniu.mp3"
+		},
+		{
+			"name": "ddgggg_03_png",
+			"type": "image",
+			"url": "assets/chongzhi/ddgggg_03.png"
+		},
+		{
+			"name": "dfefe_03_png",
+			"type": "image",
+			"url": "assets/chongzhi/dfefe_03.png"
+		},
+		{
+			"name": "mmm_chongzhi_button_01_03_png",
+			"type": "image",
+			"url": "assets/chongzhi/mmm_chongzhi_button_01_03.png"
+		},
+		{
+			"name": "mmm_chongzhi_button_02_png",
+			"type": "image",
+			"url": "assets/chongzhi/mmm_chongzhi_button_02.png"
+		},
+		{
+			"name": "mmm_chongzhi_Floor_01_03_png",
+			"type": "image",
+			"url": "assets/chongzhi/mmm_chongzhi_Floor_01_03.png"
+		},
+		{
+			"name": "mmm_chongzhi_picture_01_png",
+			"type": "image",
+			"url": "assets/chongzhi/mmm_chongzhi_picture_01.png"
+		},
+		{
+			"name": "mmm_chongzhi_picture_03_png",
+			"type": "image",
+			"url": "assets/chongzhi/mmm_chongzhi_picture_03.png"
+		},
+		{
+			"name": "mmm_chongzhi_picture_07_png",
+			"type": "image",
+			"url": "assets/chongzhi/mmm_chongzhi_picture_07.png"
+		},
+		{
+			"name": "mmm_chongzhi_picture_19_png",
+			"type": "image",
+			"url": "assets/chongzhi/mmm_chongzhi_picture_19.png"
+		},
+		{
+			"name": "logo_png",
+			"type": "image",
+			"url": "assets/loading/logo.png"
+		},
+		{
+			"name": "main_img_png",
+			"type": "image",
+			"url": "assets/loading/main_img.png"
+		},
+		{
+			"name": "dian_png",
+			"type": "image",
+			"url": "assets/loading/dian.png"
+		},
+		{
+			"name": "bg_png",
+			"type": "image",
+			"url": "assets/loading/bg.png"
+		},
+		{
+			"name": "pifu1_png",
+			"type": "image",
+			"url": "assets/chongzhi/pifu1.png"
+		},
+		{
+			"name": "pifu2_png",
+			"type": "image",
+			"url": "assets/chongzhi/pifu2.png"
+		},
+		{
+			"name": "pifu3_png",
+			"type": "image",
+			"url": "assets/chongzhi/pifu3.png"
+		},
+		{
+			"name": "pifu4_png",
+			"type": "image",
+			"url": "assets/chongzhi/pifu4.png"
+		},
+		{
+			"name": "pifu5_png",
+			"type": "image",
+			"url": "assets/chongzhi/pifu5.png"
+		},
+		{
+			"name": "pifu6_png",
+			"type": "image",
+			"url": "assets/chongzhi/pifu6.png"
+		},
+		{
+			"name": "pifu7_png",
+			"type": "image",
+			"url": "assets/chongzhi/pifu7.png"
+		},
+		{
+			"name": "kouhong1_png",
+			"type": "image",
+			"url": "assets/chongzhi/kouhong1.png"
+		},
+		{
+			"name": "kouhong2_png",
+			"type": "image",
+			"url": "assets/chongzhi/kouhong2.png"
+		},
+		{
+			"name": "kouhong3_png",
+			"type": "image",
+			"url": "assets/chongzhi/kouhong3.png"
+		},
+		{
+			"name": "lipin1_png",
+			"type": "image",
+			"url": "assets/chongzhi/lipin1.png"
+		},
+		{
+			"name": "lipin2_png",
+			"type": "image",
+			"url": "assets/chongzhi/lipin2.png"
+		},
+		{
+			"name": "lipin3_png",
+			"type": "image",
+			"url": "assets/chongzhi/lipin3.png"
+		},
+		{
+			"name": "lipin4_png",
+			"type": "image",
+			"url": "assets/chongzhi/lipin4.png"
+		},
+		{
+			"name": "mmm_dating_bar_01_png",
+			"type": "image",
+			"url": "assets/dating/mmm_dating_bar_01.png"
+		},
+		{
+			"name": "mmm_dating_button_07_png",
+			"type": "image",
+			"url": "assets/dating/mmm_dating_button_07.png"
+		},
+		{
+			"name": "mmm_dating_frame_01_png",
+			"type": "image",
+			"url": "assets/dating/mmm_dating_frame_01.png"
 		}
 	]
 }

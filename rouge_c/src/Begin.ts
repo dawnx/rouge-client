@@ -1,23 +1,18 @@
 class Begin extends eui.Component {
     private btn_share: eui.Button;
     private btn_begin: eui.Button;
-    private _freeType: boolean;
-    private _type: number;
-    private _goodsType: number;
-    public constructor(freeType: boolean, type: number, goodsType: number) {
+    private goodsItemData: Data.GoodsItemData;
+    private gp_paihang: eui.Group;
+    public constructor(_itemData: Data.GoodsItemData) {
         super()
-        this._freeType = freeType;
-        this._type = type;
-        this._goodsType = goodsType;
+        this.goodsItemData = _itemData;
         this.skinName = "resource/skin/begin.exml";
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();
-        console.log(this._goodsType)
-        if (this._freeType) {
-            console.log("免费的" + this._freeType)
-        } else {
-            console.log("付费的")
+
+        if (this.goodsItemData.gameType != Data.GameType.TI_YAN) {
+            // console.log("免费的" + this._freeType)
             this.onClickBegin();
         }
         this.init();
@@ -25,7 +20,12 @@ class Begin extends eui.Component {
         this.btn_begin.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBegin, this)
     }
     private init() {
-        console.log("gao" + this.stage.stageHeight +"#@!#@!#@!#"+this.btn_share.y)
+        var context = this;
+        for (let i = 0; i < 10; i++) {
+            var item = new Paihang_items();
+            context.gp_paihang.addChild(item);
+            item.y = item.height * i + 5 * i;
+        }
     }
     //分享
     private onClickShare() {
@@ -36,12 +36,12 @@ class Begin extends eui.Component {
     private onClickBegin() {
 
         if (this.gameMain == null) {
-            console.log("没创建过开始界面")
-            this.gameMain = new GameMain(this, this._freeType, this._type, this._goodsType);
+
+            this.gameMain = new GameMain(this, this.goodsItemData);
             this.addChild(this.gameMain);
         } else {
             this.gameMain.visible = true;
-            console.log("创建过开始界面")
+
         }
     }
 

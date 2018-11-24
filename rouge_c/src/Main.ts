@@ -28,11 +28,13 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 class Main extends eui.UILayer {
-
+    public static _screenW: number;
+    public static _screenH: number;
 
     protected createChildren(): void {
         super.createChildren();
-
+        Main._screenW = this.stage.stageWidth;
+        Main._screenH = this.stage.stageHeight;
         egret.lifecycle.addLifecycleListener((context) => {
             // custom lifecycle plugin
         })
@@ -55,6 +57,8 @@ class Main extends eui.UILayer {
         this.runGame().catch(e => {
             console.log(e);
         })
+
+        
     }
 
     private async runGame() {
@@ -73,7 +77,7 @@ class Main extends eui.UILayer {
         var request = new egret.HttpRequest();
         request.responseType = egret.HttpResponseType.TEXT;
         let openId = egret.getOption("openId");  //取url后边的openid
-        
+
         // let _url: string = "kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
         let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
         request.open(_url, egret.HttpMethod.GET);
@@ -134,12 +138,9 @@ class Main extends eui.UILayer {
      */
     // private _begin:Begin;
     protected createGameScene(): void {
+        Data.DataManager.init();
         utils.SoundUtils.instance().initSound();
         this.addChild(new MainSence());
-
-
-
-        
     }
 
     /**

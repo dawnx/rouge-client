@@ -1,8 +1,8 @@
-class Goods_item extends eui.Component {
+class Paihang_items extends eui.Component {
 
     public constructor() {
         super()
-        this.skinName = "resource/skin/goods_item.exml";
+        this.skinName = "resource/skin/paihang_items.exml";
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();

@@ -13,5 +13,5 @@
 		<e:Rect width="750" height="1334" x="0" y="0" fillColor="0x000000" fillAlpha="0.7" scaleX="1" scaleY="1"/>
 		<e:Button id="btn_fangqi1" label="体验结束" x="319.5" y="545.79"/>
 	</e:Group>
-	<e:Image id="img_shibai" source="mmm_youxi_Art-word_03_png" x="339.27" y="13"/>
+	<e:Image id="img_shibai" source="mmm_youxi_Art-word_03_png" x="334.5" y="2.5"/>
 </e:Skin>

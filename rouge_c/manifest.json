@@ -11,14 +11,17 @@
 		"libs/modules/md5/md5.js"
 	],
 	"game": [
-		"bin-debug/OverSuccess.js",
+		"bin-debug/Paihang_items.js",
 		"bin-debug/AssetAdapter.js",
+		"bin-debug/Chongzhi.js",
+		"bin-debug/Duihuan.js",
 		"bin-debug/GameMain.js",
 		"bin-debug/GameOver.js",
-		"bin-debug/Goods_item.js",
+		"bin-debug/GoodsItem.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
 		"bin-debug/MainSence.js",
+		"bin-debug/OverSuccess.js",
 		"bin-debug/Begin.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ShouChong.js",
@@ -26,6 +29,10 @@
 		"bin-debug/SoundUtils.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/XsOver.js",
-		"bin-debug/YaoQing.js"
+		"bin-debug/YaoQing.js",
+		"bin-debug/Data/DataManager.js",
+		"bin-debug/Data/GameType.js",
+		"bin-debug/Data/GoodsItemData.js",
+		"bin-debug/Data/GoodsType.js"
 	]
 }

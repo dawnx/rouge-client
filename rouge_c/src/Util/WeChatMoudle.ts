@@ -16,6 +16,7 @@ class WeChatMoudle extends egret.DisplayObjectContainer {
     }
 
     public static WeChatPay(data: any) {
+        console.log("微信 PAY")
         var bodyConfig: BodyConfig = new BodyConfig();
         bodyConfig.appId = data.appId;
         // bodyConfig.debug = true;
@@ -38,6 +39,7 @@ class WeChatMoudle extends egret.DisplayObjectContainer {
         // 通过config接口注入权限验证配置
         if (wx) {
             wx.config(bodyConfig);
+            console.log("chooseWXPay")
             wx.ready(function () {
                 // 在这里调用微信相关功能的 API
                 // 调起微信支付接口
@@ -50,7 +52,7 @@ class WeChatMoudle extends egret.DisplayObjectContainer {
                     paySign: data.sign, // 支付签名
                     success: function (res) {
                         // 支付成功后的回调函数
-                        if ("get_brand_wcpay_request:ok" == res) {
+                        if ("get_brand_wcpay_request:ok" == res.err_msg) {
                             var label: eui.Label = new eui.Label();
                             label.text = "充值成功！ \r\n 请等待。。。";
                             //设置颜色等文本属性

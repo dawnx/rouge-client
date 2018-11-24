@@ -50,9 +50,16 @@ class AccountData extends egret.DisplayObjectContainer {
         var request = new egret.HttpRequest();
         request.responseType = egret.HttpResponseType.TEXT;
         let openId = egret.getOption("openId");  //取url后边的openid
+        var label: eui.Label = new eui.Label();
+        label.text = "openId:  " + openId;
+        //设置颜色等文本属性
+        label.textColor = 0xff0000;
+        label.size = 26;
+        label.lineSpacing = 12;
+        label.y = 1000;
         // 测试用 openID = o9lTh0_-PeTGbC_4dLG_TRsQAY-g
         let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g";
-        //let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
+        // let _url: string = "http://kh.chitugame.com/ct-admin/player/getPlayerByOpenId?openId=" + openId;
         request.open(_url, egret.HttpMethod.GET);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.send();

@@ -11,10 +11,11 @@
 		"libs/modules/md5/md5.js"
 	],
 	"game": [
-		"bin-debug/SoundUtils.js",
+		"bin-debug/SoundBase.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/Chongzhi.js",
 		"bin-debug/Duihuan.js",
+		"bin-debug/DuihuanItem.js",
 		"bin-debug/GameMain.js",
 		"bin-debug/GameOver.js",
 		"bin-debug/GoodsItem.js",
@@ -25,8 +26,8 @@
 		"bin-debug/Paihang_items.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ShouChong.js",
-		"bin-debug/SoundBase.js",
 		"bin-debug/Begin.js",
+		"bin-debug/SoundUtils.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/XsOver.js",
 		"bin-debug/YaoQing.js",

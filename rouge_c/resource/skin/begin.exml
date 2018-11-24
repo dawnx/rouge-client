@@ -6,10 +6,10 @@
 			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_dating_picture_04_png" x="0" y="0" scaleX="1" scaleY="1"/>
 			<e:Label text="排行榜" x="313.5" y="19.5" size="40" bold="true" scaleX="1" scaleY="1" textColor="0xffffff"/>
-			<e:Label text="名次" x="82" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
-			<e:Label text="头像" x="223" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
-			<e:Label text="名字" x="375" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
-			<e:Label text="成绩" x="545" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
+			<e:Label text="名次" x="103.6" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
+			<e:Label text="头像" x="265.3333333333333" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
+			<e:Label text="名字" x="426.66666666666663" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
+			<e:Label text="成绩" x="588.4" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
 		</e:Group>
 		<e:Scroller id="scroller" width="750" height="1062" x="0" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" y="136">
 			<e:Group id="gp_paihang" anchorOffsetX="0" width="789.39" anchorOffsetY="0" height="1162">
@@ -17,7 +17,7 @@
 		</e:Scroller>
 		<e:Group width="750" height="136" x="0" y="1198">
 			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
-			<e:Button id="btn_share" label="分享游戏" anchorOffsetX="0" anchorOffsetY="0" y="32" left="98" x="155" scaleX="1" scaleY="1">
+			<e:Button id="btn_share" label="分享游戏" anchorOffsetX="0" anchorOffsetY="0" y="32" x="106" scaleX="1" scaleY="1">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
 					<e:Image width="100%" height="100%" source="mmm_dating_button_05_png"/>
@@ -25,7 +25,7 @@
 					</e:Skin>
 				</e:skinName>
 			</e:Button>
-			<e:Button id="btn_begin" label="开始游戏" scaleX="1" scaleY="1" y="32" x="466">
+			<e:Button id="btn_begin" label="开始游戏" scaleX="1" scaleY="1" y="32" x="428">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
 					<e:Image width="100%" height="100%" source="mmm_dating_button_03_png"/>

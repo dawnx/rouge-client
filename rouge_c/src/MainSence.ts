@@ -94,13 +94,14 @@ class MainSence extends eui.Component {
 
         // 返回到主界面的时候，调取用户信息，继续执行 刷新；
         AccountData.GetInfo();
-        // 兑换接口；
-        NetSend.SendToNetExchange(Item.Gold,1);
-        console.log("兑换  金币   1  个");
+        
+        // // 兑换接口；
+        // NetSend.SendToNetExchange(Item.Gold, 1);
+        // console.log("兑换  金币   1  个");
         //  刷新用户信息，调动此方法时必选先拉取用户信息，才能保证正确刷新；
         this.RefeshAccountData();
         console.log("刷新用户信息；");
-        
+
         this.Clcik();
         this.lb_kh.textColor = 0x9e023e;
         this.lb_0.textColor = 0xef0057;
@@ -112,9 +113,9 @@ class MainSence extends eui.Component {
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
         timer.start();
     }
-    private RefeshAccountData() {
+    public RefeshAccountData() {
         console.log("RefeshAccountData    !");
-        var account:AccountDatas = AccountData.accoundData;
+        var account: AccountDatas = AccountData.accoundData;
         if (account != null) {
             console.log("accountData   " + account);
             this.lb_gold.text = account.diamond.toString();
@@ -135,14 +136,28 @@ class MainSence extends eui.Component {
 
     }
     //充值
+    public chongzhi: Chongzhi;
     private onClickChongzhi() {
-        this.addChild(new Chongzhi());
-        // 通知服务器下单；
-        NetSend.SendToNetOrder("心愿订单", 1);
+        // this.addChild(new Chongzhi(this));
+
+        if (this.chongzhi == null) {
+            this.chongzhi = new Chongzhi(this);
+            this.addChild(this.chongzhi);
+        } else {
+            this.chongzhi.visible = true;
+        }
     }
     //兑换
-    private onClickDuihuan(){
-        this.addChild(new Duihuan());
+    public duihuan:Duihuan;
+    private onClickDuihuan() {
+        // this.addChild(new Duihuan());
+
+        if (this.duihuan == null) {
+            this.duihuan = new Duihuan(this);
+            this.addChild(this.duihuan);
+        } else {
+            this.duihuan.visible = true;
+        }
     }
 
     private onClickRad1() {

@@ -9,12 +9,14 @@ class XsOver extends eui.Component {
     private _type: number;
 
     private gp_tiyan: eui.Group;
-
-    public constructor(gamemain: GameMain, score: number, type: number, level: number) {
+    private goodsItemData: Data.GoodsItemData;
+    private m_mainsence: MainSence;
+    public constructor(gamemain: GameMain, score: number, type: number, goodsItemData: Data.GoodsItemData, m_mainsence: MainSence) {
         super()
         this._score = score;
         this._type = type;
-        this._level = level;
+        this.goodsItemData = goodsItemData;
+        this.m_mainsence = m_mainsence;
         this._gamemain = gamemain;
         this.skinName = "resource/skin/xsover.exml";
 
@@ -37,6 +39,13 @@ class XsOver extends eui.Component {
 
     private onClickReset() {
         this.visible = false;
+        NetSend.SendToNetGameStart(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
+        console.log("*******Send   ed ");
+        console.log("*******GameEnd.RESULT_RESET  ed " + GameEnd.RESULT_RESET);
+        AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
+        console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
+
+        this.m_mainsence.RefeshAccountData();
         this._gamemain.initGame2();
     }
 

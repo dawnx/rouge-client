@@ -32,10 +32,12 @@ class GameMain extends eui.Component {
     private gp_rouge: eui.Group;
     private img_guan: eui.Image;
     private goodsItemData: Data.GoodsItemData;
+    private m_mainsence: MainSence;
 
     public constructor(_goodsItemData: Data.GoodsItemData) {
         super()
         this.goodsItemData = _goodsItemData;
+        this.m_mainsence = mainsence;
         this.skinName = "resource/skin/gamemain.exml";
     }
     public childrenCreated() {
@@ -159,7 +161,7 @@ class GameMain extends eui.Component {
             // this.GameOver();
             this.timer.stop();
             console.log("定时器停止");
-            this.addChild(new XsOver(this, this.score, this._type, this._level));
+            this.addChild(new XsOver(this, this.score, this._type , this.goodsItemData, this.m_mainsence));
         }
         //转速
         this.speed = this.getSpeed(this._level);
@@ -169,7 +171,7 @@ class GameMain extends eui.Component {
     public gameover: GameOver;
     private GameOver() {
         if (this.gameover == null) {
-            this.gameover = new GameOver(this, this.score, this.goodsItemData.gameType, this._level);
+            this.gameover = new GameOver(this, this.score, this.goodsItemData.gameType, this._level,this.goodsItemData,this.m_mainsence);
             this.addChild(this.gameover);
         } else {
             this.gameover.visible = true;
@@ -259,55 +261,65 @@ class GameMain extends eui.Component {
             this.rArr = this.rotateArr;
             //上帝视角
             console.log(this.score)
-            if (Data.GameType.CHUANG_GUAN != 2) {
-                if (this.score <= 4 && this.score > 0) {
-                    this.rouge.scaleX = 1;
-                    this.rouge.scaleY = 1;
-                    this.jiaodu = 10;
-                    // this.fly_juli = 750;
-                    //获取已经扎过的口红 变小
-                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                        let a = this.gp_circle.getChildAt(i);
-                        // console.log(a);
-                        a.scaleX = 1;
-                        a.scaleY = 1;
-                    }
-                } else if (this.score <= 6 && this.score > 4) {
-                    this.rouge.scaleX = 0.8;
-                    this.rouge.scaleY = 0.8;
-                    this.jiaodu = 8;
-                    // this.fly_juli = 750;
-                    //获取已经扎过的口红 变小
-                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                        let a = this.gp_circle.getChildAt(i);
-                        // console.log(a);
-                        a.scaleX = 0.8;
-                        a.scaleY = 0.8;
-                    }
-                } else if (this.score <= 8 && this.score > 6) {
-                    this.rouge.scaleX = 0.6;
-                    this.rouge.scaleY = 0.6;
-                    this.jiaodu = 6;
-                    // this.fly_juli = 750;
-                    //获取已经扎过的口红 变小
-                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                        let a = this.gp_circle.getChildAt(i);
-                        // console.log(a);
-                        a.scaleX = 0.6;
-                        a.scaleY = 0.6;
-                    }
-                } else if (this.score > 8) {
-                    this.rouge.scaleX = 0.4;
-                    this.rouge.scaleY = 0.4;
-                    this.jiaodu = 4;
-                    // this.fly_juli = 750;
-                    //获取已经扎过的口红 变小
-                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                        let a = this.gp_circle.getChildAt(i);
-                        // console.log(a);
-                        a.scaleX = 0.4;
-                        a.scaleY = 0.4;
-                    }
+            if (this.score <= 6 && this.score > 0) {
+                this.rouge.scaleX = 1;
+                this.rouge.scaleY = 1;
+                this.jiaodu = 10;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                    let a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 1;
+                    a.scaleY = 1;
+                }
+            } else if (this.score <= 10 && this.score > 6) {
+                this.rouge.scaleX = 0.8;
+                this.rouge.scaleY = 0.8;
+                this.jiaodu = 8;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                    let a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 0.8;
+                    a.scaleY = 0.8;
+                }
+            } else if (this.score <= 15 && this.score > 10) {
+                this.rouge.scaleX = 0.6;
+                this.rouge.scaleY = 0.8;
+                this.jiaodu = 6;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                    let a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 0.6;
+                    a.scaleY = 0.8;
+                }
+            } else if (this.score <= 20 && this.score > 15) {
+                this.rouge.scaleX = 0.4;
+                this.rouge.scaleY = 0.6;
+                this.jiaodu = 4;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                    let a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 0.4;
+                    a.scaleY = 0.6;
+                }
+            }else if (this.score > 20) {
+                this.rouge.scaleX = 0.2;
+                this.rouge.scaleY = 0.5;
+                this.jiaodu = 2;
+                // this.fly_juli = 750;
+                //获取已经扎过的口红 变小
+                for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                    let a = this.gp_circle.getChildAt(i);
+                    // console.log(a);
+                    a.scaleX = 0.2;
+                    a.scaleY = 0.5;
                 }
             }
 
@@ -337,6 +349,8 @@ class GameMain extends eui.Component {
                     if (this._level >= 4 && this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                         //弹出弹窗 付费模式结束
                         console.log("通关 获得奖励")
+                        console.log("通关subGameId     " + this.goodsItemData.subGameId)
+                        NetSend.SendToNetGameEnd(this.goodsItemData.subGameId,GameEnd.RESULT_WIN);
                         this.addChild(new OverSuccess(this, this.score, this.goodsItemData.gameType, this._level))
                         this.timer.stop();
 
@@ -361,7 +375,7 @@ class GameMain extends eui.Component {
                                 || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                                 this.GameOver();
                             } else {
-                                this.addChild(new XsOver(this, this.score, this.goodsItemData.gameType, this._level));
+                                this.addChild(new XsOver(this, this.score, this.goodsItemData.gameType, this.goodsItemData, this.m_mainsence));
                                 console.log("限时模式 游戏结束")
                             }
 

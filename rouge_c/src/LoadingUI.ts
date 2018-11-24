@@ -9,12 +9,13 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
     private img_loadingBg: egret.Bitmap;
     private img_loadingBg1: egret.Bitmap;
     private img_loadingBg2: egret.Bitmap;
+    private img_loadingBg3: egret.Bitmap;
     private textField: egret.TextField;
 
     private res_loadingBg = "resource/assets/loading/bg.png";
     private res_loadingBg1 = "resource/assets/loading/logo.png";
     private res_loadingBg2 = "resource/assets/loading/main_img.png";
-
+    private res_loadingBg3 = "resource/assets/loading/lodImg.png";
     private w: number;
     private h: number;
     private loadW: number = 750;
@@ -24,7 +25,7 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
 
         this.w = Main._screenW;
         this.h = Main._screenH;
-        console.log(this.w+"^^"+this.h)
+        console.log(this.w + "^^" + this.h)
 
         let imgBgLoader: egret.ImageLoader = new egret.ImageLoader;
         imgBgLoader.once(egret.Event.COMPLETE, this.imgLoadBgHandler, this);
@@ -38,24 +39,40 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
         imgLoading1Loader.once(egret.Event.COMPLETE, this.imgLoad1Handler, this);
         imgLoading1Loader.load(this.res_loadingBg2);
 
+        let imgLoading2Loader: egret.ImageLoader = new egret.ImageLoader;
+        imgLoading2Loader.once(egret.Event.COMPLETE, this.imgLoad2Handler, this);
+        imgLoading2Loader.load(this.res_loadingBg3);
+
         this.img_loadingBg = new egret.Bitmap();
         this.img_loadingBg1 = new egret.Bitmap();
         this.img_loadingBg2 = new egret.Bitmap();
+        this.img_loadingBg3 = new egret.Bitmap();
 
         this.addChildAt(this.img_loadingBg, 0);
         this.addChildAt(this.img_loadingBg1, 1);
-        this.addChildAt(this.img_loadingBg2, 2);
+        this.addChildAt(this.img_loadingBg2, 1);
+        this.addChildAt(this.img_loadingBg3, 1);
 
         this.textField = new egret.TextField();
         this.textField.textColor = 0xffffff;
         this.textField.size = 20;
         this.textField.width = this.w;
         this.textField.height = 100;
-        this.textField.y = this.h - this.devDown - this.textField.height / 2;
+        this.textField.y = this.h -200;
         this.textField.textAlign = egret.HorizontalAlign.CENTER;
-        this.textField.verticalAlign = egret.VerticalAlign.MIDDLE;
+        // this.textField.verticalAlign = egret.VerticalAlign.MIDDLE;
+        console.log(this.textField.x +"%%%"+this.textField.y)
+
+       
 
         this.addChildAt(this.textField, 3);
+
+        // 监听帧事件,每帧都让loading图片转动
+        this.addEventListener(egret.Event.ENTER_FRAME, this.updata, this)
+    }
+    private updata() {
+        // 旋转
+        this.img_loadingBg3.rotation += 5
     }
 
     private imgLoadBgHandler(evt: egret.Event): void {
@@ -67,9 +84,10 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
 
     private imgLoad0Handler(evt: egret.Event): void {
         this.img_loadingBg1.texture = this.getTexture(evt);
-        // this.img_loadingBg1.width = this.loadW;
-        this.img_loadingBg1.x = 50;
-        this.img_loadingBg1.y = 50;
+        this.img_loadingBg1.scaleX = 0.7;
+        this.img_loadingBg1.scaleY = 0.7;
+        this.img_loadingBg1.x = 30;
+        this.img_loadingBg1.y = 30;
 
     }
 
@@ -78,8 +96,16 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
         // this.img_loadingBg2.scale9Grid = new egret.Rectangle(5, 5, 10, 10);
         // this.img_loadingBg2.width = 121;
         this.img_loadingBg2.x = this.w / 2 - this.img_loadingBg2.width / 2;
-        this.img_loadingBg2.y = this.h / 5;
-        console.log(this.img_loadingBg2.x+"^^"+this.img_loadingBg2.y)
+        this.img_loadingBg2.y = this.h / 7;
+       
+    }
+    private imgLoad2Handler(evt: egret.Event): void {
+        this.img_loadingBg3.texture = this.getTexture(evt);
+        this.img_loadingBg3.anchorOffsetX = this.img_loadingBg3.width / 2
+        this.img_loadingBg3.anchorOffsetY = this.img_loadingBg3.height / 2
+        this.img_loadingBg3.x = this.width / 2
+        this.img_loadingBg3.y = this.height / 2
+         
     }
 
     private getTexture(evt: egret.Event): egret.Texture {
@@ -91,7 +117,7 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
     }
 
     public onProgress(current: number, total: number): void {
-        this.textField.text = `资源加载中...${current}/${total}`;
+        this.textField.text = `礼盒正在搬运中`;
         // if (this.img_loading1 != null) {
         //     this.img_loading1.width = this.loadW * (current / total);
         // }

@@ -9,25 +9,15 @@ module Data {
 				new GoodsItemData("resource/assets/chongzhi/kouhong2.png", "口红1", GameType.CHUANG_GUAN, "58.8", GoodsType.KOU_HONG, 0),
 				new GoodsItemData("resource/assets/chongzhi/kouhong2.png", "口红1", GameType.JING_SU, "78.8", GoodsType.KOU_HONG, 0),
 				new GoodsItemData("resource/assets/chongzhi/kouhong3.png", "口红1", GameType.CHUANG_GUAN, "58.8", GoodsType.KOU_HONG, 100),
-				// new GoodsItemData("imgurllll", "口红1", GameType.CHUANG_GUAN, "78.8", GoodsType.KOU_HONG, 100),
-				// new GoodsItemData("imgurllll", "口红1", GameType.CHUANG_GUAN, "88.8", GoodsType.KOU_HONG, 100),
 				new GoodsItemData("resource/assets/chongzhi/kouhong2.png", "口红1", GameType.CHUANG_GUAN, "88", GoodsType.KOU_HONG, 300),
-				// new GoodsItemData("imgurllll", "口红1", GameType.CHUANG_GUAN, "88", GoodsType.KOU_HONG, 300),
-				// new GoodsItemData("imgurllll", "口红1", GameType.CHUANG_GUAN, "88", GoodsType.KOU_HONG, 300),
-				// new GoodsItemData("imgurllll", "口红1", GameType.CHUANG_GUAN, "88", GoodsType.KOU_HONG, 500),
-				// new GoodsItemData("imgurllll", "口红1", GameType.CHUANG_GUAN, "88", GoodsType.KOU_HONG, 500),
-				// new GoodsItemData("imgurllll", "口红1", GameType.CHUANG_GUAN, "88", GoodsType.KOU_HONG, 500),
+		 
 
 
 				new GoodsItemData("resource/assets/chongzhi/lipin1.png", "礼品1", GameType.CHUANG_GUAN, "58.8", GoodsType.LI_PIN, 100),
 				new GoodsItemData("resource/assets/chongzhi/lipin2.png", "礼品1", GameType.CHUANG_GUAN, "78.8", GoodsType.LI_PIN, 100),
-				// new GoodsItemData("imgurllll", "礼品1", GameType.CHUANG_GUAN, "88.8", GoodsType.LI_PIN, 100),
 				new GoodsItemData("resource/assets/chongzhi/lipin3.png", "礼品1", GameType.CHUANG_GUAN, "88", GoodsType.LI_PIN, 300),
-				// new GoodsItemData("imgurllll", "礼品1", GameType.CHUANG_GUAN, "88", GoodsType.LI_PIN, 300),
-				// new GoodsItemData("imgurllll", "礼品1", GameType.CHUANG_GUAN, "88", GoodsType.LI_PIN, 300),
 				new GoodsItemData("resource/assets/chongzhi/lipin4.png", "礼品1", GameType.CHUANG_GUAN, "88", GoodsType.LI_PIN, 500),
-				// new GoodsItemData("imgurllll", "礼品1", GameType.CHUANG_GUAN, "88", GoodsType.LI_PIN, 500),
-				// new GoodsItemData("imgurllll", "礼品1", GameType.CHUANG_GUAN, "88", GoodsType.LI_PIN, 500),
+				 
 
 
 				new GoodsItemData("resource/assets/chongzhi/pifu1.png", "皮肤1", GameType.CHUANG_GUAN, "58.80", GoodsType.PI_FU, 100),

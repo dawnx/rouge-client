@@ -137,8 +137,8 @@ class MainSence extends eui.Component {
     //充值
     private onClickChongzhi() {
         this.addChild(new Chongzhi());
-
-        
+        // 通知服务器下单；
+        NetSend.SendToNetOrder("心愿订单", 1);
     }
     //兑换
     private onClickDuihuan(){

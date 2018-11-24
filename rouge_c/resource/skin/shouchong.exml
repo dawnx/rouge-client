@@ -18,11 +18,11 @@
 	<e:Label text="首充200元额外获得价值119元的欧莱雅润唇膏619秋叶一支+300金币" x="87" y="697" textColor="0x333333" size="26" width="542"/>
 	<e:Label text="首充300元额外获得价值249元的兰蔻精密眼线液一瓶+500金币" x="87" y="822" textColor="0x333333" size="26" width="542"/>
 	<e:Image source="mmm_dating_button_03_png" x="493" y="489" scaleX="0.7" scaleY="0.7"/>
-	<e:Label text="领取" x="540" y="502.5" size="26" textColor="0xffffff"/>
+	<e:Label text="领取" x="540" y="502.5" size="26" textColor="0xffffff" touchEnabled="false"/>
 	<e:Image source="mmm_dating_button_03_png" x="493" y="609.66" scaleX="0.7" scaleY="0.7"/>
-	<e:Label text="领取" x="540" y="623.16" textColor="0xFFFFFF" size="26"/>
+	<e:Label text="领取" x="540" y="623.16" textColor="0xFFFFFF" size="26" touchEnabled="false"/>
 	<e:Image source="mmm_dating_button_03_png" x="493" y="738.33" scaleX="0.7" scaleY="0.7"/>
-	<e:Label text="领取" x="540" y="751.83" textColor="0xFFFFFF" size="26"/>
+	<e:Label text="领取" x="540" y="751.83" textColor="0xFFFFFF" size="26" touchEnabled="false"/>
 	<e:Image source="mmm_dating_button_03_png" x="493" y="860.33" scaleX="0.7" scaleY="0.7"/>
-	<e:Label text="领取" x="540" y="873.83" textColor="0xFFFFFF" size="26"/>
+	<e:Label text="领取" x="540" y="873.83" textColor="0xFFFFFF" size="26" touchEnabled="false"/>
 </e:Skin>

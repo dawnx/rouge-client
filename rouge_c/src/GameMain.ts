@@ -1,5 +1,4 @@
 class GameMain extends eui.Component {
-    public _begin: Begin;
     private btn_back: eui.Button;
     private gp_circle: eui.Group;
     private img_juzi: eui.Image;
@@ -34,14 +33,14 @@ class GameMain extends eui.Component {
     private img_guan: eui.Image;
     private goodsItemData: Data.GoodsItemData;
 
-    public constructor(begin: Begin, _goodsItemData: Data.GoodsItemData) {
+    public constructor(_goodsItemData: Data.GoodsItemData) {
         super()
-        this._begin = begin;
         this.goodsItemData = _goodsItemData;
         this.skinName = "resource/skin/gamemain.exml";
     }
     public childrenCreated() {
         super.childrenCreated();
+        this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickBack, this);
         console.log("**********this.goodsItemData.gameType    " + this.goodsItemData.gameType
             + "  goodsFenqu     " + this.goodsItemData.goodsFenqu
             + "     goodsType     " + this.goodsItemData.goodsType)
@@ -60,6 +59,9 @@ class GameMain extends eui.Component {
             this.rect_dangban.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickInsert, this);
             this.update();
         }, this);
+    }
+    private onclickBack() {
+        this.parent.removeChild(this);
     }
 
     private miao: number;
@@ -157,7 +159,7 @@ class GameMain extends eui.Component {
             // this.GameOver();
             this.timer.stop();
             console.log("定时器停止");
-            this.addChild(new XsOver(this, this.score, this._type));
+            this.addChild(new XsOver(this, this.score, this._type, this._level));
         }
         //转速
         this.speed = this.getSpeed(this._level);
@@ -257,53 +259,55 @@ class GameMain extends eui.Component {
             this.rArr = this.rotateArr;
             //上帝视角
             console.log(this.score)
-            if (this.score <= 4 && this.score > 0) {
-                this.rouge.scaleX = 1;
-                this.rouge.scaleY = 1;
-                this.jiaodu = 10;
-                // this.fly_juli = 750;
-                //获取已经扎过的口红 变小
-                for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                    let a = this.gp_circle.getChildAt(i);
-                    // console.log(a);
-                    a.scaleX = 1;
-                    a.scaleY = 1;
-                }
-            } else if (this.score <= 6 && this.score > 4) {
-                this.rouge.scaleX = 0.8;
-                this.rouge.scaleY = 0.8;
-                this.jiaodu = 8;
-                // this.fly_juli = 750;
-                //获取已经扎过的口红 变小
-                for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                    let a = this.gp_circle.getChildAt(i);
-                    // console.log(a);
-                    a.scaleX = 0.8;
-                    a.scaleY = 0.8;
-                }
-            } else if (this.score <= 8 && this.score > 6) {
-                this.rouge.scaleX = 0.6;
-                this.rouge.scaleY = 0.6;
-                this.jiaodu = 6;
-                // this.fly_juli = 750;
-                //获取已经扎过的口红 变小
-                for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                    let a = this.gp_circle.getChildAt(i);
-                    // console.log(a);
-                    a.scaleX = 0.6;
-                    a.scaleY = 0.6;
-                }
-            } else if (this.score > 8) {
-                this.rouge.scaleX = 0.4;
-                this.rouge.scaleY = 0.4;
-                this.jiaodu = 4;
-                // this.fly_juli = 750;
-                //获取已经扎过的口红 变小
-                for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                    let a = this.gp_circle.getChildAt(i);
-                    // console.log(a);
-                    a.scaleX = 0.4;
-                    a.scaleY = 0.4;
+            if (Data.GameType.CHUANG_GUAN != 2) {
+                if (this.score <= 4 && this.score > 0) {
+                    this.rouge.scaleX = 1;
+                    this.rouge.scaleY = 1;
+                    this.jiaodu = 10;
+                    // this.fly_juli = 750;
+                    //获取已经扎过的口红 变小
+                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                        let a = this.gp_circle.getChildAt(i);
+                        // console.log(a);
+                        a.scaleX = 1;
+                        a.scaleY = 1;
+                    }
+                } else if (this.score <= 6 && this.score > 4) {
+                    this.rouge.scaleX = 0.8;
+                    this.rouge.scaleY = 0.8;
+                    this.jiaodu = 8;
+                    // this.fly_juli = 750;
+                    //获取已经扎过的口红 变小
+                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                        let a = this.gp_circle.getChildAt(i);
+                        // console.log(a);
+                        a.scaleX = 0.8;
+                        a.scaleY = 0.8;
+                    }
+                } else if (this.score <= 8 && this.score > 6) {
+                    this.rouge.scaleX = 0.6;
+                    this.rouge.scaleY = 0.6;
+                    this.jiaodu = 6;
+                    // this.fly_juli = 750;
+                    //获取已经扎过的口红 变小
+                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                        let a = this.gp_circle.getChildAt(i);
+                        // console.log(a);
+                        a.scaleX = 0.6;
+                        a.scaleY = 0.6;
+                    }
+                } else if (this.score > 8) {
+                    this.rouge.scaleX = 0.4;
+                    this.rouge.scaleY = 0.4;
+                    this.jiaodu = 4;
+                    // this.fly_juli = 750;
+                    //获取已经扎过的口红 变小
+                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                        let a = this.gp_circle.getChildAt(i);
+                        // console.log(a);
+                        a.scaleX = 0.4;
+                        a.scaleY = 0.4;
+                    }
                 }
             }
 
@@ -357,7 +361,7 @@ class GameMain extends eui.Component {
                                 || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                                 this.GameOver();
                             } else {
-                                this.addChild(new XsOver(this, this.score, this.goodsItemData.gameType));
+                                this.addChild(new XsOver(this, this.score, this.goodsItemData.gameType, this._level));
                                 console.log("限时模式 游戏结束")
                             }
 
@@ -509,27 +513,27 @@ class GameMain extends eui.Component {
     //关卡配置
     public config = {
         'lev0': {
-            'zhuansu': 2,
+            'zhuansu': 3,
             'time': 45,
             'rougeNum': 3
 
         },
         'lev1': {
-            'zhuansu': 2,
+            'zhuansu': 3,
             'time': 45,
-            'rougeNum': 4
+            'rougeNum': 10
 
         },
         'lev2': {
-            'zhuansu': 3,
+            'zhuansu': 4,
             'time': 45,
-            'rougeNum': 5
+            'rougeNum': 16
 
         },
         'lev3': {
-            'zhuansu': 4,
+            'zhuansu': 5,
             'time': 45,
-            'rougeNum': 6
+            'rougeNum': 22
 
         },
         'lev4': {

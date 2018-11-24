@@ -94,7 +94,7 @@ class MainSence extends eui.Component {
 
         // 返回到主界面的时候，调取用户信息，继续执行 刷新；
         AccountData.GetInfo();
-        
+
         // // 兑换接口；
         // NetSend.SendToNetExchange(Item.Gold, 1);
         // console.log("兑换  金币   1  个");
@@ -140,7 +140,6 @@ class MainSence extends eui.Component {
     public chongzhi: Chongzhi;
     private onClickChongzhi() {
         // this.addChild(new Chongzhi(this));
-
         if (this.chongzhi == null) {
             this.chongzhi = new Chongzhi(this);
             this.addChild(this.chongzhi);
@@ -149,7 +148,7 @@ class MainSence extends eui.Component {
         }
     }
     //兑换
-    public duihuan:Duihuan;
+    public duihuan: Duihuan;
     private onClickDuihuan() {
         // this.addChild(new Duihuan());
 
@@ -202,7 +201,7 @@ class MainSence extends eui.Component {
             case "rect0":
                 this.goodsFenQu = 0;
                 this.lb_0.textColor = 0x9e023e;
-                
+
                 break;
             //100
             case "rect100":
@@ -236,6 +235,7 @@ class MainSence extends eui.Component {
                 //商品类型不是口红的时候 
                 if (this.goodsType != Data.GoodsType.KOU_HONG) {
                     this.goodsFenQu = 0;
+
                 }
                 this.lb_kh.textColor = 0x9e023e;
                 this.goodsType = Data.GoodsType.KOU_HONG;//1口红
@@ -245,13 +245,15 @@ class MainSence extends eui.Component {
                 //如果点的时候口红，让500金币区消失
                 this.gp500.width = 0;
                 this.gp500.visible = false;
-
+                this.lb_0.textColor = 0x9e023e;
+                this.lb_100.textColor = 0x333333;
                 break;
             //礼品
             case "rect_lp":
                 if (this.goodsType != Data.GoodsType.LI_PIN) {
                     this.goodsFenQu = 100;
                 }
+
                 //如果点的是礼品和皮肤，就让免费区 宽度=0.visible为false
                 this.gp0.width = 0;
                 this.gp0.visible = false;
@@ -262,7 +264,9 @@ class MainSence extends eui.Component {
 
                 this.goodsType = Data.GoodsType.LI_PIN;
                 this.lb_lp.textColor = 0x9e023e;
-
+                this.lb_100.textColor = 0x9e023e;
+                this.lb_300.textColor = 0x333333;
+                this.lb_500.textColor = 0x333333;
                 break;
             //皮肤
             case "rect_pf":
@@ -279,7 +283,9 @@ class MainSence extends eui.Component {
 
                 this.goodsType = Data.GoodsType.PI_FU;
                 this.lb_pf.textColor = 0x9e023e;
-
+                this.lb_100.textColor = 0x9e023e;
+                this.lb_300.textColor = 0x333333;
+                this.lb_500.textColor = 0x333333;
                 break;
         }
         console.log(this.goodsType)
@@ -289,7 +295,7 @@ class MainSence extends eui.Component {
         this.gp_main.removeChildren();
         Data.DataManager.goodsDatas.forEach(item => {
             if (item.goodsType == this.goodsType && item.goodsFenqu == this.goodsFenQu) {
-                this.gp_main.addChild(new GoodsItem(item,this));
+                this.gp_main.addChild(new GoodsItem(item, this));
             }
         })
 

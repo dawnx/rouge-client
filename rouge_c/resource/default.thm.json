@@ -32,8 +32,8 @@
 		"resource/eui_skins/VSliderSkin.exml",
 		"resource/skin/begin.exml",
 		"resource/skin/chongzhi.exml",
+		"resource/skin/duihuaitem.exml",
 		"resource/skin/duihuan.exml",
-		"resource/skin/duihuanitem.exml",
 		"resource/skin/gamemain.exml",
 		"resource/skin/gameover.exml",
 		"resource/skin/goodsItem.exml",
@@ -41,6 +41,7 @@
 		"resource/skin/overSuccess.exml",
 		"resource/skin/paihang_items.exml",
 		"resource/skin/shouchong.exml",
+		"resource/skin/tishi.exml",
 		"resource/skin/xsover.exml",
 		"resource/skin/yaoqing.exml"
 	],

@@ -5,7 +5,7 @@ class Begin extends eui.Component {
     private gp_paihang: eui.Group;
     private lb_tishi: eui.Label;
     private m_mainsence: MainSence;
-    public constructor(_itemData: Data.GoodsItemData,mainsence: MainSence) {
+    public constructor(_itemData: Data.GoodsItemData, mainsence: MainSence) {
         super()
         this.goodsItemData = _itemData;
         this.m_mainsence = mainsence;
@@ -20,12 +20,12 @@ class Begin extends eui.Component {
             this.gp_paihang.visible = false;
             this.lb_tishi.visible = true;
 
-        } else if (this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN ||
-            this.goodsItemData.gameType == Data.GameType.JING_SU) {
-
+        } else if (this.goodsItemData.gameType == Data.GameType.JING_SU ||
+            this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
             this.gp_paihang.visible = true;
             this.lb_tishi.visible = false;
         } else {
+            console.log("付费区")
             this.onClickBegin();
         }
 
@@ -51,38 +51,17 @@ class Begin extends eui.Component {
 
     }
     //开始游戏
-    public gameMain: GameMain;
     private onClickBegin() {
 
-        if (this.gameMain == null) {
-            if (this.goodsItemData != null) {
-                var currentGolds = AccountData.accoundData.gold;
-                if ((currentGolds - this.goodsItemData.goodsFenqu) >= 0) {
-                    NetSend.SendToNetGameStart(this.goodsItemData.subGameId,this.goodsItemData.goodsType,this.goodsItemData.goodsFenqu,this.goodsItemData.gameType);
-                    console.log("*******Send   ed ");
-                     AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
-                     console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
-                     
-                    this.m_mainsence.RefeshAccountData();
-                    this.gameMain = new GameMain(this, this.goodsItemData);
-                    this.addChild(this.gameMain);
-                }
-                else {
-                    var panel = new eui.Panel();
-                    panel.title = "金币数量不足！";
-                    panel.horizontalCenter = 0;
-                    panel.verticalCenter = 0;
-                    this.addChild(panel);
-                }
-            }
+        NetSend.SendToNetGameStart(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType);
+        console.log("*******Send   ed ");
+        AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
+        console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
 
+        this.m_mainsence.RefeshAccountData();
+        var gameMain = new GameMain(this.goodsItemData);
+        this.stage.addChild(gameMain);
 
-        } else {
-            this.gameMain.visible = true;
-
-        }
     }
-
-
 }
 

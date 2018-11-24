@@ -29,6 +29,7 @@
 		"bin-debug/SoundBase.js",
 		"bin-debug/Begin.js",
 		"bin-debug/ThemeAdapter.js",
+		"bin-debug/Tishi.js",
 		"bin-debug/XsOver.js",
 		"bin-debug/YaoQing.js",
 		"bin-debug/Data/DataManager.js",

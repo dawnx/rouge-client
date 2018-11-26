@@ -20,6 +20,7 @@
 		"bin-debug/GameOver.js",
 		"bin-debug/GoodsItem.js",
 		"bin-debug/LoadingUI.js",
+		"bin-debug/LuckeyCoin.js",
 		"bin-debug/Main.js",
 		"bin-debug/MainSence.js",
 		"bin-debug/OverSuccess.js",

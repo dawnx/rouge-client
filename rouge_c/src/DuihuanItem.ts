@@ -49,7 +49,8 @@ class DuihuanItem extends eui.Component {
         }
         this._mainsence.RefeshAccountData();
         this.parent.removeChild(this)
-        this._mainsence.duihuan.visible = false;
+        console.log(this.parent)
+        // this._mainsence.duihuan.visible = false;
 
     }
 

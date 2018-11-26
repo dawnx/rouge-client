@@ -5,9 +5,9 @@ class Duihuan extends eui.Component {
     private demons: eui.Label;
     private duihuan: eui.Image;
     private _mainsence: MainSence;
-    public constructor( ) {
+    public constructor(mainsence: MainSence) {
         super()
-        // this._mainsence = mainsence;
+        this._mainsence = mainsence;
         this.skinName = "resource/skin/duihuan.exml";
     }
     public childrenCreated() {     //自执行
@@ -38,13 +38,14 @@ class Duihuan extends eui.Component {
         console.log("2222222AccountData.accoundData.diamond:       " + Data.GameContext.player.diamond)
         //this._mainsence.RefeshAccountData();
         console.log("asdasdasdadasdasd")
-        this._mainsence.duihuan.visible = false;
-        // this._mainsence.
+        // this._mainsence.duihuan.visible = false;
+
+        this.parent.removeChild(this)
 
     }
     //兑换
     private onclickDuihuan() {
-        
+
         console.log(this.edu)
         if (this.edu == null) {
             console.log("不能为空啊")

@@ -54,8 +54,11 @@ class MainSence extends eui.Component {
     //转速
     private zhuansu: number;
     //反转
-    private paomaText: eui.Label;
 
+    //跑马灯
+    private paomaText: eui.Label;
+    //幸运币按钮
+    private luckCoin: eui.Image;
     public constructor() {
         super()
         this.skinName = "resource/skin/mainsence.exml";
@@ -95,6 +98,8 @@ class MainSence extends eui.Component {
         this.rect100.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickFreeType, this);
         this.rect300.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickFreeType, this);
         this.rect500.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickFreeType, this);
+        //点击幸运币 弹出规则
+        this.luckCoin.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickLuckCoin, this);
     }
 
     private init() {
@@ -146,7 +151,7 @@ class MainSence extends eui.Component {
     //充值
     public chongzhi: Chongzhi;
     private onClickChongzhi() {
-        this.addChild(new Chongzhi( ));
+        this.addChild(new Chongzhi());
         // if (this.chongzhi == null) {
         //     this.chongzhi = new Chongzhi(this);
         //     this.addChild(this.chongzhi);
@@ -157,14 +162,17 @@ class MainSence extends eui.Component {
     //兑换
     public duihuan: Duihuan;
     private onClickDuihuan() {
-        this.addChild(new Duihuan());
+        this.addChild(new Duihuan(this));
 
-        // if (this.duihuan == null) {
-        //     this.duihuan = new Duihuan(this);
-        //     this.addChild(this.duihuan);
-        // } else {
-        //     this.duihuan.visible = true;
-        // }
+        if (this.duihuan == null) {
+            this.duihuan = new Duihuan(this);
+            this.addChild(this.duihuan);
+        } else {
+            this.duihuan.visible = true;
+        }
+    }
+    private onClickLuckCoin() {
+        this.addChild(new LuckeyCoin());
     }
 
     private onClickRad1() {
@@ -229,6 +237,7 @@ class MainSence extends eui.Component {
         console.log(this.goodsFenQu)
         this.updateContent();
     }
+
     private onClickGoodsType(e: egret.TouchEvent) {
         utils.SoundUtils.instance().playAnniu();
         var img: eui.Image = e.target;

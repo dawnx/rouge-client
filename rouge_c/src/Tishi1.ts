@@ -1,4 +1,4 @@
-class Tishi extends eui.Component {
+class Tishi1 extends eui.Component {
     private group: eui.Group;
     private img_close: eui.Image;
     private btnQueding: eui.Image;
@@ -6,7 +6,7 @@ class Tishi extends eui.Component {
     private _edu: number;
     public constructor() {
         super()
-        this.skinName = "resource/skin/tishi.exml";
+        this.skinName = "resource/skin/tishi1.exml";
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="goodsitem" width="218" height="318" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Group id="group" height="318" y="0" width="218" x="0" anchorOffsetX="0" anchorOffsetY="0">
-		<e:Image source="mmm_dating_Backplane_01_png" y="0" width="218" height="318" x="0" scaleX="1" scaleY="1"/>
+<e:Skin class="goodsitem" width="238" height="370" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="group" height="370" y="0" width="238" x="0" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Image source="mmm_dating_Backplane_01_png" y="0" width="238" height="370" x="0" scaleX="1" scaleY="1"/>
 		<e:Image id="goodsImg" scaleX="1" scaleY="1" width="96" height="147" fillMode="scale" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" verticalCenter="-57.5" source=""/>
-		<e:Label id="goodsName" text="啊实打实大苏打按说" x="26" y="177.65" textColor="0x333333" size="18" width="152" scaleX="0.9" scaleY="1"/>
-		<e:Image id="btn" source="mmm_dating_button_04_png" x="15" y="253.97" name="btn1" scaleX="1" scaleY="1"/>
-		<e:Label id="btnText" text="闯关挑战" y="264.97" textColor="0xFFFFFF" size="28" touchEnabled="false" scaleX="1" scaleY="1" width="112" textAlign="center" horizontalCenter="0"/>
-		<e:Label id="price" text="￥: 58.80" x="19" y="221.65" size="18" textColor="0xEF0057" scaleX="1" scaleY="1"/>
+		<e:Label id="goodsName" text="啊实打实大苏打按说" x="26" y="235.65" textColor="0x333333" size="18" width="152" scaleX="0.9" scaleY="1"/>
+		<e:Image id="btn" source="mmm_dating_button_04_png" x="25" y="302.97" name="btn1" scaleX="1" scaleY="1"/>
+		<e:Label id="btnText" text="闯关挑战" y="313.97" textColor="0xFFFFFF" size="28" touchEnabled="false" scaleX="1" scaleY="1" width="112" textAlign="center" horizontalCenter="0"/>
+		<e:Label id="price" text="￥: 58.80" x="19" y="279.65" size="18" textColor="0xEF0057" scaleX="1" scaleY="1"/>
 	</e:Group>
 </e:Skin>

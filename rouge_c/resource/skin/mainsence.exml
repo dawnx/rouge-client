@@ -61,7 +61,7 @@
 			</e:layout>
 			</e:Group>
 		</e:Group>
-		<e:Group id="daohang" width="750" height="56" x="0" y="362.53" anchorOffsetY="0" scaleX="1" scaleY="1">
+		<e:Group id="daohang" width="750" height="56" x="0" y="362" anchorOffsetY="0" scaleX="1" scaleY="1">
 			<e:Image source="mmm_dating_Backplane_03_png" x="0" y="0" scale9Grid="7,7,42,42" width="750" scaleX="1" scaleY="1"/>
 			<e:Label id="lb_kh" text="口红" x="56" y="13" name="btn_kh" size="28"/>
 			<e:Label id="lb_lp" text="礼品" x="206" y="13" name="btn_lp" size="28"/>
@@ -70,8 +70,8 @@
 			<e:Rect id="rect_lp" width="98" height="58" x="187" y="0" anchorOffsetX="0" fillAlpha="0" name="rect_lp"/>
 			<e:Rect id="rect_pf" width="98" height="58" x="329" y="-2" anchorOffsetX="0" fillAlpha="0" name="rect_pf"/>
 		</e:Group>
-		<e:Image source="mmm_dating_Backplane_05_png" x="0" y="420.51" scale9Grid="7,7,44,44" anchorOffsetX="0" width="750"/>
-		<e:Group id="leixing" width="750" height="58" x="0" y="422.53" scaleX="1" scaleY="1">
+		<e:Image source="mmm_dating_Backplane_05_png" x="0" y="426" scale9Grid="7,7,44,44" anchorOffsetX="0" width="750"/>
+		<e:Group id="leixing" width="750" height="58" x="0" y="426" scaleX="1" scaleY="1">
 			<e:Group id="gp0" width="187.5" height="58" x="45" y="0" anchorOffsetY="0">
 				<e:Label id="lb_0" text="免费区" y="14" name="btn_0" scaleX="1" scaleY="1" textColor="0x333333" size="26" horizontalCenter="0"/>
 				<e:Rect id="rect0" width="98" height="58" y="0" anchorOffsetX="0" fillAlpha="0" name="rect0" scaleX="1" scaleY="1" horizontalCenter="0"/>
@@ -103,13 +103,13 @@
 
 
 
-		<e:Group id="gp_main" width="750" height="366" x="0" y="480.53" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Group id="gp_main" width="750" height="366" x="0" y="484" anchorOffsetX="0" anchorOffsetY="0">
 			<e:layout>
-				<e:HorizontalLayout horizontalAlign="left" verticalAlign="middle" gap="24" paddingLeft="24" paddingTop="0"/>
+				<e:HorizontalLayout horizontalAlign="left" verticalAlign="middle" paddingTop="8" paddingLeft="9" gap="9"/>
 			</e:layout>
 		</e:Group>
-		<e:Label id="paomaText" text="阿斯顿阿斯顿阿斯顿阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的" x="68" y="327.5" textColor="0x666666" size="28" height="28" wordWrap="true" anchorOffsetX="0" width="655"/>
+		<e:Label id="paomaText" text="阿斯顿阿斯顿阿斯顿阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的阿斯顿阿斯顿阿斯顿实打实的" x="68" y="327.5" textColor="0x666666" size="28" height="28" wordWrap="true" anchorOffsetX="0" width="600"/>
+		<e:Image source="mmm_dating_Backplane_04_png" x="0" y="323" scale9Grid="10,10,60,60" width="69" height="39"/>
 		<e:Image source="mmm_dating_icon_04_png" x="10" y="326"/>
-		<e:Rect width="20" height="20" x="23" y="339"/>
 	</e:Group>
 </e:Skin>

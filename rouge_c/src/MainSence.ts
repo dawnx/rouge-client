@@ -64,7 +64,7 @@ class MainSence extends eui.Component {
         super.childrenCreated();
         //跑马灯
         this.paomaText.x = 750;
-        egret.Tween.get(this.paomaText, { loop: true }).to({ x: 68 }, 5000)
+        egret.Tween.get(this.paomaText, { loop: true }).to({ x: -this.paomaText.width }, 9000)
             .call(() => {
                 this.paomaText.x = 750
             })
@@ -146,25 +146,25 @@ class MainSence extends eui.Component {
     //充值
     public chongzhi: Chongzhi;
     private onClickChongzhi() {
-        // this.addChild(new Chongzhi(this));
-        if (this.chongzhi == null) {
-            this.chongzhi = new Chongzhi(this);
-            this.addChild(this.chongzhi);
-        } else {
-            this.chongzhi.visible = true;
-        }
+        this.addChild(new Chongzhi( ));
+        // if (this.chongzhi == null) {
+        //     this.chongzhi = new Chongzhi(this);
+        //     this.addChild(this.chongzhi);
+        // } else {
+        //     this.chongzhi.visible = true;
+        // }
     }
     //兑换
     public duihuan: Duihuan;
     private onClickDuihuan() {
-        // this.addChild(new Duihuan());
+        this.addChild(new Duihuan());
 
-        if (this.duihuan == null) {
-            this.duihuan = new Duihuan(this);
-            this.addChild(this.duihuan);
-        } else {
-            this.duihuan.visible = true;
-        }
+        // if (this.duihuan == null) {
+        //     this.duihuan = new Duihuan(this);
+        //     this.addChild(this.duihuan);
+        // } else {
+        //     this.duihuan.visible = true;
+        // }
     }
 
     private onClickRad1() {

@@ -27,16 +27,50 @@ class ShouChong extends eui.Component {
     }
     private init() {
         var payCount = Data.GameContext.player.extraData.payCount;
+        var payLingqu = Data.GameContext.player.extraData;
         console.log("充值数量" + payCount)
         if (!payCount) payCount = 0;
-        if (payCount >= 50) {
-            ///adfadsf
+        if (payCount >= 20) {
+            this.chongzhi1.source = "resource/assets/game/mmm_youxi_button_01.png";
+            this.chongzhi1.width = 216;
+            this.chongzhi1.height = 70;
+            this.shouChongText1.text = "领取";
+            if (payLingqu.pay_reward_20 != null && payLingqu.pay_reward_20 == 20) {
+                this.chongzhi1.source = "resource/assets/game/toast-bg";
+                this.shouChongText1.text = "已领取";
+            }
+            // this.showChongZhiPanel();
+            // this.isCharge = true;
         } else if (payCount >= 100) {
-            ///adfadsf
+            this.chongzhi2.source = "resource/assets/game/mmm_youxi_button_01.png";
+            this.chongzhi2.width = 216;
+            this.chongzhi2.height = 70;
+            this.shouChongText2.text = "领取";
+            if (payLingqu.pay_reward_100 != null && payLingqu.pay_reward_100 == 100) {
+                this.chongzhi2.source = "resource/assets/game/toast-bg";
+                this.shouChongText1.text = "已领取";
+            }
+            // this.showChongZhiPanel();
         } else if (payCount >= 200) {
-            ///adfadsf
+            this.chongzhi3.source = "resource/assets/game/mmm_youxi_button_01.png";
+            this.chongzhi3.width = 216;
+            this.chongzhi3.height = 70;
+            this.shouChongText3.text = "领取";
+            // this.showChongZhiPanel();
+            if (payLingqu.pay_reward_200 != null && payLingqu.pay_reward_200 == 200) {
+                this.chongzhi3.source = "resource/assets/game/toast-bg";
+                this.shouChongText1.text = "已领取";
+            }
         } else if (payCount >= 300) {
-            ///adfadsf
+            this.chongzhi4.source = "resource/assets/game/mmm_youxi_button_01.png";
+            this.chongzhi4.width = 216;
+            this.chongzhi4.height = 70;
+            this.shouChongText4.text = "领取";
+            // this.showChongZhiPanel();
+            if (payLingqu.pay_reward_300 != null && payLingqu.pay_reward_300 == 200) {
+                this.chongzhi4.source = "resource/assets/game/toast-bg";
+                this.shouChongText1.text = "已领取";
+            }
         }
     }
     private onClickClose() {
@@ -46,16 +80,14 @@ class ShouChong extends eui.Component {
     public chongzhiPanel: Chongzhi;
     private showChongZhiPanel() {
         if (this.chongzhiPanel == null) {
-            this.chongzhiPanel = new Chongzhi(this.m_mainSence);
+            this.chongzhiPanel = new Chongzhi( );
             this.addChild(this.chongzhiPanel);
         } else {
             this.chongzhiPanel.visible = true;
         }
     }
     private onclickCz1() {
-
         OrderApi.payReward(1);
-
         // if (!this.isCharge) {
         //     // 假设 充值成功；
         //     this.chongzhi1.source = "resource/assets/game/mmm_youxi_button_01.png";

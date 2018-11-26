@@ -40,6 +40,7 @@
 		"bin-debug/Data/GoodsItemData.js",
 		"bin-debug/Data/GoodsType.js",
 		"bin-debug/Data/PlayerData.js",
+		"bin-debug/Data/RankData.js",
 		"bin-debug/Util/BaseApi.js",
 		"bin-debug/Util/EventData.js",
 		"bin-debug/Util/EventManager.js",

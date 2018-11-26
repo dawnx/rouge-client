@@ -25,11 +25,13 @@ class RougeGameApi {
 	}
 
 	/// 游戏结束   调用；
-	public static gameEnd(subGameId: number, isWin: number) {
-		let openId = egret.getOption("openId");  //取url后边的openid
+	public static gameEnd(subGameId: number, isWin: number,level:number, score:number, aliveTime:number) {
+		let openId = Data.GameContext.player.openId;  //取url后边的openid
 		console.log("openId   " + openId);
 		//拼接参数 
-		var params = "?openId=" + openId + "&subGameId=" + subGameId + "&win=" + isWin;
+		var params = "?openId=" + openId + "&subGameId=" + subGameId + "&win=" + isWin + "&level=" + level + "&score=" + score + "&aliveTime=" + aliveTime;
+		//拼接参数 
+		//var params = "?openId=" + openId + "&subGameId=" + subGameId + "&win=" + isWin + "&level=" + level + "&score=" + score + "&aliveTime=" + aliveTime;
 		var uri: string = "gameRouge/endGame" + params;
 		BaseApi.get(uri, this.onCompleteGameEnd);
 	}

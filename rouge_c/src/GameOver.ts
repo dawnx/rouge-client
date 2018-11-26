@@ -11,7 +11,8 @@ class GameOver extends eui.Component {
     private img_shibai: eui.Image;
     private goodsItemData: Data.GoodsItemData;
     private m_mainsence: MainSence;
-    public constructor(gamemain: GameMain, score: number, type: number, level: number, goodsItemData: Data.GoodsItemData, m_mainsence: MainSence) {
+    private m_time:number;
+    public constructor(gamemain: GameMain,timer:number, score: number, type: number, level: number, goodsItemData: Data.GoodsItemData, m_mainsence: MainSence) {
         super()
         this._score = score;
         this._type = type;
@@ -19,6 +20,7 @@ class GameOver extends eui.Component {
         this._gamemain = gamemain;
         this.goodsItemData = goodsItemData;
         this.m_mainsence = m_mainsence;
+        this.m_time = timer;
         this.skinName = "resource/skin/gameover.exml";
 
     }
@@ -41,6 +43,8 @@ class GameOver extends eui.Component {
     }
     private onClickFangqi() {
         this.addChild(new MainSence());
+        RougeGameApi.gameEnd(this.goodsItemData.subGameId,0,this._level,this._score,this.m_time);
+        console.log("this.m_time    " + this.m_time);
     }
 
     private onClickReset() {

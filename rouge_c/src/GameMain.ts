@@ -172,7 +172,7 @@ class GameMain extends eui.Component {
     public gameover: GameOver;
     private GameOver() {
         if (this.gameover == null) {
-            this.gameover = new GameOver(this, this.score, this.goodsItemData.gameType, this._level, this.goodsItemData, this.m_mainsence);
+            this.gameover = new GameOver(this, this.miao,this.score, this.goodsItemData.gameType, this._level, this.goodsItemData, this.m_mainsence);
             this.addChild(this.gameover);
         } else {
             this.gameover.visible = true;
@@ -355,7 +355,7 @@ class GameMain extends eui.Component {
                         //弹出弹窗 付费模式结束
                         console.log("通关 获得奖励")
                         console.log("通关subGameId     " + this.goodsItemData.subGameId)
-                        RougeGameApi.gameEnd(this.goodsItemData.subGameId, GameEnd.RESULT_WIN);
+                        RougeGameApi.gameEnd(this.goodsItemData.subGameId, GameEnd.RESULT_WIN,this._level,this.score,this.miao);
                         this.addChild(new OverSuccess(this, this.score, this.goodsItemData.gameType, this._level))
                         this.timer.stop();
 

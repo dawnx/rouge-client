@@ -53,4 +53,40 @@ class WeChatApi  {
             });
         }
     }
+/// 微信分享；
+    public static weChatShare(data: any) {
+        console.log("微信 Share")
+        var bodyConfig: BodyConfig = new BodyConfig();
+        bodyConfig.appId = data.appId;
+        bodyConfig.debug = true;
+        bodyConfig.timestamp = data.timeStamp;
+        bodyConfig.nonceStr = data.nonceStr;
+        bodyConfig.signature = data.sign;
+        bodyConfig.jsApiList = [
+            "checkJsApi",
+            'onMenuShareTimeline',//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+            'onMenuShareAppMessage',//获取“分享给朋友”按钮点击状态及自定义分享内容接口
+            'onMenuShareQQ',	//获取“分享到QQ”按钮点击状态及自定义分享内容接口
+            'onMenuShareWeibo',//获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
+            "hideOptionMenu",
+            "hideMenuItems",
+        ];
+        // 调试面板；
+
+        // ... 其他的配置属性赋值
+        // 通过config接口注入权限验证配置
+        if (wx) {
+            wx.config(bodyConfig);
+            console.log("onMenuShareAppMessage")
+            wx.ready(function () {
+                // 在这里调用微信相关功能的 API
+                var shareAppMessage = new BodyMenuShareAppMessage();
+                shareAppMessage.title = '喵喵喵';
+                shareAppMessage.desc = '在长大的过程中，我才慢慢发现，我身边的所有事，别人跟我说的所有事，那些所谓本来如此，注定如此的事，它们其实没有非得如此，事情是可以改变的。更重要的是，有些事既然错了，那就该做出改变。';
+                shareAppMessage.link = 'http://kh.chitugame.com/game/girl.jpg';
+                shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/girl.jpg';
+                wx.onMenuShareAppMessage(shareAppMessage);
+            });
+        }
+    }
 }

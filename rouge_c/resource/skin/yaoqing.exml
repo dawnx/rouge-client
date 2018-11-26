@@ -7,8 +7,8 @@
 	<e:Image x="148.5" y="307.5" source="mmm_dating_header_02_png"/>
 	<e:Image x="266" y="322" source="mmm_dating_Art-word_03_png"/>
 	<e:Image id="img_close" source="mmm_dating_button_02_03_png" x="344" y="1005.79"/>
-	<e:Image source="mmm_dating_button_03_png" x="143" y="843" scaleX="0.7" scaleY="0.7"/>
+	<e:Image id="m_receiveBtn" source="mmm_dating_button_03_png" x="143" y="843" scaleX="0.7" scaleY="0.7"/>
 	<e:Label text="领取奖品" x="166.6" y="854.5" size="26" textColor="0xffffff" touchEnabled="false"/>
-	<e:Image x="449.3" y="843" scaleX="0.7" scaleY="0.7" source="mmm_dating_button_05_png"/>
+	<e:Image id="m_shareBtn" x="449.3" y="843" scaleX="0.7" scaleY="0.7" source="mmm_dating_button_05_png"/>
 	<e:Label text="分享链接" x="472.9" y="854.5" size="26" textColor="0xffffff" touchEnabled="false"/>
 </e:Skin>

@@ -1,6 +1,6 @@
 class BaseApi {
 	public static host: string = "http://kh.chitugame.com/ct-admin/";
-	//public static host: string = "http://192.168.1.112/ct-admin/";
+	// public static host: string = "http://192.168.1.112:8080/ct-admin/";
 
 	public static get(uri: string,
 		onComplete: Function = null,
@@ -17,7 +17,6 @@ class BaseApi {
 
 		request.addEventListener(egret.Event.COMPLETE, event => {
 			var request = <egret.HttpRequest>event.currentTarget;
-			console.log("get data : ", request.response);
 			if (onComplete) onComplete(event);
 		}, this);
 		request.addEventListener(egret.IOErrorEvent.IO_ERROR, event => {

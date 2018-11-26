@@ -36,9 +36,11 @@ class Main extends eui.UILayer {
         Main._screenW = this.stage.stageWidth;
         Main._screenH = this.stage.stageHeight;
         // 初始化框架系统；
-     
+
         EventManager.InitEventManager();
-              // 初始化WeChat模块；   这里可以选择不初始化这个模块 根据需要；
+
+        PlayerApi.getPlayerInfo();
+        // 初始化WeChat模块；   这里可以选择不初始化这个模块 根据需要；
         console.log("Main Init !   1");
         egret.lifecycle.addLifecycleListener((context) => {
             // custom lifecycle plugin
@@ -63,12 +65,12 @@ class Main extends eui.UILayer {
             console.log(e);
         })
 
-        
+
     }
 
     private async runGame() {
         await this.loadResource()
-       
+
         this.createGameScene();
         const result = await RES.getResAsync("description_json")
 
@@ -78,7 +80,7 @@ class Main extends eui.UILayer {
 
     }
 
-  
+
 
     private async loadResource() {
         try {

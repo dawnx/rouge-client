@@ -77,4 +77,31 @@ class OrderApi {
 
     }
 
+    // 分享接口；
+    public static share() {
+        console.log("*******点击响应");
+        let openId = egret.getOption("openId");  //取url后边的openid
+        console.log("openId   " + openId);
+        var currentUrl:string = "http://kh.chitugame.com/rouge/index.html";
+        var currentUrl:string = "192.168.1.111:5000/index.html";
+        currentUrl = encodeURI(currentUrl);
+        console.log("currentUrl  "+currentUrl);
+        //拼接参数 
+        var params = "?openId=" + openId + "&url=" + currentUrl;
+        // var params = "?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g&url=" + currentUrl;;
+        var uri: string = "weixin/getSignForShare" + params;
+        BaseApi.get(uri, this.onGetCompleteShare);
+    }
+    private static onGetCompleteShare(event: egret.Event): void {
+        console.log("Share Success!!!");
+        // 获取到后台传回来的数据；
+        var request = <egret.HttpRequest>event.currentTarget;
+        console.log("get data : ", request.response);
+        // 解析
+        var data = JSON.parse(request.response).data;
+        WeChatApi.weChatShare(data);
+        console.log(data)
+        console.log("  调起分享！");
+    }
+
 }

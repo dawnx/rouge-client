@@ -1,5 +1,7 @@
 class YaoQing extends eui.Component {
     private img_close: eui.Image;
+    private m_shareBtn: eui.Image;
+    private m_receiveBtn: eui.Image;
     public constructor() {
         super()
         this.skinName = "resource/skin/yaoqing.exml";
@@ -8,9 +10,18 @@ class YaoQing extends eui.Component {
         super.childrenCreated();
         this.init();
         this.img_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickClose, this);
+        this.m_shareBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickShareBtn, this);
+        this.m_receiveBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickReceiveBtn, this);
     }
     private init() {
 
+    }
+    private onClickShareBtn() {
+        OrderApi.share();
+        console.log("  ***OrderApi.share(); ");
+    }
+    private onClickReceiveBtn() {
+        //console.log(this);
     }
     private onClickClose() {
         this.parent.removeChild(this);

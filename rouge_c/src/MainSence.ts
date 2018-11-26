@@ -3,6 +3,7 @@ class MainSence extends eui.Component {
     private rad2: eui.RadioButton;
     private rad3: eui.RadioButton;
     private img_bg: eui.Image;
+    private BG: eui.Image;
     private index: number = 1;
     private group: eui.Group;
     private img_chongzhi: eui.Button;
@@ -65,6 +66,8 @@ class MainSence extends eui.Component {
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();
+        this.BG.width = Main._screenW;
+        this.BG.height = Main._screenH;
         //跑马灯
         this.paomaText.x = 750;
         egret.Tween.get(this.paomaText, { loop: true }).to({ x: -this.paomaText.width }, 9000)
@@ -100,6 +103,9 @@ class MainSence extends eui.Component {
         this.rect500.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickFreeType, this);
         //点击幸运币 弹出规则
         this.luckCoin.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickLuckCoin, this);
+
+        // 事件系统
+        EventManager.getInstance().addEventListener(ApiEvent.PLAYER_INFO, this.onPlayerInfo, this);
     }
 
     private init() {
@@ -111,7 +117,7 @@ class MainSence extends eui.Component {
         // NetSend.SendToNetExchange(Item.Gold, 1);
         // console.log("兑换  金币   1  个");
         //  刷新用户信息，调动此方法时必选先拉取用户信息，才能保证正确刷新；
-        this.RefeshAccountData();
+        this.onPlayerInfo();
         console.log("刷新用户信息；");
 
         this.Clcik();
@@ -125,7 +131,7 @@ class MainSence extends eui.Component {
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
         timer.start();
     }
-    public RefeshAccountData() {
+    public onPlayerInfo() {
         console.log("RefeshAccountData    !");
         var account: Data.PlayerData = Data.GameContext.player;
         if (account != null) {

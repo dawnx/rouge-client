@@ -46,7 +46,6 @@ class GoodsItem extends eui.Component {
             // AccountData.accoundData.gold -= this.itemData.goodsFenqu;
             // console.log("AccountData.accoundData.gold   :" + PlayerApi.accoundData.gold);
 
-            this.m_mainsence.RefeshAccountData();
             var gameMain = new GameMain(this.itemData, this.m_mainsence);
             this.stage.addChild(gameMain);
         } else {

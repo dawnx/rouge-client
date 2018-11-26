@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="goods_item" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image source="mmm_youxi_background_01_png" x="0" y="79"/>
+	<e:Image source="mmm_youxi_background_01_png" x="0" y="79" height="1386" width="750"/>
 	<e:Image id="img_juzi" x="328" y="404" source="kouhong2_png"/>
 	<e:Image source="mmm_dating_picture_04_png" x="0" y="0"/>
 	<e:Label id="lb_score" text="好厉害！恭喜你获得奖品" x="215" y="132.55" textColor="0x000000"/>

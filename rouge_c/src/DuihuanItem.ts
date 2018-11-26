@@ -47,7 +47,6 @@ class DuihuanItem extends eui.Component {
             Data.GameContext.player.goldNumber += this._edu;
             this.isExchange = false;
         }
-        this._mainsence.RefeshAccountData();
         this.parent.removeChild(this)
         console.log(this.parent)
         // this._mainsence.duihuan.visible = false;

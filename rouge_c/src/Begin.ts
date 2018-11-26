@@ -63,7 +63,6 @@ class Begin extends eui.Component {
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
 
-            this.m_mainsence.RefeshAccountData();
             var gameMain = new GameMain(this.goodsItemData, this.m_mainsence);
             this.stage.addChild(gameMain);
         } else {

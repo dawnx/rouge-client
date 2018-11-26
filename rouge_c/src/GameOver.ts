@@ -38,7 +38,6 @@ class GameOver extends eui.Component {
         } else if (this._type == 2) {
             // this.lb_score.text = "游戏结束！恭喜您闯过了了" + (this._level - 1) + "关!";
             this.gp_tiyan.visible = false;
-
         }
 
     }
@@ -51,15 +50,11 @@ class GameOver extends eui.Component {
     private onClickReset() {
         this.visible = false;
         if (Data.GameContext.player.goldNumber >= this.goodsItemData.goodsFenqu) {
-
             RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.goodsType,
-                this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
-
+            this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
             console.log("*******Send   ed ");
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
-
-            this.m_mainsence.RefeshAccountData();
             this._gamemain.initGame1();
         }
         else {

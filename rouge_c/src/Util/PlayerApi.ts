@@ -12,6 +12,7 @@ class PlayerApi {
         // 解析
         var data: Data.PlayerData = JSON.parse(request.response).data;
         Data.GameContext.player = data;
+        EventManager.getInstance().SendEvent(ApiEvent.PLAYER_INFO);
     }
 
     /// 向服务器同步个人信息；

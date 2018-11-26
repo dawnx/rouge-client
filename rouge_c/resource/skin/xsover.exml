@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="goods_item" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image source="mmm_youxi_background_01_png" x="0" y="79"/>
+	<e:Image source="mmm_youxi_background_01_png" x="0" y="79" width="750" height="1386"/>
 	<e:Image id="img_juzi" x="296.5" y="523" source="kouhong2_png" scaleX="1.5" scaleY="1.5"/>
 	<e:Image source="mmm_dating_picture_04_png" x="0" y="0"/>
 	<e:Label id="lb_score" text="游戏结束！恭喜您获得了100分" x="0" y="124.55" textColor="0x000000" width="750" textAlign="center"/>

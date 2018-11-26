@@ -36,9 +36,6 @@ class Main extends eui.UILayer {
         Main._screenW = this.stage.stageWidth;
         Main._screenH = this.stage.stageHeight;
         // 初始化框架系统；
-
-        EventManager.InitEventManager();
-
         PlayerApi.getPlayerInfo();
         // 初始化WeChat模块；   这里可以选择不初始化这个模块 根据需要；
         console.log("Main Init !   1");
@@ -114,6 +111,7 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     // private _begin:Begin;
+    
     protected createGameScene(): void {
         Data.DataManager.init();
         utils.SoundUtils.instance().initSound();

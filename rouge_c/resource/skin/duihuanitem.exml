@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="goods_item" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Rect width="750" height="1334" x="0" y="0" fillColor="0x000000" fillAlpha="0.3"/>
+	<e:Rect width="750" height="1386" x="0" y="0" fillColor="0x000000" fillAlpha="0.3"/>
 	<e:Image x="37" y="346" scale9Grid="15,15,96,96" width="676" height="414" source="mmm_dating_Backplane_07_png"/>
 	<e:Image source="mmm_dating_header_01_png" x="148.5" y="283.5"/>
 	<e:Image x="338" y="306" source="mmm_dating_Art-word_04_03_png"/>

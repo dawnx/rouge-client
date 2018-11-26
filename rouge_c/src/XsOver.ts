@@ -46,7 +46,6 @@ class XsOver extends eui.Component {
         // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
         console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
 
-        this.m_mainsence.RefeshAccountData();
         this._gamemain.initGame2();
     }
 

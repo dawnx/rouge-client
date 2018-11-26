@@ -42,6 +42,7 @@ class GameMain extends eui.Component {
     }
     public childrenCreated() {
         super.childrenCreated();
+        
         this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickBack, this);
         console.log("**********this.goodsItemData.gameType    " + this.goodsItemData.gameType
             + "  goodsFenqu     " + this.goodsItemData.goodsFenqu

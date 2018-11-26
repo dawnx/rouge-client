@@ -36,10 +36,9 @@ class Main extends eui.UILayer {
         Main._screenW = this.stage.stageWidth;
         Main._screenH = this.stage.stageHeight;
         // 初始化框架系统；
-        NetSend.InitNetSend();
+     
         EventManager.InitEventManager();
-        AccountData.InitAccountData();
-        WeChatMoudle.InitWeChatMoudle();        // 初始化WeChat模块；   这里可以选择不初始化这个模块 根据需要；
+              // 初始化WeChat模块；   这里可以选择不初始化这个模块 根据需要；
         console.log("Main Init !   1");
         egret.lifecycle.addLifecycleListener((context) => {
             // custom lifecycle plugin
@@ -69,7 +68,7 @@ class Main extends eui.UILayer {
 
     private async runGame() {
         await this.loadResource()
-        this.GetInfo();
+       
         this.createGameScene();
         const result = await RES.getResAsync("description_json")
 
@@ -79,11 +78,7 @@ class Main extends eui.UILayer {
 
     }
 
-    public GetInfo() {
-        // 获取用户信息；暂时用作刷新用；
-        var account: AccountData = new AccountData();
-        account.RefreshAccount();
-    }
+  
 
     private async loadResource() {
         try {

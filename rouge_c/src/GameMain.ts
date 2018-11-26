@@ -352,7 +352,7 @@ class GameMain extends eui.Component {
                         //弹出弹窗 付费模式结束
                         console.log("通关 获得奖励")
                         console.log("通关subGameId     " + this.goodsItemData.subGameId)
-                        NetSend.SendToNetGameEnd(this.goodsItemData.subGameId, GameEnd.RESULT_WIN);
+                        RougeGameApi.gameEnd(this.goodsItemData.subGameId, GameEnd.RESULT_WIN);
                         this.addChild(new OverSuccess(this, this.score, this.goodsItemData.gameType, this._level))
                         this.timer.stop();
 

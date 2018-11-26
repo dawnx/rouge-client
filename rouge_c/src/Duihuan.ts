@@ -17,8 +17,8 @@ class Duihuan extends eui.Component {
         this.duihuan.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickDuihuan, this);
         var hSlilder: eui.HSlider = new eui.HSlider();
         hSlilder.width = 452;
-        console.log(AccountData.accoundData.diamond);
-        hSlilder.maximum = AccountData.accoundData.diamond;;//等于自己钻石总数
+        console.log(Data.GameContext.player.diamond);
+        hSlilder.maximum = Data.GameContext.player.diamond;;//等于自己钻石总数
         hSlilder.horizontalCenter = 0;
         hSlilder.verticalCenter = 0;
         ///监听 CHANGE 事件
@@ -35,7 +35,7 @@ class Duihuan extends eui.Component {
     private onclickClose() {
         // this.parent.removeChild(this);
         //AccountData.GetInfo();
-        console.log("2222222AccountData.accoundData.diamond:       " + AccountData.accoundData.diamond)
+        console.log("2222222AccountData.accoundData.diamond:       " + Data.GameContext.player.diamond)
         //this._mainsence.RefeshAccountData();
         console.log("asdasdasdadasdasd")
         this._mainsence.duihuan.visible = false;
@@ -52,7 +52,7 @@ class Duihuan extends eui.Component {
         }
         this.addChild(new DuihuanItem(this._mainsence, this.edu));
 
-        console.log("1111111AccountData.accoundData.diamond:       " + AccountData.accoundData.diamond)
+        console.log("1111111AccountData.accoundData.diamond:       " + Data.GameContext.player.diamond)
     }
 
     ///水平滑动选择器

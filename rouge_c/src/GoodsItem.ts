@@ -34,15 +34,16 @@ class GoodsItem extends eui.Component {
 
     }
     private onClickBtn() {
-        var currentGolds = AccountData.accoundData.gold;
+        
+        var currentGolds = Data.GameContext.player.goldNumber;
 
         if (this.itemData.goodsFenqu == 0) {
             this.stage.addChild(new Begin(this.itemData, this.m_mainsence));
         } else if (currentGolds >= this.itemData.goodsFenqu) {
-            NetSend.SendToNetGameStart(this.itemData.subGameId, this.itemData.goodsType, this.itemData.goodsFenqu, this.itemData.gameType, 0);
+            RougeGameApi.startGame(this.itemData.subGameId, this.itemData.goodsType, this.itemData.goodsFenqu, this.itemData.gameType, 0);
             console.log("*******Send   ed ");
-            AccountData.accoundData.gold -= this.itemData.goodsFenqu;
-            console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
+            // AccountData.accoundData.gold -= this.itemData.goodsFenqu;
+            // console.log("AccountData.accoundData.gold   :" + PlayerApi.accoundData.gold);
 
             this.m_mainsence.RefeshAccountData();
             var gameMain = new GameMain(this.itemData, this.m_mainsence);

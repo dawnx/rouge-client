@@ -29,33 +29,34 @@ class Chongzhi extends eui.Component {
 
     }
     private onclickBack() {
-        AccountData.GetInfo();
+        PlayerApi.getPlayerInfo();
         this._mainsence.RefeshAccountData();
+        
         this.visible = false;
     }
     private onclickCz1() {
         // 通知服务器下单；
-        NetSend.SendToNetOrder("钻石充值", 6);
+        OrderApi.createOrder("钻石充值", 6);
     }
     private onclickCz2() {
         // 通知服务器下单；
-        NetSend.SendToNetOrder("钻石充值", 12);
+        OrderApi.createOrder("钻石充值", 12);
     }
     private onclickCz3() {
         // 通知服务器下单；
-        NetSend.SendToNetOrder("钻石充值", 15);
+        OrderApi.createOrder("钻石充值", 15);
     }
     private onclickCz4() {
         // 通知服务器下单；
-        NetSend.SendToNetOrder("钻石充值", 20);
+        OrderApi.createOrder("钻石充值", 20);
     }
     private onclickCz5() {
         // 通知服务器下单；
-        NetSend.SendToNetOrder("钻石充值", 50);
+        OrderApi.createOrder("钻石充值", 50);
     }
     private onclickCz6() {
         // 通知服务器下单；
-        NetSend.SendToNetOrder("钻石充值", 100);
+        OrderApi.createOrder("钻石充值", 100);
     }
 
 }

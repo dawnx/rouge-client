@@ -40,11 +40,11 @@ class XsOver extends eui.Component {
 
     private onClickReset() {
         this.visible = false;
-        NetSend.SendToNetGameStart(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
+        RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
         console.log("*******Send   ed ");
         console.log("*******GameEnd.RESULT_RESET  ed " + GameEnd.RESULT_RESET);
-        AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
-        console.log("AccountData.accoundData.gold   :" + AccountData.accoundData.gold);
+        // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
+        console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
 
         this.m_mainsence.RefeshAccountData();
         this._gamemain.initGame2();

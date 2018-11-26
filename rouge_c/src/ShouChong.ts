@@ -26,7 +26,18 @@ class ShouChong extends eui.Component {
         this.chongzhi4.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz4, this);
     }
     private init() {
-
+        var payCount = Data.GameContext.player.extraData.payCount;
+        console.log("充值数量" + payCount)
+        if (!payCount) payCount = 0;
+        if (payCount >= 50) {
+            ///adfadsf
+        } else if (payCount >= 100) {
+            ///adfadsf
+        } else if (payCount >= 200) {
+            ///adfadsf
+        } else if (payCount >= 300) {
+            ///adfadsf
+        }
     }
     private onClickClose() {
         this.visible = false;
@@ -42,60 +53,72 @@ class ShouChong extends eui.Component {
         }
     }
     private onclickCz1() {
-        if (!this.isCharge) {
-            // 假设 充值成功；
-            this.chongzhi1.source = "resource/assets/game/mmm_youxi_button_01.png";
-            this.chongzhi1.width = 216;
-            this.chongzhi1.height = 70;
-            this.shouChongText1.text = "领取";
-            this.showChongZhiPanel();
-            this.isCharge = true;
-            //this.onClickClose();
-        } else {
-            NetSend.SendToNetFirstChargeReward(1);
-        }
+
+        OrderApi.payReward(1);
+
+        // if (!this.isCharge) {
+        //     // 假设 充值成功；
+        //     this.chongzhi1.source = "resource/assets/game/mmm_youxi_button_01.png";
+        //     this.chongzhi1.width = 216;
+        //     this.chongzhi1.height = 70;
+        //     this.shouChongText1.text = "领取";
+        //     this.showChongZhiPanel();
+        //     this.isCharge = true;
+        //     //this.onClickClose();
+        // } else {
+        //     OrderApi.payReward(1);
+        // }
     }
     private onclickCz2() {
-        if (!this.isCharge) {
-            // 假设 充值成功；
-            this.chongzhi2.source = "resource/assets/game/mmm_youxi_button_01.png";
-            this.chongzhi2.width = 216;
-            this.chongzhi2.height = 70;
-            this.shouChongText2.text = "领取";
-            //this.onClickClose();
-            this.showChongZhiPanel();
-        } else {
-            NetSend.SendToNetFirstChargeReward(2);
-        }
+
+        OrderApi.payReward(2);
+
+        // if (!this.isCharge) {
+        //     // 假设 充值成功；
+        //     this.chongzhi2.source = "resource/assets/game/mmm_youxi_button_01.png";
+        //     this.chongzhi2.width = 216;
+        //     this.chongzhi2.height = 70;
+        //     this.shouChongText2.text = "领取";
+        //     //this.onClickClose();
+        //     this.showChongZhiPanel();
+        // } else {
+        //     OrderApi.payReward(2);
+        // }
     }
     private onclickCz3() {
-        if (!this.isCharge) {
-            // 假设 充值成功；
-            this.chongzhi3.source = "resource/assets/game/mmm_youxi_button_01.png";
-            this.chongzhi3.width = 216;
-            this.chongzhi3.height = 70;
-            this.shouChongText3.text = "领取";
-            //this.onClickClose();
-            this.showChongZhiPanel();
-            //this.onClickClose();
-        } else {
-            NetSend.SendToNetFirstChargeReward(3);
-        }
+
+        OrderApi.payReward(3);
+
+        // if (!this.isCharge) {
+        //     // 假设 充值成功；
+        //     this.chongzhi3.source = "resource/assets/game/mmm_youxi_button_01.png";
+        //     this.chongzhi3.width = 216;
+        //     this.chongzhi3.height = 70;
+        //     this.shouChongText3.text = "领取";
+        //     //this.onClickClose();
+        //     this.showChongZhiPanel();
+        //     //this.onClickClose();
+        // } else {
+        //     OrderApi.payReward(3);
+        // }
 
     }
     private onclickCz4() {
-        if (!this.isCharge) {
-            // 假设 充值成功；
-            this.chongzhi4.source = "resource/assets/game/mmm_youxi_button_01.png";
-            this.chongzhi4.width = 216;
-            this.chongzhi4.height = 70;
-            this.shouChongText4.text = "领取";
-            //this.onClickClose();
-            this.showChongZhiPanel();
-            //this.onClickClose();
-        } else {
-            NetSend.SendToNetFirstChargeReward(4);
-        }
+
+        OrderApi.payReward(4);
+
+        // if (!this.isCharge) {
+        //     // 假设 充值成功；
+        //     this.chongzhi4.source = "resource/assets/game/mmm_youxi_button_01.png";
+        //     this.chongzhi4.width = 216;
+        //     this.chongzhi4.height = 70;
+        //     this.shouChongText4.text = "领取";
+        //     //this.onClickClose();
+        //     this.showChongZhiPanel();
+        //     //this.onClickClose();
+        // } else {
+        //     OrderApi.payReward(4);
+        // }
 
     }
 

@@ -9,5 +9,5 @@
 		<e:Image id="btnQueding" source="mmm_dating_button_03_png" x="230" y="266"/>
 		<e:Label text="确定" x="310" y="287" size="28" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0xffffff"/>
 	</e:Group>
-	<e:Label id="edu0" text="提示" x="347" y="303" size="28" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0xffffff"/>
+	<e:Image source="mmm_dating_Art-word_05_png" x="338" y="306"/>
 </e:Skin>

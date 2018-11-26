@@ -18,11 +18,11 @@
 	<e:Label text="首充200元额外获得价值119元的欧莱雅润唇膏619秋叶一支+300金币" x="87" y="697" textColor="0x333333" size="26" width="542"/>
 	<e:Label text="首充300元额外获得价值249元的兰蔻精密眼线液一瓶+500金币" x="87" y="822" textColor="0x333333" size="26" width="542"/>
 	<e:Image id="chongzhi1" source="mmm_dating_button_03_png" x="493" y="489" scaleX="0.7" scaleY="0.7"/>
-	<e:Label id="shouChongText1" text="充值" x="540" y="502.5" size="26" textColor="0xffffff" touchEnabled="false"/>
+	<e:Label id="shouChongText1" text="充值" x="540" y="500.5" size="26" textColor="0xffffff" touchEnabled="false"/>
 	<e:Image id="chongzhi2" source="mmm_dating_button_03_png" x="493" y="609.66" scaleX="0.7" scaleY="0.7"/>
-	<e:Label id="shouChongText2" text="充值" x="540" y="623.16" textColor="0xFFFFFF" size="26" touchEnabled="false"/>
+	<e:Label id="shouChongText2" text="充值" x="540" y="621.16" textColor="0xFFFFFF" size="26" touchEnabled="false"/>
 	<e:Image id="chongzhi3" source="mmm_dating_button_03_png" x="493" y="738.33" scaleX="0.7" scaleY="0.7"/>
-	<e:Label id="shouChongText3" text="充值" x="540" y="751.83" textColor="0xFFFFFF" size="26" touchEnabled="false"/>
+	<e:Label id="shouChongText3" text="充值" x="542.6" y="749.83" textColor="0xFFFFFF" size="26" touchEnabled="false"/>
 	<e:Image id="chongzhi4" source="mmm_dating_button_03_png" x="493" y="860.33" scaleX="0.7" scaleY="0.7"/>
-	<e:Label id="shouChongText4" text="充值" x="540" y="873.83" textColor="0xFFFFFF" size="26" touchEnabled="false"/>
+	<e:Label id="shouChongText4" text="充值" x="542.6" y="871.83" textColor="0xFFFFFF" size="26" touchEnabled="false"/>
 </e:Skin>

@@ -11,7 +11,7 @@
 		"libs/modules/md5/md5.js"
 	],
 	"game": [
-		"bin-debug/ThemeAdapter.js",
+		"bin-debug/Tishi.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/Chongzhi.js",
 		"bin-debug/Duihuan.js",
@@ -28,22 +28,25 @@
 		"bin-debug/ShouChong.js",
 		"bin-debug/SoundBase.js",
 		"bin-debug/SoundUtils.js",
+		"bin-debug/ThemeAdapter.js",
 		"bin-debug/Begin.js",
-		"bin-debug/Tishi.js",
 		"bin-debug/Tishi1.js",
 		"bin-debug/XsOver.js",
 		"bin-debug/YaoQing.js",
 		"bin-debug/Data/DataManager.js",
+		"bin-debug/Data/GameContext.js",
 		"bin-debug/Data/GameType.js",
 		"bin-debug/Data/GoodsItemData.js",
 		"bin-debug/Data/GoodsType.js",
-		"bin-debug/Util/AccountData.js",
+		"bin-debug/Data/PlayerData.js",
+		"bin-debug/Util/BaseApi.js",
 		"bin-debug/Util/EventData.js",
 		"bin-debug/Util/EventManager.js",
 		"bin-debug/Util/GameEnd.js",
-		"bin-debug/Util/Item.js",
-		"bin-debug/Util/NetSend.js",
-		"bin-debug/Util/OrderData.js",
-		"bin-debug/Util/WeChatMoudle.js"
+		"bin-debug/Util/ItemDefine.js",
+		"bin-debug/Util/OrderApi.js",
+		"bin-debug/Util/PlayerApi.js",
+		"bin-debug/Util/RougeGameApi.js",
+		"bin-debug/Util/WeChatApi.js"
 	]
 }

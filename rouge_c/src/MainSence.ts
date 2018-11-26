@@ -54,6 +54,7 @@ class MainSence extends eui.Component {
     //转速
     private zhuansu: number;
     //反转
+    private paomaText: eui.Label;
 
     public constructor() {
         super()
@@ -61,6 +62,12 @@ class MainSence extends eui.Component {
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();
+        //跑马灯
+        this.paomaText.x = 750;
+        egret.Tween.get(this.paomaText, { loop: true }).to({ x: 68 }, 5000)
+            .call(() => {
+                this.paomaText.x = 750
+            })
         //进入页面默认选免费模式 默认礼品为口红
         this.init();
 
@@ -93,7 +100,7 @@ class MainSence extends eui.Component {
     private init() {
 
         // 返回到主界面的时候，调取用户信息，继续执行 刷新；
-        AccountData.GetInfo();
+        PlayerApi.getPlayerInfo();
 
         // // 兑换接口；
         // NetSend.SendToNetExchange(Item.Gold, 1);
@@ -115,17 +122,17 @@ class MainSence extends eui.Component {
     }
     public RefeshAccountData() {
         console.log("RefeshAccountData    !");
-        var account: AccountDatas = AccountData.accoundData;
+        var account: Data.PlayerData = Data.GameContext.player;
         if (account != null) {
             console.log("accountData   " + account);
             this.lb_gold.text = account.diamond.toString();
-            this.lb_gold0.text = account.gold.toString();
-            this.lb_gold1.text = account.luckycoin.toString();
+            this.lb_gold0.text = account.goldNumber.toString();
+            this.lb_gold1.text = account.luckyCoin.toString();
         }
         else {
             console.log("Error : Account is not Exit!");
         }
-        console.log("AccountData.accoundData.gold   :" + account.gold);
+        // console.log("AccountData.accoundData.gold   :" + account.goldNumber);
     }
     private timerFunc() {
         // console.log(this.index)

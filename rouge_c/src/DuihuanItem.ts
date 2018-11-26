@@ -34,17 +34,17 @@ class DuihuanItem extends eui.Component {
     //兑换
     private onclickQueding() {
         console.log("ASDASD@#@!#" + this._edu)
-        NetSend.SendToNetExchange(Item.Gold, this._edu / 3);
+        OrderApi.purchase(ItemDefine.Gold, this._edu / 3);
         // this.parent.removeChild(this);
         console.log("dianjiOK     !!!!");
-        if ((AccountData.accoundData.diamond - this._edu / 3) >= 0) {
-            AccountData.accoundData.diamond -= this._edu / 3;
+        if ((Data.GameContext.player.diamond - this._edu / 3) >= 0) {
+            // AccountData.accoundData.diamond -= this._edu / 3;
             this.isExchange = true;
         } else {
             this.addChild(new Tishi1());
         }
         if (this.isExchange) {
-            AccountData.accoundData.gold += this._edu;
+            Data.GameContext.player.goldNumber += this._edu;
             this.isExchange = false;
         }
         this._mainsence.RefeshAccountData();

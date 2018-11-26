@@ -36,17 +36,24 @@ class Begin extends eui.Component {
         //     this.lb_tishi.visible = true;
         // }
 
-        this.init();
+        this.onGetRankInfo();
         this.btn_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickShare, this);
         this.btn_begin.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBegin, this)
+        // 事件系统
+        EventManager.getInstance().addEventListener(ApiEvent.RANK_INFO, this.onGetRankInfo, this);
     }
-    private init() {
-        var context = this;
-        for (let i = 0; i < 10; i++) {
-            var item = new Paihang_items(i);
-            context.gp_paihang.addChild(item);
-            item.y = item.height * i + 5 * i;
-
+    private onGetRankInfo() {
+        if (Data.GameContext.rankDataArray != null) {
+            var context = this;
+            for (let i = 0; i < Data.GameContext.rankDataArray.length; i++) {
+                if (i >= 10) {
+                    break;
+                }
+                var item = new Paihang_items(i);
+                this.gp_paihang.addChild(item);
+                item.y = item.height * i + 5 * i;
+            }
+        } else {
 
         }
     }

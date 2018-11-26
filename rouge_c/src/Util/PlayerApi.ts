@@ -1,8 +1,8 @@
 class PlayerApi {
     public static getPlayerInfo() {
         let openId = egret.getOption("openId");  //取url后边的openid
-        let uri: string = "player/getPlayerByOpenId?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g";
-        // let uri: string = "player/getPlayerByOpenId?openId=" + openId;
+        // let uri: string = "player/getPlayerByOpenId?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g";
+        let uri: string = "player/getPlayerByOpenId?openId=" + openId;
         BaseApi.get(uri, this.onGetComplete);
     }
     private static onGetComplete(event: egret.Event) {
@@ -20,7 +20,6 @@ class PlayerApi {
         //拼接参数 
         var params = "?level=" + level + "&score=" + score + "&aliveTime=" + aliveTime;
         let uri: string = "gameRouge/endGame" + params;
-        // let uri: string = "gameRouge/endGame?openId=" + openId;
         BaseApi.get(uri, this.onSendRankInfoComplete);
     }
     private static onSendRankInfoComplete(event: egret.Event) {
@@ -43,5 +42,6 @@ class PlayerApi {
         var data: any = JSON.parse(request.response).data;
         Data.GameContext.rankDataArray = data;
         console.log("get data : ",data);
+        EventManager.getInstance().SendEvent(ApiEvent.RANK_INFO);
     }
 }

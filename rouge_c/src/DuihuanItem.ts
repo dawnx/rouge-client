@@ -41,7 +41,7 @@ class DuihuanItem extends eui.Component {
             // AccountData.accoundData.diamond -= this._edu / 3;
             this.isExchange = true;
         } else {
-            this.addChild(new Tishi1());
+            this.addChild(new Tishi1(this._mainsence));
         }
         if (this.isExchange) {
             Data.GameContext.player.goldNumber += this._edu;

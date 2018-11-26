@@ -67,7 +67,7 @@ class Begin extends eui.Component {
             var gameMain = new GameMain(this.goodsItemData, this.m_mainsence);
             this.stage.addChild(gameMain);
         } else {
-            this.addChild(new Tishi());
+            this.addChild(new Tishi(this.m_mainsence));
         }
     }
 }

@@ -1,6 +1,5 @@
 module Data {
 	export class GoodsItemData {
-
 		public subGameId: number;
 		public img: string;
 		public goodsName: string;

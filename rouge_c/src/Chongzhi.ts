@@ -7,9 +7,9 @@ class Chongzhi extends eui.Component {
     private chongzhi5: eui.Image;
     private chongzhi6: eui.Image;
     private _mainsence: MainSence;
-    public constructor( ) {
+    public constructor(mainsence: MainSence ) {
         super()
-        // this._mainsence = mainsence;
+        this._mainsence = mainsence;
         this.skinName = "resource/skin/chongzhi.exml";
 
     }
@@ -31,8 +31,8 @@ class Chongzhi extends eui.Component {
     private onclickBack() {
         PlayerApi.getPlayerInfo();
         this._mainsence.RefeshAccountData();
-        
-        this.visible = false;
+        this._mainsence.chongzhi.visible = false;  
+        // this.parent.removeChild(this);  
     }
     private onclickCz1() {
         // 通知服务器下单；

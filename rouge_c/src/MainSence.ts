@@ -151,13 +151,15 @@ class MainSence extends eui.Component {
     //充值
     public chongzhi: Chongzhi;
     private onClickChongzhi() {
-        this.addChild(new Chongzhi());
-        // if (this.chongzhi == null) {
-        //     this.chongzhi = new Chongzhi(this);
-        //     this.addChild(this.chongzhi);
-        // } else {
-        //     this.chongzhi.visible = true;
-        // }
+        // this.addChild(new Chongzhi());
+        if (this.chongzhi == null) {
+            this.chongzhi = new Chongzhi(this);
+            this.addChild(this.chongzhi);
+            console.log("无")
+        } else {
+            this.chongzhi.visible = true;
+            console.log("有")
+        }
     }
     //兑换
     public duihuan: Duihuan;

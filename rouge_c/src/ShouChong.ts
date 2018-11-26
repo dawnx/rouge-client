@@ -26,49 +26,52 @@ class ShouChong extends eui.Component {
         this.chongzhi4.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz4, this);
     }
     private init() {
-        var payCount = Data.GameContext.player.extraData.payCount;
-        var payLingqu = Data.GameContext.player.extraData;
+        PlayerApi.getPlayerInfo();
+
+        var payCount = Data.GameContext.player.payCount; //充值数量
+        console.log(payCount)
+        var payLingqu = Data.GameContext.player.extraData;//是否领取
         console.log("充值数量" + payCount)
         if (!payCount) payCount = 0;
-        if (payCount >= 20) {
-            this.chongzhi1.source = "resource/assets/game/mmm_youxi_button_01.png";
+        if (payCount >= 20 ) {
+            // this.chongzhi1.source = "resource/assets/game/mmm_youxi_button_01.png";
             this.chongzhi1.width = 216;
             this.chongzhi1.height = 70;
             this.shouChongText1.text = "领取";
-            if (payLingqu.pay_reward_20 != null && payLingqu.pay_reward_20 == 20) {
-                this.chongzhi1.source = "resource/assets/game/toast-bg";
+            if (payLingqu.pay_reward_20 != null || payLingqu.pay_reward_20 != "" && payLingqu.pay_reward_20 == 1) {
+                this.chongzhi1.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
             }
             // this.showChongZhiPanel();
             // this.isCharge = true;
         } else if (payCount >= 100) {
-            this.chongzhi2.source = "resource/assets/game/mmm_youxi_button_01.png";
+            // this.chongzhi2.source = "resource/assets/game/mmm_youxi_button_01.png";
             this.chongzhi2.width = 216;
             this.chongzhi2.height = 70;
             this.shouChongText2.text = "领取";
-            if (payLingqu.pay_reward_100 != null && payLingqu.pay_reward_100 == 100) {
-                this.chongzhi2.source = "resource/assets/game/toast-bg";
+            if (payLingqu.pay_reward_100 != null || payLingqu.pay_reward_20 != "" && payLingqu.pay_reward_100 == 1) {
+                this.chongzhi2.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
             }
             // this.showChongZhiPanel();
-        } else if (payCount >= 200) {
-            this.chongzhi3.source = "resource/assets/game/mmm_youxi_button_01.png";
+        } else if (payCount >= 200 ) {
+            // this.chongzhi3.source = "resource/assets/game/mmm_youxi_button_01.png";
             this.chongzhi3.width = 216;
             this.chongzhi3.height = 70;
             this.shouChongText3.text = "领取";
             // this.showChongZhiPanel();
-            if (payLingqu.pay_reward_200 != null && payLingqu.pay_reward_200 == 200) {
-                this.chongzhi3.source = "resource/assets/game/toast-bg";
+            if (payLingqu.pay_reward_200 != null || payLingqu.pay_reward_20 != "" && payLingqu.pay_reward_200 == 1) {
+                this.chongzhi3.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
             }
         } else if (payCount >= 300) {
-            this.chongzhi4.source = "resource/assets/game/mmm_youxi_button_01.png";
+            // this.chongzhi4.source = "resource/assets/game/mmm_youxi_button_01.png";
             this.chongzhi4.width = 216;
             this.chongzhi4.height = 70;
             this.shouChongText4.text = "领取";
             // this.showChongZhiPanel();
-            if (payLingqu.pay_reward_300 != null && payLingqu.pay_reward_300 == 200) {
-                this.chongzhi4.source = "resource/assets/game/toast-bg";
+            if (payLingqu.pay_reward_300 || payLingqu.pay_reward_20 != "" != null && payLingqu.pay_reward_300 == 1) {
+                this.chongzhi4.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
             }
         }
@@ -80,7 +83,7 @@ class ShouChong extends eui.Component {
     public chongzhiPanel: Chongzhi;
     private showChongZhiPanel() {
         if (this.chongzhiPanel == null) {
-            this.chongzhiPanel = new Chongzhi( );
+            this.chongzhiPanel = new Chongzhi(this.m_mainSence);
             this.addChild(this.chongzhiPanel);
         } else {
             this.chongzhiPanel.visible = true;

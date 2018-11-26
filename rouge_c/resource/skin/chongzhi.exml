@@ -5,74 +5,69 @@
 		<e:Image source="mmm_dating_picture_04_png" x="0" y="0" scaleX="1" scaleY="1"/>
 		<e:Image source="mmm_chongzhi_button_02_png" x="24.34" y="15.5" scaleX="1" scaleY="1"/>
 		<e:Image source="mmm_chongzhi_button_01_03_png" x="680" y="20" scaleX="1" scaleY="1"/>
-		<e:Label text="游戏充值" x="318" y="20.5" scaleX="1" scaleY="1" size="32"/>
+		<e:Label text="游戏充值" x="318" y="20.5" scaleX="1" scaleY="1" size="32" bold="true"/>
 		<e:Label text="返回" x="76" y="20.5" scaleX="1" scaleY="1"/>
 		<e:Rect id="rect_back" width="108.67" height="30" x="27.33" y="20" fillAlpha="0" anchorOffsetX="0"/>
-		<e:Group width="750" height="136" x="0" y="89" scaleX="1" scaleY="1">
+		<e:Group width="750" height="136" x="0" y="83.66" scaleX="1" scaleY="1">
 			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_chongzhi_Floor_01_03_png" x="5" y="0" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_dating_icon_01_png" x="63" y="30"/>
 			<e:Label text="18颗钻石" x="20" y="81.67" size="24"/>
 			<e:Label text="￥6元" y="20.17" textColor="0xc61717" size="48" right="303"/>
-			<e:Label text="首充双倍" y="79.67" textColor="0x333333" fontFamily="SimHei" size="26" horizontalCenter="0"/>
-			<e:Image id="chongzhi1" source="mmm_dating_button_03_png" x="543" y="43.67" scaleX="0.7" scaleY="0.7"/>
-			<e:Label text="充值" x="590" y="53.53" size="28" textColor="0xFFFFFF" rotation="1.31" touchEnabled="false"/>
+			<e:Label text="首充双倍" y="79.67" textColor="0x333333" fontFamily="SimHei" size="26" horizontalCenter="18"/>
+			<e:Image id="chongzhi1" source="mmm_dating_button_03_png" x="543" scaleX="0.7" scaleY="0.7" verticalCenter="0"/>
+			<e:Label text="充值" x="590" size="28" textColor="0xFFFFFF" rotation="1.31" touchEnabled="false" verticalCenter="0"/>
 		</e:Group>
-		<e:Group width="750" height="136" x="0" y="234.26666666666665" scaleX="1" scaleY="1">
+		<e:Group width="750" height="136" x="0" y="222.46666666666667" scaleX="1" scaleY="1">
 			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_chongzhi_Floor_01_03_png" x="5" y="0" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_dating_icon_01_png" x="63" y="22.8" scaleX="1" scaleY="1"/>
 			<e:Label text="36颗钻石" x="20" y="74.47" scaleX="1" scaleY="1" size="24"/>
 			<e:Label text="￥12元" y="22.8" textColor="0xC61717" scaleX="1" scaleY="1" size="48" right="303"/>
-			<e:Label text="首充双倍" y="74.47" textColor="0x333333" fontFamily="SimHei" scaleX="1" scaleY="1" size="26" horizontalCenter="0"/>
-			<e:Image id="chongzhi2" source="mmm_dating_button_03_png" x="543" y="36.47" scaleX="0.6999999999999998" scaleY="0.6999999999999998"/>
-			<e:Label text="充值" x="593.98" y="46.8" size="26" textColor="0xFFFFFF" scaleX="1" scaleY="1" touchEnabled="false"/>
+			<e:Label text="首充双倍" y="74.47" textColor="0x333333" fontFamily="SimHei" scaleX="1" scaleY="1" size="26" horizontalCenter="18"/>
+			<e:Image id="chongzhi2" source="mmm_dating_button_03_png" x="543" scaleX="0.6999999999999998" scaleY="0.6999999999999998" verticalCenter="0"/>
+			<e:Label text="充值" x="593.98" size="26" textColor="0xFFFFFF" scaleX="1" scaleY="1" touchEnabled="false" verticalCenter="0"/>
 		</e:Group>
-		<e:Group width="750" height="136" x="0" y="380.5333333333335" scaleX="1" scaleY="1">
+		<e:Group width="750" height="136" x="0" y="361.93333333333345" scaleX="1" scaleY="1">
 			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_chongzhi_Floor_01_03_png" x="5" y="0" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_dating_icon_01_png" x="63" y="22.266666666666595" scaleX="1" scaleY="1"/>
 			<e:Label text="45颗钻石" x="20" y="73.93666666666661" scaleX="1" scaleY="1" size="24"/>
 			<e:Label text="￥15元" y="22.266666666666595" textColor="0xC61717" scaleX="1" scaleY="1" size="48" right="303"/>
-			<e:Label text="首充双倍" y="73.93666666666661" textColor="0x333333" fontFamily="SimHei" scaleX="1" scaleY="1" size="26" horizontalCenter="0"/>
-			<e:Image id="chongzhi3" source="mmm_dating_button_03_png" x="543" y="35.93666666666661" scaleX="0.7" scaleY="0.7"/>
-			<e:Label text="充值" x="590" y="45.44" size="26" textColor="0xFFFFFF" scaleX="1" scaleY="1" touchEnabled="false"/>
+			<e:Label text="首充双倍" y="73.93666666666661" textColor="0x333333" fontFamily="SimHei" scaleX="1" scaleY="1" size="26" horizontalCenter="18"/>
+			<e:Image id="chongzhi3" source="mmm_dating_button_03_png" x="543" scaleX="0.7" scaleY="0.7" verticalCenter="0"/>
+			<e:Label text="充值" x="590" size="26" textColor="0xFFFFFF" scaleX="1" scaleY="1" touchEnabled="false" verticalCenter="0"/>
 		</e:Group>
-		<e:Group width="750" height="136" x="0" y="525.8000000000002" scaleX="1" scaleY="1">
+		<e:Group width="750" height="136" x="0" y="500.40000000000015" scaleX="1" scaleY="1">
 			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_chongzhi_Floor_01_03_png" x="5" y="0" scaleX="1" scaleY="1"/>
-			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="3.4" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
-			<e:Image source="mmm_chongzhi_Floor_01_03_png" x="5" y="3.4" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_dating_icon_01_png" x="63" y="25.67" scaleX="1" scaleY="1"/>
 			<e:Label text="60颗钻石" x="20" y="77.34" scaleX="1" scaleY="1" size="24"/>
 			<e:Label text="￥20元" y="25.67" textColor="0xC61717" scaleX="1" scaleY="1" size="48" right="303"/>
-			<e:Label text="首充双倍" y="77.34" textColor="0x333333" fontFamily="SimHei" scaleX="1" scaleY="1" size="26" horizontalCenter="0"/>
-			<e:Image id="chongzhi4" source="mmm_dating_button_03_png" x="543" y="39.34" scaleX="0.7" scaleY="0.7"/>
-			<e:Label text="充值" x="590" y="48.84" size="26" textColor="0xFFFFFF" scaleX="1" scaleY="1" touchEnabled="false"/>
+			<e:Label text="首充双倍" y="77.34" textColor="0x333333" fontFamily="SimHei" scaleX="1" scaleY="1" size="26" horizontalCenter="18"/>
+			<e:Image id="chongzhi4" source="mmm_dating_button_03_png" x="543" scaleX="0.7" scaleY="0.7" verticalCenter="0"/>
+			<e:Label text="充值" x="590" size="26" textColor="0xFFFFFF" scaleX="1" scaleY="1" touchEnabled="false" verticalCenter="0"/>
 		</e:Group>
-		<e:Group width="750" height="136" x="0" y="671.2000000000002" scaleX="1" scaleY="1">
+		<e:Group width="750" height="136" x="0" y="639.0000000000001" scaleX="1" scaleY="1">
+			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_chongzhi_Floor_01_03_png" x="5" y="0" scaleX="1" scaleY="1"/>
-			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="3.4" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
-			<e:Image source="mmm_chongzhi_Floor_01_03_png" x="5" y="3.4" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_dating_icon_01_png" x="63" y="25.67" scaleX="1" scaleY="1"/>
 			<e:Label text="150颗钻石" x="20" y="77.34" scaleX="1" scaleY="1" size="24"/>
 			<e:Label text="￥50元" y="25.67" textColor="0xC61717" scaleX="1" scaleY="1" size="48" right="303"/>
-			<e:Label text="首充双倍" y="77.34" textColor="0x333333" fontFamily="SimHei" scaleX="1" scaleY="1" size="26" horizontalCenter="0"/>
-			<e:Image id="chongzhi5" source="mmm_dating_button_03_png" x="543" y="39.34" scaleX="0.7" scaleY="0.7"/>
-			<e:Label text="充值" x="589.36" y="49.67" size="26" textColor="0xFFFFFF" scaleX="1" scaleY="1" touchEnabled="false"/>
+			<e:Label text="首充双倍" y="77.34" textColor="0x333333" fontFamily="SimHei" scaleX="1" scaleY="1" size="26" horizontalCenter="18"/>
+			<e:Image id="chongzhi5" source="mmm_dating_button_03_png" x="543" scaleX="0.7" scaleY="0.7" verticalCenter="0"/>
+			<e:Label text="充值" x="589.36" size="26" textColor="0xFFFFFF" scaleX="1" scaleY="1" touchEnabled="false" verticalCenter="0"/>
 		</e:Group>
-		<e:Group width="750" height="136" x="0" y="816.6" scaleX="1" scaleY="1">
-			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
+		<e:Group width="750" height="136" x="0" y="778.01" scaleX="1" scaleY="1">
 			<e:Image source="mmm_chongzhi_Floor_01_03_png" x="5" y="0" scaleX="1" scaleY="1"/>
-			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="3.4" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
-			<e:Image source="mmm_chongzhi_Floor_01_03_png" x="5" y="3.4" scaleX="1" scaleY="1"/>
+			<e:Image source="mmm_chongzhi_Floor_01_03_png" x="5" y="0" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_dating_icon_01_png" x="63" y="25.67" scaleX="1" scaleY="1"/>
 			<e:Label text="300颗钻石" x="20" y="77.34" scaleX="1" scaleY="1" size="24"/>
 			<e:Label text="￥100元" y="25.67" textColor="0xC61717" scaleX="1" scaleY="1" size="48" right="303"/>
-			<e:Label text="首充双倍" y="77.34" textColor="0x333333" fontFamily="SimHei" scaleX="1" scaleY="1" size="26" horizontalCenter="0"/>
-			<e:Image id="chongzhi6" source="mmm_dating_button_03_png" x="540.4" y="39.17" scaleX="0.7" scaleY="0.7"/>
-			<e:Label text="充值" x="591.67" y="51.34" size="26" textColor="0xFFFFFF" scaleX="1" scaleY="1" touchEnabled="false"/>
+			<e:Label text="首充双倍" y="77.34" textColor="0x333333" fontFamily="SimHei" scaleX="1" scaleY="1" size="26" horizontalCenter="18"/>
+			<e:Image id="chongzhi6" source="mmm_dating_button_03_png" x="540.4" scaleX="0.7" scaleY="0.7" verticalCenter="0"/>
+			<e:Label text="充值" x="591.67" size="26" textColor="0xFFFFFF" scaleX="1" scaleY="1" touchEnabled="false" verticalCenter="0"/>
 		</e:Group>
 	</e:Group>
 </e:Skin>

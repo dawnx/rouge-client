@@ -19,6 +19,7 @@
 		</e:Button>
 		<e:Label id="lb_guan" text="第1关" x="475" y="17" textColor="0x000000" size="45" scaleX="1" scaleY="1"/>
 		<e:Label id="lb_rougeNum" text="" y="1160.81" size="30" x="24.6" height="51" textAlign="center" verticalAlign="middle" textColor="0xffffff" scaleX="1" scaleY="1"/>
+		<e:Image id="img_rouge" source="rouge_png" x="346" y="992"/>
 		<e:Group id="gp_rouge" width="200" height="573.39" x="0" y="760.61" anchorOffsetY="0" scaleX="1" scaleY="1" visible="false"/>
 		<e:Group id="gp_guan" width="750" height="1334" x="0" y="0" scaleX="1" scaleY="1">
 			<e:Rect id="rect_guan" width="750" height="1334" x="0" y="0" fillColor="0x000000" fillAlpha="0.7"/>

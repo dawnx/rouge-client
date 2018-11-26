@@ -3,7 +3,7 @@ class GameMain extends eui.Component {
     private gp_circle: eui.Group;
     private img_juzi: eui.Image;
     private speed: number;
-    private moveSpeed: number = 25;
+    private moveSpeed: number = 45;
     private isMoving: boolean;
     private rouge: egret.Bitmap;//口红
     private lb_time: eui.Label;
@@ -187,7 +187,8 @@ class GameMain extends eui.Component {
     //     }
     // }
 
-    //点击屏幕创建一个口红
+    //点击屏幕创建一个口红.
+    private img_rouge: eui.Image;
     private onClickInsert() {
         // 创建口红
         this.rouge = new egret.Bitmap();
@@ -200,7 +201,7 @@ class GameMain extends eui.Component {
         this.addChild(this.rouge);
         this.isMoving = true;
 
-
+        this.img_rouge.visible = false;
 
     }
 
@@ -238,6 +239,7 @@ class GameMain extends eui.Component {
     private isMove() {
         /**碰撞检测 */
         if (this.rouge.y < this.fly_juli) {
+            this.img_rouge.visible = true;
             this.isMoving = false;
             this.rect_dangban.touchEnabled = true;
             var tmpP = this.localToGlobal(this.rouge.x, this.rouge.y);

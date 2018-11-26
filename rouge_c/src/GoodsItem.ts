@@ -54,7 +54,7 @@ class GoodsItem extends eui.Component {
             // panel.horizontalCenter = 0;
             // panel.verticalCenter = 0;
             // this.addChild(panel);
-            this.stage.addChild(new Tishi());
+            this.stage.addChild(new Tishi(this.m_mainsence));
         }
 
         if (this.itemData.goodsType == 2 || this.itemData.goodsType == 3) {

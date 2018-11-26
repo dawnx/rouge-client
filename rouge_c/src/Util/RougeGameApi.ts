@@ -2,7 +2,7 @@ class RougeGameApi {
 
 	/// 游戏入口调用；
 	public static startGame(subGameId: number, goodsType: number, goodsFenqu: number, gameType: number, isReset: number) {
-		let openId = egret.getOption("openId");  //取url后边的openid
+		let openId = Data.GameContext.player.openId;  //取url后边的openid
 		console.log("openId   " + openId);
 		//拼接参数 
 		var params = "?openId=" + openId + "&subGameId=" + subGameId + "&goodsType=" + goodsType + "&goodsFenqu=" + goodsFenqu + "&gameType=" + gameType + "&reset=" + isReset;;

@@ -38,7 +38,7 @@ class ShouChong extends eui.Component {
             this.chongzhi1.width = 216;
             this.chongzhi1.height = 70;
             this.shouChongText1.text = "领取";
-            if (payLingqu.pay_reward_20 != null || payLingqu.pay_reward_20 != "" && payLingqu.pay_reward_20 == 1) {
+            if (payLingqu.pay_reward_20 &&  payLingqu.pay_reward_20 == 1) {
                 this.chongzhi1.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
             }
@@ -49,7 +49,7 @@ class ShouChong extends eui.Component {
             this.chongzhi2.width = 216;
             this.chongzhi2.height = 70;
             this.shouChongText2.text = "领取";
-            if (payLingqu.pay_reward_100 != null || payLingqu.pay_reward_20 != "" && payLingqu.pay_reward_100 == 1) {
+            if (payLingqu.pay_reward_100   && payLingqu.pay_reward_100 == 1) {
                 this.chongzhi2.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
             }
@@ -60,7 +60,7 @@ class ShouChong extends eui.Component {
             this.chongzhi3.height = 70;
             this.shouChongText3.text = "领取";
             // this.showChongZhiPanel();
-            if (payLingqu.pay_reward_200 != null || payLingqu.pay_reward_20 != "" && payLingqu.pay_reward_200 == 1) {
+            if (payLingqu.pay_reward_200   && payLingqu.pay_reward_200 == 1) {
                 this.chongzhi3.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
             }
@@ -70,7 +70,7 @@ class ShouChong extends eui.Component {
             this.chongzhi4.height = 70;
             this.shouChongText4.text = "领取";
             // this.showChongZhiPanel();
-            if (payLingqu.pay_reward_300 || payLingqu.pay_reward_20 != "" != null && payLingqu.pay_reward_300 == 1) {
+            if (payLingqu.pay_reward_300   && payLingqu.pay_reward_300 == 1) {
                 this.chongzhi4.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
             }

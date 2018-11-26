@@ -12,7 +12,7 @@ class XsOver extends eui.Component {
     private goodsItemData: Data.GoodsItemData;
     private m_mainsence: MainSence;
     public constructor(gamemain: GameMain, score: number, type: number,
-     goodsItemData: Data.GoodsItemData, m_mainsence: MainSence) {
+        goodsItemData: Data.GoodsItemData, m_mainsence: MainSence) {
         super()
         this._score = score;
         this._type = type;
@@ -40,13 +40,17 @@ class XsOver extends eui.Component {
 
     private onClickReset() {
         this.visible = false;
-        RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
-        console.log("*******Send   ed ");
-        console.log("*******GameEnd.RESULT_RESET  ed " + GameEnd.RESULT_RESET);
-        // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
-        console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
+        //如果金币小于等于0 
+        if (Data.GameContext.player.goldNumber >= 50) {
+            RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
+            PlayerApi.getPlayerInfo();
 
-        this._gamemain.initGame2();
+            console.log("*******Send   ed ");
+            console.log("*******GameEnd.RESULT_RESET  ed " + GameEnd.RESULT_RESET);
+            // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
+            console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
+            this._gamemain.initGame2();
+        }
     }
 
 }

@@ -34,10 +34,10 @@ class Paihang_items extends eui.Component {
     }
     private init() {
 
-        this.img_jiangpin.source = this.images[this._index];
-        this.m_icon.source = Data.GameContext.rankDataArray[this._index].headPic;
-        this.m_nick = Data.GameContext.rankDataArray[this._index].nick;
-        this.m_grade = Data.GameContext.rankDataArray[this._index].score.toString();
+        // this.img_jiangpin.source = this.images[this._index];
+        // this.m_icon.source = Data.GameContext.rankDataArray[this._index].headPic;
+        // this.m_nick = Data.GameContext.rankDataArray[this._index].nick;
+        // this.m_grade = Data.GameContext.rankDataArray[this._index].score.toString();
     }
 
 }

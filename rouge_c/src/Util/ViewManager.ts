@@ -28,7 +28,8 @@ class ViewManager {
     public static OpenView(viewName:string, viewData:string){    
 		console.log("即将打开" + viewName + "    数据" + viewData);	    
 		switch(viewName){
-			
+			case ViewName.HallPanelView:
+			break;
 		}
     }
 

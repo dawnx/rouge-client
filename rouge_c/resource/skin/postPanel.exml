@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="goods_item" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect width="750" height="1386" x="0" y="0" fillColor="0x000000" fillAlpha="0.3"/>
+	<e:Image id="img_close" source="mmm_dating_button_02_03_png" x="344" y="1020" visible="false"/>
+	<e:Group id="group" width="676" height="413.15" horizontalCenter="0" verticalCenter="-36.5" anchorOffsetY="0">
+		<e:Image x="0" y="0" scale9Grid="15,15,96,96" width="676" height="414" source="mmm_dating_Backplane_07_png" scaleX="1" scaleY="1" anchorOffsetY="0"/>
+		<e:Label id="postText" text="金币不足，快去兑换吧" x="208" y="65" size="26" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0x333333"/>
+		<e:Image id="btnQueding" source="mmm_dating_button_03_png" x="230" y="320.16"/>
+		<e:Label text="确定" size="28" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0xffffff" width="119" anchorOffsetX="0" anchorOffsetY="0" height="58.33" x="278.5" y="326" verticalAlign="middle" textAlign="center"/>
+		<e:Image width="86" height="86" x="265" y="240" source="mmm_dating_icon_05_png"/>
+	</e:Group>
+</e:Skin>

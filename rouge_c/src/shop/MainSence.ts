@@ -70,6 +70,7 @@ class MainSence extends eui.Component {
         this.BG.height = Main._screenH;
         //跑马灯
         this.paomaText.x = 750;
+        this.paomaText.text = "";
         egret.Tween.get(this.paomaText, { loop: true }).to({ x: -this.paomaText.width }, 9000)
             .call(() => {
                 this.paomaText.x = 750
@@ -147,7 +148,7 @@ class MainSence extends eui.Component {
     }
     private timerFunc() {
         // console.log(this.index)
-        this.Clcik();
+        // this.Clcik();
         this.index++;
         if (this.index > 2) {
             this.index = 1;
@@ -170,7 +171,7 @@ class MainSence extends eui.Component {
     //兑换
     public duihuan: Duihuan;
     private onClickDuihuan() {
-        this.addChild(new Duihuan(this));
+        // this.addChild(new Duihuan(this));
 
         if (this.duihuan == null) {
             this.duihuan = new Duihuan(this);

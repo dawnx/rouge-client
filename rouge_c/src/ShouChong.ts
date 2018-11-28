@@ -1,5 +1,5 @@
 class ShouChong extends eui.Component {
-    private isCharge: boolean = false;
+    private isCharge: boolean =false;
     private img_close: eui.Image;
     private chongzhi1: eui.Image;
     private chongzhi2: eui.Image;
@@ -33,46 +33,42 @@ class ShouChong extends eui.Component {
         var payLingqu = Data.GameContext.player.extraData;//是否领取
         console.log("充值数量" + payCount)
         if (!payCount) payCount = 0;
-        if (payCount >= 20 ) {
-            // this.chongzhi1.source = "resource/assets/game/mmm_youxi_button_01.png";
+        if (payCount >= 20) {
             this.chongzhi1.width = 216;
             this.chongzhi1.height = 70;
             this.shouChongText1.text = "领取";
-            if (payLingqu.pay_reward_20 &&  payLingqu.pay_reward_20 == 1) {
+            this.isCharge = true;
+            if (payLingqu.pay_reward_20 && payLingqu.pay_reward_20 == 1) {
                 this.chongzhi1.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
             }
-            // this.showChongZhiPanel();
-            // this.isCharge = true;
         } else if (payCount >= 100) {
-            // this.chongzhi2.source = "resource/assets/game/mmm_youxi_button_01.png";
             this.chongzhi2.width = 216;
             this.chongzhi2.height = 70;
             this.shouChongText2.text = "领取";
-            if (payLingqu.pay_reward_100   && payLingqu.pay_reward_100 == 1) {
+            this.isCharge = true;
+            if (payLingqu.pay_reward_100 && payLingqu.pay_reward_100 == 1) {
                 this.chongzhi2.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
             }
-            // this.showChongZhiPanel();
-        } else if (payCount >= 200 ) {
-            // this.chongzhi3.source = "resource/assets/game/mmm_youxi_button_01.png";
+        } else if (payCount >= 200) {
             this.chongzhi3.width = 216;
             this.chongzhi3.height = 70;
             this.shouChongText3.text = "领取";
-            // this.showChongZhiPanel();
-            if (payLingqu.pay_reward_200   && payLingqu.pay_reward_200 == 1) {
+            this.isCharge = true;
+            if (payLingqu.pay_reward_200 && payLingqu.pay_reward_200 == 1) {
                 this.chongzhi3.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
             }
         } else if (payCount >= 300) {
-            // this.chongzhi4.source = "resource/assets/game/mmm_youxi_button_01.png";
             this.chongzhi4.width = 216;
             this.chongzhi4.height = 70;
             this.shouChongText4.text = "领取";
-            // this.showChongZhiPanel();
-            if (payLingqu.pay_reward_300   && payLingqu.pay_reward_300 == 1) {
+            this.isCharge = true;
+            if (payLingqu.pay_reward_300 && payLingqu.pay_reward_300 == 1) {
                 this.chongzhi4.source = "resource/assets/dating/toast-bg.png";
                 this.shouChongText1.text = "已领取";
+                this.chongzhi4.touchEnabled = false;
             }
         }
     }
@@ -90,70 +86,39 @@ class ShouChong extends eui.Component {
         }
     }
     private onclickCz1() {
-        OrderApi.payReward(1);
-        // if (!this.isCharge) {
-        //     // 假设 充值成功；
-        //     this.chongzhi1.source = "resource/assets/game/mmm_youxi_button_01.png";
-        //     this.chongzhi1.width = 216;
-        //     this.chongzhi1.height = 70;
-        //     this.shouChongText1.text = "领取";
-        //     this.showChongZhiPanel();
-        //     this.isCharge = true;
-        //     //this.onClickClose();
-        // } else {
-        //     OrderApi.payReward(1);
-        // }
+        if (!this.isCharge) {   //如果充值不够 就弹出充值
+            this.showChongZhiPanel();
+            this.isCharge = true;
+        } else if (this.isCharge) { //如果充值够了  且没领取   就领取
+            OrderApi.payReward(1);
+        }
     }
     private onclickCz2() {
-
-        OrderApi.payReward(2);
-
-        // if (!this.isCharge) {
-        //     // 假设 充值成功；
-        //     this.chongzhi2.source = "resource/assets/game/mmm_youxi_button_01.png";
-        //     this.chongzhi2.width = 216;
-        //     this.chongzhi2.height = 70;
-        //     this.shouChongText2.text = "领取";
-        //     //this.onClickClose();
-        //     this.showChongZhiPanel();
-        // } else {
-        //     OrderApi.payReward(2);
-        // }
+        if (!this.isCharge) {
+            this.showChongZhiPanel();
+            this.isCharge = true;
+        } else if (this.isCharge) {
+            OrderApi.payReward(2);
+        }
     }
     private onclickCz3() {
+        if (!this.isCharge) {
 
-        OrderApi.payReward(3);
+            this.showChongZhiPanel();
+            this.isCharge = true;
 
-        // if (!this.isCharge) {
-        //     // 假设 充值成功；
-        //     this.chongzhi3.source = "resource/assets/game/mmm_youxi_button_01.png";
-        //     this.chongzhi3.width = 216;
-        //     this.chongzhi3.height = 70;
-        //     this.shouChongText3.text = "领取";
-        //     //this.onClickClose();
-        //     this.showChongZhiPanel();
-        //     //this.onClickClose();
-        // } else {
-        //     OrderApi.payReward(3);
-        // }
+        } else if (this.isCharge) {
+            OrderApi.payReward(3);
+        }
 
     }
     private onclickCz4() {
-
-        OrderApi.payReward(4);
-
-        // if (!this.isCharge) {
-        //     // 假设 充值成功；
-        //     this.chongzhi4.source = "resource/assets/game/mmm_youxi_button_01.png";
-        //     this.chongzhi4.width = 216;
-        //     this.chongzhi4.height = 70;
-        //     this.shouChongText4.text = "领取";
-        //     //this.onClickClose();
-        //     this.showChongZhiPanel();
-        //     //this.onClickClose();
-        // } else {
-        //     OrderApi.payReward(4);
-        // }
+        if (!this.isCharge) {
+            this.showChongZhiPanel();
+            this.isCharge = true;
+        } else if (this.isCharge) {
+            OrderApi.payReward(4);
+        }
 
     }
 

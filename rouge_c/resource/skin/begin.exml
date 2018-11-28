@@ -5,17 +5,17 @@
 		<e:Group width="750" height="136" x="0" y="0">
 			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
 			<e:Image source="mmm_dating_picture_04_png" x="0" y="0" scaleX="1" scaleY="1"/>
-			<e:Label text="排行榜" x="323.33" y="23.5" size="32" bold="true" scaleX="1" scaleY="1" textColor="0xffffff"/>
-			<e:Label text="名次" x="103.6" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
-			<e:Label text="头像" x="265.3333333333333" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
-			<e:Label text="名字" x="426.66666666666663" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
-			<e:Label text="成绩" x="588.4" y="91.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
+			<e:Label text="排行榜" x="326" y="20.5" size="32" bold="true" scaleX="1" scaleY="1" textColor="0xffffff" fontFamily="SimHei"/>
+			<e:Label text="名次" x="103.6" y="92.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
+			<e:Label text="头像" x="265.3333333333333" y="92.77" size="28" bold="true" scaleX="1" scaleY="1" fontFamily="SimHei" textColor="0x666666"/>
+			<e:Label text="名字" x="426.66666666666663" y="92.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
+			<e:Label text="成绩" x="588.4" y="92.77" size="28" bold="true" scaleX="1" scaleY="1" textColor="0x666666" fontFamily="SimHei"/>
 		</e:Group>
 		<e:Scroller id="scroller" width="750" height="1000" x="0" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" y="136">
 			<e:Group id="gp_paihang" anchorOffsetX="0" width="789.39" anchorOffsetY="0" height="962">
 			</e:Group>
 		</e:Scroller>
-		<e:Label id="lb_tishi" text="体验模式无收益，点击下方开始游戏" x="0" y="516" textColor="0x000000" width="750" textAlign="center" verticalAlign="middle"/>
+		<e:Label id="lb_tishi" text="体验模式无收益，点击下方开始游戏" x="0" y="516" width="750" textAlign="center" verticalAlign="middle" textColor="0x333333" fontFamily="SimHei"/>
 		<e:Group id="gp_bottom" width="750" height="136" x="0" y="1198">
 			<e:Image source="mmm_dating_Backplane_06_png" x="0" y="0" scale9Grid="39,39,51,46" width="750" height="136" scaleX="1" scaleY="1"/>
 			<e:Button id="btn_share" label="分享游戏" anchorOffsetX="0" anchorOffsetY="0" y="32" x="106" scaleX="1" scaleY="1">
@@ -38,4 +38,7 @@
 		<e:Label text="发奖倒计时：" x="190" y="104" textColor="0x000000" size="26" scaleX="1" scaleY="1" visible="false"/>
 		<e:Label text="131322132" x="342" y="104" textColor="0x000000" size="26" scaleX="1" scaleY="1" visible="false"/>
 	</e:Group>
+	<e:Image source="mmm_chongzhi_button_02_png" x="24.34" y="15.5" scaleX="1" scaleY="1"/>
+	<e:Label text="返回" x="76" y="20.5" scaleX="1" scaleY="1" fontFamily="SimHei"/>
+	<e:Rect id="rect_back" width="108.67" height="30" x="27.33" y="20" fillAlpha="0" anchorOffsetX="0"/>
 </e:Skin>

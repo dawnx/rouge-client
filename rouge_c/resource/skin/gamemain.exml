@@ -8,7 +8,7 @@
 		<e:Image source="mmm_dating_picture_04_png" x="0" y="0" scaleX="1" scaleY="1"/>
 		<e:Image source="mmm_youxi_Backplane_01_png" x="42" y="100" scaleX="1" scaleY="1"/>
 		<e:Image source="mmm_youxi_Special effect_01_png" x="42" y="100.01" scaleX="1" scaleY="1"/>
-		<e:Label id="lb_time" text="" y="120.51" textColor="0x000000" size="45" x="59.51" width="51" height="51" textAlign="center" verticalAlign="middle" scaleX="1" scaleY="1"/>
+		<e:Label id="lb_time" text="" y="120.51" textColor="0x000000" size="45" x="59.51" width="51" height="51" textAlign="center" verticalAlign="middle" scaleX="1" scaleY="1" fontFamily="SimHei"/>
 		<e:Button id="btn_back" label="" y="23" horizontalCenter="-316.5" x="42" scaleX="1" scaleY="1">
 			<e:skinName>
 			<e:Skin states="up,down,disabled">
@@ -17,13 +17,13 @@
 			</e:Skin>
 			</e:skinName>
 		</e:Button>
-		<e:Label id="lb_guan" text="第1关" x="475" y="17" textColor="0x000000" size="45" scaleX="1" scaleY="1"/>
-		<e:Label id="lb_rougeNum" text="" y="1160.81" size="30" x="24.6" height="51" textAlign="center" verticalAlign="middle" textColor="0xffffff" scaleX="1" scaleY="1"/>
+		<e:Label id="lb_guan" text="第1关" x="475" y="17" textColor="0x000000" size="45" scaleX="1" scaleY="1" fontFamily="SimHei"/>
+		<e:Label id="lb_rougeNum" text="" y="1160.81" size="30" x="24.6" height="51" textAlign="center" verticalAlign="middle" textColor="0xffffff" scaleX="1" scaleY="1" fontFamily="SimHei"/>
 		<e:Image id="img_rouge" source="rouge_png" x="346" y="992"/>
 		<e:Group id="gp_rouge" width="200" height="573.39" x="0" y="760.61" anchorOffsetY="0" scaleX="1" scaleY="1" visible="false"/>
 		<e:Group id="gp_guan" width="750" height="1334" x="0" y="0" scaleX="1" scaleY="1">
 			<e:Rect id="rect_guan" width="750" height="1386" x="0" y="0" fillColor="0x000000" fillAlpha="0.7"/>
-			<e:Image id="img_guan" source="guan2_png" x="272" y="500"/>
+			<e:Image id="img_guan" source="guan2_png" x="272" y="466.67"/>
 		</e:Group>
 	</e:Group>
 

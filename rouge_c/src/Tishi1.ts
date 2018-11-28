@@ -18,10 +18,10 @@ class Tishi1 extends eui.Component {
     private init() {
 
     }
-
     //前往充值
     private onclickQueding() {
-        this.parent.removeChild(this);
+        this.visible = false;
+        // this.parent.removeChild(this);
         // this.stage.addChild(new Chongzhi(this._mainsence));
     }
     private onclickClose() {

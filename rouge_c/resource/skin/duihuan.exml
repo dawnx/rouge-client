@@ -6,7 +6,7 @@
 	<e:Image x="338" y="306" source="mmm_dating_Art-word_04_03_png"/>
 	<e:Image id="img_close" source="mmm_dating_button_02_03_png" x="344" y="1020"/>
 	<e:Group id="group" width="676" height="414" x="37" y="346">
-		<e:Label text="1钻石兑换3金币" x="246.5" y="54.64" textColor="0x333333" size="28" fontFamily="SimHei" scaleX="1" scaleY="1"/>
+		<e:Label text="1钻石兑换3金币" x="246.5" y="54.64" textColor="0x333333" size="26" fontFamily="SimHei" scaleX="1" scaleY="1"/>
 		<e:Image source="mmm_dating_icon_01_png" x="119" y="122.65" scaleX="1" scaleY="1"/>
 		<e:Image source="mmm_dating_icon_02_png" x="398.34" y="124.65" scaleX="1" scaleY="1"/>
 		<e:Image source="mmm_dating_frame_01_png" x="169" y="122.65" scale9Grid="21,17,2,1" width="114" scaleX="1" scaleY="1"/>
@@ -14,7 +14,7 @@
 		<e:Image id="duihuan" source="mmm_dating_button_03_png" x="230" y="304" scaleX="1" scaleY="1"/>
 		<e:Label text="兑换" x="309.5" y="325" size="28" fontFamily="SimHei" textColor="0xffffff" scaleX="1" scaleY="1" touchEnabled="false"/>
 		<e:Image source="mmm_dating_bar_01_png" scale9Grid="11,7,2,1" width="452" horizontalCenter="0" verticalCenter="0"/>
-		<e:Label id="gold" text="0" x="463.5" y="129" size="24" textColor="0xe90000" width="77" textAlign="center" verticalAlign="middle"/>
-		<e:Label id="demons" text="0" x="186.5" y="129" size="24" textColor="0x16d531" anchorOffsetX="0" width="77" textAlign="center" verticalAlign="middle"/>
+		<e:Label id="gold" text="0" x="463.5" y="129" size="24" textColor="0xe90000" width="77" textAlign="center" verticalAlign="middle" fontFamily="SimHei"/>
+		<e:Label id="demons" text="0" x="186.5" y="129" size="24" textColor="0x16d531" anchorOffsetX="0" width="77" textAlign="center" verticalAlign="middle" fontFamily="SimHei"/>
 	</e:Group>
 </e:Skin>

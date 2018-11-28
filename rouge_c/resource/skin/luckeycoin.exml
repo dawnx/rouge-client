@@ -9,9 +9,9 @@
 		<e:Image id="btnQueding" source="mmm_dating_button_03_png" x="230" y="266"/>
 		<e:Label text="确定" x="310" y="287" size="28" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0xffffff"/>
 	</e:Group>
-	<e:Image x="282.5" y="300" source="mmm_dating_Art-word_06_png"/>
-	<e:Label text="1.钻石兑换3金币，则可以获得1枚幸运币" x="82" y="440" size="26" textColor="0x333333"/>
-	<e:Label text="2.幸运币可以前往公众号-个人中心-积分商城兑换奖励" x="82" y="491.3333333333333" size="26" textColor="0x333333"/>
-	<e:Label text="3.幸运币不可以兑换金币" x="82" y="542.6666666666666" size="26" textColor="0x333333"/>
-	<e:Label text="4.如进行游戏则视为了解且遵守该规则" x="82" y="594" size="26" textColor="0x333333"/>
+	<e:Image x="282.5" y="303" source="mmm_dating_Art-word_06_png"/>
+	<e:Label text="1.钻石兑换3金币，则可以获得1枚幸运币" x="71" y="440" size="26" fontFamily="SimHei" textColor="0x333333"/>
+	<e:Label text="2.幸运币可以前往公众号-个人中心-积分商城兑换奖励" x="71" y="483.6666666666667" size="26" fontFamily="SimHei" textColor="0x333333"/>
+	<e:Label text="3.幸运币不可以兑换金币" x="71" y="527.3333333333334" size="26" fontFamily="SimHei" textColor="0x333333"/>
+	<e:Label text="4.如进行游戏则视为了解且遵守该规则" x="71" y="571" size="26" fontFamily="SimHei" textColor="0x333333"/>
 </e:Skin>

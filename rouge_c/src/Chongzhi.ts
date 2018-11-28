@@ -30,7 +30,7 @@ class Chongzhi extends eui.Component {
     }
     private onclickBack() {
         PlayerApi.getPlayerInfo();
-        this._mainsence.chongzhi.visible = false;  
+        this.visible = false;  
         // this.parent.removeChild(this);  
     }
     private onclickCz1() {

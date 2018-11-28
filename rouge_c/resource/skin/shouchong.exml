@@ -7,22 +7,22 @@
 	<e:Image id="img_close" source="mmm_dating_button_02_03_png" x="344" y="1020"/>
 	<e:Label text="充值界面" x="275" y="642" textColor="0x140404" size="50"/>
 	<e:Image source="mmm_dating_Backplane_08_png" y="425" x="57" scale9Grid="38,25,9,7" width="636" height="500"/>
-	<e:Label text="多冲多得，机会难得" x="275" y="391.5" textColor="0x333333" size="22"/>
+	<e:Label text="多冲多得，机会难得" x="259" y="389.5" textColor="0x333333" size="26" fontFamily="SimHei"/>
 	<e:Label text="注释：同档位活动只能参加一次  活动截止至 2018年11月30日" x="102.5" y="952.85" size="20" textColor="0x666666"/>
 	<e:Image source="mmm_dating_Backplane_06_png" x="62" y="430" scale9Grid="39,39,51,46" width="624" height="118"/>
 	<e:Image source="mmm_dating_Backplane_06_png" x="62" y="554.3333333333333" scale9Grid="39,39,51,46" width="624" height="118"/>
 	<e:Image source="mmm_dating_Backplane_06_png" x="62" y="677.6666666666665" scale9Grid="39,39,51,46" width="624" height="118"/>
 	<e:Image source="mmm_dating_Backplane_06_png" x="62" y="802" scale9Grid="39,39,51,46" width="624" height="118"/>
-	<e:Label text="首充20元额外获得胡了三国卡牌推广版+50金币" x="87" y="450" textColor="0x333333" size="26"/>
-	<e:Label text="首充100元额外获得价值50元的胡了三国卡牌铁盒版+100金币" x="87" y="574" textColor="0x333333" size="26" width="542"/>
-	<e:Label text="首充200元额外获得价值119元的欧莱雅润唇膏619秋叶一支+300金币" x="87" y="697" textColor="0x333333" size="26" width="542"/>
-	<e:Label text="首充300元额外获得价值249元的兰蔻精密眼线液一瓶+500金币" x="87" y="822" textColor="0x333333" size="26" width="542"/>
+	<e:Label text="首充20元额外获得胡了三国卡牌推广版+50金币" x="102.2" y="450" size="26" fontFamily="SimHei" textColor="0x333333"/>
+	<e:Label text="首充100元额外获得价值50元的胡了三国卡牌铁盒版+100金币" x="102.2" y="574" size="26" width="542" fontFamily="SimHei" textColor="0x333333"/>
+	<e:Label text="首充200元额外获得价值119元的欧莱雅润唇膏619秋叶一支+300金币" x="102.2" y="697" size="26" width="542" fontFamily="SimHei" textColor="0x333333"/>
+	<e:Label text="首充300元额外获得价值249元的兰蔻精密眼线液一瓶+500金币" x="102.2" y="822" size="26" width="542" fontFamily="SimHei" textColor="0x333333"/>
 	<e:Image id="chongzhi1" source="mmm_dating_button_03_png" x="493" y="489" scaleX="0.7" scaleY="0.7" width="216"/>
-	<e:Label id="shouChongText1" text="充值" x="493" y="490" size="26" textColor="0xffffff" touchEnabled="false" width="150" height="45" anchorOffsetX="0" anchorOffsetY="0" textAlign="center" verticalAlign="middle"/>
+	<e:Label id="shouChongText1" text="充值" x="493" y="490" size="26" touchEnabled="false" width="150" height="45" anchorOffsetX="0" anchorOffsetY="0" textAlign="center" verticalAlign="middle" fontFamily="SimHei" textColor="0xffffff"/>
 	<e:Image id="chongzhi2" source="mmm_dating_button_03_png" x="493" y="609.66" scaleX="0.7" scaleY="0.7"/>
-	<e:Label id="shouChongText2" text="充值" x="493" y="611.16" textColor="0xFFFFFF" size="26" touchEnabled="false" width="150" height="45" textAlign="center" verticalAlign="middle"/>
+	<e:Label id="shouChongText2" text="充值" x="493" y="611.16" size="26" touchEnabled="false" width="150" height="45" textAlign="center" verticalAlign="middle" fontFamily="SimHei" textColor="0xffffff"/>
 	<e:Image id="chongzhi3" source="mmm_dating_button_03_png" x="493" y="738.33" scaleX="0.7" scaleY="0.7"/>
-	<e:Label id="shouChongText3" text="充值" x="493" y="739.83" textColor="0xFFFFFF" size="26" touchEnabled="false" width="150" height="45" textAlign="center" verticalAlign="middle"/>
+	<e:Label id="shouChongText3" text="充值" x="493" y="739.83" size="26" touchEnabled="false" width="150" height="45" textAlign="center" verticalAlign="middle" fontFamily="SimHei" textColor="0xffffff"/>
 	<e:Image id="chongzhi4" source="mmm_dating_button_03_png" x="493" y="860.33" scaleX="0.7" scaleY="0.7"/>
-	<e:Label id="shouChongText4" text="充值" x="493" y="861.83" textColor="0xFFFFFF" size="26" touchEnabled="false" width="150" height="45" textAlign="center" verticalAlign="middle"/>
+	<e:Label id="shouChongText4" text="充值" x="493" y="861.83" size="26" touchEnabled="false" width="150" height="45" textAlign="center" verticalAlign="middle" fontFamily="SimHei" textColor="0xffffff"/>
 </e:Skin>

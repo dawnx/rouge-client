@@ -127,7 +127,7 @@ class MainSence extends eui.Component {
         this.gp500.width = 0;
         this.gp500.visible = false;
 
-        var timer: egret.Timer = new egret.Timer(3000, 0);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
+        var timer: egret.Timer = new egret.Timer(3000, 0); 
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
         timer.start();
     }

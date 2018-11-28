@@ -1,13 +1,13 @@
-class Tishi extends eui.Component {
+class Tishi2 extends eui.Component {
     private group: eui.Group;
     private img_close: eui.Image;
     private btnQueding: eui.Image;
     private _mainsence: MainSence;
     private _edu: number;
-    public constructor(mainsence: MainSence) {
+    public constructor( ) {
         super()
-        this._mainsence = mainsence;
-        this.skinName = "resource/skin/tishi.exml";
+        // this._mainsence = mainsence
+        this.skinName = "resource/skin/tishi2.exml";
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();
@@ -21,8 +21,8 @@ class Tishi extends eui.Component {
 
     //前往充值
     private onclickQueding() {
-        this.visible = false;
-      
+        this.parent.removeChild(this);
+        // this.stage.addChild(new Chongzhi(this._mainsence));
     }
     private onclickClose() {
 

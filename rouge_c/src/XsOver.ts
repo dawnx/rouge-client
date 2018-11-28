@@ -39,18 +39,22 @@ class XsOver extends eui.Component {
     }
 
     private onClickReset() {
-        this.visible = false;
+        console.log(Data.GameContext.player.goldNumber)
         //如果金币小于等于0 
         if (Data.GameContext.player.goldNumber >= 50) {
+            console.log("金币足够")
             RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
             PlayerApi.getPlayerInfo();
-
             console.log("*******Send   ed ");
             console.log("*******GameEnd.RESULT_RESET  ed " + GameEnd.RESULT_RESET);
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
             this._gamemain.initGame2();
+        } {
+            //金币不足，前往充值提示
+            this.addChild(new Tishi2())
         }
+
     }
 
 }

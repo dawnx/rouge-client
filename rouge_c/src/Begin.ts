@@ -6,6 +6,7 @@ class Begin extends eui.Component {
     private lb_tishi: eui.Label;
     private m_mainsence: MainSence;
     private gp_bottom: eui.Group;
+    private btn_back: eui.Rect;
     public constructor(_itemData: Data.GoodsItemData, mainsence: MainSence) {
         super()
         this.goodsItemData = _itemData;
@@ -38,7 +39,8 @@ class Begin extends eui.Component {
 
         this.init();
         this.btn_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickShare, this);
-        this.btn_begin.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBegin, this)
+        this.btn_begin.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBegin, this);
+        this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBack, this);
     }
     private init() {
         var context = this;
@@ -66,8 +68,13 @@ class Begin extends eui.Component {
             var gameMain = new GameMain(this.goodsItemData, this.m_mainsence);
             this.stage.addChild(gameMain);
         } else {
-            this.addChild(new Tishi(this.m_mainsence));
+            // this.addChild(new Tishi(this.m_mainsence));
+            this.addChild(new Tishi2());
         }
+    }
+    private onClickBack() {
+        this.visible = false;
+        this.m_mainsence.visible = true;
     }
 }
 

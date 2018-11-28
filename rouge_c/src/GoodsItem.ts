@@ -31,7 +31,7 @@ class GoodsItem extends eui.Component {
     }
     private onClickBtn() {
         var currentGolds = Data.GameContext.player.goldNumber;
-        if (this.itemData.goodsFenqu == 0) {
+        if (this.itemData.goodsFenqu == 0 && this.itemData.gameType != 1) {
             PlayerApi.getRankInfo(this.itemData.subGameId);
             this.stage.addChild(new Begin(this.itemData, this.m_mainsence));
         } else if (currentGolds >= this.itemData.goodsFenqu) {

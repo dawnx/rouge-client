@@ -20,7 +20,6 @@ class PlayerApi {
         //拼接参数 
         var params = "?level=" + level + "&score=" + score + "&aliveTime=" + aliveTime;
         let uri: string = "gameRouge/endGame" + params;
-        // let uri: string = "gameRouge/endGame?openId=" + openId;
         BaseApi.get(uri, this.onSendRankInfoComplete);
     }
     private static onSendRankInfoComplete(event: egret.Event) {
@@ -32,7 +31,6 @@ class PlayerApi {
 
     /// 获取排行榜信息；
     public static getRankInfo(subGameId:number) {
-        // let uri: string = "rank/getRankList?subGameId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g";
         let uri: string = "rank/getRankList?subGameId=" + subGameId;
         BaseApi.get(uri, this.onGetRankInfoComplete);
     }
@@ -41,7 +39,9 @@ class PlayerApi {
         var request = <egret.HttpRequest>event.currentTarget;
         // 解析
         var data: any = JSON.parse(request.response).data;
-        Data.GameContext.rankDataArray = data;
+        Data.GameContext.rankDataArray = data.rankList;
+        Data.GameContext.countDown = data.countDown;
         console.log("get data : ",data);
+        EventManager.getInstance().SendEvent(ApiEvent.RANK_INFO);
     }
 }

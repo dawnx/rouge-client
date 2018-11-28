@@ -5,6 +5,9 @@ module Data {
 		public headPic: string;  // 头像
 		public nick: string; // 昵称
 		public score: number;  //成绩
-        
+
+	}
+	export class RankCountDown {
+		public countDown: number;  //  倒计时；
 	}
 }

@@ -32,6 +32,7 @@
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml",
 		"resource/skin/begin.exml",
+		"resource/skin/broadcast.exml",
 		"resource/skin/chongzhi.exml",
 		"resource/skin/duihuan.exml",
 		"resource/skin/duihuanitem.exml",

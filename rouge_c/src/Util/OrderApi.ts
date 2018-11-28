@@ -61,7 +61,8 @@ class OrderApi {
         let openId = egret.getOption("openId");  //取url后边的openid
         console.log("openId   " + openId);
         //拼接参数 
-        var params = "?openId=" + openId + "&reward=" + reward;
+        // var params = "?openId=" + openId + "&reward=" + reward;
+        var params = "?openId=oZ4KT1JC0LWmI-Fk5oG1PGq5uhu4" + openId + "&reward=" + reward;
         var uri: string = "payReward/getFirstPayReward" + params;
         BaseApi.get(uri, this.onGetCompleteFirstCharge);
     }
@@ -72,9 +73,7 @@ class OrderApi {
         console.log("get data : ", request.response);
         // 解析
         var data = JSON.parse(request.response).data;
-
-        PlayerApi.getPlayerInfo();
-        EventManager.getInstance().SendEvent(ApiEvent.CHANGE_INFO);
+        EventManager.getInstance().SendEvent(ApiEvent.PLAYER_INFO);
     }
 
     // 分享接口；

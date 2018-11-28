@@ -119,7 +119,23 @@ class ShopMain extends eui.Component {
         // console.log("兑换  金币   1  个");
         //  刷新用户信息，调动此方法时必选先拉取用户信息，才能保证正确刷新；
         this.onPlayerInfo();
-        console.log("刷新用户信息；");
+        console.log("Data.GameContext.player.extraData.first_login_reward    " + Data.GameContext.player.extraData.first_login_reward);
+        // 首次登陆送200金币；
+        if (true) {
+        // if (Data.GameContext.player.extraData.first_login_reward != 1){
+            var broadc: BroadCast;
+            broadc = new BroadCast("首次登陆送200金币","mmm_dating_icon_06");
+            this.addChild(broadc);
+        }
+
+        // 首次分享送100幸运币；
+        if (true) {
+        // if (Data.GameContext.player.extraData.first_login_reward != 1){
+            var broadc: BroadCast;
+            broadc = new BroadCast("首次分享送100幸运币","mmm_dating_icon_05");
+            this.addChild(broadc);
+        }
+
 
         this.Clcik();
         this.lb_kh.textColor = 0x9e023e;
@@ -128,12 +144,12 @@ class ShopMain extends eui.Component {
         this.gp500.width = 0;
         this.gp500.visible = false;
 
-        var timer: egret.Timer = new egret.Timer(2000, 0); 
+        var timer: egret.Timer = new egret.Timer(2000, 0);
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
         timer.start();
     }
     public onPlayerInfo() {
-        console.log("RefeshAccountData    !");
+        console.log("*********RefeshAccountData    !");
         var account: Data.PlayerData = Data.GameContext.player;
         if (account != null) {
             console.log("accountData   " + account);

@@ -4,9 +4,9 @@ class DuihuanItem extends eui.Component {
     private btnQueding: eui.Image;
     private edu: eui.Label;
 
-    private _mainsence: MainSence;
+    private _mainsence: ShopMain;
     private _edu: number;
-    public constructor(mainsence: MainSence, edu) {
+    public constructor(mainsence: ShopMain, edu) {
         super()
         this._mainsence = mainsence;
         this._edu = edu;

@@ -5,8 +5,8 @@ class Duihuan extends eui.Component {
     private demons: eui.Label;
     private duihuan: eui.Image;
     private hSlider:eui.HSlider;
-    private _mainsence: MainSence;
-    public constructor(mainsence: MainSence) {
+    private _mainsence: ShopMain;
+    public constructor(mainsence: ShopMain) {
         super()
         this._mainsence = mainsence;
         this.skinName = "resource/skin/duihuan.exml";

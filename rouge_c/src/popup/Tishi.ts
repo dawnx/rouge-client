@@ -2,9 +2,9 @@ class Tishi extends eui.Component {
     private group: eui.Group;
     private img_close: eui.Image;
     private btnQueding: eui.Image;
-    private _mainsence: MainSence;
+    private _mainsence: ShopMain;
     private _edu: number;
-    public constructor(mainsence: MainSence) {
+    public constructor(mainsence: ShopMain) {
         super()
         this._mainsence = mainsence;
         this.skinName = "resource/skin/tishi.exml";

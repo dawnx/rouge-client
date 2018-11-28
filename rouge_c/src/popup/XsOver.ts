@@ -2,7 +2,6 @@ class XsOver extends eui.Component {
     private btn_fangqi: eui.Button;
     private btn_fangqi1: eui.Button;
     private btn_reset: eui.Button;
-    public _gamemain: GameMain;
     private _score: number;
     private lb_score: eui.Label;
     private _level: number;
@@ -10,15 +9,14 @@ class XsOver extends eui.Component {
 
     private gp_tiyan: eui.Group;
     private goodsItemData: Data.GoodsItemData;
-    private m_mainsence: MainSence;
-    public constructor(gamemain: GameMain, score: number, type: number,
-        goodsItemData: Data.GoodsItemData, m_mainsence: MainSence) {
+    private m_mainsence: ShopMain;
+    public constructor(score: number, type: number,
+        goodsItemData: Data.GoodsItemData, m_mainsence: ShopMain) {
         super()
         this._score = score;
         this._type = type;
         this.goodsItemData = goodsItemData;
         this.m_mainsence = m_mainsence;
-        this._gamemain = gamemain;
         this.skinName = "resource/skin/xsover.exml";
 
     }
@@ -35,7 +33,7 @@ class XsOver extends eui.Component {
 
     }
     private onClickFangqi() {
-        this.addChild(new MainSence());
+        this.addChild(new ShopMain());
     }
 
     private onClickReset() {
@@ -49,7 +47,7 @@ class XsOver extends eui.Component {
             console.log("*******GameEnd.RESULT_RESET  ed " + GameEnd.RESULT_RESET);
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
-            this._gamemain.initGame2();
+            LayerUtil.gameMain.initGame2();
         } {
             //金币不足，前往充值提示
             this.addChild(new Tishi2())

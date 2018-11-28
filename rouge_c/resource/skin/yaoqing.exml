@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="goods_item" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Rect width="750" height="1386" x="0" y="0" fillColor="0x000000" fillAlpha="0.3"/>
+	<e:Image id="img_close0" source="mmm_dating_button_02_03_png" x="637.5" y="328"/>
 
 
 

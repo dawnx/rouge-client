@@ -2,7 +2,7 @@ class Tishi2 extends eui.Component {
     private group: eui.Group;
     private img_close: eui.Image;
     private btnQueding: eui.Image;
-    private _mainsence: MainSence;
+    private _mainsence: ShopMain;
     private _edu: number;
     public constructor( ) {
         super()

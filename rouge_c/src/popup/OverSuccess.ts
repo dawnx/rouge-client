@@ -1,19 +1,17 @@
 class OverSuccess extends eui.Component {
     private btn_reset: eui.Button;
     private btn_share: eui.Button;
-    public _gamemain: GameMain;
     private _score: number;
     private lb_score: eui.Label;
     private _level: number;
     private _type: number;
     private gp_tiyan: eui.Group;
     private img_juzi: eui.Image;
-    public constructor(gamemain: GameMain, score: number, type: number, level: number) {
+    public constructor(score: number, type: number, level: number) {
         super()
         this._score = score;
         this._type = type;
         this._level = level;
-        this._gamemain = gamemain;
         this.skinName = "resource/skin/overSuccess.exml";
 
     }
@@ -37,7 +35,7 @@ class OverSuccess extends eui.Component {
     }
     private onClickReset() {
         console.log("闯关成功  再玩一次")
-        this.addChild(new MainSence());
+        this.addChild(new ShopMain());
     }
 
     private onClickShare() {

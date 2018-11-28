@@ -16,6 +16,8 @@ class ShouChong extends eui.Component {
     private shouChongText3: eui.Label;
     private shouChongText4: eui.Label;
 
+    private currentStatus: number;
+
     private m_mainSence: MainSence;
     public constructor(mainSence: MainSence) {
         super()
@@ -31,9 +33,9 @@ class ShouChong extends eui.Component {
         this.chongzhi3.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz3, this);
         this.chongzhi4.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz4, this);
 
-        EventManager.getInstance().addEventListener(ApiEvent.PLAYER_INFO,this.RefreshBtnStatus,this);
-        EventManager.getInstance().addEventListener(ApiEvent.CHANGE_INFO,this.RefreshBtnStatus,this);
-        
+        EventManager.getInstance().addEventListener(ApiEvent.PLAYER_INFO, this.RefreshBtnStatus, this);
+        EventManager.getInstance().addEventListener(ApiEvent.CHANGE_INFO, this.RefreshBtnStatus, this);
+
     }
     private init() {
         this.RefreshBtnStatus();
@@ -42,47 +44,60 @@ class ShouChong extends eui.Component {
     private RefreshBtnStatus() {
         // 先获取用户信息；
         PlayerApi.getPlayerInfo();
-        if (Data.GameContext.player.payCount != null && Data.GameContext.player.extraData !=null) {
-            var payCount = Data.GameContext.player.payCount; //充值数量
+        if (Data.GameContext.player.extraData != null) {
+            var payCount = Data.GameContext.player.extraData.payCount; //充值数量
             console.log("充值数量  " + payCount)
             var payLingqu = Data.GameContext.player.extraData;//是否领取
-            console.log("extraData  "  + payLingqu)
+            console.log("extraData  " + payLingqu)
             if (!payCount) payCount = 0;
             if (payCount >= 20) {
                 this.chongzhi1.width = 216;
                 this.chongzhi1.height = 70;
                 this.shouChongText1.text = "领取";
                 this.isCharge = true;
-                if (payLingqu.pay_reward_20 && payLingqu.pay_reward_20 == 1) {
+                if (payLingqu.pay_reward_20 != 1) {
+this.currentStatus = CurrentStatus.unreceived;
+                } else {
                     this.chongzhi1.source = "resource/assets/dating/toast-bg.png";
                     this.shouChongText1.text = "已领取";
+                    this.chongzhi1.touchEnabled = false;
+                    this.currentStatus = CurrentStatus.Received;
                 }
             } else if (payCount >= 100) {
                 this.chongzhi2.width = 216;
                 this.chongzhi2.height = 70;
                 this.shouChongText2.text = "领取";
                 this.isCharge = true;
-                if (payLingqu.pay_reward_100 && payLingqu.pay_reward_100 == 1) {
+                if (payLingqu.pay_reward_100 != 1) {
+
+                }
+                else {
                     this.chongzhi2.source = "resource/assets/dating/toast-bg.png";
-                    this.shouChongText1.text = "已领取";
+                    this.shouChongText2.text = "已领取";
+                    this.chongzhi2.touchEnabled = false;
                 }
             } else if (payCount >= 200) {
                 this.chongzhi3.width = 216;
                 this.chongzhi3.height = 70;
                 this.shouChongText3.text = "领取";
                 this.isCharge = true;
-                if (payLingqu.pay_reward_200 && payLingqu.pay_reward_200 == 1) {
+                if (payLingqu.pay_reward_200 != 1) {
+
+                } else {
                     this.chongzhi3.source = "resource/assets/dating/toast-bg.png";
-                    this.shouChongText1.text = "已领取";
+                    this.shouChongText3.text = "已领取";
+                    this.chongzhi3.touchEnabled = false;
                 }
             } else if (payCount >= 300) {
                 this.chongzhi4.width = 216;
                 this.chongzhi4.height = 70;
                 this.shouChongText4.text = "领取";
                 this.isCharge = true;
-                if (payLingqu.pay_reward_300 && payLingqu.pay_reward_300 == 1) {
+                if (payLingqu.pay_reward_300 != 1) {
+                    
+                }else{
                     this.chongzhi4.source = "resource/assets/dating/toast-bg.png";
-                    this.shouChongText1.text = "已领取";
+                    this.shouChongText4.text = "已领取";
                     this.chongzhi4.touchEnabled = false;
                 }
             }

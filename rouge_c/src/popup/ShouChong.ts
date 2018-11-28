@@ -16,7 +16,10 @@ class ShouChong extends eui.Component {
     private shouChongText3: eui.Label;
     private shouChongText4: eui.Label;
 
-    private currentStatus: number;
+    private cBtn_20_Status: number;
+    private cBtn_100_Status: number;
+    private cBtn_200_Status: number;
+    private cBtn_300_Status: number;
 
     private m_mainSence: MainSence;
     public constructor(mainSence: MainSence) {
@@ -28,130 +31,189 @@ class ShouChong extends eui.Component {
         super.childrenCreated();
         this.init();
         this.img_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickClose, this);
-        this.chongzhi1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz1, this);
-        this.chongzhi2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz2, this);
-        this.chongzhi3.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz3, this);
-        this.chongzhi4.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz4, this);
-
         EventManager.getInstance().addEventListener(ApiEvent.PLAYER_INFO, this.RefreshBtnStatus, this);
         EventManager.getInstance().addEventListener(ApiEvent.CHANGE_INFO, this.RefreshBtnStatus, this);
 
     }
     private init() {
+        // 先获取用户信息；
+        PlayerApi.getPlayerInfo();
+
         this.RefreshBtnStatus();
     }
 
     private RefreshBtnStatus() {
-        // 先获取用户信息；
-        PlayerApi.getPlayerInfo();
+
         if (Data.GameContext.player.extraData != null) {
-            var payCount = Data.GameContext.player.extraData.payCount; //充值数量
+            var payCount = Data.GameContext.player.extraData.payCount / 100; //充值数量
             console.log("充值数量  " + payCount)
             var payLingqu = Data.GameContext.player.extraData;//是否领取
-            console.log("extraData  " + payLingqu)
-            if (!payCount) payCount = 0;
-            if (payCount >= 20) {
+            console.log("pay_reward_20  " + payLingqu.pay_reward_20);
+            console.log("pay_reward_100  " + payLingqu.pay_reward_100);
+            console.log("pay_reward_200  " + payLingqu.pay_reward_200);
+            console.log("pay_reward_300  " + payLingqu.pay_reward_300);
+            // if (!payCount) {
+                // payCount = 0;
+                this.cBtn_20_Status = CurrentStatus.unfinished;
+                this.cBtn_100_Status = CurrentStatus.unfinished;
+                this.cBtn_200_Status = CurrentStatus.unfinished;
+                this.cBtn_300_Status = CurrentStatus.unfinished;
+                console.log("zheli ");
+            // }
+            if (payCount == 20) {
+                this.cBtn_20_Status = CurrentStatus.unreceived;
+            } else if (payCount >= 100) {
+                this.cBtn_100_Status = CurrentStatus.unreceived;
+            } else if (payCount == 200) {
+                this.cBtn_200_Status = CurrentStatus.unreceived;
+            } else if (payCount == 300) {
+                this.cBtn_300_Status = CurrentStatus.unreceived;
+            }
+            if (payLingqu.pay_reward_20 == 1) {
+                this.cBtn_20_Status = CurrentStatus.Received;
+            }
+            if (payLingqu.pay_reward_100 == 1) {
+                this.cBtn_100_Status = CurrentStatus.Received;
+            }
+            if (payLingqu.pay_reward_200 == 1) {
+                this.cBtn_200_Status = CurrentStatus.Received;
+            }
+            if (payLingqu.pay_reward_300 == 1) {
+                this.cBtn_300_Status = CurrentStatus.Received;
+            }
+        }
+        switch (this.cBtn_20_Status) {
+            case CurrentStatus.unfinished:
+                break;
+            case CurrentStatus.unreceived:
                 this.chongzhi1.width = 216;
                 this.chongzhi1.height = 70;
                 this.shouChongText1.text = "领取";
-                this.isCharge = true;
-                if (payLingqu.pay_reward_20 != 1) {
-this.currentStatus = CurrentStatus.unreceived;
-                } else {
-                    this.chongzhi1.source = "resource/assets/dating/toast-bg.png";
-                    this.shouChongText1.text = "已领取";
-                    this.chongzhi1.touchEnabled = false;
-                    this.currentStatus = CurrentStatus.Received;
-                }
-            } else if (payCount >= 100) {
+                break;
+            case CurrentStatus.Received:
+                this.chongzhi1.source = "resource/assets/dating/toast-bg.png";
+                this.shouChongText1.text = "已领取";
+                break;
+            default:
+                break;
+        }
+        switch (this.cBtn_100_Status) {
+            case CurrentStatus.unfinished:
+                break;
+            case CurrentStatus.unreceived:
                 this.chongzhi2.width = 216;
                 this.chongzhi2.height = 70;
                 this.shouChongText2.text = "领取";
-                this.isCharge = true;
-                if (payLingqu.pay_reward_100 != 1) {
-
-                }
-                else {
-                    this.chongzhi2.source = "resource/assets/dating/toast-bg.png";
-                    this.shouChongText2.text = "已领取";
-                    this.chongzhi2.touchEnabled = false;
-                }
-            } else if (payCount >= 200) {
+                break;
+            case CurrentStatus.Received:
+                this.chongzhi2.source = "resource/assets/dating/toast-bg.png";
+                this.shouChongText2.text = "已领取";
+                break;
+            default:
+                break;
+        }
+        switch (this.cBtn_200_Status) {
+            case CurrentStatus.unfinished:
+                break;
+            case CurrentStatus.unreceived:
                 this.chongzhi3.width = 216;
                 this.chongzhi3.height = 70;
                 this.shouChongText3.text = "领取";
-                this.isCharge = true;
-                if (payLingqu.pay_reward_200 != 1) {
-
-                } else {
-                    this.chongzhi3.source = "resource/assets/dating/toast-bg.png";
-                    this.shouChongText3.text = "已领取";
-                    this.chongzhi3.touchEnabled = false;
-                }
-            } else if (payCount >= 300) {
+                break;
+            case CurrentStatus.Received:
+                this.chongzhi3.source = "resource/assets/dating/toast-bg.png";
+                this.shouChongText3.text = "已领取";
+                break;
+            default:
+                break;
+        }
+        switch (this.cBtn_300_Status) {
+            case CurrentStatus.unfinished:
+                break;
+            case CurrentStatus.unreceived:
                 this.chongzhi4.width = 216;
                 this.chongzhi4.height = 70;
                 this.shouChongText4.text = "领取";
-                this.isCharge = true;
-                if (payLingqu.pay_reward_300 != 1) {
-                    
-                }else{
-                    this.chongzhi4.source = "resource/assets/dating/toast-bg.png";
-                    this.shouChongText4.text = "已领取";
-                    this.chongzhi4.touchEnabled = false;
-                }
-            }
+                break;
+            case CurrentStatus.Received:
+                this.chongzhi4.source = "resource/assets/dating/toast-bg.png";
+                this.shouChongText4.text = "已领取";
+                break;
+            default:
+                break;
         }
-
+        this.chongzhi1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz1, this);
+        this.chongzhi2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz2, this);
+        this.chongzhi3.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz3, this);
+        this.chongzhi4.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCz4, this);
     }
     private onClickClose() {
         this.visible = false;
     }
-    //充值
-    public chongzhiPanel: Chongzhi;
-    private showChongZhiPanel() {
-        if (this.chongzhiPanel == null) {
-            this.chongzhiPanel = new Chongzhi(this.m_mainSence);
-            this.addChild(this.chongzhiPanel);
-        } else {
-            this.chongzhiPanel.visible = true;
-        }
-    }
     private onclickCz1() {
-        if (!this.isCharge) {   //如果充值不够 就弹出充值
-            this.showChongZhiPanel();
-            this.isCharge = true;
-        } else if (this.isCharge) { //如果充值够了  且没领取   就领取
-            OrderApi.payReward(1);
+        EventManager.getInstance().SendEvent(ApiEvent.CHANGE_INFO);
+        switch (this.cBtn_20_Status) {
+            case CurrentStatus.unfinished:
+                OrderApi.createOrder("钻石充值", 20);
+                break;
+            case CurrentStatus.unreceived:
+                OrderApi.payReward(1);
+                break;
+            case CurrentStatus.Received:
+                console.log("你已经领取过了。");
+                break;
+            default:
+                break;
         }
     }
     private onclickCz2() {
-        if (!this.isCharge) {
-            this.showChongZhiPanel();
-            this.isCharge = true;
-        } else if (this.isCharge) {
-            OrderApi.payReward(2);
+        EventManager.getInstance().SendEvent(ApiEvent.CHANGE_INFO);
+        switch (this.cBtn_100_Status) {
+            case CurrentStatus.unfinished:
+                OrderApi.createOrder("钻石充值", 100);
+                break;
+            case CurrentStatus.unreceived:
+                OrderApi.payReward(2);
+                break;
+            case CurrentStatus.Received:
+                console.log("你已经领取过了。");
+                break;
+            default:
+                break;
         }
     }
     private onclickCz3() {
-        if (!this.isCharge) {
-
-            this.showChongZhiPanel();
-            this.isCharge = true;
-
-        } else if (this.isCharge) {
-            OrderApi.payReward(3);
+        EventManager.getInstance().SendEvent(ApiEvent.CHANGE_INFO);
+        switch (this.cBtn_200_Status) {
+            case CurrentStatus.unfinished:
+                OrderApi.createOrder("钻石充值", 200);
+                break;
+            case CurrentStatus.unreceived:
+                OrderApi.payReward(3);
+                break;
+            case CurrentStatus.Received:
+                console.log("你已经领取过了。");
+                break;
+            default:
+                break;
         }
-
     }
     private onclickCz4() {
-        if (!this.isCharge) {
-            this.showChongZhiPanel();
-            this.isCharge = true;
-        } else if (this.isCharge) {
-            OrderApi.payReward(4);
+        EventManager.getInstance().SendEvent(ApiEvent.CHANGE_INFO);
+        console.log("this.cBtn_300_Status    " + this.cBtn_300_Status);
+        switch (this.cBtn_300_Status) {
+            case CurrentStatus.unfinished:
+                OrderApi.createOrder("钻石充值", 300);
+                break;
+            case CurrentStatus.unreceived:
+                OrderApi.payReward(4);
+                break;
+            case CurrentStatus.Received:
+                console.log("你已经领取过了。");
+                break;
+            default:
+                break;
         }
-
     }
 
 

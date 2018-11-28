@@ -24,6 +24,7 @@
 		"bin-debug/Data/PlayerData.js",
 		"bin-debug/Data/RankData.js",
 		"bin-debug/game/GameMain.js",
+		"bin-debug/popup/BroadCast.js",
 		"bin-debug/popup/Duihuan.js",
 		"bin-debug/popup/DuihuanItem.js",
 		"bin-debug/popup/GameOver.js",

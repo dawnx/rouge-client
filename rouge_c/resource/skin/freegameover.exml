@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="goods_item" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="group" width="676" height="414" horizontalCenter="0" verticalCenter="0">
+		<e:Image x="0" y="0" scale9Grid="15,15,96,96" width="676" height="530" source="mmm_dating_Backplane_07_png" scaleX="1" scaleY="1"/>
+		<e:Image id="img_juzi" x="256.5" y="160" scaleX="1" scaleY="1" source="feef_03_png"/>
+		<e:Image id="titlebg" x="111.5" y="-62.5" scaleX="1" scaleY="1" source="mmm_dating_header_01_png"/>
+		<e:Label id="desc" text="好可惜，距离获奖就差那么一点点" x="142.5" y="78" scaleX="1" scaleY="1" size="26" textColor="0x333333" fontFamily="SimHei"/>
+		<e:Button id="btn_fangqi" label="放弃重玩" x="65" y="417" scaleX="1" scaleY="1">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="mmm_dating_button_05_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btn_reset" label="金币继续" x="395" y="417" width="216" height="72" scaleX="1" scaleY="1">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="mmm_dating_button_03_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Image id="img_title" scaleX="1" scaleY="1" source="mmm_dating_Art-word_07_png" horizontalCenter="-2.5" verticalCenter="-225.5"/>
+	</e:Group>
+</e:Skin>

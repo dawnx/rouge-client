@@ -171,11 +171,15 @@ class GameMain extends eui.Component {
     }
     public gameover: GameOver;
     private GameOver() {
-        if (this.gameover == null) {
-            this.gameover = new GameOver(this.miao, this.score, this.goodsItemData.gameType, this._level, this.goodsItemData, this.m_mainsence);
-            this.addChild(this.gameover);
-        } else {
-            this.gameover.visible = true;
+         if (LayerUtil.gameMain.goodsItemData.goodsFenqu == 0) {//判断当前游戏类型
+             LayerUtil.shopMain.stage.addChild(new FreeGameOver());
+         }else{
+            if (this.gameover == null) {
+                this.gameover = new GameOver(this.miao, this.score, this.goodsItemData.gameType, this._level, this.goodsItemData, this.m_mainsence);
+                this.addChild(this.gameover);
+            } else {
+                this.gameover.visible = true;
+            }
         }
     }
     // public Xsover: XsOver;
@@ -349,6 +353,7 @@ class GameMain extends eui.Component {
                         //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
                         console.log("体验模式结束 ")
                         this.GameOver();
+                        return;
                     }
                     this.timer.stop();
                     if (this._level >= 4 && this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
@@ -440,6 +445,7 @@ class GameMain extends eui.Component {
 
 
     }
+    //闯关模式
     //如果是金币重玩，就不删除之前已经扎的口红
     public initGame1() {  //游戏初始化 消耗金币重新玩，分数砍一半
         console.log("游戏初始化")

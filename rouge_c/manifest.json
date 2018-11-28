@@ -26,6 +26,7 @@
 		"bin-debug/game/GameMain.js",
 		"bin-debug/popup/Duihuan.js",
 		"bin-debug/popup/DuihuanItem.js",
+		"bin-debug/popup/FreeGameOver.js",
 		"bin-debug/popup/GameOver.js",
 		"bin-debug/popup/LuckeyCoin.js",
 		"bin-debug/popup/OverSuccess.js",

@@ -119,7 +119,7 @@ class Main extends eui.UILayer {
         LayerUtil.popupMain = new egret.Sprite();
       
         this.addChild(LayerUtil.shopMain);
-        this.addChild(LayerUtil.popupMain)
+        // this.addChild(LayerUtil.popupMain)
     }
 
     /**

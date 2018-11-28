@@ -52,6 +52,7 @@ class Begin extends eui.Component {
         // 倒计时；
         this.timer = new egret.Timer(1000);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, this.onTimerEnter, this);
+        console.log("timer is there");
 
         // 事件系统
         EventManager.getInstance().addEventListener(ApiEvent.RANK_INFO, this.onGetRankInfo, this);
@@ -98,7 +99,9 @@ class Begin extends eui.Component {
             console.log("sec    " + this._sec);
             // this._countDown.text = hour + ":" + min + ":" + sec;
             ///
-            this.timer.start();
+            if (this.timer != null) {
+                this.timer.start();
+            }
 
         }
         if (Data.GameContext.rankDataArray != null) {
@@ -127,8 +130,8 @@ class Begin extends eui.Component {
             console.log("*******Send   ed ");
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
-            LayerUtil.gameMain  = null;
-            
+            LayerUtil.gameMain = null;
+
             LayerUtil.gameMain = new GameMain(this.goodsItemData, this.m_mainsence);
             this.stage.addChild(LayerUtil.gameMain);
         } else {
@@ -137,7 +140,8 @@ class Begin extends eui.Component {
         }
     }
     private onClickBack() {
-        this.visible = false;
+        this.timer.stop();
+        this.parent.removeChild(this);
         this.m_mainsence.visible = true;
     }
 }

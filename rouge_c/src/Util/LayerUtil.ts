@@ -5,10 +5,11 @@ class LayerUtil {
 	public static popupMain:egret.Sprite;
 	
 
-	public static get(uri: string,
-		onComplete: Function = null,
-		onError: Function = null,
-		onProgress: Function = null) {
+	public static addPopUp(dis: egret.DisplayObject ){
 
-		}
+	}
+
+	public static removePopup(dis:egret.DisplayObject){
+
+	}
 }

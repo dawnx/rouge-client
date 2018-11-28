@@ -1,6 +1,6 @@
 class BaseApi {
-	// public static host: string = "http://kh.chitugame.com/ct-admin/";
-	public static host: string = "http://192.168.1.112:8080/ct-admin/";
+	public static host: string = "http://kh.chitugame.com/ct-admin/";
+	// public static host: string = "http://192.168.1.112:8080/ct-admin/";
 
 	public static get(uri: string,
 		onComplete: Function = null,

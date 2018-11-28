@@ -74,7 +74,7 @@ class OrderApi {
         var data = JSON.parse(request.response).data;
 
         PlayerApi.getPlayerInfo();
-
+        EventManager.getInstance().SendEvent(ApiEvent.CHANGE_INFO);
     }
 
     // 分享接口；

@@ -6,7 +6,7 @@ class Begin extends eui.Component {
     private lb_tishi: eui.Label;
     private m_mainsence: MainSence;
     private gp_bottom: eui.Group;
-    private btn_back: eui.Rect;
+    private _backBtn: eui.Rect;
 
     // 发奖倒计时
     private _countDown: eui.Label;
@@ -48,7 +48,7 @@ class Begin extends eui.Component {
         this.onGetRankInfo();
         this.btn_share.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickShare, this);
         this.btn_begin.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBegin, this);
-        this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBack, this);
+        this._backBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBack, this);
         // 倒计时；
         this.timer = new egret.Timer(1000);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, this.onTimerEnter, this);

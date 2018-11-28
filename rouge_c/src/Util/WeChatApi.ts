@@ -38,6 +38,7 @@ class WeChatApi  {
                     success: function (res) {
                         // 支付成功后的回调函数
                         if ("get_brand_wcpay_request:ok" == res.err_msg) {
+                            EventManager.getInstance().SendEvent(ApiEvent.PLAYER_INFO);
                             var label: eui.Label = new eui.Label();
                             label.text = "充值成功！ \r\n 请等待。。。";
                             //设置颜色等文本属性

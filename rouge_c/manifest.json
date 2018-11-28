@@ -11,7 +11,7 @@
 		"libs/modules/md5/md5.js"
 	],
 	"game": [
-		"bin-debug/Tishi1.js",
+		"bin-debug/Tishi2.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/Chongzhi.js",
 		"bin-debug/Duihuan.js",
@@ -31,8 +31,8 @@
 		"bin-debug/SoundUtils.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/Tishi.js",
+		"bin-debug/Tishi1.js",
 		"bin-debug/Begin.js",
-		"bin-debug/Tishi2.js",
 		"bin-debug/XsOver.js",
 		"bin-debug/YaoQing.js",
 		"bin-debug/Data/DataManager.js",
@@ -50,6 +50,8 @@
 		"bin-debug/Util/OrderApi.js",
 		"bin-debug/Util/PlayerApi.js",
 		"bin-debug/Util/RougeGameApi.js",
+		"bin-debug/Util/ViewManager.js",
+		"bin-debug/Util/ViewName.js",
 		"bin-debug/Util/WeChatApi.js"
 	]
 }

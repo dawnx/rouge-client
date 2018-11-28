@@ -193,14 +193,14 @@ class MainSence extends eui.Component {
     }
 
     private onClickImg_bg() {
-        if (this.index == 1) {
-            console.log("第一个")
+        // if (this.index == 1) {
+        //     console.log("第一个")
             this.addChild(new ShouChong(this))
-        }
-        else if (this.index == 2) {
-            console.log("第二个")
-            this.addChild(new YaoQing())
-        }
+        // }
+        // else if (this.index == 2) {
+        //     console.log("第二个")
+        //     this.addChild(new YaoQing())
+        // }
 
     }
 

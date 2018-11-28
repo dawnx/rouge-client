@@ -13,7 +13,8 @@
 		"eui.VScrollBar": "resource/eui_skins/VScrollBarSkin.exml",
 		"eui.VSlider": "resource/eui_skins/VSliderSkin.exml",
 		"eui.ItemRenderer": "resource/eui_skins/ItemRendererSkin.exml",
-		"GameMain": "resource/eui_skins/GameMain.exml"
+		"GameMain": "resource/eui_skins/GameMain.exml",
+		"ShopMain": "resource/eui_skins/shopmain.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -38,10 +39,9 @@
 		"resource/skin/gameover.exml",
 		"resource/skin/goodsItem.exml",
 		"resource/skin/luckeycoin.exml",
-		"resource/skin/mainsence.exml",
 		"resource/skin/overSuccess.exml",
 		"resource/skin/paihang_items.exml",
-		"resource/skin/postPanel.exml",
+		"resource/skin/shopmain.exml",
 		"resource/skin/shouchong.exml",
 		"resource/skin/tishi.exml",
 		"resource/skin/tishi1.exml",

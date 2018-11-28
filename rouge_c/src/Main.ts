@@ -115,7 +115,11 @@ class Main extends eui.UILayer {
     protected createGameScene(): void {
         Data.DataManager.init();
         utils.SoundUtils.instance().initSound();
-        this.addChild(new MainSence());
+        LayerUtil.shopMain = new ShopMain();
+        LayerUtil.popupMain = new egret.Sprite();
+      
+        this.addChild(LayerUtil.shopMain);
+        this.addChild(LayerUtil.popupMain)
     }
 
     /**

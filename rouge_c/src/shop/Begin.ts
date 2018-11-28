@@ -4,7 +4,7 @@ class Begin extends eui.Component {
     private goodsItemData: Data.GoodsItemData;
     private gp_paihang: eui.Group;
     private lb_tishi: eui.Label;
-    private m_mainsence: MainSence;
+    private m_mainsence: ShopMain;
     private gp_bottom: eui.Group;
     private _backBtn: eui.Rect;
 
@@ -15,7 +15,7 @@ class Begin extends eui.Component {
     private _sec: number;
     private timer: egret.Timer;
 
-    public constructor(_itemData: Data.GoodsItemData, mainsence: MainSence) {
+    public constructor(_itemData: Data.GoodsItemData, mainsence: ShopMain) {
         super()
         this.goodsItemData = _itemData;
         this.m_mainsence = mainsence;
@@ -127,9 +127,10 @@ class Begin extends eui.Component {
             console.log("*******Send   ed ");
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
-
-            var gameMain = new GameMain(this.goodsItemData, this.m_mainsence);
-            this.stage.addChild(gameMain);
+            LayerUtil.gameMain  = null;
+            
+            LayerUtil.gameMain = new GameMain(this.goodsItemData, this.m_mainsence);
+            this.stage.addChild(LayerUtil.gameMain);
         } else {
             // this.addChild(new Tishi(this.m_mainsence));
             this.addChild(new Tishi2());

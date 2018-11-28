@@ -21,8 +21,8 @@ class ShouChong extends eui.Component {
     private cBtn_200_Status: number;
     private cBtn_300_Status: number;
 
-    private m_mainSence: MainSence;
-    public constructor(mainSence: MainSence) {
+    private m_mainSence: ShopMain;
+    public constructor(mainSence: ShopMain) {
         super()
         this.m_mainSence = mainSence;
         this.skinName = "resource/skin/shouchong.exml";

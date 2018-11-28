@@ -6,8 +6,8 @@ class Chongzhi extends eui.Component {
     private chongzhi4: eui.Image;
     private chongzhi5: eui.Image;
     private chongzhi6: eui.Image;
-    private _mainsence: MainSence;
-    public constructor(mainsence: MainSence ) {
+    private _mainsence: ShopMain;
+    public constructor(mainsence: ShopMain ) {
         super()
         this._mainsence = mainsence;
         this.skinName = "resource/skin/chongzhi.exml";

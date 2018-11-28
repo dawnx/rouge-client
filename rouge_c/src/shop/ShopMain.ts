@@ -1,4 +1,4 @@
-class MainSence extends eui.Component {
+class ShopMain extends eui.Component {
     private rad1: eui.RadioButton;
     private rad2: eui.RadioButton;
     private rad3: eui.RadioButton;
@@ -62,7 +62,7 @@ class MainSence extends eui.Component {
     private luckCoin: eui.Image;
     public constructor() {
         super()
-        this.skinName = "resource/skin/mainsence.exml";
+        this.skinName = "resource/skin/shopmain.exml";
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();
@@ -70,6 +70,7 @@ class MainSence extends eui.Component {
         this.BG.height = Main._screenH;
         //跑马灯
         this.paomaText.x = 750;
+        this.paomaText.text = "";
         egret.Tween.get(this.paomaText, { loop: true }).to({ x: -this.paomaText.width }, 9000)
             .call(() => {
                 this.paomaText.x = 750
@@ -127,7 +128,7 @@ class MainSence extends eui.Component {
         this.gp500.width = 0;
         this.gp500.visible = false;
 
-        var timer: egret.Timer = new egret.Timer(3000, 0); 
+        var timer: egret.Timer = new egret.Timer(2000, 0); 
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
         timer.start();
     }
@@ -170,7 +171,7 @@ class MainSence extends eui.Component {
     //兑换
     public duihuan: Duihuan;
     private onClickDuihuan() {
-        this.addChild(new Duihuan(this));
+        // this.addChild(new Duihuan(this));
 
         if (this.duihuan == null) {
             this.duihuan = new Duihuan(this);
@@ -193,14 +194,14 @@ class MainSence extends eui.Component {
     }
 
     private onClickImg_bg() {
-        // if (this.index == 1) {
-        //     console.log("第一个")
+        if (this.index == 1) {
+            console.log("第一个")
             this.addChild(new ShouChong(this))
-        // }
-        // else if (this.index == 2) {
-        //     console.log("第二个")
-        //     this.addChild(new YaoQing())
-        // }
+        }
+        else if (this.index == 2) {
+            console.log("第二个")
+            this.addChild(new YaoQing())
+        }
 
     }
 

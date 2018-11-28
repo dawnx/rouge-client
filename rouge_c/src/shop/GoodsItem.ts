@@ -5,9 +5,9 @@ class GoodsItem extends eui.Component {
     private btnText: eui.Label;
     private price: eui.Label;
     private itemData: Data.GoodsItemData;
-    private m_mainsence: MainSence;
+    private m_mainsence: ShopMain;
 
-    public constructor(_itemData: Data.GoodsItemData, mainsence: MainSence) {
+    public constructor(_itemData: Data.GoodsItemData, mainsence: ShopMain) {
         super()
         this.skinName = "resource/skin/goodsItem.exml";
         this.itemData = _itemData;
@@ -37,9 +37,9 @@ class GoodsItem extends eui.Component {
         } else if (currentGolds >= this.itemData.goodsFenqu) {
             RougeGameApi.startGame(this.itemData.subGameId, this.itemData.goodsType, this.itemData.goodsFenqu, this.itemData.gameType, 0);
             console.log("*******Send   ed ");
-           
-            var gameMain = new GameMain(this.itemData, this.m_mainsence);
-            this.stage.addChild(gameMain);
+            LayerUtil.gameMain =  null;
+            LayerUtil.gameMain = new GameMain(this.itemData, this.m_mainsence);
+            this.stage.addChild(LayerUtil.gameMain);
         } else {
             
             this.stage.addChild(new Tishi(this.m_mainsence));

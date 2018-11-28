@@ -4,8 +4,9 @@ class Duihuan extends eui.Component {
     private gold: eui.Label
     private demons: eui.Label;
     private duihuan: eui.Image;
-    private _mainsence: MainSence;
-    public constructor(mainsence: MainSence) {
+    private hSlider:eui.HSlider;
+    private _mainsence: ShopMain;
+    public constructor(mainsence: ShopMain) {
         super()
         this._mainsence = mainsence;
         this.skinName = "resource/skin/duihuan.exml";
@@ -15,16 +16,10 @@ class Duihuan extends eui.Component {
         this.init();
         this.img_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickClose, this);
         this.duihuan.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickDuihuan, this);
-        var hSlilder: eui.HSlider = new eui.HSlider();
-        hSlilder.width = 452;
-        console.log(Data.GameContext.player.diamond);
-        hSlilder.maximum = Data.GameContext.player.diamond;;//等于自己钻石总数
-        hSlilder.horizontalCenter = 0;
-        hSlilder.verticalCenter = 0;
+        this.hSlider.track.visible = false;
         ///监听 CHANGE 事件
-        hSlilder.addEventListener(egret.Event.CHANGE, this.onHSliderChange, this);
-        this._hSlider = hSlilder;
-        this.group.addChild(this._hSlider);
+        this.hSlider.addEventListener(egret.Event.CHANGE, this.onHSliderChange, this);
+        this.group.addChild(this.hSlider);
 
 
     }
@@ -40,7 +35,7 @@ class Duihuan extends eui.Component {
         console.log("asdasdasdadasdasd")
         // this._mainsence.duihuan.visible = false;
 
-        this.parent.removeChild(this)
+        this.visible = false;
 
     }
     //兑换
@@ -51,27 +46,28 @@ class Duihuan extends eui.Component {
             console.log("不能为空啊")
             this.edu = 0;
         }
-        this.addChild(new DuihuanItem(this._mainsence, this.edu));
+        let duihuaitem = new DuihuanItem(this._mainsence, this.edu);
+        duihuaitem.y = -120;
+        this.addChild(duihuaitem);
 
         console.log("1111111AccountData.accoundData.diamond:       " + Data.GameContext.player.diamond)
     }
 
     ///水平滑动选择器
-    private _hSlider: eui.HSlider;
     private _info: eui.Label;
     private edu: number;
     ///显示水平滑动选择器的值
     private _hLabel: eui.Label;
     private onHSliderChange(e: egret.Event) {
         var slilder = <eui.HSlider>e.target;
-        var hSlider = this._hSlider;
-        hSlider.x = 100;
-        hSlider.y = 100;
+        // var hSlider = this.hSlider;
+        // hSlider.x = 100;
+        // hSlider.y = 100;
         var hLabel = this._hLabel;
 
-        this.demons.text = " " + hSlider.pendingValue;
-        this.gold.text = " " + hSlider.pendingValue * 3;
-        this.edu = hSlider.pendingValue * 3;
+        this.demons.text = " " + this.hSlider.pendingValue;
+        this.gold.text = " " + this.hSlider.pendingValue * 3;
+        this.edu = this.hSlider.pendingValue * 3;
 
 
     }

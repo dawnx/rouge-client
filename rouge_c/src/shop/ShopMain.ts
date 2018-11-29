@@ -121,16 +121,16 @@ class ShopMain extends eui.Component {
         this.onPlayerInfo();
         console.log("Data.GameContext.player.extraData.first_login_reward    " + Data.GameContext.player.extraData.first_login_reward);
         // 首次登陆送200金币；
-        if (true) {
-        // if (Data.GameContext.player.extraData.first_login_reward != 1){
+        // if (true) {
+        if (Data.GameContext.player.extraData.first_login_reward != 1){
             var broadc: BroadCast;
             broadc = new BroadCast("首次登陆送200金币","mmm_dating_icon_06");
             this.addChild(broadc);
         }
 
         // 首次分享送100幸运币；
-        if (true) {
-        // if (Data.GameContext.player.extraData.first_login_reward != 1){
+        // if (true) {
+        if (Data.GameContext.player.extraData.first_login_reward != 1){
             var broadc: BroadCast;
             broadc = new BroadCast("首次分享送100幸运币","mmm_dating_icon_05");
             this.addChild(broadc);

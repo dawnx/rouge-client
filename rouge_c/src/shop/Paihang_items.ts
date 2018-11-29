@@ -44,10 +44,10 @@ class Paihang_items extends eui.Component {
             this.m_nick.text = Data.GameContext.rankDataArray[this._index].nick.substr(0, 6) + "..";
         }
         if (this._gameType == Data.GameType.CHUANG_GUAN) {
-            this.m_grade.text = Data.GameContext.rankDataArray[this._index].level.toString();
+            this.m_grade.text = Data.GameContext.rankDataArray[this._index].level.toString() + "关";
         }
         else {
-            this.m_grade.text = Data.GameContext.rankDataArray[this._index].score.toString();
+            this.m_grade.text = Data.GameContext.rankDataArray[this._index].score.toString() + "枚";
         }
     }
 

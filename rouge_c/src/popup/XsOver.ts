@@ -55,7 +55,7 @@ class XsOver extends eui.Component {
             //金币不足，前往充值提示
              LayerUtil.shopMain.stage.addChild(new Tishi(this.m_mainsence))
         }
-
+        LayerUtil.shopMain.stage.removeChild(this);
     }
 
 }

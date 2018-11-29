@@ -20,7 +20,7 @@
 			</e:Skin>
 			</e:skinName>
 		</e:Button>
-		<e:Button id="btn_reset" label="金币复活" x="395" y="419.91" width="216" height="72">
+		<e:Button id="btn_reset" label="再玩一次" x="395" y="419.91" width="216" height="72">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">
 				<e:Image width="100%" height="100%" source="mmm_dating_button_03_png"/>

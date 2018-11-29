@@ -40,6 +40,11 @@ class GameMain extends eui.Component {
     public goodsItemData: Data.GoodsItemData;
     private m_mainsence: ShopMain;
     private tuichu: eui.Label;
+    private headicon1: eui.Image;
+    private headicon2: eui.Image;
+    private selfrank: eui.Label;
+    private rankgroup: eui.Group;
+    
     public constructor(_goodsItemData: Data.GoodsItemData, mainsence: ShopMain) {
         super()
         this.goodsItemData = _goodsItemData;
@@ -61,13 +66,46 @@ class GameMain extends eui.Component {
             // 闯关
             this.init();
         }
-        
+
+        this.initRank();
         egret.Ticker.getInstance().register(function () {
             this.rect_dangban.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickInsert, this);
             this.update();
         }, this);
-        this.addEventListener(egret.Event.REMOVED_FROM_STAGE,this.onRemove, this)
+        this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this)
     }
+
+    private initRank() {
+        if (LayerUtil.gameMain.goodsItemData.goodsFenqu == 0 && LayerUtil.gameMain.goodsItemData.gameType != Data.GameType.TI_YAN) {
+            var num = 0;
+            for (var i = 0; i < Data.GameContext.rankDataArray.length; i++) {
+                if (Data.GameContext.rankDataArray[i].uid == Data.GameContext.player.uid)
+                    num = i;
+            }
+            // num = 3;
+            if (num > 0)
+                this.selfrank.text = "" + (num + 1);
+            else
+                this.selfrank.text = "?";
+
+            if (num >= 1) {
+                this.headicon1.source = "mmm_youxi_Backplane_03_png";
+                this.headicon2.source = "mmm_youxi_Backplane_03_png";
+            }
+            if (num >= 2) {
+                this.headicon1.source = "mmm_youxi_Backplane_03_png";
+                this.headicon2.source = Data.GameContext.rankDataArray[num - 1].headPic;
+            }
+            if (num >= 3) {
+                this.headicon1.source = Data.GameContext.rankDataArray[num - 2].headPic;
+                this.headicon2.source = Data.GameContext.rankDataArray[num - 1].headPic;
+            }
+        }else{
+            this.rankgroup.visible = false;
+        }
+
+    }
+
     private onclickBack() {
         this.timer.stop();
         this.parent.removeChild(this);
@@ -89,6 +127,16 @@ class GameMain extends eui.Component {
         //     item.y = item.height * i + 5 * i;
         // }
 
+        if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
+            this.overplus80.visible = true;
+            this.overplus60.visible = true;
+            this.overplus40.visible = true;
+            this.overplus20.visible = true;
+            this.overplus0.visible = true;
+            this.lb_rougeNum.text = "剩余数量: " + this.getRougeNum(this._level) + "/" + this.getRougeNum(this._level);
+        } else {
+            this.lb_rougeNum.text = "分数: 0";
+        }
 
         this.gp_guan.visible = false;
         this.rect_dangban.visible = true;
@@ -155,7 +203,7 @@ class GameMain extends eui.Component {
         this.level1.visible = false;
         this.level2.visible = false;
         this.level3.visible = false;
-        
+
         this.gp_guan.visible = false;
         this.rect_dangban.visible = true;
         //倒计时获取
@@ -190,7 +238,7 @@ class GameMain extends eui.Component {
     public gameover: GameOver;
     private GameOver() {
         if (LayerUtil.gameMain.goodsItemData.goodsFenqu == 0) {//判断当前游戏类型
-            LayerUtil.shopMain.stage.addChild(new FreeGameOver(this.miao,this.score,this._level));
+            LayerUtil.shopMain.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
         } else {
             if (this.gameover == null) {
                 this.gameover = new GameOver(this.miao, this.score, this.goodsItemData.gameType, this._level, this.goodsItemData, this.m_mainsence);
@@ -416,6 +464,9 @@ class GameMain extends eui.Component {
                                 || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                                 this.GameOver();
                             } else {
+                                if(this.goodsItemData.goodsFenqu == 0)
+                                    this.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
+                                else
                                 this.stage.addChild(new XsOver(this.score, this.goodsItemData.gameType, this.goodsItemData, this.m_mainsence));
                                 console.log("限时模式 游戏结束")
                             }
@@ -562,7 +613,9 @@ class GameMain extends eui.Component {
 
         this.rect_dangban.visible = true;
         let time = this.getTime(this._level);
-        console.log("倒计时" + time)
+        console.log("倒计时" + time);
+        if(this.timer)
+            this.timer.stop();
         this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
         this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, onTimerComplete, this);

@@ -29,6 +29,10 @@ class FreeGameOver extends eui.Component {
             // this.img_juzi.source = LayerUtil.gameMain.goodsItemData.img;
             this.img_title.source = "mmm_youxi_Art-word_02_png";
             this.desc.text = "通关了赶紧玩正式模式可以获得奖品哟";
+            this.btn_fangqi.label = "再玩一次";
+            this.btn_reset.label = "返回主页";
+            this.btn_reset.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickFangqi, this);
+            this.btn_fangqi.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTryagein, this);
         } else {//----->成绩
             this.img_title.source = "mmm_dating_Art-word_07_png";
         var num = 0;
@@ -39,13 +43,16 @@ class FreeGameOver extends eui.Component {
         var temp = "未上榜"; 
         if(num > 0)
             temp = "获得第"+num+"名次";
-            this.desc.text = "恭喜您获得"+this._score+"枚,"+temp+"\n距离开奖时间还有"+LayerUtil.begin._countDown.text;
-        }
+        this.desc.text = "恭喜您获得"+this._score+"枚,"+temp+"\n距离开奖时间还有"+LayerUtil.begin._countDown.text;
 
         this.btn_fangqi.label = "金币复活";
         this.btn_reset.label = "返回主页";
         this.btn_reset.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickFangqi, this);
         this.btn_fangqi.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickReset, this);
+        }
+
+        
+        
 
 
     }
@@ -55,6 +62,11 @@ class FreeGameOver extends eui.Component {
         if (LayerUtil.shopMain.stage.contains(LayerUtil.gameMain))
             LayerUtil.shopMain.stage.removeChild(LayerUtil.gameMain);
         console.log("this.m_time    " + this.m_time);
+    }
+
+    private onTryagein(){
+        LayerUtil.shopMain.stage.removeChild(this);
+        LayerUtil.gameMain.initGame1();
     }
 
     private onClickReset() {

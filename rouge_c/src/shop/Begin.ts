@@ -110,7 +110,7 @@ class Begin extends eui.Component {
                 if (i >= 10) {
                     break;
                 }
-                var item = new Paihang_items(i);
+                var item = new Paihang_items(i,this.goodsItemData.gameType);
                 this.gp_paihang.addChild(item);
                 item.y = item.height * i + 5 * i;
             }

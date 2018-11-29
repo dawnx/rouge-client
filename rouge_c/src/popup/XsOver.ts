@@ -51,9 +51,9 @@ class XsOver extends eui.Component {
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
             LayerUtil.gameMain.initGame2();
-        } {
+        } else{
             //金币不足，前往充值提示
-            this.addChild(new Tishi2())
+             LayerUtil.shopMain.stage.addChild(new Tishi(this.m_mainsence))
         }
 
     }

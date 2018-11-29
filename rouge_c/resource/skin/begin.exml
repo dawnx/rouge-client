@@ -17,7 +17,7 @@
 			<e:Label text="返回" x="65.83" y="26"/>
 			<e:Button id="_backBtn" label="Button" x="25.5" y="14.5" alpha="0" anchorOffsetX="0" width="119"/>
 		</e:Group>
-		<e:Scroller id="scroller" width="750" height="953" x="0" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" y="183">
+		<e:Scroller id="scroller" width="750" height="1005" x="0" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" y="131">
 			<e:Group id="gp_paihang" anchorOffsetX="0" width="789.39" anchorOffsetY="0" height="962">
 			</e:Group>
 		</e:Scroller>

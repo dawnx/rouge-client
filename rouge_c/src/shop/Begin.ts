@@ -106,6 +106,7 @@ class Begin extends eui.Component {
         }
         if (Data.GameContext.rankDataArray != null) {
             var context = this;
+            this.gp_paihang.removeChildren();
             for (let i = 0; i < Data.GameContext.rankDataArray.length; i++) {
                 if (i >= 10) {
                     break;

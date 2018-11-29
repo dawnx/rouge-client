@@ -117,7 +117,7 @@ class Main extends eui.UILayer {
         utils.SoundUtils.instance().initSound();
         LayerUtil.shopMain = new ShopMain();
         LayerUtil.popupMain = new egret.Sprite();
-      
+        
         this.addChild(LayerUtil.shopMain);
         // this.addChild(LayerUtil.popupMain)
     }

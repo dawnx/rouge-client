@@ -117,9 +117,9 @@ class ShopMain extends eui.Component {
 
         // 返回到主界面的时候，调取用户信息，继续执行 刷新；
         PlayerApi.getPlayerInfo();
+        console.log("绑定微信通用接口");
         // 绑定微信通用接口；
         OrderApi.wechatAPI();
-        console.log("绑定微信通用接口");
         // // 兑换接口；
         // NetSend.SendToNetExchange(Item.Gold, 1);
         // console.log("兑换  金币   1  个");

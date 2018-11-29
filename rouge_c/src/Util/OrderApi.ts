@@ -32,7 +32,7 @@ class OrderApi {
 
         this.SendSuccess = true;
         this.SendCallBack = data;
-        //WeChatApi.weChatPay(data);
+        WeChatApi.weChatPay(data);
         console.log(data)
         console.log("下单成功  调起支付请求！");
     }

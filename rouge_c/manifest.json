@@ -31,6 +31,7 @@
 		"bin-debug/popup/GameOver.js",
 		"bin-debug/popup/LuckeyCoin.js",
 		"bin-debug/popup/OverSuccess.js",
+		"bin-debug/popup/Share.js",
 		"bin-debug/popup/ShouChong.js",
 		"bin-debug/popup/Tishi.js",
 		"bin-debug/LoadingUI.js",

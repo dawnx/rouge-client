@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="goods_item" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect width="750" height="1386" x="0" y="0" fillColor="0x000000" fillAlpha="0.3"/>
+	<e:Image id="_cancel" x="267" y="1026" source="mmm_paihang_button_01_png"/>
+	<e:Image source="mmm_paihang_Art-word_01_03_png" x="455" y="30"/>
+	<e:Label text="取消分享" x="270" y="1030" anchorOffsetX="0" width="212" anchorOffsetY="0" height="60" verticalAlign="middle" textAlign="center" size="28" touchEnabled="false"/>
+</e:Skin>

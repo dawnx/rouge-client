@@ -19,8 +19,10 @@ class YaoQing extends eui.Component {
 
     }
     private onClickShareBtn() {
-        OrderApi.share();
-        console.log("  ***OrderApi.share(); ");
+        //OrderApi.share();
+        var share :Share;
+        share = new Share();
+        this.addChild(share);
     }
     private onClickReceiveBtn() {
         //console.log(this);

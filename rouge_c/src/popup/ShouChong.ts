@@ -154,7 +154,7 @@ class ShouChong extends eui.Component {
         EventManager.getInstance().SendEvent(ApiEvent.CHANGE_INFO);
         switch (this.cBtn_20_Status) {
             case CurrentStatus.unfinished:
-                // OrderApi.createOrder("钻石充值", 20);
+                OrderApi.createOrder("钻石充值", 20);
                 break;
             case CurrentStatus.unreceived:
                 OrderApi.payReward(1);
@@ -170,7 +170,7 @@ class ShouChong extends eui.Component {
         EventManager.getInstance().SendEvent(ApiEvent.CHANGE_INFO);
         switch (this.cBtn_100_Status) {
             case CurrentStatus.unfinished:
-                // OrderApi.createOrder("钻石充值", 100);
+                OrderApi.createOrder("钻石充值", 100);
                 break;
             case CurrentStatus.unreceived:
                 OrderApi.payReward(2);
@@ -186,7 +186,7 @@ class ShouChong extends eui.Component {
         EventManager.getInstance().SendEvent(ApiEvent.CHANGE_INFO);
         switch (this.cBtn_200_Status) {
             case CurrentStatus.unfinished:
-                // OrderApi.createOrder("钻石充值", 200);
+                OrderApi.createOrder("钻石充值", 200);
                 break;
             case CurrentStatus.unreceived:
                 OrderApi.payReward(3);
@@ -203,7 +203,7 @@ class ShouChong extends eui.Component {
         console.log("this.cBtn_300_Status    " + this.cBtn_300_Status);
         switch (this.cBtn_300_Status) {
             case CurrentStatus.unfinished:
-                // OrderApi.createOrder("钻石充值", 300);
+                OrderApi.createOrder("钻石充值", 300);
                 break;
             case CurrentStatus.unreceived:
                 OrderApi.payReward(4);

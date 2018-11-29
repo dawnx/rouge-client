@@ -5,7 +5,7 @@
 		<e:Image x="0" y="0" scale9Grid="15,15,96,96" width="676" height="530" source="mmm_dating_Backplane_07_png" scaleX="1" scaleY="1"/>
 		<e:Image id="img_juzi" x="256.5" y="160" scaleX="1" scaleY="1" source="feef_03_png"/>
 		<e:Image id="titlebg" x="111.5" y="-62.5" scaleX="1" scaleY="1" source="mmm_dating_header_01_png"/>
-		<e:Label id="desc" text="好可惜，距离获奖就差那么一点点" x="142.5" y="78" scaleX="1" scaleY="1" size="26" textColor="0x333333" fontFamily="SimHei"/>
+		<e:Label id="desc" text="好可惜，距离获奖就差那么一点点是实打实大的大叔大叔大叔的" x="40.5" y="78" scaleX="1" scaleY="1" size="26" textColor="0x333333" fontFamily="SimHei" multiline="true" anchorOffsetY="0" height="69" wordWrap="true" anchorOffsetX="0" width="607" verticalAlign="top" textAlign="center"/>
 		<e:Button id="btn_fangqi" label="放弃重玩" x="65" y="417" scaleX="1" scaleY="1">
 			<e:skinName>
 			<e:Skin states="up,down,disabled">

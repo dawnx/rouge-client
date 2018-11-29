@@ -9,7 +9,7 @@ class Begin extends eui.Component {
     private _backBtn: eui.Rect;
 
     // 发奖倒计时
-    private _countDown: eui.Label;
+    public _countDown: eui.Label;
     private _hour: number;
     private _min: number;
     private _sec: number;

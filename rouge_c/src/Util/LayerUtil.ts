@@ -2,6 +2,7 @@ class LayerUtil {
 	
 	public static shopMain:ShopMain;
 	public static gameMain:GameMain;
+	public static begin:Begin;
 	public static popupMain:egret.Sprite;
 	
 

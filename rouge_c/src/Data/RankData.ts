@@ -6,7 +6,7 @@ module Data {
 		public nick: string; // 昵称
 		public score: number;  //成绩
 		public level: number;  // 关卡
-
+		public uid:number;
 	}
 	export class RankCountDown {
 		public countDown: number;  //  倒计时；

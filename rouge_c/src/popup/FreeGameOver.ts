@@ -31,7 +31,15 @@ class FreeGameOver extends eui.Component {
             this.desc.text = "通关了赶紧玩正式模式可以获得奖品哟";
         } else {//----->成绩
             this.img_title.source = "mmm_dating_Art-word_07_png";
-            this.desc.text = "恭喜您获得xx枚";
+        var num = 0;
+        for (var i=0; i<Data.GameContext.rankDataArray.length; i++){
+            if(Data.GameContext.rankDataArray[i].uid == Data.GameContext.player.uid)
+                num = i+1;
+        }
+        var temp = "未上榜"; 
+        if(num > 0)
+            temp = "获得第"+num+"名次";
+            this.desc.text = "恭喜您获得"+this._score+"枚,"+temp+"\n距离开奖时间还有"+LayerUtil.begin._countDown.text;
         }
 
         this.btn_fangqi.label = "金币复活";

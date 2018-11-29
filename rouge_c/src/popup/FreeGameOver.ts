@@ -46,7 +46,8 @@ class FreeGameOver extends eui.Component {
     private onClickFangqi() {
         RougeGameApi.gameEnd(LayerUtil.gameMain.goodsItemData.subGameId, 0, this._level, this._score, this.m_time);
         LayerUtil.shopMain.stage.removeChild(this);
-        LayerUtil.shopMain.stage.removeChild(LayerUtil.gameMain);
+        if(LayerUtil.shopMain.stage.contains(LayerUtil.gameMain))
+            LayerUtil.shopMain.stage.removeChild(LayerUtil.gameMain);
         console.log("this.m_time    " + this.m_time);
     }
 

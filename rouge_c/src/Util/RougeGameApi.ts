@@ -33,6 +33,7 @@ class RougeGameApi {
 		//拼接参数 
 		//var params = "?openId=" + openId + "&subGameId=" + subGameId + "&win=" + isWin + "&level=" + level + "&score=" + score + "&aliveTime=" + aliveTime;
 		var uri: string = "gameRouge/endGame" + params;
+		console.log("End game :URL :      " + uri);
 		BaseApi.get(uri, this.onCompleteGameEnd);
 	}
 	private static onCompleteGameEnd(event: egret.Event): void {

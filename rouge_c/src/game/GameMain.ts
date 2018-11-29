@@ -172,10 +172,11 @@ class GameMain extends eui.Component {
     public gameover: GameOver;
     private GameOver() {
          if (LayerUtil.gameMain.goodsItemData.goodsFenqu == 0) {//判断当前游戏类型
-             LayerUtil.shopMain.stage.addChild(new FreeGameOver());
+             LayerUtil.shopMain.stage.addChild(new FreeGameOver(this.miao, this.score,this._level));
          }else{
             if (this.gameover == null) {
                 this.gameover = new GameOver(this.miao, this.score, this.goodsItemData.gameType, this._level, this.goodsItemData, this.m_mainsence);
+                console.log("******" + this.score,this._level);
                 this.stage.addChild(this.gameover);
             } else {
                 this.gameover.visible = true;

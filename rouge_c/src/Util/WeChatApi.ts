@@ -55,22 +55,21 @@ class WeChatApi  {
         }
     }
 /// 微信分享；
-    public static weChatShare(data: any) {
-        console.log("微信 Share")
+    public static weChatRegister(data: any) {
+        console.log("微信 注册；")
         var bodyConfig: BodyConfig = new BodyConfig();
-        bodyConfig.appId = data.appId;
-        bodyConfig.debug = true;
+        bodyConfig.appId = "wxba773081caf99027";
+        bodyConfig.debug = false;
         bodyConfig.timestamp = data.timeStamp;
         bodyConfig.nonceStr = data.nonceStr;
         bodyConfig.signature = data.sign;
         bodyConfig.jsApiList = [
             "checkJsApi",
+            "chooseWXPay",
             'onMenuShareTimeline',//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
             'onMenuShareAppMessage',//获取“分享给朋友”按钮点击状态及自定义分享内容接口
             'onMenuShareQQ',	//获取“分享到QQ”按钮点击状态及自定义分享内容接口
             'onMenuShareWeibo',//获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
-            "hideOptionMenu",
-            "hideMenuItems",
         ];
         // 调试面板；
 
@@ -78,7 +77,7 @@ class WeChatApi  {
         // 通过config接口注入权限验证配置
         if (wx) {
             wx.config(bodyConfig);
-            console.log("onMenuShareAppMessage")
+            console.log("bodyConfig")
             wx.ready(function () {
                 // 在这里调用微信相关功能的 API
                 var shareAppMessage = new BodyMenuShareAppMessage();

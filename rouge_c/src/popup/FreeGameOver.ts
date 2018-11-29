@@ -10,8 +10,11 @@ class FreeGameOver extends eui.Component {
     private m_mainsence: ShopMain;
     private m_time: number;
     private img_title: eui.Image;
-    public constructor() {
+    public constructor(timer: number, score: number, level: number) {
         super()
+        this._score = score;
+        this._level = level;
+        this.m_time = timer;
         this.skinName = "resource/skin/freegameover.exml";
     }
     public childrenCreated() {     //自执行

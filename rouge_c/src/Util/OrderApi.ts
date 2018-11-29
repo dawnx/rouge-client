@@ -32,7 +32,7 @@ class OrderApi {
 
         this.SendSuccess = true;
         this.SendCallBack = data;
-        WeChatApi.weChatPay(data);
+        //WeChatApi.weChatPay(data);
         console.log(data)
         console.log("下单成功  调起支付请求！");
     }
@@ -61,8 +61,8 @@ class OrderApi {
         let openId = egret.getOption("openId");  //取url后边的openid
         console.log("openId   " + openId);
         //拼接参数 
-        // var params = "?openId=" + openId + "&reward=" + reward;
-        var params = "?openId=oZ4KT1JC0LWmI-Fk5oG1PGq5uhu4" + openId + "&reward=" + reward;
+        var params = "?openId=" + openId + "&reward=" + reward;
+        // var params = "?openId=oZ4KT1JC0LWmI-Fk5oG1PGq5uhu4" + openId + "&reward=" + reward;
         var uri: string = "payReward/getFirstPayReward" + params;
         BaseApi.get(uri, this.onGetCompleteFirstCharge);
     }
@@ -98,9 +98,34 @@ class OrderApi {
         console.log("get data : ", request.response);
         // 解析
         var data = JSON.parse(request.response).data;
-        WeChatApi.weChatShare(data);
+        //WeChatApi.weChatShare(data);
         console.log(data)
         console.log("  调起分享！");
     }
-
+// 分享接口；
+    public static wechatAPI() {
+        console.log("*******点击响应");
+        let openId = egret.getOption("openId");  //取url后边的openid
+        console.log("openId   " + openId);
+        var currentUrl:string = "http://kh.chitugame.com/rouge/index.html";
+        var currentUrl:string = "192.168.1.111:5000/index.html";
+        currentUrl = encodeURI(currentUrl);
+        console.log("currentUrl  "+currentUrl);
+        //拼接参数 
+        var params = "?openId=" + openId + "&url=" + currentUrl;
+        // var params = "?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g&url=" + currentUrl;;
+        var uri: string = "weixin/getSignForShare" + params;
+        BaseApi.get(uri, this.onGetCompleteRegister);
+    }
+    private static onGetCompleteRegister(event: egret.Event): void {
+        console.log("Share Success!!!");
+        // 获取到后台传回来的数据；
+        var request = <egret.HttpRequest>event.currentTarget;
+        console.log("get data : ", request.response);
+        // 解析
+        var data = JSON.parse(request.response).data;
+        //WeChatApi.weChatShare(data);
+        console.log(data)
+        console.log("  调起分享！");
+    }
 }

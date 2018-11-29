@@ -111,5 +111,6 @@
 		<e:Label id="paomaText" text="" x="68" y="327.5" size="28" height="28" wordWrap="true" anchorOffsetX="0" width="620" fontFamily="SimHei" textColor="0x666666"/>
 		<e:Image source="mmm_dating_Backplane_04_png" x="0" y="323" scale9Grid="10,10,60,60" width="69" height="39"/>
 		<e:Image source="mmm_dating_icon_04_png" x="10" y="326"/>
+		<e:Button id="test" label="测试用" x="239" y="1021" anchorOffsetX="0" width="231.82" anchorOffsetY="0" height="104.55"/>
 	</e:Group>
 </e:Skin>

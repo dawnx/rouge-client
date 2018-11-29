@@ -60,6 +60,8 @@ class ShopMain extends eui.Component {
     private paomaText: eui.Label;
     //幸运币按钮
     private luckCoin: eui.Image;
+
+    private test:eui.Image;
     public constructor() {
         super()
         this.skinName = "resource/skin/shopmain.exml";
@@ -105,6 +107,8 @@ class ShopMain extends eui.Component {
         //点击幸运币 弹出规则
         this.luckCoin.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickLuckCoin, this);
 
+        this.test.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClicktest, this);
+
         // 事件系统
         EventManager.getInstance().addEventListener(ApiEvent.PLAYER_INFO, this.onPlayerInfo, this);
     }
@@ -113,7 +117,9 @@ class ShopMain extends eui.Component {
 
         // 返回到主界面的时候，调取用户信息，继续执行 刷新；
         PlayerApi.getPlayerInfo();
-
+        // 绑定微信通用接口；
+        OrderApi.wechatAPI();
+        console.log("绑定微信通用接口");
         // // 兑换接口；
         // NetSend.SendToNetExchange(Item.Gold, 1);
         // console.log("兑换  金币   1  个");
@@ -199,7 +205,21 @@ class ShopMain extends eui.Component {
     private onClickLuckCoin() {
         this.addChild(new LuckeyCoin());
     }
-
+private onClicktest (){
+    console.log("clicked");
+    if (wx) {
+            wx.ready(function () {
+                console.log("wx.ready");
+                // 在这里调用微信相关功能的 API
+                var shareAppMessage = new BodyMenuShareAppMessage();
+                shareAppMessage.title = '喵喵喵';
+                shareAppMessage.desc = '在长大的过程中，我才慢慢发现，我身边的所有事，别人跟我说的所有事，那些所谓本来如此，注定如此的事，它们其实没有非得如此，事情是可以改变的。更重要的是，有些事既然错了，那就该做出改变。';
+                shareAppMessage.link = 'http://kh.chitugame.com/game/girl.jpg';
+                shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/girl.jpg';
+                wx.onMenuShareAppMessage(shareAppMessage);
+            });
+        }
+}
     private onClickRad1() {
         this.index = 1;
         this.Clcik();

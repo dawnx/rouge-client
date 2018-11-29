@@ -53,12 +53,12 @@ class ShouChong extends eui.Component {
             console.log("pay_reward_200  " + payLingqu.pay_reward_200);
             console.log("pay_reward_300  " + payLingqu.pay_reward_300);
             // if (!payCount) {
-                // payCount = 0;
-                this.cBtn_20_Status = CurrentStatus.unfinished;
-                this.cBtn_100_Status = CurrentStatus.unfinished;
-                this.cBtn_200_Status = CurrentStatus.unfinished;
-                this.cBtn_300_Status = CurrentStatus.unfinished;
-                console.log("zheli ");
+            // payCount = 0;
+            this.cBtn_20_Status = CurrentStatus.unfinished;
+            this.cBtn_100_Status = CurrentStatus.unfinished;
+            this.cBtn_200_Status = CurrentStatus.unfinished;
+            this.cBtn_300_Status = CurrentStatus.unfinished;
+            console.log("zheli ");
             // }
             if (payCount == 20) {
                 this.cBtn_20_Status = CurrentStatus.unreceived;
@@ -86,12 +86,12 @@ class ShouChong extends eui.Component {
             case CurrentStatus.unfinished:
                 break;
             case CurrentStatus.unreceived:
-                this.chongzhi1.width = 216;
-                this.chongzhi1.height = 70;
                 this.shouChongText1.text = "领取";
                 break;
             case CurrentStatus.Received:
-                this.chongzhi1.source = "resource/assets/dating/toast-bg.png";
+                this.chongzhi1.source = "resource/assets/game/mmm_dating_button_06.png";
+                this.chongzhi1.width = 216;
+                this.chongzhi1.height = 72;
                 this.shouChongText1.text = "已领取";
                 break;
             default:
@@ -101,12 +101,12 @@ class ShouChong extends eui.Component {
             case CurrentStatus.unfinished:
                 break;
             case CurrentStatus.unreceived:
-                this.chongzhi2.width = 216;
-                this.chongzhi2.height = 70;
                 this.shouChongText2.text = "领取";
                 break;
             case CurrentStatus.Received:
-                this.chongzhi2.source = "resource/assets/dating/toast-bg.png";
+                this.chongzhi2.source = "resource/assets/game/mmm_dating_button_06.png";
+                this.chongzhi2.width = 216;
+                this.chongzhi2.height = 72;
                 this.shouChongText2.text = "已领取";
                 break;
             default:
@@ -116,12 +116,12 @@ class ShouChong extends eui.Component {
             case CurrentStatus.unfinished:
                 break;
             case CurrentStatus.unreceived:
-                this.chongzhi3.width = 216;
-                this.chongzhi3.height = 70;
                 this.shouChongText3.text = "领取";
                 break;
             case CurrentStatus.Received:
-                this.chongzhi3.source = "resource/assets/dating/toast-bg.png";
+                this.chongzhi3.source = "resource/assets/game/mmm_dating_button_06.png";
+                this.chongzhi3.width = 216;
+                this.chongzhi3.height = 72;
                 this.shouChongText3.text = "已领取";
                 break;
             default:
@@ -131,12 +131,12 @@ class ShouChong extends eui.Component {
             case CurrentStatus.unfinished:
                 break;
             case CurrentStatus.unreceived:
-                this.chongzhi4.width = 216;
-                this.chongzhi4.height = 70;
                 this.shouChongText4.text = "领取";
                 break;
             case CurrentStatus.Received:
-                this.chongzhi4.source = "resource/assets/dating/toast-bg.png";
+                this.chongzhi4.source = "resource/assets/game/mmm_dating_button_06.png";
+                this.chongzhi4.width = 216;
+                this.chongzhi4.height = 72;
                 this.shouChongText4.text = "已领取";
                 break;
             default:

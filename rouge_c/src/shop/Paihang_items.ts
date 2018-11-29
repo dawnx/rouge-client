@@ -19,12 +19,14 @@ class Paihang_items extends eui.Component {
 
     ];
     private _index: number;
+    private _gameType: number;
     private rankData = [
 
     ];
-    public constructor(index: number) {
+    public constructor(index: number, gameType: number) {
         super()
         this._index = index;
+        this._gameType = gameType;
         this.skinName = "resource/skin/paihang_items.exml";
     }
     public childrenCreated() {     //自执行
@@ -41,7 +43,12 @@ class Paihang_items extends eui.Component {
         } else {
             this.m_nick.text = Data.GameContext.rankDataArray[this._index].nick.substr(0, 6) + "..";
         }
-        this.m_grade.text = Data.GameContext.rankDataArray[this._index].score.toString();
+        if (this._gameType == Data.GameType.CHUANG_GUAN) {
+            this.m_grade.text = Data.GameContext.rankDataArray[this._index].level.toString();
+        }
+        else {
+            this.m_grade.text = Data.GameContext.rankDataArray[this._index].score.toString();
+        }
     }
 
 }

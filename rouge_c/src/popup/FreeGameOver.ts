@@ -31,7 +31,7 @@ class FreeGameOver extends eui.Component {
             this.desc.text = "恭喜您获得xx枚";
         }
 
-        this.btn_fangqi.label = "继续体验";
+        this.btn_fangqi.label = "金币复活";
         this.btn_reset.label = "返回主页";
         this.btn_reset.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickFangqi, this);
         this.btn_fangqi.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickReset, this);
@@ -48,6 +48,19 @@ class FreeGameOver extends eui.Component {
 
     private onClickReset() {
         LayerUtil.shopMain.stage.removeChild(this);
+        if (Data.GameContext.player.goldNumber >= LayerUtil.gameMain.goodsItemData.goodsFenqu) {
+            RougeGameApi.startGame(LayerUtil.gameMain.goodsItemData.subGameId, LayerUtil.gameMain.goodsItemData.goodsType,
+                LayerUtil.gameMain.goodsItemData.goodsFenqu, LayerUtil.gameMain.goodsItemData.gameType, GameEnd.RESULT_RESET);
+            console.log("*******Send   ed ");
+            // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
+            console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
+            LayerUtil.gameMain.initGame1();
+        }
+        else {
+            console.log("金币不足 ，此时应该跳到 金币不足的弹窗；");
+            // LayerUtil.gameMain.addChild(new Tishi(this.m_mainsence));
+            this.stage.addChild(new Tishi(this.m_mainsence));
+        }
         LayerUtil.gameMain.initGame1();
     }
 

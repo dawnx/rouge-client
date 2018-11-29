@@ -48,7 +48,7 @@ class GameOver extends eui.Component {
     }
 
     private onClickReset() {
-        this.visible = false;
+        LayerUtil.shopMain.stage.removeChild(this);
         if (Data.GameContext.player.goldNumber >= this.goodsItemData.goodsFenqu) {
             RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.goodsType,
                 this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
@@ -60,7 +60,8 @@ class GameOver extends eui.Component {
         else {
             console.log("金币不足 ，此时应该跳到 金币不足的弹窗；");
             // LayerUtil.gameMain.addChild(new Tishi(this.m_mainsence));
-            this.addChild(new Tishi2())
+            this.stage.addChild(new Tishi(this.m_mainsence));
+            // this.addChild(new Tishi2())
         }
     }
 

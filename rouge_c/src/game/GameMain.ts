@@ -7,11 +7,14 @@ class GameMain extends eui.Component {
     private isMoving: boolean;
     private rouge: egret.Bitmap;//口红
     private lb_time: eui.Label;
-    private lb_guan: eui.Label;
     private score: number;
     // public text_Count: eui.Label;
     private count: number;
-
+    private overplus80: eui.Image;
+    private overplus60: eui.Image;
+    private overplus40: eui.Image;
+    private overplus20: eui.Image;
+    private overplus0: eui.Image;
 
     //判断碰撞的角度
     private jiaodu: number = 10;
@@ -28,12 +31,15 @@ class GameMain extends eui.Component {
     private _level: number = 1;
     private gp_guan: eui.Group;
     private lb_level: eui.Label;
+    private level1: eui.Image;
+    private level2: eui.Image;
+    private level3: eui.Image;
     private rect_guan: eui.Rect;
     private gp_rouge: eui.Group;
     private img_guan: eui.Image;
     public goodsItemData: Data.GoodsItemData;
     private m_mainsence: ShopMain;
-
+    private tuichu: eui.Label;
     public constructor(_goodsItemData: Data.GoodsItemData, mainsence: ShopMain) {
         super()
         this.goodsItemData = _goodsItemData;
@@ -42,7 +48,7 @@ class GameMain extends eui.Component {
     }
     public childrenCreated() {
         super.childrenCreated();
-
+        this.tuichu.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickBack, this);
         this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickBack, this);
         console.log("**********this.goodsItemData.gameType    " + this.goodsItemData.gameType
             + "  goodsFenqu     " + this.goodsItemData.goodsFenqu
@@ -51,11 +57,9 @@ class GameMain extends eui.Component {
         if (this.goodsItemData.gameType == 3) {
             // 限时
             this.initXS()
-            this.lb_guan.visible = false;
         } else {
             // 闯关
             this.init();
-            this.lb_guan.visible = true;
         }
 
         egret.Ticker.getInstance().register(function () {
@@ -64,6 +68,7 @@ class GameMain extends eui.Component {
         }, this);
     }
     private onclickBack() {
+        this.timer.stop();
         this.parent.removeChild(this);
     }
 
@@ -171,9 +176,9 @@ class GameMain extends eui.Component {
     }
     public gameover: GameOver;
     private GameOver() {
-         if (LayerUtil.gameMain.goodsItemData.goodsFenqu == 0) {//判断当前游戏类型
-             LayerUtil.shopMain.stage.addChild(new FreeGameOver());
-         }else{
+        if (LayerUtil.gameMain.goodsItemData.goodsFenqu == 0) {//判断当前游戏类型
+            LayerUtil.shopMain.stage.addChild(new FreeGameOver());
+        } else {
             if (this.gameover == null) {
                 this.gameover = new GameOver(this.miao, this.score, this.goodsItemData.gameType, this._level, this.goodsItemData, this.m_mainsence);
                 this.stage.addChild(this.gameover);
@@ -212,13 +217,16 @@ class GameMain extends eui.Component {
 
 
     //每帧调用
+
     private update() {
         this.gp_circle.rotation += this.speed;
         this.img_juzi.rotation += this.speed;
 
+        if (this._level == 2)
+            this.level2.source = "mmm_youxi_icon_01_png";
+        if (this._level == 3)
+            this.level3.source = "mmm_youxi_icon_01_png";
 
-
-        this.lb_guan.text = "第" + this._level + "关";
         if (this.isMoving) {
             this.rouge.y -= this.moveSpeed;
             this.rect_dangban.touchEnabled = false;
@@ -336,6 +344,15 @@ class GameMain extends eui.Component {
             let rouNum: number = this.getRougeNum(this._level);
 
             if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
+                let pes = (rouNum - num) / rouNum;
+                if (pes < 0.8)
+                    this.overplus80.visible = false;
+                if (pes < 0.6)
+                    this.overplus60.visible = false;
+                if (pes < 0.4)
+                    this.overplus40.visible = false;
+                if (pes < 0.2)
+                    this.overplus20.visible = false;
                 this.lb_rougeNum.text = "剩余数量: " + (rouNum - num) + "/" + rouNum;
             } else {
                 this.lb_rougeNum.text = "分数: " + num;
@@ -404,6 +421,19 @@ class GameMain extends eui.Component {
         console.log(this._level)
         console.log(this.speed)
 
+        if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
+            this.overplus80.visible = true;
+            this.overplus60.visible = true;
+            this.overplus40.visible = true;
+            this.overplus20.visible = true;
+            this.overplus0.visible = true;
+            this.lb_rougeNum.text = "剩余数量: " + this.getRougeNum(this._level) + "/" + this.getRougeNum(this._level);
+        } else {
+            this.lb_rougeNum.text = "分数: 0";
+        }
+
+
+
         this.gp_guan.visible = false;
         this.gp_circle.removeChildren();
         this.rArr = [];
@@ -451,6 +481,11 @@ class GameMain extends eui.Component {
     public initGame1() {  //游戏初始化 消耗金币重新玩，分数砍一半
         console.log("游戏初始化")
         console.log(this._level)
+        this.overplus80.visible = true;
+        this.overplus60.visible = true;
+        this.overplus40.visible = true;
+        this.overplus20.visible = true;
+        this.lb_rougeNum.text = "剩余数量: " + this.getRougeNum(this._level) + "/" + this.getRougeNum(this._level);
         this.gp_guan.visible = false;
         this.gp_circle.removeChildren();
         this.rArr = [];
@@ -494,6 +529,16 @@ class GameMain extends eui.Component {
     public initGame2() {  //游戏初始化 消耗金币重新玩，分数砍一半
         console.log("游戏初始化")
         console.log(this._level)
+
+        this.overplus80.visible = false;
+        this.overplus60.visible = false;
+        this.overplus40.visible = false;
+        this.overplus20.visible = false;
+        this.overplus0.visible = false;
+        this.level1.visible = false;
+        this.level2.visible = false;
+        this.level3.visible = false;
+
         this.gp_guan.visible = false;
         this.gp_circle.removeChildAt(this.gp_circle.numChildren - 1);
         this.rArr.splice(this.gp_circle.numChildren, 1);

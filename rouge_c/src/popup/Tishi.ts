@@ -21,8 +21,7 @@ class Tishi extends eui.Component {
 
     //前往充值
     private onclickQueding() {
-        this.visible = false;
-      
+        this.stage.removeChild(this);
     }
     private onclickClose() {
 

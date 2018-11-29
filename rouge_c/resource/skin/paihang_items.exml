@@ -6,4 +6,5 @@
 	<e:Image id="m_icon" x="200.33" y="18" width="100" height="100" source=""/>
 	<e:Label id="m_nick" text="虚位以待" x="361" size="28" textColor="0x333333" fontFamily="SimHei" verticalCenter="0" anchorOffsetX="0" width="191"/>
 	<e:Label id="m_grade" text="虚位以待" x="613" size="28" fontFamily="SimHei" verticalCenter="0" textColor="0xe8407d"/>
+	<e:Image width="100" height="100" x="200.33" y="18" source="ssss_png"/>
 </e:Skin>

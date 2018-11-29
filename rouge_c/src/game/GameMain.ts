@@ -61,15 +61,20 @@ class GameMain extends eui.Component {
             // 闯关
             this.init();
         }
-
+        
         egret.Ticker.getInstance().register(function () {
             this.rect_dangban.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickInsert, this);
             this.update();
         }, this);
+        this.addEventListener(egret.Event.REMOVED_FROM_STAGE,this.onRemove, this)
     }
     private onclickBack() {
         this.timer.stop();
         this.parent.removeChild(this);
+    }
+
+    private onRemove() {
+        this.timer.stop();
     }
 
     private miao: number;
@@ -142,7 +147,15 @@ class GameMain extends eui.Component {
         //     context.gp_rouge.addChild(item);
         //     item.y = item.height * i + 5 * i;
         // }
-
+        this.overplus80.visible = false;
+        this.overplus60.visible = false;
+        this.overplus40.visible = false;
+        this.overplus20.visible = false;
+        this.overplus0.visible = false;
+        this.level1.visible = false;
+        this.level2.visible = false;
+        this.level3.visible = false;
+        
         this.gp_guan.visible = false;
         this.rect_dangban.visible = true;
         //倒计时获取

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="goods_item" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect width="750" height="1386" x="0" y="0" fillColor="0x000000" fillAlpha="0.3"/>
 	<e:Group id="gp_tiyan" width="750" height="1334" x="0" y="0" visible="false">
 		<e:Image source="mmm_youxi_background_01_png" x="0" y="79" scaleX="1" scaleY="1" anchorOffsetY="0" height="1806"/>
 		<e:Image id="img_juzi0" source="mmm_youxi_picture_03_png" x="375" y="550" width="380" height="380" anchorOffsetX="190" anchorOffsetY="190" scaleX="1" scaleY="1"/>

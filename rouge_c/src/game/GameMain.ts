@@ -162,7 +162,7 @@ class GameMain extends eui.Component {
             // this.GameOver();
             this.timer.stop();
             console.log("定时器停止");
-            this.addChild(new XsOver(this.score, this._type, this.goodsItemData, this.m_mainsence));
+            this.stage.addChild(new XsOver(this.score, this._type, this.goodsItemData, this.m_mainsence));
         }
         //转速
         this.speed = this.getSpeed(this._level);
@@ -176,7 +176,7 @@ class GameMain extends eui.Component {
          }else{
             if (this.gameover == null) {
                 this.gameover = new GameOver(this.miao, this.score, this.goodsItemData.gameType, this._level, this.goodsItemData, this.m_mainsence);
-                this.addChild(this.gameover);
+                this.stage.addChild(this.gameover);
             } else {
                 this.gameover.visible = true;
             }
@@ -353,6 +353,7 @@ class GameMain extends eui.Component {
                         //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
                         console.log("体验模式结束 ")
                         this.GameOver();
+                        this.timer.stop();
                         return;
                     }
                     this.timer.stop();
@@ -385,7 +386,7 @@ class GameMain extends eui.Component {
                                 || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                                 this.GameOver();
                             } else {
-                                this.addChild(new XsOver(this.score, this.goodsItemData.gameType, this.goodsItemData, this.m_mainsence));
+                                this.stage.addChild(new XsOver(this.score, this.goodsItemData.gameType, this.goodsItemData, this.m_mainsence));
                                 console.log("限时模式 游戏结束")
                             }
 

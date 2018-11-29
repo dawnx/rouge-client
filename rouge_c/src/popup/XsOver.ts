@@ -33,7 +33,10 @@ class XsOver extends eui.Component {
 
     }
     private onClickFangqi() {
-        this.addChild(new ShopMain());
+        LayerUtil.shopMain.stage.removeChild(this);
+        if(LayerUtil.shopMain.stage.contains(LayerUtil.gameMain))
+            LayerUtil.shopMain.stage.removeChild(LayerUtil.gameMain);
+        // this.addChild(new ShopMain());
     }
 
     private onClickReset() {

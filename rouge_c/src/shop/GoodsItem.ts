@@ -4,10 +4,10 @@ class GoodsItem extends eui.Component {
     private btn: eui.Image;
     private btnText: eui.Label;
     private price: eui.Label;
-    private itemData: Data.GoodsItemData;
+    private itemData: Data.SubGame;
     private m_mainsence: ShopMain;
 
-    public constructor(_itemData: Data.GoodsItemData, mainsence: ShopMain) {
+    public constructor(_itemData: Data.SubGame, mainsence: ShopMain) {
         super()
         this.skinName = "resource/skin/goodsItem.exml";
         this.itemData = _itemData;
@@ -19,8 +19,8 @@ class GoodsItem extends eui.Component {
         this.btn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickBtn, this);
     }
     private init() {
-        this.goodsImg.source = this.itemData.img;
-        this.goodsName.text = this.itemData.goodsName;
+        this.goodsImg.source = this.itemData.imgUrl;
+        this.goodsName.text = this.itemData.gameName;
         if (this.itemData.gameType == 1)
             this.btnText.text = "体验";
         else if (this.itemData.gameType == 2)
@@ -31,12 +31,12 @@ class GoodsItem extends eui.Component {
     }
     private onClickBtn() {
         var currentGolds = Data.GameContext.player.goldNumber;
-        if (this.itemData.gameGroup == 0 && this.itemData.gameType != 1) {
+        if (this.itemData.priceGroup == 0 && this.itemData.gameType != 1) {
             PlayerApi.getRankInfo(this.itemData.subGameId);
             LayerUtil.begin =new Begin(this.itemData, this.m_mainsence)
             this.stage.addChild(LayerUtil.begin);
-        } else if (currentGolds >= this.itemData.gameGroup) {
-            RougeGameApi.startGame(this.itemData.subGameId, this.itemData.goodsType, this.itemData.gameGroup, this.itemData.gameType, 0);
+        } else if (currentGolds >= this.itemData.priceGroup) {
+            RougeGameApi.startGame(this.itemData.subGameId, this.itemData.gameGroup, this.itemData.priceGroup, this.itemData.gameType, 0);
             console.log("*******Send   ed ");
             LayerUtil.gameMain =  null;
             LayerUtil.gameMain = new GameMain(this.itemData, this.m_mainsence);
@@ -45,7 +45,7 @@ class GoodsItem extends eui.Component {
             
             this.stage.addChild(new Tishi(this.m_mainsence));
         }
-        if (this.itemData.goodsType == 2 || this.itemData.goodsType == 3) {
+        if (this.itemData.gameGroup == 2 || this.itemData.gameGroup == 3) {
 
         }
 

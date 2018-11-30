@@ -37,7 +37,7 @@ class GameMain extends eui.Component {
     private rect_guan: eui.Rect;
     private gp_rouge: eui.Group;
     private img_guan: eui.Image;
-    public goodsItemData: Data.GoodsItemData;
+    public goodsItemData: Data.SubGame;
     private m_mainsence: ShopMain;
     private tuichu: eui.Label;
     private headicon1: eui.Image;
@@ -45,7 +45,7 @@ class GameMain extends eui.Component {
     private selfrank: eui.Label;
     private rankgroup: eui.Group;
     
-    public constructor(_goodsItemData: Data.GoodsItemData, mainsence: ShopMain) {
+    public constructor(_goodsItemData: Data.SubGame, mainsence: ShopMain) {
         super()
         this.goodsItemData = _goodsItemData;
         this.m_mainsence = mainsence;
@@ -56,8 +56,8 @@ class GameMain extends eui.Component {
         this.tuichu.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickBack, this);
         this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickBack, this);
         console.log("**********this.goodsItemData.gameType    " + this.goodsItemData.gameType
-            + "  goodsFenqu     " + this.goodsItemData.gameGroup
-            + "     goodsType     " + this.goodsItemData.goodsType)
+            + "  goodsFenqu     " + this.goodsItemData.priceGroup
+            + "     goodsType     " + this.goodsItemData.gameGroup)
         utils.SoundUtils.instance().playBg();
         if (this.goodsItemData.gameType == 3) {
             // 限时
@@ -76,7 +76,7 @@ class GameMain extends eui.Component {
     }
 
     private initRank() {
-        if (LayerUtil.gameMain.goodsItemData.gameGroup == 0 && LayerUtil.gameMain.goodsItemData.gameType != Data.GameType.TI_YAN) {
+        if (LayerUtil.gameMain.goodsItemData.priceGroup == 0 && LayerUtil.gameMain.goodsItemData.gameType != Data.GameType.TI_YAN) {
             var num = 0;
             for (var i = 0; i < Data.GameContext.rankDataArray.length; i++) {
                 if (Data.GameContext.rankDataArray[i].uid == Data.GameContext.player.uid)
@@ -239,7 +239,7 @@ class GameMain extends eui.Component {
     }
     public gameover: GameOver;
     private GameOver() {
-        if (LayerUtil.gameMain.goodsItemData.gameGroup == 0) {//判断当前游戏类型
+        if (LayerUtil.gameMain.goodsItemData.priceGroup == 0) {//判断当前游戏类型
             LayerUtil.shopMain.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
         } else {
             if (this.gameover == null) {
@@ -466,7 +466,7 @@ class GameMain extends eui.Component {
                                 || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                                 this.GameOver();
                             } else {
-                                if(this.goodsItemData.gameGroup == 0)
+                                if(this.goodsItemData.priceGroup == 0)
                                     this.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
                                 else
                                 this.stage.addChild(new XsOver(this.score, this.goodsItemData.gameType, this.goodsItemData, this.m_mainsence));

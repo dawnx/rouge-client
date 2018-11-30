@@ -8,10 +8,10 @@ class XsOver extends eui.Component {
     private _type: number;
 
     private gp_tiyan: eui.Group;
-    private goodsItemData: Data.GoodsItemData;
+    private goodsItemData: Data.SubGame;
     private m_mainsence: ShopMain;
     public constructor(score: number, type: number,
-        goodsItemData: Data.GoodsItemData, m_mainsence: ShopMain) {
+        goodsItemData: Data.SubGame, m_mainsence: ShopMain) {
         super()
         this._score = score;
         this._type = type;
@@ -44,7 +44,7 @@ class XsOver extends eui.Component {
         //如果金币小于等于0 
         if (Data.GameContext.player.goldNumber >= 50) {
             console.log("金币足够")
-            RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.gameGroup, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
+            RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.gameGroup, this.goodsItemData.priceGroup, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
             PlayerApi.getPlayerInfo();
             console.log("*******Send   ed ");
             console.log("*******GameEnd.RESULT_RESET  ed " + GameEnd.RESULT_RESET);

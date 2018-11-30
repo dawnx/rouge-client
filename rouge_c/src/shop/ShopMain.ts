@@ -117,7 +117,7 @@ class ShopMain extends eui.Component {
         PlayerApi.getPlayerInfo();
         console.log("绑定微信通用接口");
         // 绑定微信通用接口；
-        OrderApi.wechatAPI();
+        // OrderApi.wechatAPI();
         // // 兑换接口；
         // NetSend.SendToNetExchange(Item.Gold, 1);
         // console.log("兑换  金币   1  个");
@@ -338,8 +338,9 @@ class ShopMain extends eui.Component {
     }
     private updateContent() {
         this.gp_main.removeChildren();
+        console.log("Data.DataManager.goodsDatas    "+Data.DataManager.goodsDatas);
         Data.DataManager.goodsDatas.forEach(item => {
-            if (item.goodsType == this.goodsType && item.gameGroup == this.goodsFenQu) {
+            if (item.gameGroup == this.goodsType && item.priceGroup == this.goodsFenQu) {
                 this.gp_main.addChild(new GoodsItem(item, this));
             }
         })

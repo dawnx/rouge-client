@@ -1,7 +1,7 @@
 class Begin extends eui.Component {
     private btn_share: eui.Button;
     private btn_begin: eui.Button;
-    private goodsItemData: Data.GoodsItemData;
+    private goodsItemData: Data.SubGame;
     private gp_paihang: eui.Group;
     private lb_tishi: eui.Label;
     private m_mainsence: ShopMain;
@@ -15,7 +15,7 @@ class Begin extends eui.Component {
     private _sec: number;
     private timer: egret.Timer;
 
-    public constructor(_itemData: Data.GoodsItemData, mainsence: ShopMain) {
+    public constructor(_itemData: Data.SubGame, mainsence: ShopMain) {
         super()
         this.goodsItemData = _itemData;
         this.m_mainsence = mainsence;
@@ -125,9 +125,9 @@ class Begin extends eui.Component {
     }
     //开始游戏
     private onClickBegin() {
-        if ((Data.GameContext.player.goldNumber - this.goodsItemData.gameGroup) >= 0) {
+        if ((Data.GameContext.player.goldNumber - this.goodsItemData.priceGroup) >= 0) {
             RougeGameApi.startGame(this.goodsItemData.subGameId,
-                this.goodsItemData.goodsType, this.goodsItemData.gameGroup, this.goodsItemData.gameType, 0);
+                this.goodsItemData.gameGroup, this.goodsItemData.priceGroup, this.goodsItemData.gameType, 0);
             console.log("*******Send   ed ");
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);

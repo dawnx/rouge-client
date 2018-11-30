@@ -8,10 +8,10 @@ class GameOver extends eui.Component {
     private _type: number;
     private gp_tiyan: eui.Group;
     private img_shibai: eui.Image;
-    private goodsItemData: Data.GoodsItemData;
+    private goodsItemData: Data.SubGame;
     private m_mainsence: ShopMain;
     private m_time: number;
-    public constructor(timer: number, score: number, type: number, level: number, goodsItemData: Data.GoodsItemData, m_mainsence: ShopMain) {
+    public constructor(timer: number, score: number, type: number, level: number, goodsItemData: Data.SubGame, m_mainsence: ShopMain) {
         super()
         this._score = score;
         this._type = type;
@@ -49,9 +49,9 @@ class GameOver extends eui.Component {
 
     private onClickReset() {
         LayerUtil.shopMain.stage.removeChild(this);
-        if (Data.GameContext.player.goldNumber >= this.goodsItemData.gameGroup) {
-            RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.goodsType,
-                this.goodsItemData.gameGroup, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
+        if (Data.GameContext.player.goldNumber >= this.goodsItemData.priceGroup) {
+            RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.gameGroup,
+                this.goodsItemData.priceGroup, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
             console.log("*******Send   ed ");
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);

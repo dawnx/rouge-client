@@ -37,6 +37,7 @@ class Main extends eui.UILayer {
         Main._screenH = this.stage.stageHeight;
         // 初始化框架系统；
         PlayerApi.getPlayerInfo();
+        GoodsApi.getGoodsInfo();
         // 初始化WeChat模块；   这里可以选择不初始化这个模块 根据需要；
         console.log("Main Init !   1");
         egret.lifecycle.addLifecycleListener((context) => {
@@ -113,7 +114,7 @@ class Main extends eui.UILayer {
     // private _begin:Begin;
     
     protected createGameScene(): void {
-        Data.DataManager.init();
+        //Data.DataManager.init();
         utils.SoundUtils.instance().initSound();
         LayerUtil.shopMain = new ShopMain();
         LayerUtil.popupMain = new egret.Sprite();

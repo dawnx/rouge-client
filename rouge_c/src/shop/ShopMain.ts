@@ -338,8 +338,8 @@ class ShopMain extends eui.Component {
     }
     private updateContent() {
         this.gp_main.removeChildren();
-        console.log("Data.DataManager.goodsDatas    "+Data.DataManager.goodsDatas);
-        Data.DataManager.goodsDatas.forEach(item => {
+        console.log("Data.DataManager.goodsDatas    "+Data.DataManager.subGames);
+        Data.DataManager.subGames.forEach(item => {
             if (item.gameGroup == this.goodsType && item.priceGroup == this.goodsFenQu) {
                 this.gp_main.addChild(new GoodsItem(item, this));
             }

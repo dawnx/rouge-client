@@ -50,8 +50,7 @@ class GameOver extends eui.Component {
     private onClickReset() {
         
         if (Data.GameContext.player.goldNumber >= this.goodsItemData.resetPrice) {
-            RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.gameGroup,
-                this.goodsItemData.priceGroup, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
+            RougeGameApi.startGame(this.goodsItemData.subGameId, GameEnd.RESULT_RESET);
             console.log("*******Send   ed ");
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);

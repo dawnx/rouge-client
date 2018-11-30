@@ -36,7 +36,7 @@ class GoodsItem extends eui.Component {
             LayerUtil.begin =new Begin(this.itemData, this.m_mainsence)
             this.stage.addChild(LayerUtil.begin);
         } else if (currentGolds >= this.itemData.priceGroup) {
-            RougeGameApi.startGame(this.itemData.subGameId, this.itemData.gameGroup, this.itemData.priceGroup, this.itemData.gameType, 0);
+            RougeGameApi.startGame(this.itemData.subGameId, 0);
             console.log("*******Send   ed ");
             LayerUtil.gameMain =  null;
             LayerUtil.gameMain = new GameMain(this.itemData, this.m_mainsence);

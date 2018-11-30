@@ -66,10 +66,10 @@ class GameMain extends eui.Component {
             // 闯关
             this.init();
         }
-
+        this.rect_dangban.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickInsert, this);
         this.initRank();
         egret.Ticker.getInstance().register(function () {
-            this.rect_dangban.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickInsert, this);
+            
             this.update();
         }, this);
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this)

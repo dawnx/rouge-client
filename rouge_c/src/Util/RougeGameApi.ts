@@ -1,11 +1,11 @@
 class RougeGameApi {
 
 	/// 游戏入口调用；
-	public static startGame(subGameId: number, goodsType: number, goodsFenqu: number, gameType: number, isReset: number) {
+	public static startGame(subGameId: number,isReset: number) {
 		let openId = Data.GameContext.player.openId;  //取url后边的openid
 		console.log("openId   " + openId);
 		//拼接参数 
-		var params = "?openId=" + openId + "&subGameId=" + subGameId + "&goodsType=" + goodsType + "&goodsFenqu=" + goodsFenqu + "&gameType=" + gameType + "&reset=" + isReset;;
+		var params = "?openId=" + openId + "&subGameId=" + subGameId + "&reset=" + isReset;;
 		// var params = "?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g" + "&subGameId=" + subGameId + "&goodsType=" + goodsType + "&goodsFenqu=" + goodsFenqu + "&gameType=" + gameType + "&reset=" + isReset; 
 
 		var uri: string = "gameRouge/startGame" + params;

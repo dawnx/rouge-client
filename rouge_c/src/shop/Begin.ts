@@ -126,8 +126,7 @@ class Begin extends eui.Component {
     //开始游戏
     private onClickBegin() {
         if ((Data.GameContext.player.goldNumber - this.goodsItemData.priceGroup) >= 0) {
-            RougeGameApi.startGame(this.goodsItemData.subGameId,
-                this.goodsItemData.gameGroup, this.goodsItemData.priceGroup, this.goodsItemData.gameType, 0);
+            RougeGameApi.startGame(this.goodsItemData.subGameId, 0);
             console.log("*******Send   ed ");
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);

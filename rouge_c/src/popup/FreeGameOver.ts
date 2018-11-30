@@ -77,7 +77,10 @@ class FreeGameOver extends eui.Component {
             console.log("*******Send   ed ");
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu / 2;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);
-            LayerUtil.gameMain.initGame1();
+            if(LayerUtil.gameMain.goodsItemData.gameType == Data.GameType.JING_SU)
+                LayerUtil.gameMain.initGame2();
+            else
+                LayerUtil.gameMain.initGame1();
         }
         else {
             console.log("金币不足 ，此时应该跳到 金币不足的弹窗；");

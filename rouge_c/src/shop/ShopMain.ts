@@ -46,6 +46,11 @@ class ShopMain extends eui.Component {
     private lb_300: eui.Label;
     private lb_500: eui.Label;
 
+    private line0: eui.Image;
+    private line100: eui.Image;
+    private line300: eui.Image;
+    private line500: eui.Image;
+
     private rect0: eui.Rect;
     private rect100: eui.Rect;
     private rect300: eui.Rect;
@@ -144,6 +149,11 @@ class ShopMain extends eui.Component {
         this.Clcik();
         this.lb_kh.textColor = 0x9e023e;
         this.lb_0.textColor = 0xef0057;
+        this.line0.visible = true;
+        this.line100.visible = false;
+        this.line300.visible = false;
+        this.line500.visible = false;
+
         //刚进来的时候 默认是口红，所以让500金币区消失
         this.gp500.width = 0;
         this.gp500.visible = false;
@@ -239,28 +249,34 @@ class ShopMain extends eui.Component {
         this.lb_100.textColor = 0x333333;
         this.lb_300.textColor = 0x333333;
         this.lb_500.textColor = 0x333333;
-
+        this.line0.visible = false;
+        this.line100.visible = false;
+        this.line300.visible = false;
+        this.line500.visible = false;
         switch (img.name) {
             //免费区
             case "rect0":
                 this.goodsFenQu = 0;
                 this.lb_0.textColor = 0x9e023e;
-
+                 this.line0.visible = true;
                 break;
             //100
             case "rect100":
                 this.goodsFenQu = 100;
                 this.lb_100.textColor = 0x9e023e;
+                 this.line100.visible = true;
                 break;
             //300
             case "rect300":
                 this.goodsFenQu = 300;
                 this.lb_300.textColor = 0x9e023e;
+                 this.line300.visible = true;
                 break;
             //500
             case "rect500":
                 this.goodsFenQu = 500;
                 this.lb_500.textColor = 0x9e023e;
+                 this.line500.visible = true;
                 break;
         }
         console.log(this.goodsFenQu)
@@ -273,7 +289,10 @@ class ShopMain extends eui.Component {
         this.lb_kh.textColor = 0xffffff;
         this.lb_lp.textColor = 0xffffff;
         this.lb_pf.textColor = 0xffffff;
-
+        this.line0.visible = false;
+        this.line100.visible = false;
+        this.line300.visible = false;
+        this.line500.visible = false;
         switch (img.name) {
             //口红
             case "rect_kh":
@@ -292,6 +311,7 @@ class ShopMain extends eui.Component {
                 this.gp500.visible = false;
                 this.lb_0.textColor = 0x9e023e;
                 this.lb_100.textColor = 0x333333;
+                this.line0.visible = true;
                 break;
             //礼品
             case "rect_lp":
@@ -312,6 +332,7 @@ class ShopMain extends eui.Component {
                 this.lb_100.textColor = 0x9e023e;
                 this.lb_300.textColor = 0x333333;
                 this.lb_500.textColor = 0x333333;
+                this.line100.visible = true;
                 break;
             //皮肤
             case "rect_pf":
@@ -331,6 +352,7 @@ class ShopMain extends eui.Component {
                 this.lb_100.textColor = 0x9e023e;
                 this.lb_300.textColor = 0x333333;
                 this.lb_500.textColor = 0x333333;
+                this.line100.visible = true;
                 break;
         }
         console.log(this.goodsType)

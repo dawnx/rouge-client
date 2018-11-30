@@ -142,6 +142,8 @@ class GameMain extends eui.Component {
         this.rect_dangban.visible = true;
         let time = this.getTime(this._level);
         console.log("倒计时" + time)
+        if(this.timer)
+            this.timer.stop();
         this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
         this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, onTimerComplete, this);
@@ -507,7 +509,8 @@ class GameMain extends eui.Component {
         let time = this.getTime(this._level);
         console.log("当前时间" + time);
         console.log("当前速度" + this.speed);
-
+        if(this.timer)
+            this.timer.stop();
         this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
         this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, onTimerComplete, this);
@@ -556,7 +559,8 @@ class GameMain extends eui.Component {
         this.rotateArr = [];
 
         this.rect_dangban.visible = true;
-
+        if(this.timer)
+            this.timer.stop();
         let time = this.getTime(this._level);
         console.log("倒计时" + time)
         this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时

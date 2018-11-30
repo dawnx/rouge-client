@@ -84,7 +84,6 @@ class FreeGameOver extends eui.Component {
             // LayerUtil.gameMain.addChild(new Tishi(this.m_mainsence));
             this.stage.addChild(new Tishi(this.m_mainsence));
         }
-        LayerUtil.gameMain.initGame1();
     }
 
 }

@@ -70,7 +70,7 @@ class FreeGameOver extends eui.Component {
     }
 
     private onClickReset() {
-        LayerUtil.shopMain.stage.removeChild(this);
+        
         if (Data.GameContext.player.goldNumber >= LayerUtil.gameMain.goodsItemData.resetPrice) {
             RougeGameApi.startGame(LayerUtil.gameMain.goodsItemData.subGameId, LayerUtil.gameMain.goodsItemData.gameGroup,
                 LayerUtil.gameMain.goodsItemData.priceGroup, LayerUtil.gameMain.goodsItemData.gameType, GameEnd.RESULT_RESET);
@@ -81,9 +81,11 @@ class FreeGameOver extends eui.Component {
                 LayerUtil.gameMain.initGame2();
             else
                 LayerUtil.gameMain.initGame1();
+            LayerUtil.shopMain.stage.removeChild(this);
         }else {
             console.log("金币不足 ，此时应该跳到 金币不足的弹窗；");
             // LayerUtil.gameMain.addChild(new Tishi(this.m_mainsence));
+           
             LayerUtil.shopMain.stage.addChild(new Tishi(LayerUtil.shopMain));
         }
     }

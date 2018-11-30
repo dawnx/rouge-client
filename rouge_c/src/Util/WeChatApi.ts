@@ -24,13 +24,15 @@ class WeChatApi {
             wx.config(bodyConfig);
             console.log("bodyConfig   is ready;")
             // wx.ready(function () {
-            //     // 在这里调用微信相关功能的 API
-            //     var shareAppMessage = new BodyMenuShareAppMessage();
-            //     shareAppMessage.title = '喵喵喵';
-            //     shareAppMessage.desc = '在长大的过程中，我才慢慢发现，我身边的所有事，别人跟我说的所有事，那些所谓本来如此，注定如此的事，它们其实没有非得如此，事情是可以改变的。更重要的是，有些事既然错了，那就该做出改变。';
-            //     shareAppMessage.link = 'http://kh.chitugame.com/game/girl.jpg';
-            //     shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/girl.jpg';
-            //     wx.onMenuShareAppMessage(shareAppMessage);
+            //     var bodyCheckJsAPISupport = new BodyCheckJsAPISupport();
+            //     bodyCheckJsAPISupport.jsApiList = [
+            //         'getNetworkType',
+            //         'previewImage'
+            //     ];
+            //     bodyCheckJsAPISupport.success = function (res) {
+            //         alert(JSON.stringify(res));
+            //     }
+            //     wx.checkJsApi(bodyCheckJsAPISupport);
             // });
         }
     }

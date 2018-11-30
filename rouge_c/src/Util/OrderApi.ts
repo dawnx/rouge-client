@@ -107,7 +107,8 @@ class OrderApi {
         console.log("*******点击响应");
         let openId = egret.getOption("openId");  //取url后边的openid
         console.log("openId   " + openId);
-        var currentUrl:string = "http://kh.chitugame.com/rouge/index.html";
+        // var currentUrl:string = "http://kh.chitugame.com/rouge/index.html";
+        var currentUrl:string = window.location.href;
         // var currentUrl:string = "192.168.1.111:5000/index.html";
         currentUrl = encodeURI(currentUrl);
         console.log("currentUrl  "+currentUrl);

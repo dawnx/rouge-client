@@ -4,7 +4,7 @@
 		<e:Image source="mmm_dating_Backplane_08_png" y="0" x="0" scale9Grid="38,25,9,7" width="750" height="1386" scaleX="1" scaleY="1"/>
 		<e:Image source="mmm_dating_picture_04_png" x="0" y="0" scaleX="1" scaleY="1"/>
 		<e:Image source="mmm_chongzhi_button_02_png" x="24.34" y="15.5" scaleX="1" scaleY="1"/>
-		<e:Image source="mmm_chongzhi_button_01_03_png" x="680" y="20" scaleX="1" scaleY="1"/>
+		<e:Image source="mmm_chongzhi_button_01_03_png" x="680" y="20" scaleX="1" scaleY="1" visible="false"/>
 		<e:Label text="游戏充值" x="314" y="23" scaleX="1" scaleY="1" size="32" bold="true" fontFamily="SimHei"/>
 		<e:Label text="返回" x="76" y="20.5" scaleX="1" scaleY="1" fontFamily="SimHei"/>
 		<e:Rect id="rect_back" width="108.67" height="30" x="27.33" y="20" fillAlpha="0" anchorOffsetX="0"/>

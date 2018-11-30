@@ -84,7 +84,7 @@ class FreeGameOver extends eui.Component {
         }else {
             console.log("金币不足 ，此时应该跳到 金币不足的弹窗；");
             // LayerUtil.gameMain.addChild(new Tishi(this.m_mainsence));
-            this.stage.addChild(new Tishi(this.m_mainsence));
+            LayerUtil.shopMain.stage.addChild(new Tishi(LayerUtil.shopMain));
         }
     }
 

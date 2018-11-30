@@ -23,17 +23,22 @@ class WeChatApi {
         if (wx) {
             wx.config(bodyConfig);
             console.log("bodyConfig   is ready;")
-            // wx.ready(function () {
-            //     var bodyCheckJsAPISupport = new BodyCheckJsAPISupport();
-            //     bodyCheckJsAPISupport.jsApiList = [
-            //         'getNetworkType',
-            //         'previewImage'
-            //     ];
-            //     bodyCheckJsAPISupport.success = function (res) {
-            //         alert(JSON.stringify(res));
-            //     }
-            //     wx.checkJsApi(bodyCheckJsAPISupport);
-            // });
+            wx.ready(function () {
+                // 在这里调用微信相关功能的 API
+                var shareAppMessage = new BodyMenuShareAppMessage();
+                shareAppMessage.title = '喵喵喵游乐园';
+                shareAppMessage.desc = '我在喵喵喵游乐园里免费获得奖品';
+                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind='+ Data.GameContext.player.shareCode;
+                shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
+                wx.onMenuShareAppMessage(shareAppMessage);
+
+                var bodyMenuShareAppMessage = new BodyMenuShareAppMessage();
+                bodyMenuShareAppMessage.title = "喵喵喵游乐园";
+                bodyMenuShareAppMessage.desc = "我在喵喵喵游乐园里免费获得奖品";
+                bodyMenuShareAppMessage.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind="+ Data.GameContext.player.shareCode;
+                bodyMenuShareAppMessage.imgUrl = "http://kh.chitugame.com/game/icon.png";
+                wx.onMenuShareAppMessage(bodyMenuShareAppMessage);
+            });
         }
     }
 
@@ -53,18 +58,6 @@ class WeChatApi {
                     paySign: data.sign, // 支付签名
                     success: function (res) {
                         // 支付成功后的回调函数
-                        // if ("get_brand_wcpay_request:ok" == res.err_msg) {
-                        EventManager.getInstance().SendEvent(ApiEvent.PLAYER_INFO);
-                        var label: eui.Label = new eui.Label();
-                        label.text = "充值成功！ \r\n 请等待。。。";
-                        //设置颜色等文本属性
-                        label.textColor = 0xff0000;
-                        label.size = 26;
-                        label.lineSpacing = 12;
-                        label.y = 800;
-                        //label.textAlign = egret.HorizontalAlign.JUSTIFY;
-
-                        // }
                     }
                 });
             });

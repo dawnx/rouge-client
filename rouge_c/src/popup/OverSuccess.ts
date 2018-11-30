@@ -48,23 +48,19 @@ class OverSuccess extends eui.Component {
                 shareAppMessage.desc = '我在喵喵喵游乐园里免费获得奖品';
                 shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind='+ Data.GameContext.player.shareCode;
                 shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
-                shareAppMessage.success = this.onComplateShare();
+                shareAppMessage.success = function(){LayerUtil.shopMain.stage.removeChild(LayerUtil.shopMain.share)};
                 wx.onMenuShareAppMessage(shareAppMessage);
 
-                var bodyMenuShareAppMessage = new BodyMenuShareAppMessage();
-                bodyMenuShareAppMessage.title = "喵喵喵游乐园";
-                bodyMenuShareAppMessage.desc = "我在喵喵喵游乐园里免费获得奖品";
-                bodyMenuShareAppMessage.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind="+ Data.GameContext.player.shareCode;
-                bodyMenuShareAppMessage.imgUrl = "http://kh.chitugame.com/game/icon.png";
-                bodyMenuShareAppMessage.success = this.onComplateShare();
-                wx.onMenuShareAppMessage(bodyMenuShareAppMessage);
+                var bodyMenuShareTimeline = new BodyMenuShareTimeline();
+                bodyMenuShareTimeline.title = "喵喵喵游乐园";
+                bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind="+ Data.GameContext.player.shareCode;
+                bodyMenuShareTimeline.imgUrl = "http://kh.chitugame.com/game/icon.png";
+                bodyMenuShareTimeline.success = function(){LayerUtil.shopMain.stage.removeChild(LayerUtil.shopMain.share)};
+                wx.onMenuShareTimeline(bodyMenuShareTimeline);
             });
         }
 
-        var share: Share;
-        share = new Share();
-        this.addChild(share);
-        console.log("闯关成功  分享")
+        LayerUtil.shopMain.createShare();
     }
     private onComplateShare(){
         this.parent.removeChild(this);

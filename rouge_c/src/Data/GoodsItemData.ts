@@ -7,6 +7,7 @@ module Data {
 		public priceGroup: number; // 0 , 100,  300 , 500
 		public gameType: number; // 1 体验 ，2 闯关，  3 竞速
 		public price: string;
+		public resetPrice:number;
 
 		public constructor(m_subGameId: number, _img: string, _goodsName: string,
 			_gameType: number, _price: string,

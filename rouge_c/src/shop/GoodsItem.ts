@@ -31,12 +31,12 @@ class GoodsItem extends eui.Component {
     }
     private onClickBtn() {
         var currentGolds = Data.GameContext.player.goldNumber;
-        if (this.itemData.goodsFenqu == 0 && this.itemData.gameType != 1) {
+        if (this.itemData.gameGroup == 0 && this.itemData.gameType != 1) {
             PlayerApi.getRankInfo(this.itemData.subGameId);
             LayerUtil.begin =new Begin(this.itemData, this.m_mainsence)
             this.stage.addChild(LayerUtil.begin);
-        } else if (currentGolds >= this.itemData.goodsFenqu) {
-            RougeGameApi.startGame(this.itemData.subGameId, this.itemData.goodsType, this.itemData.goodsFenqu, this.itemData.gameType, 0);
+        } else if (currentGolds >= this.itemData.gameGroup) {
+            RougeGameApi.startGame(this.itemData.subGameId, this.itemData.goodsType, this.itemData.gameGroup, this.itemData.gameType, 0);
             console.log("*******Send   ed ");
             LayerUtil.gameMain =  null;
             LayerUtil.gameMain = new GameMain(this.itemData, this.m_mainsence);

@@ -4,7 +4,7 @@ module Data {
 		public img: string;
 		public goodsName: string;
 		public goodsType: number; // 1口红，2礼品，3皮肤
-		public goodsFenqu: number; // 0 , 100,  300 , 500
+		public gameGroup: number; // 0 , 100,  300 , 500
 		public gameType: number; // 1 体验 ，2 闯关，  3 竞速
 		public price: string;
 
@@ -17,7 +17,7 @@ module Data {
 			this.gameType = _gameType;
 			this.price = _price;
 			this.goodsType = _goodsType;
-			this.goodsFenqu = _goodsFenqu;
+			this.gameGroup = _goodsFenqu;
 		}
 	}
 }

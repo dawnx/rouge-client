@@ -39,9 +39,35 @@ class OverSuccess extends eui.Component {
     }
 
     private onClickShare() {
-        // this.visible = false;
-        // this._gamemain.initGame1();
+        if (wx) {
+            wx.ready(function () {
+                console.log("wx.ready");
+                // 在这里调用微信相关功能的 API
+                var shareAppMessage = new BodyMenuShareAppMessage();
+                shareAppMessage.title = '喵喵喵游乐园';
+                shareAppMessage.desc = '我在喵喵喵游乐园里免费获得奖品';
+                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind=';
+                shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
+                shareAppMessage.success = this.onComplateShare();
+                wx.onMenuShareAppMessage(shareAppMessage);
+
+                var bodyMenuShareAppMessage = new BodyMenuShareAppMessage();
+                bodyMenuShareAppMessage.title = "喵喵喵游乐园";
+                bodyMenuShareAppMessage.desc = "我在喵喵喵游乐园里免费获得奖品";
+                bodyMenuShareAppMessage.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind=";
+                bodyMenuShareAppMessage.imgUrl = "http://kh.chitugame.com/game/icon.png";
+                bodyMenuShareAppMessage.success = this.onComplateShare();
+                wx.onMenuShareAppMessage(bodyMenuShareAppMessage);
+            });
+        }
+
+        var share: Share;
+        share = new Share();
+        this.addChild(share);
         console.log("闯关成功  分享")
+    }
+    private onComplateShare(){
+        this.parent.removeChild(this);
     }
 
 }

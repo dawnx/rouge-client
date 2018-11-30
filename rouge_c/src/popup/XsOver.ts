@@ -44,7 +44,7 @@ class XsOver extends eui.Component {
         //如果金币小于等于0 
         if (Data.GameContext.player.goldNumber >= 50) {
             console.log("金币足够")
-            RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
+            RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.goodsType, this.goodsItemData.gameGroup, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
             PlayerApi.getPlayerInfo();
             console.log("*******Send   ed ");
             console.log("*******GameEnd.RESULT_RESET  ed " + GameEnd.RESULT_RESET);

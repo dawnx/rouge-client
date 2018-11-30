@@ -74,7 +74,7 @@ class GameMain extends eui.Component {
         }, this);
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this)
     }
-
+ 
     private initRank() {
         if (LayerUtil.gameMain.goodsItemData.priceGroup == 0 && LayerUtil.gameMain.goodsItemData.gameType != Data.GameType.TI_YAN) {
             var num = 0;
@@ -654,37 +654,37 @@ class GameMain extends eui.Component {
     //关卡配置
     public config = {
         'lev0': {
-            'zhuansu': 3,
+            'zhuansu': 4,
             'time': 45,
             'rougeNum': 3
 
         },
         'lev1': {
-            'zhuansu': 3,
+            'zhuansu': 4,
             'time': 45,
             'rougeNum': 10
 
         },
         'lev2': {
-            'zhuansu': 4,
+            'zhuansu': 5,
             'time': 45,
             'rougeNum': 16
 
         },
         'lev3': {
-            'zhuansu': 5,
+            'zhuansu': 6,
             'time': 45,
             'rougeNum': 22
 
         },
         'lev4': {
-            'zhuansu': 5,
+            'zhuansu': 6,
             'time': 15,
             'rougeNum': 15
 
         },
         'lev5': {
-            'zhuansu': 10,
+            'zhuansu': 11,
             'time': 15,
             'rougeNum': 20
 
@@ -694,7 +694,7 @@ class GameMain extends eui.Component {
         return this.config["lev" + num]['time'];
     }
     private getSpeed(num: number) {
-        return this.config["lev" + num]['zhuansu'];
+        return this.config["lev" + num]['zhuansu']+3;
     }
     private getRougeNum(num: number) {
         return this.config["lev" + num]['rougeNum'];

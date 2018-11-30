@@ -46,7 +46,7 @@ class OverSuccess extends eui.Component {
                 var shareAppMessage = new BodyMenuShareAppMessage();
                 shareAppMessage.title = '喵喵喵游乐园';
                 shareAppMessage.desc = '我在喵喵喵游乐园里免费获得奖品';
-                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind=';
+                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind='+ Data.GameContext.player.shareCode;
                 shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
                 shareAppMessage.success = this.onComplateShare();
                 wx.onMenuShareAppMessage(shareAppMessage);
@@ -54,7 +54,7 @@ class OverSuccess extends eui.Component {
                 var bodyMenuShareAppMessage = new BodyMenuShareAppMessage();
                 bodyMenuShareAppMessage.title = "喵喵喵游乐园";
                 bodyMenuShareAppMessage.desc = "我在喵喵喵游乐园里免费获得奖品";
-                bodyMenuShareAppMessage.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind=";
+                bodyMenuShareAppMessage.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind="+ Data.GameContext.player.shareCode;
                 bodyMenuShareAppMessage.imgUrl = "http://kh.chitugame.com/game/icon.png";
                 bodyMenuShareAppMessage.success = this.onComplateShare();
                 wx.onMenuShareAppMessage(bodyMenuShareAppMessage);

@@ -12,5 +12,6 @@ module Data {
 		public regDate: Date;
 		public lastLoginDate: Date;
 		public state: string;
+		public shareCode:string;
 	}
 }

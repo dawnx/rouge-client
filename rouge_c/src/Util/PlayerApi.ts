@@ -1,7 +1,7 @@
 class PlayerApi {
     public static getPlayerInfo() {
         let openId = egret.getOption("openId");  //取url后边的openid
-        let uri: string = "player/getPlayerByOpenId?openId=oZ4KT1JC0LWmI-Fk5oG1PGq5uhu4";
+        let uri: string = "player/getPlayerByOpenId?openId=o9lTh062RhzRKKqN2L4D6IAh6GIE";
         // let uri: string = "player/getPlayerByOpenId?openId=" + openId;
         BaseApi.get(uri, this.onGetComplete);
     }

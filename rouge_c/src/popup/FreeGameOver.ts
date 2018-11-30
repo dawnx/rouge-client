@@ -71,7 +71,7 @@ class FreeGameOver extends eui.Component {
 
     private onClickReset() {
         LayerUtil.shopMain.stage.removeChild(this);
-        if (Data.GameContext.player.goldNumber >= LayerUtil.gameMain.goodsItemData.priceGroup) {
+        if (Data.GameContext.player.goldNumber >= LayerUtil.gameMain.goodsItemData.resetPrice) {
             RougeGameApi.startGame(LayerUtil.gameMain.goodsItemData.subGameId, LayerUtil.gameMain.goodsItemData.gameGroup,
                 LayerUtil.gameMain.goodsItemData.priceGroup, LayerUtil.gameMain.goodsItemData.gameType, GameEnd.RESULT_RESET);
             console.log("*******Send   ed ");

@@ -26,6 +26,7 @@ class GameMain extends eui.Component {
     //反转方向
     private _fangxiang: number = 360;
     private timer: egret.Timer;
+    private render: egret.Timer;
     private rotateArr: number[] = [];
     private rect_dangban: eui.Rect;
     private _level: number = 1;
@@ -68,10 +69,13 @@ class GameMain extends eui.Component {
         }
         this.rect_dangban.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickInsert, this);
         this.initRank();
-        egret.Ticker.getInstance().register(function () {
+        this.render = new egret.Timer(20);
+        this.render.addEventListener(egret.TimerEvent.TIMER, this.update, this);
+        this.render.start();
+        // egret.Ticker.getInstance().register(function () {
             
-            this.update();
-        }, this);
+        //     this.update();
+        // }, this);
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this)
     }
  
@@ -113,6 +117,7 @@ class GameMain extends eui.Component {
 
     private onRemove() {
         this.timer.stop();
+        this.render.stop();
     }
 
     private miao: number;

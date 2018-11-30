@@ -49,7 +49,7 @@ class GameOver extends eui.Component {
 
     private onClickReset() {
         LayerUtil.shopMain.stage.removeChild(this);
-        if (Data.GameContext.player.goldNumber >= this.goodsItemData.priceGroup) {
+        if (Data.GameContext.player.goldNumber >= this.goodsItemData.resetPrice) {
             RougeGameApi.startGame(this.goodsItemData.subGameId, this.goodsItemData.gameGroup,
                 this.goodsItemData.priceGroup, this.goodsItemData.gameType, GameEnd.RESULT_RESET);
             console.log("*******Send   ed ");

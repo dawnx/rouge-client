@@ -26,16 +26,19 @@ class YaoQing extends eui.Component {
                 console.log("wx.ready");
                 // 在这里调用微信相关功能的 API
                 var shareAppMessage = new BodyMenuShareAppMessage();
-                shareAppMessage.title = '在长大的过程中';
-                shareAppMessage.desc = '在长大的过程中，我才慢慢发现，我身边的所有事，别人跟我说的所有事，那些所谓本来如此，注定如此的事，它们其实没有非得如此，事情是可以改变的。更重要的是，有些事既然错了，那就该做出改变。';
-                shareAppMessage.link = 'http://kh.chitugame.com/rouge/index.html';
-                shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/girl.jpg';
+                shareAppMessage.title = '喵喵喵游乐园';
+                shareAppMessage.desc = '你的时间很值钱，在喵喵喵游戏里免费得礼品，一起来玩吧。';
+                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind=';
+                shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
+                shareAppMessage.success = this.onComplateShare();
                 wx.onMenuShareAppMessage(shareAppMessage);
 
                 var bodyMenuShareAppMessage = new BodyMenuShareAppMessage();
-                bodyMenuShareAppMessage.title = "测试一下你在三国里面是谁吧";
-                bodyMenuShareAppMessage.link = "http://kh.chitugame.com/rouge/index.html";
-                bodyMenuShareAppMessage.imgUrl = "http://kh.chitugame.com/game/girl.jpg";
+                bodyMenuShareAppMessage.title = "喵喵喵游乐园";
+                bodyMenuShareAppMessage.desc = "你的时间很值钱，在喵喵喵游戏里免费得礼品，一起来玩吧。";
+                bodyMenuShareAppMessage.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind=";
+                bodyMenuShareAppMessage.imgUrl = "http://kh.chitugame.com/game/icon.png";
+                bodyMenuShareAppMessage.success = this.onComplateShare();
                 wx.onMenuShareAppMessage(bodyMenuShareAppMessage);
             });
         }
@@ -44,6 +47,9 @@ class YaoQing extends eui.Component {
         share = new Share();
         this.addChild(share);
 
+    }
+    private onComplateShare() {
+        this.parent.removeChild(this);
     }
     private onClickReceiveBtn() {
         //console.log(this);

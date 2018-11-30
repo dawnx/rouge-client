@@ -47,6 +47,7 @@
 		"bin-debug/Util/BaseApi.js",
 		"bin-debug/Util/EventManager.js",
 		"bin-debug/Util/GameEnd.js",
+		"bin-debug/Util/GoodsApi.js",
 		"bin-debug/Util/ItemDefine.js",
 		"bin-debug/Util/LayerUtil.js",
 		"bin-debug/Util/OrderApi.js",

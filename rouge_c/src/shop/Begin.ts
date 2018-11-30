@@ -125,9 +125,9 @@ class Begin extends eui.Component {
     }
     //开始游戏
     private onClickBegin() {
-        if ((Data.GameContext.player.goldNumber - this.goodsItemData.goodsFenqu) >= 0) {
+        if ((Data.GameContext.player.goldNumber - this.goodsItemData.gameGroup) >= 0) {
             RougeGameApi.startGame(this.goodsItemData.subGameId,
-                this.goodsItemData.goodsType, this.goodsItemData.goodsFenqu, this.goodsItemData.gameType, 0);
+                this.goodsItemData.goodsType, this.goodsItemData.gameGroup, this.goodsItemData.gameType, 0);
             console.log("*******Send   ed ");
             // AccountData.accoundData.gold -= this.goodsItemData.goodsFenqu;
             console.log("AccountData.accoundData.gold   :" + Data.GameContext.player.goldNumber);

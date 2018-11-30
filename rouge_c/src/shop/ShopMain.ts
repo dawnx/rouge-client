@@ -339,7 +339,7 @@ class ShopMain extends eui.Component {
     private updateContent() {
         this.gp_main.removeChildren();
         Data.DataManager.goodsDatas.forEach(item => {
-            if (item.goodsType == this.goodsType && item.goodsFenqu == this.goodsFenQu) {
+            if (item.goodsType == this.goodsType && item.gameGroup == this.goodsFenQu) {
                 this.gp_main.addChild(new GoodsItem(item, this));
             }
         })

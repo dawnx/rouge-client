@@ -137,7 +137,7 @@ class Begin extends eui.Component {
             this.stage.addChild(LayerUtil.gameMain);
         } else {
             // this.addChild(new Tishi(this.m_mainsence));
-            this.addChild(new Tishi2());
+            this.stage.addChild(new Tishi(this.m_mainsence));
         }
     }
     private onClickBack() {

@@ -133,17 +133,17 @@ class ShopMain extends eui.Component {
         // if (true) {
         if (Data.GameContext.player.extraData.first_login_reward != 1){
             var broadc: BroadCast;
-            broadc = new BroadCast("首次登陆送200金币","mmm_dating_icon_06");
+            broadc = new BroadCast("首次登录送200金币","mmm_dating_icon_06");
             this.addChild(broadc);
         }
 
         // 首次分享送100幸运币；
         // if (true) {
-        if (Data.GameContext.player.extraData.first_login_reward != 1){
-            var broadc: BroadCast;
-            broadc = new BroadCast("首次分享送100幸运币","mmm_dating_icon_05");
-            this.addChild(broadc);
-        }
+        // if (Data.GameContext.player.extraData.first_login_reward != 1){
+        //     var broadc: BroadCast;
+        //     broadc = new BroadCast("首次分享送100幸运币","mmm_dating_icon_05");
+        //     this.addChild(broadc);
+        // }
 
 
         this.Clcik();
@@ -161,6 +161,13 @@ class ShopMain extends eui.Component {
         var timer: egret.Timer = new egret.Timer(2000, 0);
         timer.addEventListener(egret.TimerEvent.TIMER, this.timerFunc, this);
         timer.start();
+    }
+
+    // 其他界面调用弹窗引用；
+    public share:Share;
+    public createShare(){
+        this.share = new Share();
+        this.stage.addChild(this.share);
     }
     public onPlayerInfo() {
         console.log("*********RefeshAccountData    !");

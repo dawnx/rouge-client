@@ -30,21 +30,19 @@ class YaoQing extends eui.Component {
                 shareAppMessage.desc = '你的时间很值钱，在喵喵喵游戏里免费得礼品，一起来玩吧。';
                 shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind='+ Data.GameContext.player.shareCode;
                 shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
-                shareAppMessage.success = function(){LayerUtil.shopMain.stage.removeChild(LayerUtil.shopMain.yaoqing)};
+                shareAppMessage.success = function(){LayerUtil.shopMain.stage.removeChild(LayerUtil.shopMain.share)};
                 wx.onMenuShareAppMessage(shareAppMessage);
 
-                var bodyMenuShareAppMessage = new BodyMenuShareAppMessage();
-                bodyMenuShareAppMessage.title = "喵喵喵游乐园";
-                bodyMenuShareAppMessage.desc = "你的时间很值钱，在喵喵喵游戏里免费得礼品，一起来玩吧。";
-                bodyMenuShareAppMessage.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind="+ Data.GameContext.player.shareCode;
-                bodyMenuShareAppMessage.imgUrl = "http://kh.chitugame.com/game/icon.png";
-                bodyMenuShareAppMessage.success = function(){LayerUtil.shopMain.stage.removeChild(LayerUtil.shopMain.yaoqing)};
-                wx.onMenuShareAppMessage(bodyMenuShareAppMessage);
+                var bodyMenuShareTimeline = new BodyMenuShareTimeline();
+                bodyMenuShareTimeline.title = "喵喵喵游乐园";
+                bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind="+ Data.GameContext.player.shareCode;
+                bodyMenuShareTimeline.imgUrl = "http://kh.chitugame.com/game/icon.png";
+                bodyMenuShareTimeline.success = function(){LayerUtil.shopMain.stage.removeChild(LayerUtil.shopMain.share)};
+                wx.onMenuShareTimeline(bodyMenuShareTimeline);
+
             });
         }
-        var share: Share;
-        share = new Share();
-        this.addChild(share);
+        LayerUtil.shopMain.createShare();
 
     }
     private onComplateShare() {

@@ -475,7 +475,14 @@ class GameMain extends eui.Component {
                     if (this._level > 2 && this.goodsItemData.gameType == 1) {
                         //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
                         console.log("体验模式结束 ")
-                        this.GameOver();
+                        this.stage.addChild(new PayContinue());
+                        this.timer.stop();
+                        return;
+                    }
+                    if (this._level > 3 && this.goodsItemData.gameType == 1) {
+                        //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
+                        console.log("体验模式结束 ")
+                        this.stage.addChild(new AddressPanel());
                         this.timer.stop();
                         return;
                     }
@@ -718,19 +725,19 @@ class GameMain extends eui.Component {
         'lev0': {
             'zhuansu': 4,
             'time': 45,
-            'rougeNum': 3
+            'rougeNum': 6
 
         },
         'lev1': {
             'zhuansu': 4,
             'time': 45,
-            'rougeNum': 3
+            'rougeNum': 6
 
         },
         'lev2': {
             'zhuansu': 5,
             'time': 45,
-            'rougeNum': 3
+            'rougeNum': 6
 
         },
         'lev3': {
@@ -739,18 +746,18 @@ class GameMain extends eui.Component {
             'rougeNum': 3
 
         },
-        // 'lev4': {
-        //     'zhuansu': 6,
-        //     'time': 15,
-        //     'rougeNum': 15
+        'lev4': {
+            'zhuansu': 6,
+            'time': 15,
+            'rougeNum': 15
 
-        // },
-        // 'lev5': {
-        //     'zhuansu': 11,
-        //     'time': 15,
-        //     'rougeNum': 20
+        },
+        'lev5': {
+            'zhuansu': 11,
+            'time': 15,
+            'rougeNum': 20
 
-        // }
+        }
     }
     private getTime(num: number) {
         return this.config["lev" + num]['time'];

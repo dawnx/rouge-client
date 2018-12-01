@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Egret</title>
+    <title>喵喵喵游乐园</title>
     <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="full-screen" content="true" />
@@ -25,14 +25,14 @@
 <body>
     <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
          data-entry-class="Main"
-         data-orientation="auto"
-         data-scale-mode="showAll"
+         data-orientation="portrait"
+         data-scale-mode="fixedWidth"
          data-frame-rate="60"
-         data-content-width="640"
-         data-content-height="1136"
-         data-show-paint-rect="true"
+         data-content-width="750"
+         data-content-height="1334"
+         data-show-paint-rect="false"
          data-multi-fingered="2"
-         data-show-fps="true" data-show-log="false"
+         data-show-fps="false" data-show-log="false"
          data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
     </div>
 <script>
@@ -78,7 +78,7 @@
              * "calculateCanvasScaleFactor": //a function return canvas scale factor
              * }
              **/
-            egret.runEgret({ renderMode: "webgl", audioType: 0, calculateCanvasScaleFactor:function(context) {
+            egret.runEgret({ renderMode: "canvas", audioType: 0, calculateCanvasScaleFactor:function(context) {
                 var backingStore = context.backingStorePixelRatio ||
                     context.webkitBackingStorePixelRatio ||
                     context.mozBackingStorePixelRatio ||

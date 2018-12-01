@@ -36,6 +36,7 @@
 		"bin-debug/popup/LuckeyCoin.js",
 		"bin-debug/popup/OverSuccess.js",
 		"bin-debug/popup/PayContinue.js",
+		"bin-debug/popup/Regame.js",
 		"bin-debug/popup/Share.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/popup/Tishi.js",

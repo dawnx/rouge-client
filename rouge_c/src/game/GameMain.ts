@@ -254,7 +254,7 @@ class GameMain extends eui.Component {
     public gameover: GameOver;
     private GameOver() {
         if (LayerUtil.gameMain.goodsItemData.priceGroup == 0) {//判断当前游戏类型
-            this.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
+            this.stage.addChild(new Regame());
         } else {
             if (this.gameover == null) {
                 this.gameover = new GameOver(this.miao, this.score, this.goodsItemData.gameType, this._level, this.goodsItemData, this.m_mainsence);

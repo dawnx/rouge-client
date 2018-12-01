@@ -13,7 +13,7 @@ class PayContinue extends eui.Component {
         this.img_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickClose, this);
         this.btnQueding.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickQueding, this);
 
-        EventManager.getInstance().addEventListener(ApiEvent.PAY_SUCCESS, this.onclickClose, this);
+        EventManager.getInstance().addEventListener(ApiEvent.PAY_SUCCESS, this.onClickContinue, this);
     }
     private init() {
 
@@ -24,11 +24,14 @@ class PayContinue extends eui.Component {
         console.log("chongzhi...");
         OrderApi.createOrder("喵喵游戏", 6);
     }
+    private onClickContinue() {
+        this.parent.removeChild(this);
+    }
     private onclickClose() {
         this.parent.removeChild(this);
         LayerUtil.hallPanel.stage.removeChild(LayerUtil.gameMain);
 
-       Data.DataManager.subGames.forEach(item => {
+        Data.DataManager.subGames.forEach(item => {
             //  体验模式
             if (item.gameType == Data.GameType.TI_YAN) {
                 LayerUtil.gameMain = null;

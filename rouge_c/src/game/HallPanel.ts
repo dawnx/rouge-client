@@ -23,6 +23,9 @@ class HallPanel extends eui.Component {
         this._send.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onsend, this);
     }
     private init() {
+        // 绑定微信通用接口；
+        OrderApi.wechatAPI();
+        console.log("Hallll   绑定微信通用接口");
     }
     private onget() {
         var addr = new PayContinue();

@@ -58,6 +58,7 @@ class WeChatApi {
                     paySign: data.sign, // 支付签名
                     success: function (res) {
                         // 支付成功后的回调函数
+                        EventManager.getInstance().SendEvent(ApiEvent.PAY_SUCCESS);
                     }
                 });
             });

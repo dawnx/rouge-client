@@ -123,6 +123,7 @@ class ShopMain extends eui.Component {
         console.log("绑定微信通用接口");
         // 绑定微信通用接口；
         OrderApi.wechatAPI();
+        console.log("ShopMain   绑定微信通用接口");
         // // 兑换接口；
         // NetSend.SendToNetExchange(Item.Gold, 1);
         // console.log("兑换  金币   1  个");

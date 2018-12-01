@@ -4,5 +4,5 @@
 	<e:Image width="277" height="157" y="524" source="mmm_khj_picture_10_png" horizontalCenter="0"/>
 	<e:Image width="188" height="32" y="714" source="mmm_khj_picture_07_png" horizontalCenter="0"/>
 	<e:Image width="423" height="124" y="991" source="mmm_khj_button_01_png" x="164"/>
-	<e:Image width="147" height="100" y="1003" source="mmm_khj_picture_01_png" x="302"/>
+	<e:Image id="btnlabel" width="147" height="100" y="1003" source="mmm_khj_picture_01_png" x="302"/>
 </e:Skin>

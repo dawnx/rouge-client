@@ -12,7 +12,7 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
     private img_loadingBg3: egret.Bitmap;
     private textField: egret.TextField;
     private textField2: egret.TextField;
-    private res_loadingBg = "resource/assets/game/kouhong_kaishi_picture_01.png";
+    private res_loadingBg = "resource/assets/game/kouhong_kaishi_backgroud_01.png";
     private res_loadingBg1 = "resource/assets/loading/logo.png";
     private res_loadingBg2 = "resource/assets/loading/main_img.png";
     private res_loadingBg3 = "resource/assets/loading/lodImg.png";

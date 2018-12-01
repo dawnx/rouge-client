@@ -83,7 +83,7 @@ class GameMain extends eui.Component {
         this.baozha = new egret.MovieClip( mcFactory.generateMovieClipData( "baozha" ) );
         this.baozha.x = 167;
         this.baozha.y = 314;
-        this.baozha.visible = false;
+        this.baozha.visible = true;
         this.addChild(this.baozha);
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this)
     }
@@ -493,6 +493,7 @@ class GameMain extends eui.Component {
                         this.gp_circle.visible = false;
                         this.img_juzi.visible = false;
                         this.baozha.visible = true;
+                        this.addChild(this.baozha);
                         this.baozha.gotoAndPlay(0);
                         var idTimeout: number = egret.setTimeout(function (arg) {
                             console.log("延时三秒:", arg);
@@ -723,33 +724,33 @@ class GameMain extends eui.Component {
         'lev1': {
             'zhuansu': 4,
             'time': 45,
-            'rougeNum': 10
+            'rougeNum': 3
 
         },
         'lev2': {
             'zhuansu': 5,
             'time': 45,
-            'rougeNum': 16
+            'rougeNum': 3
 
         },
         'lev3': {
             'zhuansu': 6,
             'time': 45,
-            'rougeNum': 22
+            'rougeNum': 3
 
         },
-        'lev4': {
-            'zhuansu': 6,
-            'time': 15,
-            'rougeNum': 15
+        // 'lev4': {
+        //     'zhuansu': 6,
+        //     'time': 15,
+        //     'rougeNum': 15
 
-        },
-        'lev5': {
-            'zhuansu': 11,
-            'time': 15,
-            'rougeNum': 20
+        // },
+        // 'lev5': {
+        //     'zhuansu': 11,
+        //     'time': 15,
+        //     'rougeNum': 20
 
-        }
+        // }
     }
     private getTime(num: number) {
         return this.config["lev" + num]['time'];

@@ -6,6 +6,10 @@ class AddressPanel extends eui.Component {
     private _addr: eui.TextInput;
     private _sendBtn: eui.Image;
 
+    private _name_null:eui.Image;
+    private _tel_null:eui.Image;
+    private _addr_null:eui.Image;
+
     // private _get: eui.Image;
     // private _send: eui.Image;
 
@@ -39,13 +43,21 @@ class AddressPanel extends eui.Component {
     }
     private onclickSendBtnGame() {
         if (this._name.text == null) {
-            console.log("名字不能为空");
+            this._name_null.visible = true;
+        }else{
+            this._name_null.visible = false;
         }
         if (this._tel.text == null) {
             console.log("电话不能为空");
+            this._tel_null.visible = true;
+        }else{
+            this._tel_null.visible = false;
         }
         if (this._addr.text == null) {
             console.log("地址不能为空");
+            this._addr_null.visible = true;
+        }else{
+            this._addr_null.visible = false;
         }
         if (this._name.text != null &&
             this._tel.text != null &&

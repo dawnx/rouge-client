@@ -4,6 +4,7 @@ class LayerUtil {
 	public static gameMain:GameMain;
 	public static begin:Begin;
 	public static popupMain:egret.Sprite;
+	public static hallPanel:HallPanel;
 	
 
 	public static addPopUp(dis: egret.DisplayObject ){

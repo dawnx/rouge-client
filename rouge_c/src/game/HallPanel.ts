@@ -3,8 +3,8 @@ class HallPanel extends eui.Component {
     private _startGameBtn: eui.Image;
     private _shopMain: ShopMain;
 
-    // private _get: eui.Image;
-    // private _send: eui.Image;
+    private _get: eui.Image;
+    private _send: eui.Image;
 
     public constructor(main: ShopMain) {
         super()
@@ -19,13 +19,14 @@ class HallPanel extends eui.Component {
         this.init();
         this._startGameBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickStartGame, this);
 
-        // this._get.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onget, this);
-        // this._send.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onsend, this);
+        this._get.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onget, this);
+        this._send.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onsend, this);
     }
     private init() {
     }
     private onget() {
-        AddressApi.getAddressInfo();
+        var addr = new PayContinue();
+        this.addChild(addr);
     }
     private onsend() {
         AddressApi.sendAddressInfo("xxx", "xxxxxxx", "xxxx");

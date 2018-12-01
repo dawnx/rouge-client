@@ -12,7 +12,7 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
     private img_loadingBg3: egret.Bitmap;
     private textField: egret.TextField;
     private textField2: egret.TextField;
-    private res_loadingBg = "resource/assets/loading/bg.png";
+    private res_loadingBg = "resource/assets/game/kouhong_kaishi_picture_01.png";
     private res_loadingBg1 = "resource/assets/loading/logo.png";
     private res_loadingBg2 = "resource/assets/loading/main_img.png";
     private res_loadingBg3 = "resource/assets/loading/lodImg.png";
@@ -31,13 +31,13 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
         imgBgLoader.once(egret.Event.COMPLETE, this.imgLoadBgHandler, this);
         imgBgLoader.load(this.res_loadingBg);
         //赤兔LOGO
-        let imgLoading0Loader: egret.ImageLoader = new egret.ImageLoader;
-        imgLoading0Loader.once(egret.Event.COMPLETE, this.imgLoad0Handler, this);
-        imgLoading0Loader.load(this.res_loadingBg1);
+        // let imgLoading0Loader: egret.ImageLoader = new egret.ImageLoader;
+        // imgLoading0Loader.once(egret.Event.COMPLETE, this.imgLoad0Handler, this);
+        // imgLoading0Loader.load(this.res_loadingBg1);
         //喵喵图片
-        let imgLoading1Loader: egret.ImageLoader = new egret.ImageLoader;
-        imgLoading1Loader.once(egret.Event.COMPLETE, this.imgLoad1Handler, this);
-        imgLoading1Loader.load(this.res_loadingBg2);
+        // let imgLoading1Loader: egret.ImageLoader = new egret.ImageLoader;
+        // imgLoading1Loader.once(egret.Event.COMPLETE, this.imgLoad1Handler, this);
+        // imgLoading1Loader.load(this.res_loadingBg2);
         //圆圈  点点点图片
         let imgLoading2Loader: egret.ImageLoader = new egret.ImageLoader;
         imgLoading2Loader.once(egret.Event.COMPLETE, this.imgLoad2Handler, this);
@@ -129,8 +129,8 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
     }
 
     public onProgress(current: number, total: number): void {
-        this.textField.text = `礼盒正在搬运中`;
-        this.textField2.text = `首次注册且分享的用户可以获得新人礼盒`;
+        // this.textField.text = `礼盒正在搬运中`;
+        // this.textField2.text = `首次注册且分享的用户可以获得新人礼盒`;
         // if (this.img_loading1 != null) {
         //     this.img_loading1.width = this.loadW * (current / total);
         // }

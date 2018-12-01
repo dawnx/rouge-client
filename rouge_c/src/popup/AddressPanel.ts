@@ -1,9 +1,9 @@
 // TypeScript file
 class AddressPanel extends eui.Component {
     private group: eui.Group;
-    private _name:eui.TextInput;
-    private _tel:eui.TextInput;
-    private _addr:eui.TextInput;
+    private _name: eui.TextInput;
+    private _tel: eui.TextInput;
+    private _addr: eui.TextInput;
     private _sendBtn: eui.Image;
 
     // private _get: eui.Image;
@@ -11,34 +11,47 @@ class AddressPanel extends eui.Component {
 
     public constructor() {
         super()
-
-
         this.skinName = "resource/skin/addressPanel.exml";
     }
     public childrenCreated() {     //自执行
         super.childrenCreated();
-
+        AddressApi.getAddressInfo();
         this.init();
         this._sendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickSendBtnGame, this);
 
-        // this._get.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onget, this);
-        // this._send.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onsend, this);
+        EventManager.getInstance().addEventListener(ApiEvent.ADDRESS_INFO, this.refershAddressInfo, this);
+
     }
     private init() {
         this._name.text = "";
     }
-    private onget() {
-        AddressApi.getAddressInfo();
-    }
-    private onsend() {
-        AddressApi.sendAddressInfo("xxx", "xxxxxxx", "xxxx");
+    private refershAddressInfo() {
+        if (Data.GameContext.address.name) {
+            this._name.text = Data.GameContext.address.name;
+        }
+        if (Data.GameContext.address.tel) {
+            this._tel.text = Data.GameContext.address.tel;
+        }
+        if (Data.GameContext.address.addr) {
+            this._addr.text = Data.GameContext.address.addr;
+        }
+
     }
     private onclickSendBtnGame() {
-
+        if (this._name.text == null) {
+            console.log("名字不能为空");
+        }
+        if (this._tel.text == null) {
+            console.log("电话不能为空");
+        }
+        if (this._addr.text == null) {
+            console.log("地址不能为空");
+        }
+        if (this._name.text != null &&
+            this._tel.text != null &&
+            this._addr.text != null) {
+            AddressApi.sendAddressInfo(this._name.text, this._tel.text, this._addr.text);
+            this.parent.removeChild(this);
+        }
     }
-
-
-
-
-
 }

@@ -11,7 +11,7 @@
 		"libs/modules/md5/md5.js"
 	],
 	"game": [
-		"bin-debug/popup/Tishi.js",
+		"bin-debug/popup/Tishi1.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
@@ -35,8 +35,8 @@
 		"bin-debug/popup/OverSuccess.js",
 		"bin-debug/popup/Share.js",
 		"bin-debug/popup/ShouChong.js",
+		"bin-debug/popup/Tishi.js",
 		"bin-debug/LoadingUI.js",
-		"bin-debug/popup/Tishi1.js",
 		"bin-debug/popup/Tishi2.js",
 		"bin-debug/popup/XsOver.js",
 		"bin-debug/popup/YaoQing.js",
@@ -45,6 +45,7 @@
 		"bin-debug/shop/GoodsItem.js",
 		"bin-debug/shop/Paihang_items.js",
 		"bin-debug/shop/ShopMain.js",
+		"bin-debug/Util/AddressApi.js",
 		"bin-debug/Util/ApiEvent.js",
 		"bin-debug/Util/BaseApi.js",
 		"bin-debug/Util/EventManager.js",

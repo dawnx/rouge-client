@@ -26,6 +26,16 @@ class PayContinue extends eui.Component {
     }
     private onclickClose() {
         this.parent.removeChild(this);
+        LayerUtil.hallPanel.stage.removeChild(LayerUtil.gameMain);
+
+       Data.DataManager.subGames.forEach(item => {
+            //  体验模式
+            if (item.gameType == Data.GameType.TI_YAN) {
+                LayerUtil.gameMain = null;
+                LayerUtil.gameMain = new GameMain(item, LayerUtil.shopMain);
+                LayerUtil.hallPanel.stage.addChild(LayerUtil.gameMain);
+            }
+        })
     }
 
 

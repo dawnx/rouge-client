@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="goods_item" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Rect width="750" height="1386" x="0" y="0" fillColor="0x000000" fillAlpha="0.3"/>
-	<e:Image id="img_close" source="mmm_dating_button_02_03_png" x="344" y="1020" visible="false"/>
 	<e:Group id="group" width="750" height="1334" horizontalCenter="0" verticalCenter="0">
-		<e:Image id="btnQueding" x="163.5" y="957.94" source="mmm_khj_button_01_png"/>
+		<e:Image x="163.5" y="957.94" source="mmm_khj_button_01_png"/>
 		<e:Image source="mmm_fufeijixu_png" x="148.14" y="452.71" anchorOffsetX="0" width="446.73" anchorOffsetY="0" height="55.79"/>
-		<e:Image source="mmm_khj_fufei2_png" x="218" y="969.94" touchEnabled="false"/>
-		<e:Image source="mmm_canrenjujue_png" x="163.5" y="758"/>
+		<e:Image id="btnQueding" source="mmm_khj_fufei2_png" x="218" y="969.94" touchEnabled="false"/>
+		<e:Image id="img_close" source="mmm_canrenjujue_png" x="163.5" y="758"/>
 		<e:Image source="mmm_khj_xinju2_png" x="195.5" y="758" touchEnabled="false"/>
 	</e:Group>
 </e:Skin>

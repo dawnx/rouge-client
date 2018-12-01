@@ -46,8 +46,8 @@
 		<e:Group id="gp_guan" width="750" height="1334" x="0" y="0" scaleX="1" scaleY="1">
 			<e:Rect id="rect_guan" width="750" height="1386" x="-1" y="0" fillColor="0x000000" fillAlpha="0.7" visible="false"/>
 			<e:Image id="img_guan" source="guan2_png" x="272" y="466.67"/>
-			
 		</e:Group>
+		<e:Image id="penjian" width="215" height="104" x="268" y="688" source="mmm_youxi_Special effect_03_png" visible="false"/>
 	</e:Group>
 
 </e:Skin>

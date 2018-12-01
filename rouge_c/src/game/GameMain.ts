@@ -3,7 +3,7 @@ class GameMain extends eui.Component {
     private gp_circle: eui.Group;
     private img_juzi: eui.Image;
     private speed: number;
-    private moveSpeed: number = 45;
+    private moveSpeed: number = 100;
     private isMoving: boolean;
     private rouge: egret.Bitmap;//口红
     private lb_time: eui.Label;
@@ -28,6 +28,7 @@ class GameMain extends eui.Component {
     private timer: egret.Timer;
     private render: egret.Timer;
     private rotateArr: number[] = [];
+    private rougeArr: egret.Bitmap[] = [];
     private rect_dangban: eui.Rect;
     private _level: number = 1;
     private gp_guan: eui.Group;
@@ -45,7 +46,7 @@ class GameMain extends eui.Component {
     private headicon2: eui.Image;
     private selfrank: eui.Label;
     private rankgroup: eui.Group;
-    
+    private baozha:egret.MovieClip
     public constructor(_goodsItemData: Data.SubGame, mainsence: ShopMain) {
         super()
         this.goodsItemData = _goodsItemData;
@@ -76,6 +77,14 @@ class GameMain extends eui.Component {
             
         //     this.update();
         // }, this);
+        var data = RES.getRes("baozha_json");
+        var txtr = RES.getRes("baozha_png");
+        var mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
+        this.baozha = new egret.MovieClip( mcFactory.generateMovieClipData( "baozha" ) );
+        this.baozha.x = 167;
+        this.baozha.y = 314;
+        this.baozha.visible = false;
+        this.addChild(this.baozha);
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this)
     }
  
@@ -245,7 +254,7 @@ class GameMain extends eui.Component {
     public gameover: GameOver;
     private GameOver() {
         if (LayerUtil.gameMain.goodsItemData.priceGroup == 0) {//判断当前游戏类型
-            LayerUtil.shopMain.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
+            this.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
         } else {
             if (this.gameover == null) {
                 this.gameover = new GameOver(this.miao, this.score, this.goodsItemData.gameType, this._level, this.goodsItemData, this.m_mainsence);
@@ -286,9 +295,34 @@ class GameMain extends eui.Component {
 
     //每帧调用
 
+    private aspeed= 20;
+    private doudong=0;
+    private penjian:eui.Image;
+    private rightrotaion = true;
     private update() {
-        this.gp_circle.rotation += this.speed;
-        this.img_juzi.rotation += this.speed;
+        this.gp_circle.rotation += (this.speed + this.aspeed);
+        this.img_juzi.rotation += (this.speed + this.aspeed);
+
+        this.gp_circle.y -= this.doudong;
+        this.img_juzi.y -= this.doudong;
+        if(this.doudong == -20){
+            this.doudong = 0;
+            this.penjian.visible = false;
+        }
+        if(this.doudong == 20)
+            this.doudong = -20;
+        
+        
+        if(this.aspeed>20)
+            this.rightrotaion = true;
+        if(this.aspeed<-20)
+            this.rightrotaion = false;
+
+        if(this.rightrotaion)
+            this.aspeed-=1;
+        else
+            this.aspeed+=1;
+        
 
         if (this._level == 2)
             this.level2.source = "mmm_youxi_icon_01_png";
@@ -300,6 +334,7 @@ class GameMain extends eui.Component {
             this.rect_dangban.touchEnabled = false;
         }
         this.isMoving && this.isMove();
+
 
     }
 
@@ -322,6 +357,8 @@ class GameMain extends eui.Component {
         if (this.rouge.y < this.fly_juli) {
             this.img_rouge.visible = true;
             this.isMoving = false;
+            this.doudong = 20;
+            this.penjian.visible = true;
             this.rect_dangban.touchEnabled = true;
             var tmpP = this.localToGlobal(this.rouge.x, this.rouge.y);
             // console.log(tmpP.x + "##" + tmpP.y)
@@ -340,6 +377,7 @@ class GameMain extends eui.Component {
                 ro = 360 + ro;
             }
             this.rotateArr.push(ro);
+            this.rougeArr.push(this.rouge);
             console.log(this.rotateArr);
             this.rArr = this.rotateArr;
             if (this.goodsItemData.gameType == 3) {
@@ -452,8 +490,15 @@ class GameMain extends eui.Component {
 
                     } else {
                         this.gp_guan.visible = true;
+                        this.gp_circle.visible = false;
+                        this.img_juzi.visible = false;
+                        this.baozha.visible = true;
+                        this.baozha.gotoAndPlay(0);
                         var idTimeout: number = egret.setTimeout(function (arg) {
                             console.log("延时三秒:", arg);
+                            this.gp_circle.visible = true;
+                            this.img_juzi.visible = true;
+                            this.baozha.visible = false;
                             this.initGame();
                         }, this, 3000, "egret");
                     }
@@ -469,7 +514,14 @@ class GameMain extends eui.Component {
                             //碰到圆盘上口红 直接失败  如果是体验和闯关 就用gameover  如果是限时  就用xsOver
                             if (this.goodsItemData.gameType == Data.GameType.TI_YAN
                                 || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
-                                this.GameOver();
+                                this.render.stop();
+                                egret.Tween.get(this.rougeArr[i], { loop: false }).to({ y: this.rougeArr[i].y+300 }, 1000)
+                                .call(() => {
+                                    // this.render.start();
+                                    this.GameOver();
+                                })
+                                 egret.Tween.get(this.rougeArr[j], { loop: false }).to({ y: this.rougeArr[j].y+300 }, 1000)
+                                 break;
                             } else {
                                 if(this.goodsItemData.priceGroup == 0)
                                     this.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
@@ -509,6 +561,7 @@ class GameMain extends eui.Component {
         this.gp_circle.removeChildren();
         this.rArr = [];
         this.rotateArr = [];
+        this.rougeArr = [];
         this.rect_dangban.visible = true;
 
         let time = this.getTime(this._level);
@@ -520,6 +573,7 @@ class GameMain extends eui.Component {
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
         this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, onTimerComplete, this);
         this.timer.start();
+        this.render.start();
         this.miao = time;
         function onTimer(evt: egret.TimerEvent): void {
             this.miao--;
@@ -562,7 +616,7 @@ class GameMain extends eui.Component {
         this.gp_circle.removeChildren();
         this.rArr = [];
         this.rotateArr = [];
-
+        this.rougeArr = [];
         this.rect_dangban.visible = true;
         if(this.timer)
             this.timer.stop();
@@ -572,6 +626,7 @@ class GameMain extends eui.Component {
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
         this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, onTimerComplete, this);
         this.timer.start();
+        this.render.start();
         this.miao = time;
         function onTimer(evt: egret.TimerEvent): void {
             this.miao--;
@@ -616,7 +671,7 @@ class GameMain extends eui.Component {
         this.gp_circle.removeChildAt(this.gp_circle.numChildren - 1);
         this.rArr.splice(this.gp_circle.numChildren, 1);
         this.rotateArr.splice(this.gp_circle.numChildren, 1);
-
+        this.rougeArr.splice(this.gp_circle.numChildren, 1);
         console.log(this.rArr)
         console.log(this.gp_circle.numChildren)
 
@@ -629,6 +684,7 @@ class GameMain extends eui.Component {
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
         this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, onTimerComplete, this);
         this.timer.start();
+        this.render.start();
         this.miao = time;
         function onTimer(evt: egret.TimerEvent): void {
             this.miao--;
@@ -699,7 +755,7 @@ class GameMain extends eui.Component {
         return this.config["lev" + num]['time'];
     }
     private getSpeed(num: number) {
-        return this.config["lev" + num]['zhuansu']+3;
+        return this.config["lev" + num]['zhuansu'];
     }
     private getRougeNum(num: number) {
         return this.config["lev" + num]['rougeNum'];

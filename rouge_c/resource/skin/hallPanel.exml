@@ -4,7 +4,7 @@
 	<e:Group left="0" top="0" bottom="0" right="0" anchorOffsetX="0">
 	 
  
-	<e:Image id="BG" scale9Grid="10,10,60,60" anchorOffsetX="0" anchorOffsetY="0" height="1334" width="750" y="0" x="0" source="kouhong_kaishi_picture_01_png"/>
+	<e:Image id="BG" scale9Grid="10,10,60,60" anchorOffsetX="0" anchorOffsetY="0" height="1334" width="750" y="0" x="0" source="file:///d%3A/1forwork/1rouge-client/rouge_c/resource/assets/game/kouhong_kaishi_backgroud_01.png"/>
 		<e:Button id="_startGameBtn" label="" x="218.94" y="961.06" anchorOffsetX="0" width="312.12" anchorOffsetY="0" height="95.45">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">

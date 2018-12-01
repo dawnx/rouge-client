@@ -1,8 +1,12 @@
 class HallPanel extends eui.Component {
     private group: eui.Group;
     private _startGameBtn: eui.Image;
-    private _shopMain:ShopMain;
-    public constructor(main:ShopMain) {
+    private _shopMain: ShopMain;
+
+    private _get: eui.Image;
+    private _send: eui.Image;
+
+    public constructor(main: ShopMain) {
         super()
 
         this._shopMain = main;
@@ -14,21 +18,30 @@ class HallPanel extends eui.Component {
 
         this.init();
         this._startGameBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickStartGame, this);
+
+        this._get.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onget, this);
+        this._send.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onsend, this);
     }
     private init() {
     }
-
+    private onget() {
+        var addr = new PayContinue();
+        this.addChild(addr);
+    }
+    private onsend() {
+        AddressApi.sendAddressInfo("xxx", "xxxxxxx", "xxxx");
+    }
     private onclickStartGame() {
 
         Data.DataManager.subGames.forEach(item => {
             //  体验模式
             if (item.gameType == Data.GameType.TI_YAN) {
-                LayerUtil.gameMain =  null;
-            LayerUtil.gameMain = new GameMain(item, this._shopMain);
-            this.stage.addChild(LayerUtil.gameMain);
+                LayerUtil.gameMain = null;
+                LayerUtil.gameMain = new GameMain(item, this._shopMain);
+                this.stage.addChild(LayerUtil.gameMain);
             }
         })
-        
+
     }
 
 

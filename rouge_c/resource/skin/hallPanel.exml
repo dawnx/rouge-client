@@ -4,8 +4,17 @@
 	<e:Group left="0" top="0" bottom="0" right="0" anchorOffsetX="0">
 	 
  
-	<e:Image id="BG" source="mmm_dating_Backplane_04_png" scale9Grid="10,10,60,60" anchorOffsetX="0" anchorOffsetY="0" height="1334" width="750" y="0" x="0"/>
-		<e:Button id="_startGameBtn" label="" x="218.94" y="961.06" anchorOffsetX="0" width="312.12" anchorOffsetY="0" height="95.45"/>
+	<e:Image id="BG" scale9Grid="10,10,60,60" anchorOffsetX="0" anchorOffsetY="0" height="1334" width="750" y="0" x="0" source="kouhong_kaishi_picture_01_png"/>
+		<e:Button id="_startGameBtn" label="" x="218.94" y="961.06" anchorOffsetX="0" width="312.12" anchorOffsetY="0" height="95.45">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="kouhong_kaishi_button_01_03_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="_get" label="get" x="130" y="318" anchorOffsetX="0" width="148.48" anchorOffsetY="0" height="86.36" visible="false"/>
+		<e:Button id="_send" label="send" x="456.82" y="318" anchorOffsetX="0" width="148.48" anchorOffsetY="0" height="86.36" visible="false"/>
 
 
 

@@ -255,6 +255,7 @@ class GameMain extends eui.Component {
     public gameover: GameOver;
     private GameOver() {
         if (LayerUtil.gameMain.goodsItemData.priceGroup == 0) {//判断当前游戏类型
+            this.render.stop();
             this.stage.addChild(new Regame());
         } else {
             if (this.gameover == null) {

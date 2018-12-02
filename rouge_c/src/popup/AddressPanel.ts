@@ -64,6 +64,8 @@ class AddressPanel extends eui.Component {
             this._addr.text != null) {
             AddressApi.sendAddressInfo(this._name.text, this._tel.text, this._addr.text);
             this.parent.removeChild(this);
+            LayerUtil.hallPanel.stage.removeChild(LayerUtil.gameMain);
         }
+        
     }
 }

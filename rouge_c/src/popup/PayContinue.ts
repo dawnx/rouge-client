@@ -10,7 +10,7 @@ class PayContinue extends eui.Component {
     public childrenCreated() {     //自执行
         super.childrenCreated();
         this.init();
-        this.img_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickClose, this);
+        this.img_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickContinue, this);
         this.btnQueding.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickQueding, this);
 
         EventManager.getInstance().addEventListener(ApiEvent.PAY_SUCCESS, this.onClickContinue, this);
@@ -26,7 +26,7 @@ class PayContinue extends eui.Component {
     }
     private onClickContinue() {
         this.parent.removeChild(this);
-        LayerUtil.gameMain.render.start();
+        LayerUtil.gameMain.guoguan();
     }
     private onclickClose() {
         this.parent.removeChild(this);

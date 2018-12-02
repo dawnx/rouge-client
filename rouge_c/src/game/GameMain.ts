@@ -46,7 +46,7 @@ class GameMain extends eui.Component {
     private headicon2: eui.Image;
     private selfrank: eui.Label;
     private rankgroup: eui.Group;
-    private baozha:egret.MovieClip
+    private baozha: egret.MovieClip
     public constructor(_goodsItemData: Data.SubGame, mainsence: ShopMain) {
         super()
         this.goodsItemData = _goodsItemData;
@@ -74,20 +74,20 @@ class GameMain extends eui.Component {
         this.render.addEventListener(egret.TimerEvent.TIMER, this.update, this);
         this.render.start();
         // egret.Ticker.getInstance().register(function () {
-            
+
         //     this.update();
         // }, this);
         var data = RES.getRes("baozha_json");
         var txtr = RES.getRes("baozha_png");
-        var mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
-        this.baozha = new egret.MovieClip( mcFactory.generateMovieClipData( "baozha" ) );
+        var mcFactory: egret.MovieClipDataFactory = new egret.MovieClipDataFactory(data, txtr);
+        this.baozha = new egret.MovieClip(mcFactory.generateMovieClipData("baozha"));
         this.baozha.x = 167;
         this.baozha.y = 314;
         this.baozha.visible = true;
         this.addChild(this.baozha);
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this)
     }
- 
+
     private initRank() {
         if (LayerUtil.gameMain.goodsItemData.priceGroup == 0 && LayerUtil.gameMain.goodsItemData.gameType != Data.GameType.TI_YAN) {
             var num = 0;
@@ -113,7 +113,7 @@ class GameMain extends eui.Component {
                 this.headicon1.source = Data.GameContext.rankDataArray[num - 2].headPic;
                 this.headicon2.source = Data.GameContext.rankDataArray[num - 1].headPic;
             }
-        }else{
+        } else {
             this.rankgroup.visible = false;
         }
 
@@ -156,7 +156,7 @@ class GameMain extends eui.Component {
         this.rect_dangban.visible = true;
         let time = this.getTime(this._level);
         console.log("倒计时" + time)
-        if(this.timer)
+        if (this.timer)
             this.timer.stop();
         this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
@@ -295,9 +295,9 @@ class GameMain extends eui.Component {
 
     //每帧调用
 
-    private aspeed= 20;
-    private doudong=0;
-    private penjian:eui.Image;
+    private aspeed = 20;
+    private doudong = 0;
+    private penjian: eui.Image;
     private rightrotaion = true;
     private update() {
         this.gp_circle.rotation += (this.speed + this.aspeed);
@@ -305,24 +305,24 @@ class GameMain extends eui.Component {
 
         this.gp_circle.y -= this.doudong;
         this.img_juzi.y -= this.doudong;
-        if(this.doudong == -20){
+        if (this.doudong == -20) {
             this.doudong = 0;
             this.penjian.visible = false;
         }
-        if(this.doudong == 20)
+        if (this.doudong == 20)
             this.doudong = -20;
-        
-        
-        if(this.aspeed>20)
+
+
+        if (this.aspeed > 20)
             this.rightrotaion = true;
-        if(this.aspeed<-20)
+        if (this.aspeed < -20)
             this.rightrotaion = false;
 
-        if(this.rightrotaion)
-            this.aspeed-=1;
+        if (this.rightrotaion)
+            this.aspeed -= 1;
         else
-            this.aspeed+=1;
-        
+            this.aspeed += 1;
+
 
         if (this._level == 2)
             this.level2.source = "mmm_youxi_icon_01_png";
@@ -472,20 +472,21 @@ class GameMain extends eui.Component {
                     console.log("过关之后的速度" + this.speed)
                     this.img_guan.source = "resource/assets/game/guan" + this._level + ".png";
                     // 玩完三关的时候 
-                    if (this._level > 2 && this.goodsItemData.gameType == 1) {
+                    if (this._level == 3 && this.goodsItemData.gameType == 1) {
                         //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
                         console.log("体验模式结束 ")
                         this.stage.addChild(new PayContinue());
                         this.timer.stop();
                         this.render.stop();
-                        // return;
+                        this.penjian.visible = false;
+                        return;
                     }
-                    if (this._level > 3 && this.goodsItemData.gameType == 1) {
+                    if (this._level == 4 && this.goodsItemData.gameType == 1) {
                         //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
                         console.log("体验模式结束 ")
                         this.stage.addChild(new AddressPanel());
                         this.timer.stop();
-                        
+
                         return;
                     }
                     this.timer.stop();
@@ -498,19 +499,7 @@ class GameMain extends eui.Component {
                         this.timer.stop();
 
                     } else {
-                        this.gp_guan.visible = true;
-                        this.gp_circle.visible = false;
-                        this.img_juzi.visible = false;
-                        this.baozha.visible = true;
-                        this.addChild(this.baozha);
-                        this.baozha.gotoAndPlay(0);
-                        var idTimeout: number = egret.setTimeout(function (arg) {
-                            console.log("延时三秒:", arg);
-                            this.gp_circle.visible = true;
-                            this.img_juzi.visible = true;
-                            this.baozha.visible = false;
-                            this.initGame();
-                        }, this, 3000, "egret");
+                        this.guoguan();
                     }
                     console.log(this._level + "关")
 
@@ -525,18 +514,18 @@ class GameMain extends eui.Component {
                             if (this.goodsItemData.gameType == Data.GameType.TI_YAN
                                 || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                                 this.render.stop();
-                                egret.Tween.get(this.rougeArr[i], { loop: false }).to({ y: this.rougeArr[i].y+300 }, 1000)
-                                .call(() => {
-                                    // this.render.start();
-                                    this.GameOver();
-                                })
-                                 egret.Tween.get(this.rougeArr[j], { loop: false }).to({ y: this.rougeArr[j].y+300 }, 1000)
-                                 break;
+                                egret.Tween.get(this.rougeArr[i], { loop: false }).to({ y: this.rougeArr[i].y + 300 }, 1000)
+                                    .call(() => {
+                                        // this.render.start();
+                                        this.GameOver();
+                                    })
+                                egret.Tween.get(this.rougeArr[j], { loop: false }).to({ y: this.rougeArr[j].y + 300 }, 1000)
+                                break;
                             } else {
-                                if(this.goodsItemData.priceGroup == 0)
+                                if (this.goodsItemData.priceGroup == 0)
                                     this.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
                                 else
-                                this.stage.addChild(new XsOver(this.score, this.goodsItemData.gameType, this.goodsItemData, this.m_mainsence));
+                                    this.stage.addChild(new XsOver(this.score, this.goodsItemData.gameType, this.goodsItemData, this.m_mainsence));
                                 console.log("限时模式 游戏结束")
                             }
 
@@ -547,6 +536,22 @@ class GameMain extends eui.Component {
             }
 
         }
+    }
+
+    public guoguan() {
+        this.gp_guan.visible = true;
+        this.gp_circle.visible = false;
+        this.img_juzi.visible = false;
+        this.baozha.visible = true;
+        this.addChild(this.baozha);
+        this.baozha.gotoAndPlay(0);
+        var idTimeout: number = egret.setTimeout(function (arg) {
+            console.log("延时三秒:", arg);
+            this.gp_circle.visible = true;
+            this.img_juzi.visible = true;
+            this.baozha.visible = false;
+            this.initGame();
+        }, this, 3000, "egret");
     }
 
     public initGame() {  //游戏初始化 消耗金币重新玩，分数砍一半
@@ -577,7 +582,7 @@ class GameMain extends eui.Component {
         let time = this.getTime(this._level);
         console.log("当前时间" + time);
         console.log("当前速度" + this.speed);
-        if(this.timer)
+        if (this.timer)
             this.timer.stop();
         this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
@@ -628,7 +633,7 @@ class GameMain extends eui.Component {
         this.rotateArr = [];
         this.rougeArr = [];
         this.rect_dangban.visible = true;
-        if(this.timer)
+        if (this.timer)
             this.timer.stop();
         let time = this.getTime(this._level);
         console.log("倒计时" + time)
@@ -688,7 +693,7 @@ class GameMain extends eui.Component {
         this.rect_dangban.visible = true;
         let time = this.getTime(this._level);
         console.log("倒计时" + time);
-        if(this.timer)
+        if (this.timer)
             this.timer.stop();
         this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
@@ -727,19 +732,19 @@ class GameMain extends eui.Component {
         'lev0': {
             'zhuansu': 4,
             'time': 45,
-            'rougeNum': 6
+            'rougeNum': 3
 
         },
         'lev1': {
             'zhuansu': 4,
             'time': 45,
-            'rougeNum': 6
+            'rougeNum': 3
 
         },
         'lev2': {
             'zhuansu': 5,
             'time': 45,
-            'rougeNum': 6
+            'rougeNum': 3
 
         },
         'lev3': {

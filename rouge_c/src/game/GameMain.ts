@@ -83,7 +83,8 @@ class GameMain extends eui.Component {
         this.baozha = new egret.MovieClip(mcFactory.generateMovieClipData("baozha"));
         this.baozha.x = 167;
         this.baozha.y = 314;
-        this.baozha.visible = true;
+        this.baozha.visible = false;
+        // this.baozha.gotoAndPlay(0,-1);
         this.addChild(this.baozha);
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this)
     }
@@ -543,7 +544,6 @@ class GameMain extends eui.Component {
         this.gp_circle.visible = false;
         this.img_juzi.visible = false;
         this.baozha.visible = true;
-        this.addChild(this.baozha);
         this.baozha.gotoAndPlay(0);
         var idTimeout: number = egret.setTimeout(function (arg) {
             console.log("延时三秒:", arg);

@@ -6,7 +6,7 @@ class RougeGameApi {
 		console.log("openId   " + openId);
 		//拼接参数 
 		var params = "?openId=" + openId + "&subGameId=" + subGameId + "&reset=" + isReset;;
-		// var params = "?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g" + "&subGameId=" + subGameId + "&goodsType=" + goodsType + "&goodsFenqu=" + goodsFenqu + "&gameType=" + gameType + "&reset=" + isReset; 
+		// var params = "?openId=o9lTh021BNBRPJyAiOa8_P5NYe4s" + "&subGameId=" + subGameId + "&reset=" + isReset;
 
 		var uri: string = "gameRouge/startGame" + params;
 		BaseApi.get(uri, this.onCompleteGameStart);
@@ -20,7 +20,8 @@ class RougeGameApi {
 		// 解析
 		var data = JSON.parse(request.response).data;
 		console.log("get data : ", data);
-		Data.GameContext.isWin = data == 1 ? true : false;
+		Data.GameContext.isWin = data.winFlag == 1 ? true : false;
+		console.log("Data.GameContext.isWin    " + Data.GameContext.isWin);
 		// EventManager.getInstance().SendEvent(ApiEvent.PAY_SUCCESS);
 
 		// PlayerApi.getPlayerInfo();

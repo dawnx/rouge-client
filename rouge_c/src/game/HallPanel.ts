@@ -28,8 +28,7 @@ class HallPanel extends eui.Component {
         console.log("Hallll   绑定微信通用接口");
     }
     private onget() {
-        var addr = new PayContinue();
-        this.addChild(addr);
+        RougeGameApi.startGame(1002,1);
     }
     private onsend() {
         AddressApi.sendAddressInfo("xxx", "xxxxxxx", "xxxx");

@@ -83,6 +83,8 @@ class GameMain extends eui.Component {
         this.baozha = new egret.MovieClip(mcFactory.generateMovieClipData("baozha"));
         this.baozha.x = 167;
         this.baozha.y = 314;
+        this.baozha.width = 390;
+        this.baozha.height = 390;
         this.baozha.visible = false;
         // this.baozha.gotoAndPlay(0,-1);
         this.addChild(this.baozha);
@@ -256,6 +258,7 @@ class GameMain extends eui.Component {
     private GameOver() {
         if (LayerUtil.gameMain.goodsItemData.priceGroup == 0) {//判断当前游戏类型
             this.render.stop();
+            this.timer.stop();
             this.stage.addChild(new Regame());
         } else {
             if (this.gameover == null) {
@@ -360,6 +363,7 @@ class GameMain extends eui.Component {
             this.img_rouge.visible = true;
             this.isMoving = false;
             this.doudong = 20;
+            utils.SoundUtils.instance().playbit();
             this.penjian.visible = true;
             this.rect_dangban.touchEnabled = true;
             var tmpP = this.localToGlobal(this.rouge.x, this.rouge.y);
@@ -457,8 +461,10 @@ class GameMain extends eui.Component {
                     this.overplus80.visible = false;
                 if (pes < 0.6)
                     this.overplus60.visible = false;
-                if (pes < 0.4)
+                if (pes < 0.4){
+
                     this.overplus40.visible = false;
+                }
                 if (pes < 0.2)
                     this.overplus20.visible = false;
                 this.lb_rougeNum.text = "剩余数量: " + (rouNum - num) + "/" + rouNum;
@@ -473,6 +479,16 @@ class GameMain extends eui.Component {
                     this.speed = this.getSpeed(this._level);
                     console.log("过关之后的速度" + this.speed)
                     this.img_guan.source = "resource/assets/game/guan" + this._level + ".png";
+
+                    if (this._level == 2 && this.goodsItemData.gameType == 1) {
+                        this.penjian.visible = false;
+                        this.gp_circle.visible = false;
+                        this.img_juzi.visible = false;
+                        this.baozha.visible = true;
+                        this.baozha.gotoAndPlay(0);
+                        // return;
+                    }
+
                     // 玩完三关的时候 
                     if (this._level == 3 && this.goodsItemData.gameType == 1) {
                         //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
@@ -481,6 +497,10 @@ class GameMain extends eui.Component {
                         this.timer.stop();
                         this.render.stop();
                         this.penjian.visible = false;
+                        this.gp_circle.visible = false;
+                        this.img_juzi.visible = false;
+                        this.baozha.visible = true;
+                        this.baozha.gotoAndPlay(0);
                         return;
                     }
                     if (this._level == 4 && this.goodsItemData.gameType == 1) {
@@ -488,6 +508,7 @@ class GameMain extends eui.Component {
                         console.log("体验模式结束 ")
                         this.stage.addChild(new AddressPanel());
                         this.timer.stop();
+                        this.render.stop();
 
                         return;
                     }
@@ -512,6 +533,8 @@ class GameMain extends eui.Component {
                         if (Math.abs(this.rArr[i] - this.rArr[j]) <= this.jiaodu) {
 
                             this.timer.stop();
+                            utils.SoundUtils.instance().stopBg();
+                            utils.SoundUtils.instance().playShibai();
                             //碰到圆盘上口红 直接失败  如果是体验和闯关 就用gameover  如果是限时  就用xsOver
                             if (this.goodsItemData.gameType == Data.GameType.TI_YAN
                                 || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
@@ -542,10 +565,7 @@ class GameMain extends eui.Component {
 
     public guoguan() {
         this.gp_guan.visible = true;
-        this.gp_circle.visible = false;
-        this.img_juzi.visible = false;
-        this.baozha.visible = true;
-        this.baozha.gotoAndPlay(0);
+
         var idTimeout: number = egret.setTimeout(function (arg) {
             console.log("延时三秒:", arg);
             this.gp_circle.visible = true;
@@ -745,13 +765,13 @@ class GameMain extends eui.Component {
         'lev2': {
             'zhuansu': 5,
             'time': 45,
-            'rougeNum': 6
+            'rougeNum': 3
 
         },
         'lev3': {
             'zhuansu': 6,
             'time': 45,
-            'rougeNum': 13
+            'rougeNum': 3
 
         },
         'lev4': {

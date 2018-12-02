@@ -20,6 +20,7 @@ module utils {
 		private loading: SoundBase;
 		private success: SoundBase;
 		private shibai: SoundBase;
+		private bit: SoundBase;
 
 		public initSound(): void {
 			console.log("initSound!!!");
@@ -30,11 +31,11 @@ module utils {
 			this.loading = new SoundBase("loading_mp3");
 			this.success = new SoundBase("success_mp3");
 			this.shibai = new SoundBase("shibai_mp3");
+			this.bit = new SoundBase("click_mp3");
 		}
-		//    private playBgMusic(e:egret.Sound):void
-		//    {
-		//        this.playBg();
-		//    }
+		public playbit(): void {
+			this.bit.play();
+		}
 
 		public playAnniu(): void {
 			// if (data.GameData.closeMusic){

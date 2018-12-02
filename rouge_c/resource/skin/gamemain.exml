@@ -8,7 +8,7 @@
 		<e:Image source="mmm_dating_picture_04_png" x="0" y="0" scaleX="1" scaleY="1"/>
 		<e:Image source="mmm_youxi_Backplane_01_png" x="42" y="100" scaleX="1" scaleY="1"/>
 		<e:Image source="mmm_youxi_Special effect_01_png" x="42" y="100.01" scaleX="1" scaleY="1"/>
-		<e:Label id="lb_time" text="" y="120.51" size="45" x="59.51" width="51" height="51" textAlign="center" verticalAlign="middle" scaleX="1" scaleY="1" fontFamily="SimHei" textColor="0xffffff"/>
+		<e:Label id="lb_time" text="45" y="120.51" size="45" x="59.51" width="51" height="51" textAlign="center" verticalAlign="middle" scaleX="1" scaleY="1" fontFamily="SimHei" textColor="0xffffff"/>
 		<e:Button id="btn_back" label="" y="21" horizontalCenter="-335.5" x="42" scaleX="1" scaleY="1" height="40" width="45">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">

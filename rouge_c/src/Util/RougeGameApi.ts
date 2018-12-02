@@ -1,7 +1,7 @@
 class RougeGameApi {
 
 	/// 游戏入口调用；
-	public static startGame(subGameId: number,isReset: number) {
+	public static startGame(subGameId: number, isReset: number) {
 		let openId = Data.GameContext.player.openId;  //取url后边的openid
 		console.log("openId   " + openId);
 		//拼接参数 
@@ -16,16 +16,18 @@ class RougeGameApi {
 		console.log("Send Success!!!");
 		// 获取到后台传回来的数据；
 		var request = <egret.HttpRequest>event.currentTarget;
-		console.log("get data : ", request.response);
+
 		// 解析
 		var data = JSON.parse(request.response).data;
+		console.log("get data : ", data);
+		Data.GameContext.isWin = data == 1 ? true : false;
+		// EventManager.getInstance().SendEvent(ApiEvent.PAY_SUCCESS);
 
-		console.log("成功！ 调起Exchange请求！");
-		PlayerApi.getPlayerInfo();
+		// PlayerApi.getPlayerInfo();
 	}
 
 	/// 游戏结束   调用；
-	public static gameEnd(subGameId: number, isWin: number,level:number, score:number, aliveTime:number) {
+	public static gameEnd(subGameId: number, isWin: number, level: number, score: number, aliveTime: number) {
 		let openId = Data.GameContext.player.openId;  //取url后边的openid
 		console.log("openId   " + openId);
 		//拼接参数 

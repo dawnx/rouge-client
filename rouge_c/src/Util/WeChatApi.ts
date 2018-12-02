@@ -59,6 +59,7 @@ class WeChatApi {
                     success: function (res) {
                         // 支付成功后的回调函数
                         EventManager.getInstance().SendEvent(ApiEvent.PAY_SUCCESS);
+                        RougeGameApi.startGame(1002,1);
                     }
                 });
             });

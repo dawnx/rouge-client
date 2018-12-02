@@ -551,7 +551,7 @@ class GameMain extends eui.Component {
             this.img_juzi.visible = true;
             this.baozha.visible = false;
             this.initGame();
-        }, this, 3000, "egret");
+        }, this, 2000, "egret");
     }
 
     public initGame() {  //游戏初始化 消耗金币重新玩，分数砍一半
@@ -744,13 +744,13 @@ class GameMain extends eui.Component {
         'lev2': {
             'zhuansu': 5,
             'time': 45,
-            'rougeNum': 3
+            'rougeNum': 6
 
         },
         'lev3': {
             'zhuansu': 6,
             'time': 45,
-            'rougeNum': 3
+            'rougeNum': 13
 
         },
         'lev4': {

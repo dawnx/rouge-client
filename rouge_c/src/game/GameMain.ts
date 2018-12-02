@@ -26,7 +26,7 @@ class GameMain extends eui.Component {
     //反转方向
     private _fangxiang: number = 360;
     private timer: egret.Timer;
-    private render: egret.Timer;
+    public render: egret.Timer;
     private rotateArr: number[] = [];
     private rougeArr: egret.Bitmap[] = [];
     private rect_dangban: eui.Rect;
@@ -477,13 +477,15 @@ class GameMain extends eui.Component {
                         console.log("体验模式结束 ")
                         this.stage.addChild(new PayContinue());
                         this.timer.stop();
-                        return;
+                        this.render.stop();
+                        // return;
                     }
                     if (this._level > 3 && this.goodsItemData.gameType == 1) {
                         //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
                         console.log("体验模式结束 ")
                         this.stage.addChild(new AddressPanel());
                         this.timer.stop();
+                        
                         return;
                     }
                     this.timer.stop();

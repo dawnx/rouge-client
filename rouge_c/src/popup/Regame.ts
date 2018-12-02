@@ -1,5 +1,6 @@
 class Regame extends eui.Component {
     private btnlabel: eui.Image;
+    private btnbg:eui.Image;
     public constructor() {
         super()
         this.skinName = "resource/skin/regame.exml";
@@ -8,6 +9,7 @@ class Regame extends eui.Component {
         super.childrenCreated();
         this.init();
         this.btnlabel.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickClose, this);
+        this.btnbg.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickClose, this);
     }
     private init() {
 

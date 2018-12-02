@@ -457,11 +457,11 @@ class GameMain extends eui.Component {
 
             if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
                 let pes = (rouNum - num) / rouNum;
-                if (pes < 0.8)
+                if (pes <= 0.8)
                     this.overplus80.visible = false;
-                if (pes < 0.6)
+                if (pes <= 0.6)
                     this.overplus60.visible = false;
-                if (pes < 0.4){
+                if (pes <= 0.4){
                     this.overplus40.visible = false;
                     if(Data.GameContext.isWin == false && this._level == 3){
                         var zuixiao = 360;
@@ -477,14 +477,51 @@ class GameMain extends eui.Component {
                         Data.GameContext.isWin = true;
                     }
                 }
-                if (pes < 0.2)
+                if (pes <= 0.2)
                     this.overplus20.visible = false;
+                if (pes == 0 )
+                    this.overplus0.visible = false;
                 this.lb_rougeNum.text = "剩余数量: " + (rouNum - num) + "/" + rouNum;
             } else {
                 this.lb_rougeNum.text = "分数: " + num;
             }
 
             if (this.rArr.length > 1) {
+
+
+                //判断数组中所有角度，如果角度之差小于定值，游戏失败
+                for (let i = 0; i < this.rArr.length - 1; i++) {
+                    for (let j = i + 1; j < this.rArr.length; j++) {
+                        if (Math.abs(this.rArr[i] - this.rArr[j]) <= this.jiaodu) {
+
+                            this.timer.stop();
+                            utils.SoundUtils.instance().stopBg();
+                            utils.SoundUtils.instance().playShibai();
+                            //碰到圆盘上口红 直接失败  如果是体验和闯关 就用gameover  如果是限时  就用xsOver
+                            if (this.goodsItemData.gameType == Data.GameType.TI_YAN
+                                || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
+                                this.render.stop();
+                                egret.Tween.get(this.rougeArr[i], { loop: false }).to({ y: this.rougeArr[i].y + 300 }, 1000)
+                                    .call(() => {
+                                        // this.render.start();
+                                        this.GameOver();
+                                       
+                                    })
+                                egret.Tween.get(this.rougeArr[j], { loop: false }).to({ y: this.rougeArr[j].y + 300 }, 1000)
+                                return;
+                            } else {
+                                if (this.goodsItemData.priceGroup == 0)
+                                    this.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
+                                else
+                                    this.stage.addChild(new XsOver(this.score, this.goodsItemData.gameType, this.goodsItemData, this.m_mainsence));
+                                console.log("限时模式 游戏结束")
+                            }
+
+                        }
+                    }
+                }
+
+
                 //判断 已扎中口红数 如果已扎中数大于定值，则过关（type!=3）
                 if (num >= rouNum && this.goodsItemData.gameType != Data.GameType.JING_SU) {
                     this._level++;
@@ -539,36 +576,7 @@ class GameMain extends eui.Component {
                     console.log(this._level + "关")
 
                 }
-                //判断数组中所有角度，如果角度之差小于定值，游戏失败
-                for (let i = 0; i < this.rArr.length - 1; i++) {
-                    for (let j = i + 1; j < this.rArr.length; j++) {
-                        if (Math.abs(this.rArr[i] - this.rArr[j]) <= this.jiaodu) {
-
-                            this.timer.stop();
-                            utils.SoundUtils.instance().stopBg();
-                            utils.SoundUtils.instance().playShibai();
-                            //碰到圆盘上口红 直接失败  如果是体验和闯关 就用gameover  如果是限时  就用xsOver
-                            if (this.goodsItemData.gameType == Data.GameType.TI_YAN
-                                || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
-                                this.render.stop();
-                                egret.Tween.get(this.rougeArr[i], { loop: false }).to({ y: this.rougeArr[i].y + 300 }, 1000)
-                                    .call(() => {
-                                        // this.render.start();
-                                        this.GameOver();
-                                    })
-                                egret.Tween.get(this.rougeArr[j], { loop: false }).to({ y: this.rougeArr[j].y + 300 }, 1000)
-                                break;
-                            } else {
-                                if (this.goodsItemData.priceGroup == 0)
-                                    this.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
-                                else
-                                    this.stage.addChild(new XsOver(this.score, this.goodsItemData.gameType, this.goodsItemData, this.m_mainsence));
-                                console.log("限时模式 游戏结束")
-                            }
-
-                        }
-                    }
-                }
+                
 
             }
 

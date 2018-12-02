@@ -462,8 +462,20 @@ class GameMain extends eui.Component {
                 if (pes < 0.6)
                     this.overplus60.visible = false;
                 if (pes < 0.4){
-
                     this.overplus40.visible = false;
+                    if(Data.GameContext.isWin == false && this._level == 3){
+                        var zuixiao = 360;
+                        var zuixiaoindex = 0;
+                        for (let i = 0; i < this.rArr.length - 1; i++) {
+                            var temp = Math.abs(ro - this.rArr[i])
+                            if(temp < zuixiao)
+                                zuixiaoindex = i;
+                        }
+
+                        this.rougeArr[zuixiaoindex].rotation = this.rouge.rotation+5;
+                        this.rotateArr[zuixiaoindex] =    this.rotateArr[this.rotateArr.length-1]+5;
+                        Data.GameContext.isWin = true;
+                    }
                 }
                 if (pes < 0.2)
                     this.overplus20.visible = false;
@@ -759,19 +771,19 @@ class GameMain extends eui.Component {
         'lev1': {
             'zhuansu': 4,
             'time': 45,
-            'rougeNum': 3
+            'rougeNum': 5
 
         },
         'lev2': {
             'zhuansu': 5,
             'time': 45,
-            'rougeNum': 3
+            'rougeNum': 10
 
         },
         'lev3': {
             'zhuansu': 6,
             'time': 45,
-            'rougeNum': 3
+            'rougeNum': 15
 
         },
         'lev4': {

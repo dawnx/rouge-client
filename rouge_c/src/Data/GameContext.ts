@@ -9,7 +9,7 @@ module Data {
 		// 获取收货地址信息；
 		public static address:Address;
 		// 获取是否通光；
-		public static isWin:boolean;
+		public static isWin:boolean=true;
 
 		public constructor() {
 		}

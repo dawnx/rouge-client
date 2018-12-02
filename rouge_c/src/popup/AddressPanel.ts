@@ -6,9 +6,12 @@ class AddressPanel extends eui.Component {
     private _addr: eui.TextInput;
     private _sendBtn: eui.Image;
 
-    private _name_null:eui.Image;
-    private _tel_null:eui.Image;
-    private _addr_null:eui.Image;
+    private _name_null: eui.Image;
+    private _tel_null: eui.Image;
+    private _addr_null: eui.Image;
+
+    private _sendGroup: eui.Image;
+    private _closeAll: eui.Image;
 
     // private _get: eui.Image;
     // private _send: eui.Image;
@@ -22,6 +25,7 @@ class AddressPanel extends eui.Component {
         AddressApi.getAddressInfo();
         this.init();
         this._sendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickSendBtnGame, this);
+        this._closeAll.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCloseAllBtn, this);
 
         EventManager.getInstance().addEventListener(ApiEvent.ADDRESS_INFO, this.refershAddressInfo, this);
 
@@ -41,31 +45,35 @@ class AddressPanel extends eui.Component {
         }
 
     }
+
+    private onclickCloseAllBtn() {
+        this._sendGroup.visible = false;
+        this.parent.removeChild(this);
+        LayerUtil.hallPanel.stage.removeChild(LayerUtil.gameMain);
+    }
     private onclickSendBtnGame() {
-        if (this._name.text == null) {
+        if (this._name.text == "") {
             this._name_null.visible = true;
-        }else{
+        } else {
             this._name_null.visible = false;
         }
-        if (this._tel.text == null) {
+        if (this._tel.text == "") {
             console.log("电话不能为空");
             this._tel_null.visible = true;
-        }else{
+        } else {
             this._tel_null.visible = false;
         }
-        if (this._addr.text == null) {
+        if (this._addr.text == "") {
             console.log("地址不能为空");
             this._addr_null.visible = true;
-        }else{
+        } else {
             this._addr_null.visible = false;
         }
-        if (this._name.text != null &&
-            this._tel.text != null &&
-            this._addr.text != null) {
+        if (this._name.text != "" &&
+            this._tel.text != "" &&
+            this._addr.text != "") {
             AddressApi.sendAddressInfo(this._name.text, this._tel.text, this._addr.text);
-            this.parent.removeChild(this);
-            LayerUtil.hallPanel.stage.removeChild(LayerUtil.gameMain);
+            this._sendGroup.visible = true;
         }
-        
     }
 }

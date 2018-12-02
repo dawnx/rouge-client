@@ -17,8 +17,16 @@
 		<e:Image id="_tel_null" source="mmm_khj_picture_09_png" x="650.34" y="833.5" visible="false"/>
 		<e:Image id="_addr_null" source="mmm_khj_picture_09_png" x="650.34" y="896" visible="false"/>
 		<e:Image source="mmm_khj_Temporary effects_01_png" x="125.34" y="130"/>
-		<e:Image id="_sendBtn" source="mmm_khj_button_01_png" x="199" y="1016"/>
+		<e:Image id="_sendBtn" source="mmm_khj_button_01_png" x="165.5" y="1016"/>
 		<e:Image source="feef_03_png" x="288.23" y="292" anchorOffsetX="0" width="177.54"/>
-		<e:Image source="mmm_khj_picture_02_png" x="340" y="1028" touchEnabled="false"/>
+		<e:Image source="mmm_khj_picture_02_png" x="303.5" y="1028" touchEnabled="false"/>
+		<e:Group id="_sendGroup" width="581.82" height="287.88" x="173" y="701" anchorOffsetX="0" anchorOffsetY="0" visible="false">
+			<e:Image x="-131" y="-28" scale9Grid="15,15,96,96" width="676" height="302" source="mmm_dating_Backplane_07_png" scaleX="1" scaleY="1" anchorOffsetY="0"/>
+			<e:Image source="mmm_dating_header_01_png" x="-22.5" y="-87.5" scaleX="1" scaleY="1"/>
+			<e:Image source="mmm_dating_Art-word_05_png" x="170" y="-70" scaleX="1" scaleY="1"/>
+			<e:Label id="edu" text="领取成功！" x="89" y="67.00000000000011" size="38" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0xFC548E" anchorOffsetX="0" width="236" anchorOffsetY="0" height="62" verticalAlign="middle" textAlign="center"/>
+			<e:Image id="_closeAll" source="mmm_dating_button_03_png" x="99" y="178" scaleX="1" scaleY="1"/>
+			<e:Label text="确定" x="179" y="199.0000000000001" size="28" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0xFFFFFF"/>
+		</e:Group>
 	</e:Group>
 </e:Skin>

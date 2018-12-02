@@ -29,7 +29,7 @@ class AddressApi {
         console.log("openId   " + openId);
         //拼接参数 
         // var params = "?openId=o9lTh021BNBRPJyAiOa8_P5NYe4s&name=" + name + "&tel=" + tel + "&addr=" + addr;   // jsapi 支付；
-        var params = "?openId=" + openId + "&name=" + name + "&tel=" + tel + "&addr" + addr;   // jsapi 支付；
+        var params = "?openId=" + openId + "&name=" + name + "&tel=" + tel + "&addr=" + addr;   // jsapi 支付；
         //将参数拼接到url
         var uri: string = "gameRouge/collect" + params;
         BaseApi.get(uri, this.onSendAddressComplete);

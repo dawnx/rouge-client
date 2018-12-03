@@ -283,7 +283,9 @@ class GameMain extends eui.Component {
         this.isMoving = true;
 
         this.img_rouge.visible = false;
-        this.removeChild(this.zidanarr.pop());
+        let currentpop = this.zidanarr.pop();
+        if(this.contains(currentpop))
+            this.removeChild(currentpop);
     }
 
 

@@ -10,11 +10,7 @@ class GameMain extends eui.Component {
     private score: number;
     // public text_Count: eui.Label;
     private count: number;
-    private overplus80: eui.Image;
-    private overplus60: eui.Image;
-    private overplus40: eui.Image;
-    private overplus20: eui.Image;
-    private overplus0: eui.Image;
+   
 
     //判断碰撞的角度
     private jiaodu: number = 10;
@@ -70,7 +66,7 @@ class GameMain extends eui.Component {
         }
         this.rect_dangban.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickInsert, this);
         this.initRank();
-        this.render = new egret.Timer(20);
+        this.render = new egret.Timer(35);
         this.render.addEventListener(egret.TimerEvent.TIMER, this.update, this);
         this.render.start();
         // egret.Ticker.getInstance().register(function () {
@@ -145,11 +141,8 @@ class GameMain extends eui.Component {
         // }
 
         if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
-            this.overplus80.visible = true;
-            this.overplus60.visible = true;
-            this.overplus40.visible = true;
-            this.overplus20.visible = true;
-            this.overplus0.visible = true;
+            this.initZidan();
+           
             this.lb_rougeNum.text = "剩余数量: " + this.getRougeNum(this._level) + "/" + this.getRougeNum(this._level);
         } else {
             this.lb_rougeNum.text = "分数: 0";
@@ -214,11 +207,7 @@ class GameMain extends eui.Component {
         //     context.gp_rouge.addChild(item);
         //     item.y = item.height * i + 5 * i;
         // }
-        this.overplus80.visible = false;
-        this.overplus60.visible = false;
-        this.overplus40.visible = false;
-        this.overplus20.visible = false;
-        this.overplus0.visible = false;
+        
         this.level1.visible = false;
         this.level2.visible = false;
         this.level3.visible = false;
@@ -294,7 +283,7 @@ class GameMain extends eui.Component {
         this.isMoving = true;
 
         this.img_rouge.visible = false;
-
+        this.removeChild(this.zidanarr.pop());
     }
 
 
@@ -457,12 +446,7 @@ class GameMain extends eui.Component {
 
             if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
                 let pes = (rouNum - num) / rouNum;
-                if (pes <= 0.8)
-                    this.overplus80.visible = false;
-                if (pes <= 0.6)
-                    this.overplus60.visible = false;
                 if (pes <= 0.4){
-                    this.overplus40.visible = false;
                     if(Data.GameContext.isWin == false && this._level == 3){
                         var zuixiao = 360;
                         var zuixiaoindex = 0;
@@ -477,10 +461,6 @@ class GameMain extends eui.Component {
                         Data.GameContext.isWin = true;
                     }
                 }
-                if (pes <= 0.2)
-                    this.overplus20.visible = false;
-                if (pes == 0 )
-                    this.overplus0.visible = false;
                 this.lb_rougeNum.text = "剩余数量: " + (rouNum - num) + "/" + rouNum;
             } else {
                 this.lb_rougeNum.text = "分数: " + num;
@@ -601,11 +581,7 @@ class GameMain extends eui.Component {
         console.log(this.speed)
 
         if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
-            this.overplus80.visible = true;
-            this.overplus60.visible = true;
-            this.overplus40.visible = true;
-            this.overplus20.visible = true;
-            this.overplus0.visible = true;
+            this.initZidan();
             this.lb_rougeNum.text = "剩余数量: " + this.getRougeNum(this._level) + "/" + this.getRougeNum(this._level);
         } else {
             this.lb_rougeNum.text = "分数: 0";
@@ -658,15 +634,25 @@ class GameMain extends eui.Component {
 
 
     }
+    private zidanarr;
+    private initZidan(){
+        this.zidanarr = [];
+        for(var i=0;i<this.getRougeNum(this._level);i++){
+            var zidan = new egret.Bitmap();
+            zidan.texture = RES.getRes("rouge1_png");
+            zidan.x = 10;
+            zidan.y = 1135-i*30;
+            this.addChild(zidan);
+            this.zidanarr.push(zidan);
+        }
+         
+    }
     //闯关模式
     //如果是金币重玩，就不删除之前已经扎的口红
     public initGame1() {  //游戏初始化 消耗金币重新玩，分数砍一半
         console.log("游戏初始化")
         console.log(this._level)
-        this.overplus80.visible = true;
-        this.overplus60.visible = true;
-        this.overplus40.visible = true;
-        this.overplus20.visible = true;
+        this.initZidan();
         this.lb_rougeNum.text = "剩余数量: " + this.getRougeNum(this._level) + "/" + this.getRougeNum(this._level);
         this.gp_guan.visible = false;
         this.gp_circle.removeChildren();
@@ -714,11 +700,6 @@ class GameMain extends eui.Component {
         console.log("游戏初始化")
         console.log(this._level)
 
-        this.overplus80.visible = false;
-        this.overplus60.visible = false;
-        this.overplus40.visible = false;
-        this.overplus20.visible = false;
-        this.overplus0.visible = false;
         this.level1.visible = false;
         this.level2.visible = false;
         this.level3.visible = false;
@@ -779,7 +760,7 @@ class GameMain extends eui.Component {
         'lev1': {
             'zhuansu': 4,
             'time': 45,
-            'rougeNum': 5
+            'rougeNum': 15
 
         },
         'lev2': {

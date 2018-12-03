@@ -27,11 +27,11 @@
 		<e:Image id="level1" width="40" height="40" x="565" source="mmm_youxi_icon_01_png" top="121"/>
 		<e:Image id="level2" width="40" height="40" x="620" y="120.01" source="mmm_youxi_Backplane_04_png"/>
 		<e:Image id="level3" width="40" height="40" x="675" y="120.01" source="mmm_youxi_Backplane_04_png"/>
-		<e:Image id="overplus20" width="102" height="22" y="1101.6100000000001" source="rouge1_png" left="10"/>
-		<e:Image id="overplus40" width="102" height="22" y="1068.1000000000001" source="rouge1_png" left="10"/>
-		<e:Image id="overplus0" width="102" height="22" y="1135" source="rouge1_png" left="10"/>
-		<e:Image id="overplus60" width="102" height="22" y="1034.8999999999999" source="rouge1_png" left="10"/>
-		<e:Image id="overplus80" width="102" height="22" y="1001.6999999999999" source="rouge1_png" left="10"/>
+
+
+
+
+
 		<e:Group id="rankgroup" width="81" height="200" x="648" y="960.81">
 			
 			<e:Image width="68" height="312" x="8" y="-75.82" source="mmm_dating_frame_04_png" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1"/>

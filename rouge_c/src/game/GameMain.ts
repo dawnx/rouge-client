@@ -785,13 +785,13 @@ class GameMain extends eui.Component {
         'lev2': {
             'zhuansu': 5,
             'time': 45,
-            'rougeNum': 10
+            'rougeNum': 5
 
         },
         'lev3': {
             'zhuansu': 6,
             'time': 45,
-            'rougeNum': 15
+            'rougeNum': 5
 
         },
         'lev4': {

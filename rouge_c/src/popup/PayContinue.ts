@@ -10,10 +10,11 @@ class PayContinue extends eui.Component {
     public childrenCreated() {     //自执行
         super.childrenCreated();
         this.init();
-        this.img_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickClose, this);
+        this.img_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickShare, this);
         this.btnQueding.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickQueding, this);
 
         EventManager.getInstance().addEventListener(ApiEvent.PAY_SUCCESS, this.onClickContinue, this);
+        EventManager.getInstance().addEventListener(ApiEvent.SHARE_SUCCESS, this.onClickContinue, this);
     }
     private init() {
 
@@ -24,13 +25,26 @@ class PayContinue extends eui.Component {
         console.log("chongzhi...");
         OrderApi.createOrder("喵喵游戏", 6);
     }
+    private share:Share;
+    // 分享继续；
+    private onClickShare() {
+        this.share = new Share();
+        this.stage.addChild(this.share);
+    }
+
+
     private onClickContinue() {
-        this.parent.removeChild(this);
+        if (this.share != null)
+        {
+            this.stage.removeChild(this.share);
+            this.share = null;
+        }
+        this.parent.stage.removeChild(this);
         LayerUtil.gameMain.guoguan();
     }
     private onclickClose() {
-        this.parent.removeChild(this);
-        
+        this.parent.stage.removeChild(this);
+
         LayerUtil.hallPanel.stage.removeChild(LayerUtil.gameMain);
         Data.DataManager.subGames.forEach(item => {
             //  体验模式

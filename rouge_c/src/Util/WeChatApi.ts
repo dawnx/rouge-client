@@ -26,17 +26,23 @@ class WeChatApi {
             wx.ready(function () {
                 // 在这里调用微信相关功能的 API
                 var shareAppMessage = new BodyMenuShareAppMessage();
-                shareAppMessage.title = '喵喵喵游乐园';
-                shareAppMessage.desc = '我在喵喵喵游乐园里免费获得奖品';
+                shareAppMessage.title = "领取迪奥口红";
+                shareAppMessage.desc = '凭实力免单。';
                 shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind='+ Data.GameContext.player.shareCode;
                 shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
+                shareAppMessage.success = function(){
+                    EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
+                };
                 wx.onMenuShareAppMessage(shareAppMessage);
 
                 var bodyMenuShareAppMessage = new BodyMenuShareAppMessage();
-                bodyMenuShareAppMessage.title = "喵喵喵游乐园";
-                bodyMenuShareAppMessage.desc = "我在喵喵喵游乐园里免费获得奖品";
+                bodyMenuShareAppMessage.title = "领取迪奥口红";
+                bodyMenuShareAppMessage.desc = "凭实力免单。";
                 bodyMenuShareAppMessage.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind="+ Data.GameContext.player.shareCode;
                 bodyMenuShareAppMessage.imgUrl = "http://kh.chitugame.com/game/icon.png";
+                bodyMenuShareAppMessage.success = function(){
+                    EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
+                };
                 wx.onMenuShareAppMessage(bodyMenuShareAppMessage);
             });
         }

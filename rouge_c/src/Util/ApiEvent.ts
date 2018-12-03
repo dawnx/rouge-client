@@ -5,4 +5,5 @@ class ApiEvent {
 	public static CHANGE_INFO = "change_info";
 	public static ADDRESS_INFO = "address_info";
 	public static PAY_SUCCESS = "pay_success";
+	public static SHARE_SUCCESS = "share_success";
 }

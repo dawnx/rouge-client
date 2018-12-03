@@ -34,7 +34,7 @@ class HallPanel extends eui.Component {
         AddressApi.sendAddressInfo("xxx", "xxxxxxx", "xxxx");
     }
     private onclickStartGame() {
-
+console.log("Data.DataManager.subGames    " + Data.DataManager.subGames);
         Data.DataManager.subGames.forEach(item => {
             //  体验模式
             if (item.gameType == Data.GameType.TI_YAN) {

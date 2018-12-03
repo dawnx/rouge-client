@@ -109,12 +109,12 @@ class OrderApi {
         console.log("openId   " + openId);
         // var currentUrl:string = "http://kh.chitugame.com/rouge/index.html";
         var currentUrl:string = window.location.href;
-        // var currentUrl:string = "192.168.1.111:5000/index.html";
+        // var currentUrl:string = "http://kh.chitugame.com/rouge/index.html";
         currentUrl = encodeURI(currentUrl);
         console.log("currentUrl  "+currentUrl);
         //拼接参数 
         var params = "?openId=" + openId + "&url=" + currentUrl;
-        // var params = "?openId=oZ4KT1JC0LWmI-Fk5oG1PGq5uhu4&url=" + currentUrl;;
+        // var params = "?openId=o9lTh021BNBRPJyAiOa8_P5NYe4s&url=" + currentUrl;;
         var uri: string = "weixin/getSignForShare" + params;
         BaseApi.get(uri, this.onGetCompleteRegister);
     }

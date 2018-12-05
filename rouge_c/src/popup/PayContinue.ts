@@ -3,6 +3,11 @@ class PayContinue extends eui.Component {
     private img_close: eui.Image;
     private btnQueding: eui.Image;
     private _edu: number;
+    private isShow: boolean = true;
+
+    private _reGroup: eui.Image;
+    private _reGame: eui.Image;
+
     public constructor() {
         super()
         this.skinName = "resource/skin/payContinue.exml";
@@ -12,12 +17,18 @@ class PayContinue extends eui.Component {
         this.init();
         this.img_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickShare, this);
         this.btnQueding.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickQueding, this);
+        this._reGame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickClose, this);
 
         EventManager.getInstance().addEventListener(ApiEvent.PAY_SUCCESS, this.onClickContinue, this);
         EventManager.getInstance().addEventListener(ApiEvent.SHARE_SUCCESS, this.onClickContinue, this);
     }
     private init() {
-
+        console.log("Data.GameContext.shareTimes    "+Data.GameContext.shareTimes);
+        if (Data.GameContext.shareTimes >= 2) {
+            this._reGroup.visible = true;
+        }else{
+            this._reGroup.visible = false;
+        }
     }
 
     //前往充值
@@ -25,22 +36,49 @@ class PayContinue extends eui.Component {
         console.log("chongzhi...");
         OrderApi.createOrder("喵喵游戏", 6);
     }
-    private share:Share;
+    private share: Share;
     // 分享继续；
     private onClickShare() {
+        if (wx) {
+            wx.ready(function () {
+                // 在这里调用微信相关功能的 API
+                var shareAppMessage = new BodyMenuShareAppMessage();
+                shareAppMessage.title = "领取迪奥口红";
+                shareAppMessage.desc = '凭实力免单。';
+                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind=' + Data.GameContext.player.shareCode;
+                shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
+                shareAppMessage.success = function () {
+                    EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
+                    ShareInfoApi.sendShareComplateInfo();
+                };
+                wx.onMenuShareAppMessage(shareAppMessage);
+
+                var bodyMenuShareTimeline = new BodyMenuShareTimeline();
+                bodyMenuShareTimeline.title = "领取迪奥口红";
+                bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind=" + Data.GameContext.player.shareCode;
+                bodyMenuShareTimeline.imgUrl = "http://kh.chitugame.com/game/icon.png";
+                bodyMenuShareTimeline.success = function () {
+                    EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
+                    ShareInfoApi.sendShareComplateInfo();
+                };
+                wx.onMenuShareTimeline(bodyMenuShareTimeline);
+            });
+        }
         this.share = new Share();
         this.stage.addChild(this.share);
     }
 
 
     private onClickContinue() {
-        if (this.share != null)
-        {
-            this.stage.removeChild(this.share);
-            this.share = null;
+        if (this.isShow && Data.GameContext.shareTimes <= 2) {
+            if (this.share != null) {
+                this.stage.removeChild(this.share);
+                this.share = null;
+            }
+            LayerUtil.gameMain.stage.removeChild(this);
+            LayerUtil.gameMain.guoguan();
+            this.isShow = false;
         }
-        this.parent.stage.removeChild(this);
-        LayerUtil.gameMain.guoguan();
     }
     private onclickClose() {
         this.parent.stage.removeChild(this);

@@ -10,6 +10,10 @@ module Data {
 		public static address:Address;
 		// 获取是否通光；
 		public static isWin:boolean=true;
+		//
+		public static isFirstPay:boolean = true;
+		// 分享次数；
+		public static shareTimes:number;
 
 		public constructor() {
 		}

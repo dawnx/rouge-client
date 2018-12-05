@@ -10,7 +10,7 @@ class GameMain extends eui.Component {
     private score: number;
     // public text_Count: eui.Label;
     private count: number;
-   
+
 
     //判断碰撞的角度
     private jiaodu: number = 10;
@@ -142,7 +142,7 @@ class GameMain extends eui.Component {
 
         if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
             this.initZidan();
-           
+
             this.lb_rougeNum.text = "剩余数量: " + this.getRougeNum(this._level) + "/" + this.getRougeNum(this._level);
         } else {
             this.lb_rougeNum.text = "分数: 0";
@@ -207,7 +207,7 @@ class GameMain extends eui.Component {
         //     context.gp_rouge.addChild(item);
         //     item.y = item.height * i + 5 * i;
         // }
-        
+
         this.level1.visible = false;
         this.level2.visible = false;
         this.level3.visible = false;
@@ -284,7 +284,7 @@ class GameMain extends eui.Component {
 
         this.img_rouge.visible = false;
         let currentpop = this.zidanarr.pop();
-        if(this.contains(currentpop))
+        if (this.contains(currentpop))
             this.removeChild(currentpop);
     }
 
@@ -321,9 +321,9 @@ class GameMain extends eui.Component {
 
 
         if (this._level == 2)
-            this.level2.source = "mmm_youxi_icon_01_png";
+            this.level2.source = "level_png";
         if (this._level == 3)
-            this.level3.source = "mmm_youxi_icon_01_png";
+            this.level3.source = "level_png";
 
         if (this.isMoving) {
             this.rouge.y -= this.moveSpeed;
@@ -442,24 +442,24 @@ class GameMain extends eui.Component {
                     }
                 }
             }
-
+            // 触发必死；
             let num: number = this.gp_circle.numChildren;
             let rouNum: number = this.getRougeNum(this._level);
-
+            console.log("Data.GameContext.isWin   " + Data.GameContext.isWin);
             if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
                 let pes = (rouNum - num) / rouNum;
-                if (pes <= 0.4){
-                    if(Data.GameContext.isWin == false && this._level == 3){
+                if (pes <= 0.2) {
+                    if (Data.GameContext.isWin == false && this._level == 3) {
                         var zuixiao = 360;
                         var zuixiaoindex = 0;
                         for (let i = 0; i < this.rArr.length - 1; i++) {
                             var temp = Math.abs(ro - this.rArr[i])
-                            if(temp < zuixiao)
+                            if (temp < zuixiao)
                                 zuixiaoindex = i;
                         }
 
-                        this.rougeArr[zuixiaoindex].rotation = this.rouge.rotation+5;
-                        this.rotateArr[zuixiaoindex] =    this.rotateArr[this.rotateArr.length-1]+5;
+                        this.rougeArr[zuixiaoindex].rotation = this.rouge.rotation + 5;
+                        this.rotateArr[zuixiaoindex] = this.rotateArr[this.rotateArr.length - 1] + 5;
                         Data.GameContext.isWin = true;
                     }
                 }
@@ -487,7 +487,7 @@ class GameMain extends eui.Component {
                                     .call(() => {
                                         // this.render.start();
                                         this.GameOver();
-                                       
+
                                     })
                                 egret.Tween.get(this.rougeArr[j], { loop: false }).to({ y: this.rougeArr[j].y + 300 }, 1000)
                                 return;
@@ -509,6 +509,7 @@ class GameMain extends eui.Component {
                     this._level++;
                     this.speed = this.getSpeed(this._level);
                     console.log("过关之后的速度" + this.speed)
+
                     this.img_guan.source = "resource/assets/game/guan" + this._level + ".png";
 
                     if (this._level == 2 && this.goodsItemData.gameType == 1) {
@@ -553,12 +554,16 @@ class GameMain extends eui.Component {
                         this.timer.stop();
 
                     } else {
+                        for (let i = 0; i < this.shadow.length; i++) {
+                            this.removeChild(this.shadow[i]);
+                        }
+                        this.shadow = [];
                         this.guoguan();
                     }
                     console.log(this._level + "关")
 
                 }
-                
+
 
             }
 
@@ -637,17 +642,29 @@ class GameMain extends eui.Component {
 
     }
     private zidanarr;
-    private initZidan(){
+    private shadow;
+    private initZidan() {
+        this.zidanarr = null;
+        this.shadow = null;
         this.zidanarr = [];
-        for(var i=0;i<this.getRougeNum(this._level);i++){
+        this.shadow = [];
+        for (var i = 0; i < this.getRougeNum(this._level); i++) {
+            // 先创建阴影；
+            var shado = new egret.Bitmap();
+            shado.texture = RES.getRes("shadow_png");
+            shado.x = 10;
+            shado.y = 1135 - i * 30;
+            this.addChild(shado);
+            this.shadow.push(shado);
+
             var zidan = new egret.Bitmap();
             zidan.texture = RES.getRes("rouge1_png");
             zidan.x = 10;
-            zidan.y = 1135-i*30;
+            zidan.y = 1135 - i * 30;
             this.addChild(zidan);
             this.zidanarr.push(zidan);
         }
-         
+
     }
     //闯关模式
     //如果是金币重玩，就不删除之前已经扎的口红
@@ -761,20 +778,20 @@ class GameMain extends eui.Component {
         },
         'lev1': {
             'zhuansu': 4,
-            'time': 45,
-            'rougeNum': 5
+            'time': 30,
+            'rougeNum': 6
 
         },
         'lev2': {
             'zhuansu': 5,
-            'time': 45,
-            'rougeNum': 5
+            'time': 30,
+            'rougeNum': 9
 
         },
         'lev3': {
             'zhuansu': 6,
-            'time': 45,
-            'rougeNum': 5
+            'time': 30,
+            'rougeNum': 12
 
         },
         'lev4': {

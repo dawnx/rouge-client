@@ -28,27 +28,29 @@ class WeChatApi {
                 var shareAppMessage = new BodyMenuShareAppMessage();
                 shareAppMessage.title = "领取迪奥口红";
                 shareAppMessage.desc = '凭实力免单。';
-                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind='+ Data.GameContext.player.shareCode;
+                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth';
                 shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
-                shareAppMessage.success = function(){
-                    EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
-                };
+                // shareAppMessage.success = function () {
+                //     EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
+                //     ShareInfoApi.sendShareComplateInfo();
+                // };
                 wx.onMenuShareAppMessage(shareAppMessage);
 
-                var bodyMenuShareAppMessage = new BodyMenuShareAppMessage();
-                bodyMenuShareAppMessage.title = "领取迪奥口红";
-                bodyMenuShareAppMessage.desc = "凭实力免单。";
-                bodyMenuShareAppMessage.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind="+ Data.GameContext.player.shareCode;
-                bodyMenuShareAppMessage.imgUrl = "http://kh.chitugame.com/game/icon.png";
-                bodyMenuShareAppMessage.success = function(){
-                    EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
-                };
-                wx.onMenuShareAppMessage(bodyMenuShareAppMessage);
+                var bodyMenuShareTimeline = new BodyMenuShareTimeline();
+                bodyMenuShareTimeline.title = "领取迪奥口红";
+                bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth";
+                bodyMenuShareTimeline.imgUrl = "http://kh.chitugame.com/game/icon.png";
+                // bodyMenuShareTimeline.success = function () {
+                //     EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
+                //     ShareInfoApi.sendShareComplateInfo();
+                // };
+                wx.onMenuShareTimeline(bodyMenuShareTimeline);
             });
         }
     }
 
     public static weChatPay(data: any) {
+        
         console.log("微信 PAY")
         if (wx) {
             console.log("chooseWXPay")
@@ -70,5 +72,6 @@ class WeChatApi {
                 });
             });
         }
+        Data.GameContext.isFirstPay = false;
     }
 }

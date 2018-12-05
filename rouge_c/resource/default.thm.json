@@ -41,6 +41,7 @@
 		"resource/skin/gamemain.exml",
 		"resource/skin/gameover.exml",
 		"resource/skin/goodsItem.exml",
+		"resource/skin/guize.exml",
 		"resource/skin/hallPanel.exml",
 		"resource/skin/luckeycoin.exml",
 		"resource/skin/overSuccess.exml",

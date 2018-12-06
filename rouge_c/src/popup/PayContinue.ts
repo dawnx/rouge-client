@@ -23,10 +23,10 @@ class PayContinue extends eui.Component {
         EventManager.getInstance().addEventListener(ApiEvent.SHARE_SUCCESS, this.onClickContinue, this);
     }
     private init() {
-        console.log("Data.GameContext.shareTimes    "+Data.GameContext.shareTimes);
+        console.log("Data.GameContext.shareTimes    " + Data.GameContext.shareTimes);
         if (Data.GameContext.shareTimes >= 2) {
             this._reGroup.visible = true;
-        }else{
+        } else {
             this._reGroup.visible = false;
         }
     }
@@ -70,14 +70,20 @@ class PayContinue extends eui.Component {
 
 
     private onClickContinue() {
-        if (this.isShow && Data.GameContext.shareTimes <= 2) {
-            if (this.share != null) {
-                this.stage.removeChild(this.share);
-                this.share = null;
+        console.log("out");
+        if (Data.GameContext.shareTimes) {
+            if (this.isShow && Data.GameContext.shareTimes <= 2) {
+                console.log("onClickContinue");
+                if (this.share != null) {
+                    this.stage.removeChild(this.share);
+                    this.share = null;
+                }
+                LayerUtil.gameMain.stage.removeChild(this);
+                LayerUtil.gameMain.guoguan();
+                this.isShow = false;
             }
-            LayerUtil.gameMain.stage.removeChild(this);
-            LayerUtil.gameMain.guoguan();
-            this.isShow = false;
+        } else {
+            alert("您的登录状态异常！请重新登录");
         }
     }
     private onclickClose() {

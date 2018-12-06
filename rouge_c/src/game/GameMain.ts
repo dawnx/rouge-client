@@ -447,9 +447,12 @@ class GameMain extends eui.Component {
             let rouNum: number = this.getRougeNum(this._level);
             console.log("Data.GameContext.isWin   " + Data.GameContext.isWin);
             if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
-                let pes = (rouNum - num) / rouNum;
-                if (pes <= 0.2) {
+                //let pes = (rouNum - num) / rouNum;
+                // if (pes <= 0.2) {
+                if (num >= 11) {
+                    console.log("enter dead");
                     if (Data.GameContext.isWin == false && this._level == 3) {
+                        console.log("Data.GameContext.isWin    " + Data.GameContext.isWin);
                         var zuixiao = 360;
                         var zuixiaoindex = 0;
                         for (let i = 0; i < this.rArr.length - 1; i++) {
@@ -458,9 +461,9 @@ class GameMain extends eui.Component {
                                 zuixiaoindex = i;
                         }
 
-                        this.rougeArr[zuixiaoindex].rotation = this.rouge.rotation + 5;
-                        this.rotateArr[zuixiaoindex] = this.rotateArr[this.rotateArr.length - 1] + 5;
-                        Data.GameContext.isWin = true;
+                        this.rougeArr[zuixiaoindex].rotation = this.rouge.rotation + 10;
+                        this.rotateArr[zuixiaoindex] = this.rotateArr[this.rotateArr.length - 1] + 10;
+                        //Data.GameContext.isWin = true;
                     }
                 }
                 this.lb_rougeNum.text = "剩余数量: " + (rouNum - num) + "/" + rouNum;
@@ -791,7 +794,7 @@ class GameMain extends eui.Component {
         'lev3': {
             'zhuansu': 6,
             'time': 30,
-            'rougeNum': 12
+            'rougeNum': 13
 
         },
         'lev4': {

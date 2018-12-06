@@ -9,11 +9,11 @@ module Data {
 		// 获取收货地址信息；
 		public static address:Address;
 		// 获取是否通光；
-		public static isWin:boolean=true;
+		public static isWin:boolean=false;
 		//
 		public static isFirstPay:boolean = true;
 		// 分享次数；
-		public static shareTimes:number;
+		public static shareTimes:number = 0;
 
 		public constructor() {
 		}

@@ -14,6 +14,8 @@ module Data {
 		public static isFirstPay:boolean = true;
 		// 分享次数；
 		public static shareTimes:number = 0;
+		// 跑马灯内容；
+		public static marqueeArray:MarqueeData[];
 
 		public constructor() {
 		}

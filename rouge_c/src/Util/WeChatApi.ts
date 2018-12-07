@@ -50,7 +50,7 @@ class WeChatApi {
     }
 
     public static weChatPay(data: any) {
-        
+
         console.log("微信 PAY")
         if (wx) {
             console.log("chooseWXPay")
@@ -67,7 +67,16 @@ class WeChatApi {
                     success: function (res) {
                         // 支付成功后的回调函数
                         EventManager.getInstance().SendEvent(ApiEvent.PAY_SUCCESS);
-                        RougeGameApi.startGame(1002,1);
+                        RougeGameApi.startGame(1002, 1);
+                        //  接入talkingdata
+                        window['TDGA'].onChargeSuccess({
+                            orderId: 'account123time0923173248',
+                            iapId: '喵喵口红',
+                            currencyAmount: 6,
+                            currencyType: 'CNY',
+                            virtualCurrencyAmount: 60,
+                            paymentType: 'WeChatPay'
+                        });
                     }
                 });
             });

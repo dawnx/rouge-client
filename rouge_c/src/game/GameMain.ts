@@ -478,7 +478,7 @@ class GameMain extends eui.Component {
                 for (let i = 0; i < this.rArr.length - 1; i++) {
                     for (let j = i + 1; j < this.rArr.length; j++) {
                         if (Math.abs(this.rArr[i] - this.rArr[j]) <= this.jiaodu) {
-
+                            window['TDGA'].onMissionFailed("GameFailed: Level" + this._level);
                             this.timer.stop();
                             utils.SoundUtils.instance().stopBg();
                             utils.SoundUtils.instance().playShibai();
@@ -516,6 +516,8 @@ class GameMain extends eui.Component {
                     this.img_guan.source = "resource/assets/game/guan" + this._level + ".png";
 
                     if (this._level == 2 && this.goodsItemData.gameType == 1) {
+                        window['TDGA'].onMissionCompleted("第一关完成");
+                        window['TDGA'].onMissionBegin("进入游戏第二关");
                         this.penjian.visible = false;
                         this.gp_circle.visible = false;
                         this.img_juzi.visible = false;
@@ -526,6 +528,7 @@ class GameMain extends eui.Component {
 
                     // 玩完三关的时候 
                     if (this._level == 3 && this.goodsItemData.gameType == 1) {
+                        window['TDGA'].onMissionCompleted("第二关完成");
                         //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
                         console.log("体验模式结束 ")
                         this.stage.addChild(new PayContinue());
@@ -539,6 +542,7 @@ class GameMain extends eui.Component {
                         return;
                     }
                     if (this._level == 4 && this.goodsItemData.gameType == 1) {
+                        window['TDGA'].onMissionCompleted("第三关完成");
                         //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
                         console.log("体验模式结束 ")
                         this.stage.addChild(new AddressPanel());
@@ -654,7 +658,7 @@ class GameMain extends eui.Component {
         for (var i = 0; i < this.getRougeNum(this._level); i++) {
             // 先创建阴影；
             var shado = new egret.Bitmap();
-            shado.texture = RES.getRes("shadow_png");
+            shado.texture = RES.getRes("back_png");
             shado.x = 10;
             shado.y = 1135 - i * 30;
             this.addChild(shado);

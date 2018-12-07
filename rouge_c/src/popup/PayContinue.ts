@@ -19,10 +19,11 @@ class PayContinue extends eui.Component {
         this.btnQueding.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickQueding, this);
         this._reGame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickClose, this);
 
-        EventManager.getInstance().addEventListener(ApiEvent.PAY_SUCCESS, this.onClickContinue, this);
-        EventManager.getInstance().addEventListener(ApiEvent.SHARE_SUCCESS, this.onClickContinue, this);
+        EventManager.getInstance().addEventListener(ApiEvent.PAY_SUCCESS, this.onPaySuccessContinue, this);
+        EventManager.getInstance().addEventListener(ApiEvent.SHARE_SUCCESS, this.onShareContinue, this);
     }
     private init() {
+        this.isShow = true;
         console.log("Data.GameContext.shareTimes    " + Data.GameContext.shareTimes);
         if (Data.GameContext.shareTimes >= 2) {
             this._reGroup.visible = true;
@@ -45,7 +46,8 @@ class PayContinue extends eui.Component {
                 var shareAppMessage = new BodyMenuShareAppMessage();
                 shareAppMessage.title = "领取迪奥口红";
                 shareAppMessage.desc = '凭实力免单。';
-                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind=' + Data.GameContext.player.shareCode;
+                // shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind=' + Data.GameContext.player.shareCode;
+                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth';
                 shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
                 shareAppMessage.success = function () {
                     EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
@@ -55,7 +57,8 @@ class PayContinue extends eui.Component {
 
                 var bodyMenuShareTimeline = new BodyMenuShareTimeline();
                 bodyMenuShareTimeline.title = "领取迪奥口红";
-                bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind=" + Data.GameContext.player.shareCode;
+                // bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind=" + Data.GameContext.player.shareCode;
+                bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth";
                 bodyMenuShareTimeline.imgUrl = "http://kh.chitugame.com/game/icon.png";
                 bodyMenuShareTimeline.success = function () {
                     EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
@@ -69,23 +72,34 @@ class PayContinue extends eui.Component {
     }
 
 
-    private onClickContinue() {
+    private onShareContinue() {
         console.log("out");
-        if (Data.GameContext.shareTimes) {
-            if (this.isShow && Data.GameContext.shareTimes <= 2) {
-                console.log("onClickContinue");
-                if (this.share != null) {
-                    this.stage.removeChild(this.share);
-                    this.share = null;
-                }
-                LayerUtil.gameMain.stage.removeChild(this);
-                LayerUtil.gameMain.guoguan();
-                this.isShow = false;
+        if (this.isShow && Data.GameContext.shareTimes < 2) {
+            console.log("onClickContinue");
+            if (this.share != null) {
+                this.stage.removeChild(this.share);
+                this.share = null;
             }
-        } else {
-            alert("您的登录状态异常！请重新登录");
+            LayerUtil.gameMain.stage.removeChild(this);
+            LayerUtil.gameMain.guoguan();
+            this.isShow = false;
         }
     }
+
+    private onPaySuccessContinue() {
+        if (this.isShow) {
+            LayerUtil.gameMain.stage.removeChild(this);
+            LayerUtil.gameMain.guoguan();
+            this.isShow = false;
+            window['TDGA'].onItemPurchase({
+                item: "payCNY6",
+                itemNumber: 6,
+                priceInVirtualCurrency: 60
+            });
+            window['TDGA'].onMissionBegin("进入游戏第三关");
+        }
+    }
+
     private onclickClose() {
         this.parent.stage.removeChild(this);
 

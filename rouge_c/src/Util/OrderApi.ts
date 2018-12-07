@@ -23,6 +23,15 @@ class OrderApi {
         BaseApi.get(uri, this.onGetComplete);
     }
     private static onGetComplete(event: egret.Event): void {
+        // 接入talkingData
+        window['TDGA'].onChargeRequest({
+            orderId: "123456",
+            iapId: "喵喵口红",
+            currencyAmount: 6,
+            currencyType: "CNY",
+            virtualCurrencyAmount: "60",
+            paymentType: "weChatPay",
+        });
         console.log("Send Success!!!");
         // 获取到后台传回来的数据；
         var request = <egret.HttpRequest>event.currentTarget;
@@ -81,10 +90,10 @@ class OrderApi {
         console.log("*******点击响应");
         let openId = egret.getOption("openId");  //取url后边的openid
         console.log("openId   " + openId);
-        var currentUrl:string = "http://kh.chitugame.com/rouge/index.html";
-        var currentUrl:string = "192.168.1.111:5000/index.html";
+        var currentUrl: string = "http://kh.chitugame.com/rouge/index.html";
+        var currentUrl: string = "192.168.1.111:5000/index.html";
         currentUrl = encodeURI(currentUrl);
-        console.log("currentUrl  "+currentUrl);
+        console.log("currentUrl  " + currentUrl);
         //拼接参数 
         var params = "?openId=" + openId + "&url=" + currentUrl;
         // var params = "?openId=o9lTh0_-PeTGbC_4dLG_TRsQAY-g&url=" + currentUrl;;
@@ -102,16 +111,16 @@ class OrderApi {
         console.log(data)
         console.log("  调起分享！");
     }
-// 微信接口注册接口；
+    // 微信接口注册接口；
     public static wechatAPI() {
         console.log("*******点击响应");
         let openId = egret.getOption("openId");  //取url后边的openid
         console.log("openId   " + openId);
         // var currentUrl:string = "http://kh.chitugame.com/rouge/index.html";
-        var currentUrl:string = window.location.href;
+        var currentUrl: string = window.location.href;
         // var currentUrl:string = "http://kh.chitugame.com/rouge/index.html";
         currentUrl = encodeURI(currentUrl);
-        console.log("currentUrl  "+currentUrl);
+        console.log("currentUrl  " + currentUrl);
         //拼接参数 
         var params = "?openId=" + openId + "&url=" + currentUrl;
         // var params = "?openId=o9lTh021BNBRPJyAiOa8_P5NYe4s&url=" + currentUrl;;

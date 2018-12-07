@@ -3,7 +3,7 @@
 	<e:Rect width="750" height="1386" x="0" y="0" fillColor="0x000000" fillAlpha="0.7"/>
 	<e:Group id="group" width="676" height="663.39" horizontalCenter="0" verticalCenter="1.5" anchorOffsetY="0">
 		<e:Image x="0" y="0" scale9Grid="15,15,96,96" width="676" height="660.85" source="mmm_dating_Backplane_07_png" scaleX="1" scaleY="1" anchorOffsetY="0"/>
-		<e:Image source="mmm_dating_header_01_png" x="111.5" y="-62.5" scaleX="1" scaleY="1"/>
+		<e:Image x="111.5" y="-62.5" scaleX="1" scaleY="1" source="efeefef_03_png"/>
 		<e:Label id="edu" text=".点击开始按钮，开始游戏 2.在游戏进行时，点击空白区域可以发射口红 3.满足通关条件，可以进入下一关 4.第一关需要射出6支口红，第二关需要射出9支口 红,第三关需要射出12支口红 5.游戏需要进行三关，胜利后可以获得奖品 6.前两关免费，第三关需要分享或付费，方可进行 7.两支口红碰撞，则游戏结束 8.奖品为名品，如口红、挎包等，活动奖励随机发 送 9.活动最终解释权归赤兔所有 10.进行游戏行为则视为知晓且遵守活动规则" x="59" y="99.42" size="26" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0x333333" anchorOffsetX="0" width="558" anchorOffsetY="0" height="514" lineSpacing="10"/>
 		<e:Image id="img_close" x="586" y="-83" source="mmm_dating_button_02_03_png" touchEnabled="true"/>
 		<e:Image x="240.5" y="-47" scaleX="1" scaleY="1" source="guize1_png"/>

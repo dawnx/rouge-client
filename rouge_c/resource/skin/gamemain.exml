@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="gamemain" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Group left="0" bottom="0" right="0" top="0" anchorOffsetX="0">
-		<e:Image source="mmm_youxi_background_01_png" y="0" scaleX="1" scaleY="1" height="1334" anchorOffsetY="0" x="2" width="746"/>
+		<e:Image y="0" scaleX="1" scaleY="1" height="1334" anchorOffsetY="0" x="2" width="746" source="efe_png"/>
 		<e:Image width="354" height="34" x="211" y="797" source="frrrty_03_png"/>
 		<e:Group id="gp_circle" width="100" height="100" anchorOffsetX="50" anchorOffsetY="50" y="500" x="375" scaleX="1" scaleY="1"/>
 		<e:Image id="img_juzi" source="mmm_youxi_picture_03_png" x="367" y="514" width="390" height="390" anchorOffsetX="190" anchorOffsetY="190" scaleX="1" scaleY="1"/>
 		<e:Rect id="rect_dangban" width="750" height="1334" x="0" y="0" fillAlpha="0" fillColor="0x000000" scaleX="1" scaleY="1" anchorOffsetY="0"/>
-		<e:Image source="mmm_dating_picture_04_png" x="0" y="0" scaleX="1" scaleY="1"/>
-		<e:Image source="mmm_youxi_Backplane_01_png" x="42" y="100" scaleX="1" scaleY="1"/>
+		<e:Image x="0" y="0" scaleX="1" scaleY="1" source="top_png" anchorOffsetY="0" height="74"/>
+		<e:Image x="42" y="100" scaleX="1" scaleY="1" source="eferfefe_03_png"/>
 		<e:Image source="mmm_youxi_Special effect_01_png" x="42" y="100.01" scaleX="1" scaleY="1"/>
 		<e:Label id="lb_time" text="30" y="120.51" size="45" x="59.51" width="51" height="51" textAlign="center" verticalAlign="middle" scaleX="1" scaleY="1" fontFamily="SimHei" textColor="0xffffff"/>
 		<e:Button id="btn_back" label="" y="21" horizontalCenter="-335.5" x="42" scaleX="1" scaleY="1" height="40" width="45">
@@ -20,17 +20,17 @@
 		</e:Button>
 		<e:Label text="(游戏正在进行时，退出不保留成绩)" x="160" y="29" size="24" scaleX="1" scaleY="1" fontFamily="SimHei" textColor="0xffffff" width="450"/>
 		<e:Label id="tuichu" text="退出" x="65" y="26" textColor="0xFFFFFF" size="30" scaleX="1" scaleY="1" fontFamily="SimHei" width="90"/>
-		<e:Image width="199" height="34" x="10" y="1165.99" source="mmm_dating_frame_04_png" anchorOffsetX="0"/>
+		<e:Image width="199" height="34" x="10" y="1165.99" anchorOffsetX="0" scale9Grid="28,0,13,42" source="frame_png"/>
 		<e:Label id="lb_rougeNum" text="" y="1167.99" size="24" x="17" height="29" textAlign="left" verticalAlign="middle" textColor="0xffffff" scaleX="1" scaleY="1" fontFamily="SimHei" anchorOffsetX="0" width="186" anchorOffsetY="0"/>
 		<e:Image id="img_rouge" source="rouge_png" x="346" y="1060"/>
 		<e:Group id="gp_rouge" width="200" height="573.39" x="0" y="760.61" anchorOffsetY="0" scaleX="1" scaleY="1" visible="false"/>
-		<e:Image source="l1_png" x="458" y="160.5"/>
-		<e:Image source="l2_png" x="565" y="160.5"/>
-		<e:Image source="l3_png" x="670.5" y="160.5"/>
+		<e:Image x="452" y="160.5" source="efef_03_png"/>
+		<e:Image x="556" y="160.5" source="efe_03_png"/>
+		<e:Image x="660.5" y="160.5" source="rgrg_03_png"/>
 		<e:Image source="mmm_shouchong_icon_04_png" x="691.5" y="80.18" anchorOffsetX="0" width="41" anchorOffsetY="0" height="40.33"/>
-		<e:Image id="level3" width="127" height="29" x="603" y="120.01" source="lll_png"/>
-		<e:Image id="level2" width="127" height="29" x="492" y="120.01" source="lll_png"/>
-		<e:Image id="level1" width="127" height="29" x="384" top="121" source="level_png"/>
+		<e:Image id="level3" width="127" height="29" x="603" y="120.01" source="66u6_png"/>
+		<e:Image id="level2" width="127" height="29" x="492" y="120.01" source="66u6_png"/>
+		<e:Image id="level1" width="127" height="29" x="384" top="121" source="lev_png"/>
 
 
 
@@ -38,11 +38,11 @@
 
 		<e:Group id="rankgroup" width="81" height="200" x="648" y="960.81">
 			
-			<e:Image width="68" height="312" x="8" y="-75.82" source="mmm_dating_frame_04_png" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1"/>
-			<e:Image width="40" height="40" y="-59.82" source="mmm_youxi_icon_02_png" x="22" scaleX="1" scaleY="1"/>
-			<e:Image id="headicon1" width="54" height="54" y="12.75" source="mmm_youxi_Backplane_03_png" x="15" scaleX="1" scaleY="1"/>
-			<e:Image id="headicon2" width="54" height="54" y="90.51" source="mmm_youxi_Backplane_03_png" x="15" scaleX="1" scaleY="1"/>
-			<e:Image width="54" height="54" y="165.18" source="mmm_youxi_Backplane_03_png" x="15" scaleX="1" scaleY="1"/>
+			<e:Image width="68" height="312" x="8" y="-75.82" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" source="frame_png" scale9Grid="5,3,34,24"/>
+			<e:Image width="40" height="40" y="-59.82" x="22" scaleX="1" scaleY="1" source="libao_png"/>
+			<e:Image id="headicon1" width="54" height="54" y="12.75" x="15" scaleX="1" scaleY="1" source="eferfefe_03_png"/>
+			<e:Image id="headicon2" width="54" height="54" y="90.51" x="15" scaleX="1" scaleY="1" source="eferfefe_03_png"/>
+			<e:Image width="54" height="54" y="165.18" x="15" scaleX="1" scaleY="1" source="dfef_03_png"/>
 			<e:Image width="20" height="20" y="68.58" source="mmm_youxi_picture_02_png" x="32" scaleX="1" scaleY="1"/>
 			<e:Image width="20" height="20" y="146.35" source="mmm_youxi_picture_02_png" x="32" scaleX="1" scaleY="1"/>
 			<e:Image width="20" height="20" y="-10.29" source="mmm_youxi_picture_02_png" x="32" scaleX="1" scaleY="1"/>

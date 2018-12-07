@@ -10,6 +10,12 @@ class AddressPanel extends eui.Component {
     private _tel_null: eui.Image;
     private _addr_null: eui.Image;
 
+    private _check1: eui.RadioButton;
+    private _check2: eui.RadioButton;
+    private _check3: eui.RadioButton;
+    private itemId: number = 20000;
+
+
     private _sendGroup: eui.Image;
     private _closeAll: eui.Image;
 
@@ -27,11 +33,14 @@ class AddressPanel extends eui.Component {
         this._sendBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickSendBtnGame, this);
         this._closeAll.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickCloseAllBtn, this);
 
+        this._check1.addEventListener(eui.UIEvent.CHANGE, this.changeCheck1, this);
+        this._check2.addEventListener(eui.UIEvent.CHANGE, this.changeCheck2, this);
+        this._check3.addEventListener(eui.UIEvent.CHANGE, this.changeCheck3, this);
+
         EventManager.getInstance().addEventListener(ApiEvent.ADDRESS_INFO, this.refershAddressInfo, this);
 
     }
     private init() {
-        this._name.text = "";
     }
     private refershAddressInfo() {
         if (Data.GameContext.address.name) {
@@ -45,7 +54,15 @@ class AddressPanel extends eui.Component {
         }
 
     }
-
+    private changeCheck1() {
+        this.itemId = 20000;
+    }
+    private changeCheck2() {
+        this.itemId = 20001;
+    }
+    private changeCheck3() {
+        this.itemId = 20002;
+    }
     private onclickCloseAllBtn() {
         this._sendGroup.visible = false;
         this.parent.removeChild(this);
@@ -72,7 +89,7 @@ class AddressPanel extends eui.Component {
         if (this._name.text != "" &&
             this._tel.text != "" &&
             this._addr.text != "") {
-            AddressApi.sendAddressInfo(this._name.text, this._tel.text, this._addr.text);
+            AddressApi.sendAddressInfo(this._name.text, this._tel.text, this._addr.text, this.itemId);
             this._sendGroup.visible = true;
         }
     }

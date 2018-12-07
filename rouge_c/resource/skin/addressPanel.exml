@@ -20,17 +20,20 @@
 		<e:Image id="_sendBtn" source="mmm_khj_button_01_png" x="165.5" y="1016"/>
 		<e:Image x="271.5" y="293" anchorOffsetX="0" width="217" source="libao_png"/>
 		<e:Image source="mmm_khj_picture_02_png" x="303.5" y="1028" touchEnabled="false"/>
+		<e:Image source="f5t5_06_png" x="351.5" y="615"/>
+		<e:Image source="efrgfrgfr_06_png" x="351.5" y="665"/>
+		<e:Image source="ujui_06_png" x="351.5" y="717"/>
+		<e:RadioButton id="_check1" label="" x="313.5" y="616" scaleX="1.5" scaleY="1.5" anchorOffsetX="0" width="129.33"/>
+		<e:RadioButton id="_check2" label="" x="313.5" y="665" scaleX="1.5" scaleY="1.5" anchorOffsetX="0" width="141.33"/>
+		<e:RadioButton id="_check3" label="" x="313.5" y="717" scaleX="1.5" scaleY="1.5" anchorOffsetX="0" width="167"/>
 		<e:Group id="_sendGroup" width="581.82" height="287.88" x="173" y="701" anchorOffsetX="0" anchorOffsetY="0" visible="false">
 			<e:Image x="-131" y="-28" scale9Grid="15,15,96,96" width="676" height="302" source="mmm_dating_Backplane_07_png" scaleX="1" scaleY="1" anchorOffsetY="0"/>
-			<e:Image source="mmm_dating_header_01_png" x="-22.5" y="-87.5" scaleX="1" scaleY="1"/>
+			<e:Image x="-22.5" y="-87.5" scaleX="1" scaleY="1" source="efeefef_03_png"/>
 			<e:Image source="mmm_dating_Art-word_05_png" x="170" y="-70" scaleX="1" scaleY="1"/>
-			<e:Label id="edu" text="领取成功！" x="89" y="67.00000000000011" size="38" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0xFC548E" anchorOffsetX="0" width="236" anchorOffsetY="0" height="62" verticalAlign="middle" textAlign="center"/>
+			<e:Label id="edu" text="领取成功！" x="89" y="67.00000000000011" size="38" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" anchorOffsetX="0" width="236" anchorOffsetY="0" height="62" verticalAlign="middle" textAlign="center" textColor="0xed8a0e"/>
 			<e:Image id="_closeAll" source="mmm_dating_button_03_png" x="99" y="178" scaleX="1" scaleY="1"/>
 			<e:Label text="确定" x="179" y="199.0000000000001" size="28" fontFamily="SimHei" scaleX="1" scaleY="1" touchEnabled="false" textColor="0xFFFFFF"/>
 		</e:Group>
-		<e:CheckBox id="_check1" label="迪奥口红" x="313.5" y="634.5" scaleX="1" scaleY="1"/>
-		<e:CheckBox id="_check2" label="Zippo打火机" x="313.5" y="679.5" scaleX="1" scaleY="1"/>
-		<e:CheckBox id="_check3" label="飞利浦剃须刀" x="313.5" y="725.5" scaleX="1" scaleY="1"/>
 		<e:Image source="gthgth_06_png" x="130.5" y="630.5"/>
 	</e:Group>
 </e:Skin>

@@ -62,7 +62,6 @@ class HallPanel extends eui.Component {
         ShareInfoApi.getShareInfo();
         // 绑定talkingData
         this.bindAccountInfo();
-
     }
     // //注册、登录、切换帐户、唤醒游戏时传入玩家账户信息
     private bindAccountInfo() {

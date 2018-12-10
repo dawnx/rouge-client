@@ -16,6 +16,7 @@ class PayContinue extends eui.Component {
         super.childrenCreated();
         this.init();
         this.img_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickShare, this);
+        // this.img_close.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onPaySuccessContinue, this);
         this.btnQueding.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickQueding, this);
         this._reGame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickClose, this);
 

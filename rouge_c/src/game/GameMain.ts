@@ -21,8 +21,8 @@ class GameMain extends eui.Component {
     private lb_rougeNum: eui.Label;
     //反转方向
     private _fangxiang: number = 360;
-    private timer: egret.Timer;
-    public render: egret.Timer;
+    private timer: DateTimer;
+    public render: DateTimer;
     private rotateArr: number[] = [];
     private rougeArr: egret.Bitmap[] = [];
     private rect_dangban: eui.Rect;
@@ -42,15 +42,22 @@ class GameMain extends eui.Component {
     private headicon2: eui.Image;
     private selfrank: eui.Label;
     private rankgroup: eui.Group;
-    private baozha: egret.MovieClip
+    // private baozha: egret.MovieClip
+    private juice: particle.ParticleSystem;
+    private orangeTween: eui.Group;
+    private halfOrange: egret.tween.TweenGroup;
+
+    private config;
     public constructor(_goodsItemData: Data.SubGame, mainsence: ShopMain) {
         super()
         this.goodsItemData = _goodsItemData;
         this.m_mainsence = mainsence;
         this.skinName = "resource/skin/gamemain.exml";
+        this.config = RES.getRes("speedConfig_json");
     }
     public childrenCreated() {
         super.childrenCreated();
+        //关卡配置
         this.tuichu.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickBack, this);
         this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickBack, this);
         console.log("**********this.goodsItemData.gameType    " + this.goodsItemData.gameType
@@ -66,25 +73,34 @@ class GameMain extends eui.Component {
         }
         this.rect_dangban.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickInsert, this);
         this.initRank();
-        this.render = new egret.Timer(35);
+        //this.render = new egret.Timer(35);
+        this.render = new DateTimer(17);
         this.render.addEventListener(egret.TimerEvent.TIMER, this.update, this);
         this.render.start();
         // egret.Ticker.getInstance().register(function () {
 
         //     this.update();
         // }, this);
-        var data = RES.getRes("baozha_json");
-        var txtr = RES.getRes("baozha_png");
-        var mcFactory: egret.MovieClipDataFactory = new egret.MovieClipDataFactory(data, txtr);
-        this.baozha = new egret.MovieClip(mcFactory.generateMovieClipData("baozha"));
-        this.baozha.x = 167;
-        this.baozha.y = 314;
-        this.baozha.width = 390;
-        this.baozha.height = 390;
-        this.baozha.visible = false;
-        // this.baozha.gotoAndPlay(0,-1);
-        this.addChild(this.baozha);
+        // var data = RES.getRes("baozha_json");
+        // var txtr = RES.getRes("baozha_png");
+        // var mcFactory: egret.MovieClipDataFactory = new egret.MovieClipDataFactory(data, txtr);
+        // this.baozha = new egret.MovieClip(mcFactory.generateMovieClipData("baozha"));
+        // this.baozha.x = 167;
+        // this.baozha.y = 314;
+        // this.baozha.width = 390;
+        // this.baozha.height = 390;
+        // this.baozha.visible = false;
+        // // this.baozha.gotoAndPlay(0,-1);
+        // this.addChild(this.baozha);
+
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemove, this)
+
+        //喷溅粒子加载
+        var texture = RES.getRes("juice_png");
+        var config = RES.getRes("juice_json");
+        this.juice = new particle.GravityParticleSystem(texture, config);
+        this.juice.x = this.penjian.x;
+        this.juice.y = this.penjian.y;
     }
 
     private initRank() {
@@ -154,7 +170,8 @@ class GameMain extends eui.Component {
         console.log("倒计时" + time)
         if (this.timer)
             this.timer.stop();
-        this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
+        egret.Timer
+        this.timer = new DateTimer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
         this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, onTimerComplete, this);
         this.timer.start();
@@ -176,6 +193,7 @@ class GameMain extends eui.Component {
         }
         //转速
         this.speed = this.getSpeed(this._level);
+        this.targetSpeed = this.speed; //设置初始目标速度，实现首次进入转盘从0加速的效果；
         console.log("速度" + this.speed)
         let random = Math.random();
         console.log(random)
@@ -217,10 +235,13 @@ class GameMain extends eui.Component {
         //倒计时获取
         let time = this.getTime(this._level);
         console.log("倒计时" + time)
-        this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
+
+
+        this.timer = new DateTimer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
         this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, onTimerComplete, this);
         this.timer.start();
+
         this.miao = time;
         function onTimer(evt: egret.TimerEvent): void {
             this.miao--;
@@ -240,6 +261,7 @@ class GameMain extends eui.Component {
         }
         //转速
         this.speed = this.getSpeed(this._level);
+        this.targetSpeed = this.speed; //设置初始目标速度，实现首次进入转盘从0加速的效果；
         console.log("速度" + this.speed)
 
     }
@@ -291,13 +313,44 @@ class GameMain extends eui.Component {
 
     //每帧调用
 
-    private aspeed = 20;
+    private aspeed = 0;//实际运行速度
+    private prevSpeed = 0;
+    private targetSpeed = 0;
+    //private maxSpeed = this.config["maxSpeed"];//额外速度变化，数值越大速度变化越大
+    //private paceToTarget = this.config.paceToTarget;//达到target花费帧数
     private doudong = 0;
     private penjian: eui.Image;
     private rightrotaion = true;
+
+    //设置转换窗口时间，防止短时间频繁切换(数字表示帧数)
+    //private switchLimit: number = this.config.switchLimit;
+    private nowDuring: number = 0;
+
     private update() {
-        this.gp_circle.rotation += (this.speed + this.aspeed);
-        this.img_juzi.rotation += (this.speed + this.aspeed);
+        //时间超过窗口期，设置切换状态
+        if (this.nowDuring >= this.config.switchLimit) {
+            this.prevSpeed = this.aspeed;
+            this.rightrotaion = Math.random() > 0.5 ? true : false;
+            this.targetSpeed = (this.rightrotaion ? 1 : -1) * (this.speed + this.config.maxSpeed * Math.random());
+            this.nowDuring = 0;
+            console.log("isChange!targetSpeed=" + this.targetSpeed + "------prevSpeed=" + this.prevSpeed);
+        }
+
+        if (!Data.GameContext.isWin && this.gp_circle.numChildren > 10 && this._level == 3) {
+            this.targetSpeed = (this.rightrotaion ? 1 : -1) * (15 + this.config.maxSpeed * Math.random());
+        }
+
+        this.nowDuring++;
+        if (this.targetSpeed - this.prevSpeed > 0) {
+            let over = this.targetSpeed - this.prevSpeed;//根据速度差保证在一定帧数之内达到target速度;
+            this.aspeed = (this.aspeed > this.targetSpeed) ? this.targetSpeed : this.aspeed + over / this.config.paceToTarget;
+        } else if (this.targetSpeed - this.prevSpeed < 0) {
+            let over = this.prevSpeed - this.targetSpeed;
+            this.aspeed = (this.aspeed < this.targetSpeed) ? this.targetSpeed : this.aspeed - over / this.config.paceToTarget;
+        }
+        //console.log("during:"+ this.nowDuring);
+        this.gp_circle.rotation += this.aspeed;
+        this.img_juzi.rotation += this.aspeed;
 
         this.gp_circle.y -= this.doudong;
         this.img_juzi.y -= this.doudong;
@@ -309,15 +362,15 @@ class GameMain extends eui.Component {
             this.doudong = -20;
 
 
-        if (this.aspeed > 20)
-            this.rightrotaion = true;
-        if (this.aspeed < -20)
-            this.rightrotaion = false;
+        // if (this.aspeed > 20)
+        //     this.rightrotaion = true;
+        // if (this.aspeed < -20)
+        //     this.rightrotaion = false;
 
-        if (this.rightrotaion)
-            this.aspeed -= 1;
-        else
-            this.aspeed += 1;
+        // if (this.rightrotaion)
+        //     this.aspeed -= 1;
+        // else
+        //     this.aspeed += 1;
 
 
         if (this._level == 2)
@@ -355,7 +408,11 @@ class GameMain extends eui.Component {
             this.isMoving = false;
             this.doudong = 20;
             utils.SoundUtils.instance().playbit();
-            this.penjian.visible = true;
+            //this.penjian.visible = true;
+            this.juice.x = this.penjian.x;
+            this.juice.y = this.penjian.y;
+            this.addChild(this.juice);
+            this.juice.start(100);
             this.rect_dangban.touchEnabled = true;
             var tmpP = this.localToGlobal(this.rouge.x, this.rouge.y);
             // console.log(tmpP.x + "##" + tmpP.y)
@@ -445,24 +502,28 @@ class GameMain extends eui.Component {
             // 触发必死；
             let num: number = this.gp_circle.numChildren;
             let rouNum: number = this.getRougeNum(this._level);
-            console.log("Data.GameContext.isWin   " + Data.GameContext.isWin);
+            //console.log("Data.GameContext.isWin   " + Data.GameContext.isWin);
             if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
                 //let pes = (rouNum - num) / rouNum;
                 // if (pes <= 0.2) {
-                if (num >= 11) {
-                    console.log("enter dead");
+                if (num >= 12) {
+                    //console.log("enter dead");
                     if (Data.GameContext.isWin == false && this._level == 3) {
-                        console.log("Data.GameContext.isWin    " + Data.GameContext.isWin);
+                        //console.log("Data.GameContext.isWin    " + Data.GameContext.isWin);
                         var zuixiao = 360;
                         var zuixiaoindex = 0;
                         for (let i = 0; i < this.rArr.length - 1; i++) {
                             var temp = Math.abs(ro - this.rArr[i])
-                            if (temp < zuixiao)
+                            if (temp < zuixiao){
+                                zuixiao = temp;
                                 zuixiaoindex = i;
+                            }
                         }
 
                         this.rougeArr[zuixiaoindex].rotation = this.rouge.rotation + 10;
                         this.rotateArr[zuixiaoindex] = this.rotateArr[this.rotateArr.length - 1] + 10;
+                        this.rougeArr[zuixiaoindex].x = this.rouge.x;
+                        this.rougeArr[zuixiaoindex].y = this.rouge.y;
                         //Data.GameContext.isWin = true;
                     }
                 }
@@ -486,7 +547,7 @@ class GameMain extends eui.Component {
                             if (this.goodsItemData.gameType == Data.GameType.TI_YAN
                                 || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                                 this.render.stop();
-                                egret.Tween.get(this.rougeArr[i], { loop: false }).to({ y: this.rougeArr[i].y + 300 }, 1000)
+                                egret.Tween.get(this.rougeArr[i], { loop: false }).to({ y: this.rougeArr[j].y + 300 }, 1000)
                                     .call(() => {
                                         // this.render.start();
                                         this.GameOver();
@@ -510,20 +571,23 @@ class GameMain extends eui.Component {
                 //判断 已扎中口红数 如果已扎中数大于定值，则过关（type!=3）
                 if (num >= rouNum && this.goodsItemData.gameType != Data.GameType.JING_SU) {
                     this._level++;
+                    this.rect_dangban.visible = false;
                     this.speed = this.getSpeed(this._level);
                     console.log("过关之后的速度" + this.speed)
-
                     this.img_guan.source = "resource/assets/game/guan" + this._level + ".png";
 
                     if (this._level == 2 && this.goodsItemData.gameType == 1) {
                         window['TDGA'].onMissionCompleted("第一关完成");
                         window['TDGA'].onMissionBegin("进入游戏第二关");
                         this.penjian.visible = false;
-                        this.gp_circle.visible = false;
+                        //this.gp_circle.visible = false;
+                        this.timer.stop();
+                        this.render.stop();
                         this.img_juzi.visible = false;
-                        this.baozha.visible = true;
-                        this.baozha.gotoAndPlay(0);
-                        // return;
+                        // this.baozha.visible = true;
+                        // this.baozha.gotoAndPlay(0);
+                        this.showHalfAnimate();
+                        return;
                     }
 
                     // 玩完三关的时候 
@@ -537,8 +601,9 @@ class GameMain extends eui.Component {
                         this.penjian.visible = false;
                         this.gp_circle.visible = false;
                         this.img_juzi.visible = false;
-                        this.baozha.visible = true;
-                        this.baozha.gotoAndPlay(0);
+                        // this.baozha.visible = true;
+                        // this.baozha.gotoAndPlay(0);
+                        this.showHalfAnimate();
                         return;
                     }
                     if (this._level == 4 && this.goodsItemData.gameType == 1) {
@@ -548,33 +613,55 @@ class GameMain extends eui.Component {
                         this.stage.addChild(new AddressPanel());
                         this.timer.stop();
                         this.render.stop();
-
+                        this.showHalfAnimate();
                         return;
                     }
-                    this.timer.stop();
-                    if (this._level >= 4 && this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
-                        //弹出弹窗 付费模式结束
-                        console.log("通关 获得奖励")
-                        console.log("通关subGameId     " + this.goodsItemData.subGameId)
-                        RougeGameApi.gameEnd(this.goodsItemData.subGameId, GameEnd.RESULT_WIN, this._level, this.score, this.miao);
-                        this.addChild(new OverSuccess(this.score, this.goodsItemData.gameType, this._level))
-                        this.timer.stop();
-
-                    } else {
-                        for (let i = 0; i < this.shadow.length; i++) {
-                            this.removeChild(this.shadow[i]);
-                        }
-                        this.shadow = [];
-                        this.guoguan();
-                    }
-                    console.log(this._level + "关")
 
                 }
-
 
             }
 
         }
+    }
+
+    //独立出通关动画和后续处理
+    private showHalfAnimate() {
+        let gpchildNum = this.gp_circle.numChildren;
+        for (let i = 0; i < gpchildNum; i++) {
+            let a = this.gp_circle.getChildAt(i);
+            // console.log(a);
+            let aRotation = a.rotation + 90;
+            egret.Tween.get(a).to({ rotation: aRotation }, 500);
+        }
+        let originY = this.gp_circle.y;
+        egret.Tween.get(this.gp_circle).to({ y: originY + 1800 }, 1000).call(function () {
+            this.gp_circle.removeChildren();
+            this.gp_circle.y = originY;
+        }, this);
+        this.orangeTween.visible = true;
+        this.halfOrange.play();
+        this.halfOrange.addEventListener(egret.Event.COMPLETE, function () {
+            this.halfOrange.stop();
+            this.timer.stop();
+            if (this._level >= 4 && this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
+                //弹出弹窗 付费模式结束
+                console.log("通关 获得奖励")
+                console.log("通关subGameId     " + this.goodsItemData.subGameId)
+                RougeGameApi.gameEnd(this.goodsItemData.subGameId, GameEnd.RESULT_WIN, this._level, this.score, this.miao);
+                this.addChild(new OverSuccess(this.score, this.goodsItemData.gameType, this._level))
+                this.timer.stop();
+
+            } else if ((this._level == 3 || this._level == 4) && this.goodsItemData.gameType == 1) {
+                return;
+            } else {
+                for (let i = 0; i < this.shadow.length; i++) {
+                    this.removeChild(this.shadow[i]);
+                }
+                this.shadow = [];
+                this.guoguan();
+            }
+            console.log(this._level + "关")
+        }, this);
     }
 
     public guoguan() {
@@ -584,7 +671,7 @@ class GameMain extends eui.Component {
             console.log("延时三秒:", arg);
             this.gp_circle.visible = true;
             this.img_juzi.visible = true;
-            this.baozha.visible = false;
+            // this.baozha.visible = false;
             this.initGame();
         }, this, 2000, "egret");
     }
@@ -615,7 +702,7 @@ class GameMain extends eui.Component {
         console.log("当前速度" + this.speed);
         if (this.timer)
             this.timer.stop();
-        this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
+        this.timer = new DateTimer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
         this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, onTimerComplete, this);
         this.timer.start();
@@ -690,7 +777,7 @@ class GameMain extends eui.Component {
             this.timer.stop();
         let time = this.getTime(this._level);
         console.log("倒计时" + time)
-        this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
+        this.timer = new DateTimer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
         this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, onTimerComplete, this);
         this.timer.start();
@@ -743,7 +830,7 @@ class GameMain extends eui.Component {
         console.log("倒计时" + time);
         if (this.timer)
             this.timer.stop();
-        this.timer = new egret.Timer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
+        this.timer = new DateTimer(1000, time);//1000代表1秒执行一次，60代表执行60次，这样实现的一分钟计时
         this.timer.addEventListener(egret.TimerEvent.TIMER, onTimer, this);
         this.timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, onTimerComplete, this);
         this.timer.start();
@@ -775,45 +862,7 @@ class GameMain extends eui.Component {
         // }
     }
 
-    //关卡配置
-    public config = {
-        'lev0': {
-            'zhuansu': 4,
-            'time': 45,
-            'rougeNum': 3
 
-        },
-        'lev1': {
-            'zhuansu': 4,
-            'time': 30,
-            'rougeNum': 6
-
-        },
-        'lev2': {
-            'zhuansu': 5,
-            'time': 30,
-            'rougeNum': 9
-
-        },
-        'lev3': {
-            'zhuansu': 6,
-            'time': 30,
-            'rougeNum': 13
-
-        },
-        'lev4': {
-            'zhuansu': 6,
-            'time': 15,
-            'rougeNum': 15
-
-        },
-        'lev5': {
-            'zhuansu': 11,
-            'time': 15,
-            'rougeNum': 20
-
-        }
-    }
     private getTime(num: number) {
         return this.config["lev" + num]['time'];
     }

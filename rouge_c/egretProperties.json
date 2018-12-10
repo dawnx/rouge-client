@@ -29,6 +29,10 @@
       "path": "../libsrc"
     },
     {
+      "name": "particle",
+      "path": "../particle"
+    },
+    {
       "name": "md5",
       "path": "../md5"
     }

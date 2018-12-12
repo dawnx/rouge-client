@@ -16,9 +16,11 @@ class AddressApi {
 
         // 解析
         var data: Data.Address = JSON.parse(request.response).data;
-        console.log("get address data : ", data);
-        Data.GameContext.address = data;
-        EventManager.getInstance().SendEvent(ApiEvent.ADDRESS_INFO);
+        if (data) {
+            console.log("get address data : ", data);
+            Data.GameContext.address = data;
+            EventManager.getInstance().SendEvent(ApiEvent.ADDRESS_INFO);
+        }
         // 打印日志；addr: "xxxx",caId: 1,name: "xxx",tel: "xxxxxxx",uid: 100002,updateTime: 1543645648000
 
     }

@@ -1,3 +1,4 @@
+
 class HallPanel extends eui.Component {
     private group: eui.Group;
     private _startGameBtn: eui.Image;
@@ -78,8 +79,10 @@ class HallPanel extends eui.Component {
 
     private onclickKefu() {
         this._kefuPanel.visible = true;
+        showQRCode();
     }
     private onclickKefuClose() {
+        closeQRCode();
         this._kefuPanel.visible = false;
     }
     private onclickReward() {
@@ -93,7 +96,7 @@ class HallPanel extends eui.Component {
     }
 
     private onget() {
-        ShareInfoApi.getShareInfo();
+        // ShareInfoApi.getShareInfo();
     }
     private onsend() {
         ShareInfoApi.sendShareComplateInfo();
@@ -126,3 +129,6 @@ class HallPanel extends eui.Component {
 
 
 }
+
+declare function showQRCode();
+declare function closeQRCode();

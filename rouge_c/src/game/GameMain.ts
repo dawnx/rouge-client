@@ -46,6 +46,8 @@ class GameMain extends eui.Component {
     private juice: particle.ParticleSystem;
     private orangeTween: eui.Group;
     private halfOrange: egret.tween.TweenGroup;
+    private kick_rouge: eui.Image;
+    private kickOut: egret.tween.TweenGroup;
 
     private config;
     public constructor(_goodsItemData: Data.SubGame, mainsence: ShopMain) {
@@ -58,8 +60,7 @@ class GameMain extends eui.Component {
     public childrenCreated() {
         super.childrenCreated();
         //关卡配置
-        this.tuichu.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickBack, this);
-        this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onclickBack, this);
+
         console.log("**********this.goodsItemData.gameType    " + this.goodsItemData.gameType
             + "  goodsFenqu     " + this.goodsItemData.priceGroup
             + "     goodsType     " + this.goodsItemData.gameGroup)
@@ -72,7 +73,7 @@ class GameMain extends eui.Component {
             this.init();
         }
         this.rect_dangban.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickInsert, this);
-        this.initRank();
+        // this.initRank();
         //this.render = new egret.Timer(35);
         this.render = new DateTimer(17);
         this.render.addEventListener(egret.TimerEvent.TIMER, this.update, this);
@@ -101,42 +102,6 @@ class GameMain extends eui.Component {
         this.juice = new particle.GravityParticleSystem(texture, config);
         this.juice.x = this.penjian.x;
         this.juice.y = this.penjian.y;
-    }
-
-    private initRank() {
-        if (LayerUtil.gameMain.goodsItemData.priceGroup == 0 && LayerUtil.gameMain.goodsItemData.gameType != Data.GameType.TI_YAN) {
-            var num = 0;
-            for (var i = 0; i < Data.GameContext.rankDataArray.length; i++) {
-                if (Data.GameContext.rankDataArray[i].uid == Data.GameContext.player.uid)
-                    num = i;
-            }
-            // num = 3;
-            if (num > 0)
-                this.selfrank.text = "" + (num + 1);
-            else
-                this.selfrank.text = "?";
-
-            if (num >= 1) {
-                this.headicon1.source = "mmm_youxi_Backplane_03_png";
-                this.headicon2.source = "mmm_youxi_Backplane_03_png";
-            }
-            if (num >= 2) {
-                this.headicon1.source = "mmm_youxi_Backplane_03_png";
-                this.headicon2.source = Data.GameContext.rankDataArray[num - 1].headPic;
-            }
-            if (num >= 3) {
-                this.headicon1.source = Data.GameContext.rankDataArray[num - 2].headPic;
-                this.headicon2.source = Data.GameContext.rankDataArray[num - 1].headPic;
-            }
-        } else {
-            this.rankgroup.visible = false;
-        }
-
-    }
-
-    private onclickBack() {
-        this.timer.stop();
-        this.parent.removeChild(this);
     }
 
     private onRemove() {
@@ -252,12 +217,7 @@ class GameMain extends eui.Component {
             console.log("倒计时:" + this.miao);
         }
         function onTimerComplete(evt: egret.TimerEvent): void {
-            console.log("限时模式结束");
-            this.rect_dangban.visible = false;
-            // this.GameOver();
-            this.timer.stop();
-            console.log("定时器停止");
-            this.stage.addChild(new XsOver(this.score, this._type, this.goodsItemData, this.m_mainsence));
+
         }
         //转速
         this.speed = this.getSpeed(this._level);
@@ -294,6 +254,16 @@ class GameMain extends eui.Component {
     private img_rouge: eui.Image;
     private onClickInsert() {
         // 创建口红
+        if (this.gp_circle.numChildren == 10) {
+            this.is11 = true;
+            this.targetSpeed = -this.targetSpeed * 3;
+        } else if (this.gp_circle.numChildren == 11) {
+            this.is12 = true;
+            this.targetSpeed = -this.targetSpeed * 3;
+        } else if (this.gp_circle.numChildren == 12) {
+            this.is13 = true;
+            this.targetSpeed = -this.targetSpeed * 4;
+        }
         this.rouge = new egret.Bitmap();
         this.rouge.texture = RES.getRes("rouge_png");
         this.rouge.anchorOffsetX = this.rouge.width / 2;
@@ -308,6 +278,8 @@ class GameMain extends eui.Component {
         let currentpop = this.zidanarr.pop();
         if (this.contains(currentpop))
             this.removeChild(currentpop);
+
+
     }
 
 
@@ -326,6 +298,9 @@ class GameMain extends eui.Component {
     //private switchLimit: number = this.config.switchLimit;
     private nowDuring: number = 0;
 
+    private is11 = false;
+    private is12 = false;
+    private is13 = false;
     private update() {
         //时间超过窗口期，设置切换状态
         if (this.nowDuring >= this.config.switchLimit) {
@@ -336,9 +311,38 @@ class GameMain extends eui.Component {
             console.log("isChange!targetSpeed=" + this.targetSpeed + "------prevSpeed=" + this.prevSpeed);
         }
 
-        if (!Data.GameContext.isWin && this.gp_circle.numChildren > 10 && this._level == 3) {
-            this.targetSpeed = (this.rightrotaion ? 1 : -1) * (15 + this.config.maxSpeed * Math.random());
+        var totalNum: number = this.getRougeNum(this._level);
+        var currentNum: number = totalNum - this.gp_circle.numChildren;
+        // 妥协原代码逻辑的写法…实现最后三次的切换
+        if (!Data.GameContext.isWin && currentNum < 4 && this._level == 3 && this.is11) {
+            // if (currentNum < 4 && this._level == 1) {
+            if (this.isMoving) {
+                console.log("jinru必杀范围了");
+                this.rightrotaion = !this.rightrotaion;
+                this.targetSpeed = (this.rightrotaion ? 1 : -1) * ((this.config.extraBase)
+                    + (this.gp_circle.numChildren - 10) * this.config.extraSpeed);
+                this.is11 = false;
+                console.log("extra!" + this.targetSpeed);
+            }
+        } else if (!Data.GameContext.isWin && currentNum < 4 && this._level == 3 && this.is12) {
+            this.rightrotaion = !this.rightrotaion;
+            this.targetSpeed = (this.rightrotaion ? 1 : -1) * ((this.config.extraBase)
+                + (this.gp_circle.numChildren - 10) * this.config.extraSpeed);
+            this.is12 = false;
+            console.log("extra!" + this.targetSpeed);
+        } else if (!Data.GameContext.isWin && currentNum < 4 && this._level == 3 && this.is13) {
+            this.rightrotaion = !this.rightrotaion;
+            this.targetSpeed = (this.rightrotaion ? 1 : -1) * ((this.config.extraBase)
+                + (this.gp_circle.numChildren - 10) * this.config.extraSpeed);
+            this.is13 = false;
+            console.log("extra!" + this.targetSpeed);
+        } else if (!Data.GameContext.isWin && currentNum < 4 && this._level == 3) {
+            this.targetSpeed = (this.rightrotaion ? 1 : -1) * ((this.config.extraBase + this.config.maxSpeed)
+                + (this.gp_circle.numChildren - 10) * this.config.extraSpeed);
+            console.log("final--------" + this.targetSpeed);
         }
+
+
 
         this.nowDuring++;
         if (this.targetSpeed - this.prevSpeed > 0) {
@@ -403,224 +407,272 @@ class GameMain extends eui.Component {
     private rArr: number[] = [];
     private isMove() {
         /**碰撞检测 */
+        let isKick = false;
         if (this.rouge.y < this.fly_juli) {
             this.img_rouge.visible = true;
             this.isMoving = false;
-            this.doudong = 20;
-            utils.SoundUtils.instance().playbit();
-            //this.penjian.visible = true;
-            this.juice.x = this.penjian.x;
-            this.juice.y = this.penjian.y;
-            this.addChild(this.juice);
-            this.juice.start(100);
-            this.rect_dangban.touchEnabled = true;
-            var tmpP = this.localToGlobal(this.rouge.x, this.rouge.y);
-            // console.log(tmpP.x + "##" + tmpP.y)
-            var realP = this.gp_circle.globalToLocal(tmpP.x, tmpP.y);
-            // console.log(realP.x + "%%%" + realP.y);
-            this.rouge.x = realP.x;
-            this.rouge.y = realP.y;
-            this.rouge.rotation = -this.gp_circle.rotation;
-            this.gp_circle.addChild(this.rouge);
-            this.score = this.gp_circle.numChildren;
-
-            // console.log("已有的口红的角度" + this.rouge.rotation)
-            // 把口红的角度装进数组
-            let ro = Math.floor(this.rouge.rotation);
-            if (ro < 0) {
-                ro = 360 + ro;
+            let nowRotation = Math.floor(-this.gp_circle.rotation);
+            if (nowRotation < 0) {
+                nowRotation = 360 + nowRotation;
             }
-            this.rotateArr.push(ro);
-            this.rougeArr.push(this.rouge);
-            console.log(this.rotateArr);
-            this.rArr = this.rotateArr;
-            if (this.goodsItemData.gameType == 3) {
-                //上帝视角
-                console.log(this.score)
-                if (this.score <= 6 && this.score > 0) {
-                    this.rouge.scaleX = 1;
-                    this.rouge.scaleY = 1;
-                    this.jiaodu = 10;
-                    // this.fly_juli = 750;
-                    //获取已经扎过的口红 变小
-                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                        let a = this.gp_circle.getChildAt(i);
-                        // console.log(a);
-                        a.scaleX = 1;
-                        a.scaleY = 1;
-                    }
-                } else if (this.score <= 10 && this.score > 6) {
-                    this.rouge.scaleX = 0.8;
-                    this.rouge.scaleY = 0.8;
-                    this.jiaodu = 8;
-                    // this.fly_juli = 750;
-                    //获取已经扎过的口红 变小
-                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                        let a = this.gp_circle.getChildAt(i);
-                        // console.log(a);
-                        a.scaleX = 0.8;
-                        a.scaleY = 0.8;
-                    }
-                } else if (this.score <= 15 && this.score > 10) {
-                    this.rouge.scaleX = 0.6;
-                    this.rouge.scaleY = 0.8;
-                    this.jiaodu = 6;
-                    // this.fly_juli = 750;
-                    //获取已经扎过的口红 变小
-                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                        let a = this.gp_circle.getChildAt(i);
-                        // console.log(a);
-                        a.scaleX = 0.6;
-                        a.scaleY = 0.8;
-                    }
-                } else if (this.score <= 20 && this.score > 15) {
-                    this.rouge.scaleX = 0.4;
-                    this.rouge.scaleY = 0.6;
-                    this.jiaodu = 4;
-                    // this.fly_juli = 750;
-                    //获取已经扎过的口红 变小
-                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                        let a = this.gp_circle.getChildAt(i);
-                        // console.log(a);
-                        a.scaleX = 0.4;
-                        a.scaleY = 0.6;
-                    }
-                } else if (this.score > 20) {
-                    this.rouge.scaleX = 0.2;
-                    this.rouge.scaleY = 0.5;
-                    this.jiaodu = 2;
-                    // this.fly_juli = 750;
-                    //获取已经扎过的口红 变小
-                    for (let i = 0; i < this.gp_circle.numChildren; i++) {
-                        let a = this.gp_circle.getChildAt(i);
-                        // console.log(a);
-                        a.scaleX = 0.2;
-                        a.scaleY = 0.5;
-                    }
-                }
-            }
-            // 触发必死；
-            let num: number = this.gp_circle.numChildren;
-            let rouNum: number = this.getRougeNum(this._level);
-            //console.log("Data.GameContext.isWin   " + Data.GameContext.isWin);
-            if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
-                //let pes = (rouNum - num) / rouNum;
-                // if (pes <= 0.2) {
-                if (num >= 12) {
-                    //console.log("enter dead");
-                    if (Data.GameContext.isWin == false && this._level == 3) {
-                        //console.log("Data.GameContext.isWin    " + Data.GameContext.isWin);
-                        var zuixiao = 360;
-                        var zuixiaoindex = 0;
-                        for (let i = 0; i < this.rArr.length - 1; i++) {
-                            var temp = Math.abs(ro - this.rArr[i])
-                            if (temp < zuixiao){
-                                zuixiao = temp;
-                                zuixiaoindex = i;
-                            }
-                        }
-
-                        this.rougeArr[zuixiaoindex].rotation = this.rouge.rotation + 10;
-                        this.rotateArr[zuixiaoindex] = this.rotateArr[this.rotateArr.length - 1] + 10;
-                        this.rougeArr[zuixiaoindex].x = this.rouge.x;
-                        this.rougeArr[zuixiaoindex].y = this.rouge.y;
-                        //Data.GameContext.isWin = true;
-                    }
-                }
-                this.lb_rougeNum.text = "剩余数量: " + (rouNum - num) + "/" + rouNum;
-            } else {
-                this.lb_rougeNum.text = "分数: " + num;
-            }
-
-            if (this.rArr.length > 1) {
-
-
-                //判断数组中所有角度，如果角度之差小于定值，游戏失败
-                for (let i = 0; i < this.rArr.length - 1; i++) {
-                    for (let j = i + 1; j < this.rArr.length; j++) {
-                        if (Math.abs(this.rArr[i] - this.rArr[j]) <= this.jiaodu) {
-                            window['TDGA'].onMissionFailed("GameFailed: Level" + this._level);
-                            this.timer.stop();
-                            utils.SoundUtils.instance().stopBg();
-                            utils.SoundUtils.instance().playShibai();
-                            //碰到圆盘上口红 直接失败  如果是体验和闯关 就用gameover  如果是限时  就用xsOver
-                            if (this.goodsItemData.gameType == Data.GameType.TI_YAN
-                                || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
-                                this.render.stop();
-                                egret.Tween.get(this.rougeArr[i], { loop: false }).to({ y: this.rougeArr[j].y + 300 }, 1000)
-                                    .call(() => {
-                                        // this.render.start();
-                                        this.GameOver();
-
-                                    })
-                                egret.Tween.get(this.rougeArr[j], { loop: false }).to({ y: this.rougeArr[j].y + 300 }, 1000)
-                                return;
-                            } else {
-                                if (this.goodsItemData.priceGroup == 0)
-                                    this.stage.addChild(new FreeGameOver(this.miao, this.score, this._level));
-                                else
-                                    this.stage.addChild(new XsOver(this.score, this.goodsItemData.gameType, this.goodsItemData, this.m_mainsence));
-                                console.log("限时模式 游戏结束")
-                            }
-
-                        }
-                    }
-                }
-
-
-                //判断 已扎中口红数 如果已扎中数大于定值，则过关（type!=3）
-                if (num >= rouNum && this.goodsItemData.gameType != Data.GameType.JING_SU) {
-                    this._level++;
+            for (let j = 0; j < this.rArr.length; j++) {
+                if (Math.abs(this.rArr[j] - nowRotation) <= this.jiaodu) {
+                    isKick = true;
                     this.rect_dangban.visible = false;
-                    this.speed = this.getSpeed(this._level);
-                    console.log("过关之后的速度" + this.speed)
-                    this.img_guan.source = "resource/assets/game/guan" + this._level + ".png";
-
-                    if (this._level == 2 && this.goodsItemData.gameType == 1) {
-                        window['TDGA'].onMissionCompleted("第一关完成");
-                        window['TDGA'].onMissionBegin("进入游戏第二关");
-                        this.penjian.visible = false;
-                        //this.gp_circle.visible = false;
-                        this.timer.stop();
+                    this.removeChild(this.rouge);
+                    window['TDGA'].onMissionFailed("GameFailed: Level" + this._level);
+                    this.timer.stop();
+                    utils.SoundUtils.instance().stopBg();
+                    utils.SoundUtils.instance().playShibai();
+                    //碰到圆盘上口红 直接失败  如果是体验和闯关 就用gameover  如果是限时  就用xsOver
+                    if (this.goodsItemData.gameType == Data.GameType.TI_YAN
+                        || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
                         this.render.stop();
-                        this.img_juzi.visible = false;
-                        // this.baozha.visible = true;
-                        // this.baozha.gotoAndPlay(0);
-                        this.showHalfAnimate();
+                        this.kick_rouge.visible = true;
+                        this.kickOut.play();
+                        this.kickOut.addEventListener(egret.Event.COMPLETE, function () {
+                            this.kick_rouge.visible = false;;
+                            this.kickOut.stop();
+                            this.GameOver();
+                        }, this);
+                        // egret.Tween.get(this.rougeArr[i], { loop: false }).to({ y: this.rougeArr[j].y + 300 }, 1000)
+                        //     .call(() => {
+                        //         // this.render.start();
+                        //         this.GameOver();
+
+                        //     })
+                        // egret.Tween.get(this.rougeArr[j], { loop: false }).to({ y: this.rougeArr[j].y + 300 }, 1000)
                         return;
+                    } else {
+
+                    }
+                }
+            }
+            if (!isKick) {
+                this.doudong = 20;
+                utils.SoundUtils.instance().playbit();
+                //this.penjian.visible = true;
+                this.juice.x = this.penjian.x;
+                this.juice.y = this.penjian.y;
+                this.addChild(this.juice);
+                this.juice.start(100);
+                this.rect_dangban.touchEnabled = true;
+                var tmpP = this.localToGlobal(this.rouge.x, this.rouge.y);
+                // console.log(tmpP.x + "##" + tmpP.y)
+                var realP = this.gp_circle.globalToLocal(tmpP.x, tmpP.y);
+                // console.log(realP.x + "%%%" + realP.y);
+                this.rouge.x = realP.x;
+                this.rouge.y = realP.y;
+                this.rouge.rotation = -this.gp_circle.rotation;
+                this.gp_circle.addChild(this.rouge);
+                this.score = this.gp_circle.numChildren;
+
+                // console.log("已有的口红的角度" + this.rouge.rotation)
+                // 把口红的角度装进数组
+                let ro = Math.floor(this.rouge.rotation);
+                if (ro < 0) {
+                    ro = 360 + ro;
+                }
+                this.rotateArr.push(ro);
+                this.rougeArr.push(this.rouge);
+                console.log(this.rotateArr);
+                this.rArr = this.rotateArr;
+                if (this.goodsItemData.gameType == 3) {
+                    //上帝视角
+                    console.log(this.score)
+                    if (this.score <= 6 && this.score > 0) {
+                        this.rouge.scaleX = 1;
+                        this.rouge.scaleY = 1;
+                        this.jiaodu = 10;
+                        // this.fly_juli = 750;
+                        //获取已经扎过的口红 变小
+                        for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                            let a = this.gp_circle.getChildAt(i);
+                            // console.log(a);
+                            a.scaleX = 1;
+                            a.scaleY = 1;
+                        }
+                    } else if (this.score <= 10 && this.score > 6) {
+                        this.rouge.scaleX = 0.8;
+                        this.rouge.scaleY = 0.8;
+                        this.jiaodu = 8;
+                        // this.fly_juli = 750;
+                        //获取已经扎过的口红 变小
+                        for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                            let a = this.gp_circle.getChildAt(i);
+                            // console.log(a);
+                            a.scaleX = 0.8;
+                            a.scaleY = 0.8;
+                        }
+                    } else if (this.score <= 15 && this.score > 10) {
+                        this.rouge.scaleX = 0.6;
+                        this.rouge.scaleY = 0.8;
+                        this.jiaodu = 6;
+                        // this.fly_juli = 750;
+                        //获取已经扎过的口红 变小
+                        for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                            let a = this.gp_circle.getChildAt(i);
+                            // console.log(a);
+                            a.scaleX = 0.6;
+                            a.scaleY = 0.8;
+                        }
+                    } else if (this.score <= 20 && this.score > 15) {
+                        this.rouge.scaleX = 0.4;
+                        this.rouge.scaleY = 0.6;
+                        this.jiaodu = 4;
+                        // this.fly_juli = 750;
+                        //获取已经扎过的口红 变小
+                        for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                            let a = this.gp_circle.getChildAt(i);
+                            // console.log(a);
+                            a.scaleX = 0.4;
+                            a.scaleY = 0.6;
+                        }
+                    } else if (this.score > 20) {
+                        this.rouge.scaleX = 0.2;
+                        this.rouge.scaleY = 0.5;
+                        this.jiaodu = 2;
+                        // this.fly_juli = 750;
+                        //获取已经扎过的口红 变小
+                        for (let i = 0; i < this.gp_circle.numChildren; i++) {
+                            let a = this.gp_circle.getChildAt(i);
+                            // console.log(a);
+                            a.scaleX = 0.2;
+                            a.scaleY = 0.5;
+                        }
+                    }
+                }
+                // 触发必死；
+                let num: number = this.gp_circle.numChildren;
+                let rouNum: number = this.getRougeNum(this._level);
+                //console.log("Data.GameContext.isWin   " + Data.GameContext.isWin);
+                if (this.goodsItemData.gameType != Data.GameType.JING_SU) {
+                    //let pes = (rouNum - num) / rouNum;
+                    // if (pes <= 0.2) {
+                    if (num >= 12) {
+                        //console.log("enter dead");
+                        if (Data.GameContext.isWin == false && this._level == 3) {
+                            //console.log("Data.GameContext.isWin    " + Data.GameContext.isWin);
+                            var zuixiao = 360;
+                            var zuixiaoindex = 0;
+                            for (let i = 0; i < this.rArr.length - 1; i++) {
+                                var temp = Math.abs(ro - this.rArr[i])
+                                if (temp < zuixiao) {
+                                    zuixiao = temp;
+                                    zuixiaoindex = i;
+                                }
+                            }
+
+                            this.rougeArr[zuixiaoindex].rotation = this.rouge.rotation + 10;
+                            this.rotateArr[zuixiaoindex] = this.rotateArr[this.rotateArr.length - 1] + 10;
+                            this.rougeArr[zuixiaoindex].x = this.rouge.x;
+                            this.rougeArr[zuixiaoindex].y = this.rouge.y;
+                            //Data.GameContext.isWin = true;
+                        }
+                    }
+                    this.lb_rougeNum.text = "剩余数量: " + (rouNum - num) + "/" + rouNum;
+                } else {
+                    this.lb_rougeNum.text = "分数: " + num;
+                }
+
+                if (this.rArr.length > 1) {
+
+
+                    //判断数组中所有角度，如果角度之差小于定值，游戏失败
+                    for (let i = 0; i < this.rArr.length - 1; i++) {
+                        for (let j = i + 1; j < this.rArr.length; j++) {
+                            if (Math.abs(this.rArr[i] - this.rArr[j]) <= this.jiaodu) {
+                                this.rect_dangban.visible = false;
+                                window['TDGA'].onMissionFailed("GameFailed: Level" + this._level);
+                                this.timer.stop();
+                                utils.SoundUtils.instance().stopBg();
+                                utils.SoundUtils.instance().playShibai();
+                                //碰到圆盘上口红 直接失败  如果是体验和闯关 就用gameover  如果是限时  就用xsOver
+                                if (this.goodsItemData.gameType == Data.GameType.TI_YAN
+                                    || this.goodsItemData.gameType == Data.GameType.CHUANG_GUAN) {
+                                    this.render.stop();
+                                    this.kick_rouge.visible = true;
+                                    this.kickOut.play();
+                                    this.kickOut.addEventListener(egret.Event.COMPLETE, function () {
+                                        this.kick_rouge.visible = false;;
+                                        this.kickOut.stop();
+                                        this.GameOver();
+                                    }, this);
+                                    // egret.Tween.get(this.rougeArr[i], { loop: false }).to({ y: this.rougeArr[j].y + 300 }, 1000)
+                                    //     .call(() => {
+                                    //         // this.render.start();
+                                    //         this.GameOver();
+
+                                    //     })
+                                    // egret.Tween.get(this.rougeArr[j], { loop: false }).to({ y: this.rougeArr[j].y + 300 }, 1000)
+                                    return;
+                                } else {
+
+                                }
+
+                            }
+                        }
                     }
 
-                    // 玩完三关的时候 
-                    if (this._level == 3 && this.goodsItemData.gameType == 1) {
-                        window['TDGA'].onMissionCompleted("第二关完成");
-                        //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
-                        console.log("体验模式结束 ")
-                        this.stage.addChild(new PayContinue());
-                        this.timer.stop();
-                        this.render.stop();
-                        this.penjian.visible = false;
-                        this.gp_circle.visible = false;
-                        this.img_juzi.visible = false;
-                        // this.baozha.visible = true;
-                        // this.baozha.gotoAndPlay(0);
-                        this.showHalfAnimate();
-                        return;
-                    }
-                    if (this._level == 4 && this.goodsItemData.gameType == 1) {
-                        window['TDGA'].onMissionCompleted("第三关完成");
-                        //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
-                        console.log("体验模式结束 ")
-                        this.stage.addChild(new AddressPanel());
-                        this.timer.stop();
-                        this.render.stop();
-                        this.showHalfAnimate();
-                        return;
+
+                    //判断 已扎中口红数 如果已扎中数大于定值，则过关（type!=3）
+                    if (num >= rouNum && this.goodsItemData.gameType != Data.GameType.JING_SU) {
+                        this._level++;
+                        this.rect_dangban.visible = false;
+                        this.speed = this.getSpeed(this._level);
+                        console.log("过关之后的速度" + this.speed)
+                        this.img_guan.source = "resource/assets/game/guan" + this._level + ".png";
+                        for (let i = 0; i < this.shadow.length; i++) {
+                            this.removeChild(this.shadow[i]);
+                        }
+                        this.shadow = [];
+
+                        if (this._level == 2 && this.goodsItemData.gameType == 1) {
+                            window['TDGA'].onMissionCompleted("第一关完成");
+                            window['TDGA'].onMissionBegin("进入游戏第二关");
+                            this.penjian.visible = false;
+                            //this.gp_circle.visible = false;
+                            this.timer.stop();
+                            this.render.stop();
+                            this.img_juzi.visible = false;
+                            // this.baozha.visible = true;
+                            // this.baozha.gotoAndPlay(0);
+                            this.showHalfAnimate();
+                            return;
+                        }
+
+                        // 玩完三关的时候 
+                        if (this._level == 3 && this.goodsItemData.gameType == 1) {
+                            window['TDGA'].onMissionCompleted("第二关完成");
+                            //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
+                            console.log("体验模式结束 ")
+                            this.stage.addChild(new PayContinue());
+                            this.timer.stop();
+                            this.render.stop();
+                            this.penjian.visible = false;
+                            this.gp_circle.visible = false;
+                            this.img_juzi.visible = false;
+                            // this.baozha.visible = true;
+                            // this.baozha.gotoAndPlay(0);
+                            this.showHalfAnimate();
+                            return;
+                        }
+                        if (this._level == 4 && this.goodsItemData.gameType == 1) {
+                            window['TDGA'].onMissionCompleted("第三关完成");
+                            //弹出弹窗  体验模式结束，问玩家继续体验还是进大厅选择付费模式
+                            console.log("体验模式结束 ")
+                            this.stage.addChild(new AddressPanel());
+                            this.timer.stop();
+                            this.render.stop();
+                            this.showHalfAnimate();
+                            return;
+                        }
+
                     }
 
                 }
 
             }
-
         }
     }
 
@@ -647,17 +699,10 @@ class GameMain extends eui.Component {
                 //弹出弹窗 付费模式结束
                 console.log("通关 获得奖励")
                 console.log("通关subGameId     " + this.goodsItemData.subGameId)
-                RougeGameApi.gameEnd(this.goodsItemData.subGameId, GameEnd.RESULT_WIN, this._level, this.score, this.miao);
-                this.addChild(new OverSuccess(this.score, this.goodsItemData.gameType, this._level))
-                this.timer.stop();
 
             } else if ((this._level == 3 || this._level == 4) && this.goodsItemData.gameType == 1) {
                 return;
             } else {
-                for (let i = 0; i < this.shadow.length; i++) {
-                    this.removeChild(this.shadow[i]);
-                }
-                this.shadow = [];
                 this.guoguan();
             }
             console.log(this._level + "关")

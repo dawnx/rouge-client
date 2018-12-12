@@ -35,11 +35,16 @@ class Main extends eui.UILayer {
         super.createChildren();
         Main._screenW = this.stage.stageWidth;
         Main._screenH = this.stage.stageHeight;
+
         // 初始化框架系统；
         PlayerApi.getPlayerInfo();
+        PlayerApi.getPlayerChannelInfo();
         GoodsApi.getGoodsInfo();
+
+        
         // 初始化WeChat模块；   这里可以选择不初始化这个模块 根据需要；
         console.log("Main Init !   1");
+
         egret.lifecycle.addLifecycleListener((context) => {
             // custom lifecycle plugin
         })

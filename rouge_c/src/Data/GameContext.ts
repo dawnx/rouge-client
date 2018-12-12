@@ -11,7 +11,7 @@ module Data {
 		// 获取是否通光；
 		public static isWin:boolean=false;
 		//
-		public static isFirstPay:boolean = true;
+		public static isFirstOrder:boolean = true;
 		// 分享次数；
 		public static shareTimes:number = 0;
 		// 跑马灯内容；

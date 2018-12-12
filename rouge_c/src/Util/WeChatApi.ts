@@ -26,24 +26,26 @@ class WeChatApi {
             wx.ready(function () {
                 // 在这里调用微信相关功能的 API
                 var shareAppMessage = new BodyMenuShareAppMessage();
-                shareAppMessage.title = "领取迪奥口红";
-                shareAppMessage.desc = '凭实力免单。';
-                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth';
+                shareAppMessage.title = "领取奖品";
+                shareAppMessage.desc = '多款礼品任意选择。';
+                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?td_channelid=' + Data.ChannelInfo.channelInfo;
                 shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
-                // shareAppMessage.success = function () {
-                //     EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
-                //     ShareInfoApi.sendShareComplateInfo();
-                // };
+                shareAppMessage.success = function () {
+                    window["TDGA"].onEvent('ShareEvent', {
+                        forPass: 0
+                    });
+                };
                 wx.onMenuShareAppMessage(shareAppMessage);
 
                 var bodyMenuShareTimeline = new BodyMenuShareTimeline();
-                bodyMenuShareTimeline.title = "领取迪奥口红";
-                bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth";
+                bodyMenuShareTimeline.title = "领取奖品";
+                bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth?td_channelid=" + Data.ChannelInfo.channelInfo;
                 bodyMenuShareTimeline.imgUrl = "http://kh.chitugame.com/game/icon.png";
-                // bodyMenuShareTimeline.success = function () {
-                //     EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
-                //     ShareInfoApi.sendShareComplateInfo();
-                // };
+                bodyMenuShareTimeline.success = function () {
+                     window["TDGA"].onEvent('ShareEvent', {
+                        forPass: 0
+                    });
+                };
                 wx.onMenuShareTimeline(bodyMenuShareTimeline);
             });
         }
@@ -64,6 +66,12 @@ class WeChatApi {
                     package: data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
                     signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
                     paySign: data.sign, // 支付签名
+                    cancel: function (res) {
+                        Data.GameContext.isFirstOrder = true;
+                    },
+                    fail: function (res) {
+                        Data.GameContext.isFirstOrder = true;
+                    },
                     success: function (res) {
                         // 支付成功后的回调函数
                         EventManager.getInstance().SendEvent(ApiEvent.PAY_SUCCESS);
@@ -81,6 +89,6 @@ class WeChatApi {
                 });
             });
         }
-        Data.GameContext.isFirstPay = false;
+        Data.GameContext.isFirstOrder = false;
     }
 }

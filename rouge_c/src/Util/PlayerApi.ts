@@ -14,7 +14,12 @@ class PlayerApi {
         Data.GameContext.player = data;
         EventManager.getInstance().SendEvent(ApiEvent.PLAYER_INFO);
     }
-
+    // 获取用户的渠道信息；
+    public static getPlayerChannelInfo(){
+        let channelId = egret.getOption("td_channelid");
+        Data.ChannelInfo.channelInfo = channelId;
+        console.log("Data.ChannelInfo.channelInfo:   "+Data.ChannelInfo.channelInfo);
+    }
     /// 向服务器同步个人信息；
     public static sendRankInfo(level:number, score:number, aliveTime:number) {
         //拼接参数 

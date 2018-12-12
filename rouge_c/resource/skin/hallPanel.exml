@@ -20,17 +20,17 @@
 		<e:Image id="_reward" x="660.7" y="168" source="libao_png" anchorOffsetX="0" width="52" anchorOffsetY="0" height="52"/>
 		<e:Image width="600" height="44" x="76" y="228" source="efe_07_png" scale9Grid="29,0,10,42"/>
 		<e:Image id="_marqueeMask" width="527" height="44" x="149" y="228" anchorOffsetX="0" scale9Grid="32,0,6,42" source="efe_07_png"/>
-		<e:Label id="_marqueeText" text="喜欢i开头的单词在12月6日通过第三关获得迪奥999系列口红一支" x="-113.67" y="232" anchorOffsetX="0" width="863.67" anchorOffsetY="0" height="36" wordWrap="true" verticalAlign="middle" textColor="0x333333" fontFamily="SimHei"/>
+		<e:Label id="_marqueeText" text="喜欢i开头的单词在12月6日通过第三关获得迪奥999系列口红一支" x="-113.67" y="232" anchorOffsetX="0" width="863.67" anchorOffsetY="0" height="36" wordWrap="true" verticalAlign="middle" fontFamily="SimHei" textColor="0xffffff"/>
 		<e:Image source="dwdw_03_png" x="90.5" y="235"/>
 		<e:Group id="_kefuPanel" width="750" height="1334" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" visible="false">
 			<e:Rect width="750" height="1334" x="0" y="0" scaleX="1" scaleY="1" fillAlpha="0.5"/>
-			<e:Image source="vvvvv_03_png" x="39" y="232.5"/>
+			<e:Image source="vvvvv_03_png" x="39" y="232.5" visible="false"/>
 			<e:Image id="_kefuClose" source="mmm_dating_button_02_03_png" x="344" y="1110.33"/>
 		</e:Group>
 		<e:Group id="_rewardPanel" width="750" height="1334" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" visible="false">
 			<e:Rect width="750" height="1334" x="0" y="0" scaleX="1" scaleY="1" fillAlpha="0.5"/>
 			<e:Image source="03_png" x="35" y="314"/>
-			<e:Image id="_rewardClose" source="mmm_dating_button_02_03_png" x="634.7" y="283"/>
+			<e:Image id="_rewardClose" source="mmm_dating_button_02_03_png" x="634.7" y="298"/>
 		</e:Group>
 
 

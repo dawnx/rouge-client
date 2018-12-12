@@ -6,13 +6,13 @@
 
     },
     "lev1": {
-        "zhuansu": 1.5,
+        "zhuansu": 2.2,
         "time": 30,
         "rougeNum": 6
 
     },
     "lev2": {
-        "zhuansu": 1.7,
+        "zhuansu": 2.5,
         "time": 30,
         "rougeNum": 9
 
@@ -40,5 +40,9 @@
     "速度转换时达到targetSpeed花费帧数,数值越小过度越快":"paceToTarget",
     "paceToTarget":20,
     "设置转换窗口时间，防止短时间频繁切换(数字表示帧数)":"switchLimit",
-    "switchLimit": 240
+    "switchLimit": 240,
+    "最后三次每次加速幅度":"extraSpeed",
+    "extraSpeed": 0,
+    "最后三次的基础速度":"extraSpeed",
+    "extraBase":2.5
 }

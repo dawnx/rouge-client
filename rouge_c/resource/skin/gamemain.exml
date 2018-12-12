@@ -57,6 +57,20 @@
 				</tween:To>
 			</tween:TweenItem>
 		</tween:TweenGroup>
+		<tween:TweenGroup id="kickOut">
+			<tween:TweenItem target="{kick_rouge}">
+				<tween:Set>
+					<tween:props>
+						<e:Object y="{856}" x="{377}"/>
+					</tween:props>
+				</tween:Set>
+				<tween:To duration="250">
+					<tween:props>
+						<e:Object x="{438}" y="{1318}" rotation="{-720}"/>
+					</tween:props>
+				</tween:To>
+			</tween:TweenItem>
+		</tween:TweenGroup>
 	</w:Declarations>
 	<e:Group left="0" bottom="0" right="0" top="0" anchorOffsetX="0">
 		<e:Image y="0" scaleX="1" scaleY="1" height="1334" anchorOffsetY="0" x="2" width="746" source="efe_png"/>
@@ -66,7 +80,7 @@
 		<e:Rect id="rect_dangban" width="750" height="1334" x="0" y="0" fillAlpha="0" fillColor="0x000000" scaleX="1" scaleY="1" anchorOffsetY="0" visible="false"/>
 		<e:Image x="0" y="0" scaleX="1" scaleY="1" source="top_png" anchorOffsetY="0" height="74"/>
 		<e:Image x="39" y="98" scaleX="1" scaleY="1" source="eferfefe_03_png"/>
-		<e:Image source="mmm_youxi_Special effect_01_png" x="42" y="100" scaleX="1" scaleY="1"/>
+		<e:Image source="mmm_youxi_Special effect_01_png" x="42" y="100.01" scaleX="1" scaleY="1"/>
 		<e:Label id="lb_time" text="30" y="120.51" size="45" x="59.51" width="51" height="51" textAlign="center" verticalAlign="middle" scaleX="1" scaleY="1" fontFamily="SimHei" textColor="0xffffff"/>
 		<e:Button id="btn_back" label="" y="21" horizontalCenter="-335.5" x="42" scaleX="1" scaleY="1" height="40" width="45">
 			<e:skinName>
@@ -81,11 +95,12 @@
 		<e:Image width="199" height="34" x="10" y="1165.99" anchorOffsetX="0" scale9Grid="28,0,13,42" source="frame_png"/>
 		<e:Label id="lb_rougeNum" text="" y="1167.99" size="24" x="17" height="29" textAlign="left" verticalAlign="middle" textColor="0xffffff" scaleX="1" scaleY="1" fontFamily="SimHei" anchorOffsetX="0" width="186" anchorOffsetY="0"/>
 		<e:Image id="img_rouge" source="rouge_png" x="346" y="1060"/>
+		<e:Image id="kick_rouge" source="rouge_png" x="377" y="856" anchorOffsetX="23" anchorOffsetY="106" visible="false"/>
 		<e:Group id="gp_rouge" width="200" height="573.39" x="0" y="760.61" anchorOffsetY="0" scaleX="1" scaleY="1" visible="false"/>
 		<e:Image x="452" y="160.5" source="efef_03_png"/>
 		<e:Image x="556" y="160.5" source="efe_03_png"/>
 		<e:Image x="660.5" y="160.5" source="rgrg_03_png"/>
-		<e:Image source="mmm_shouchong_icon_04_png" x="691.5" y="80.18" anchorOffsetX="0" width="41" anchorOffsetY="0" height="40.33"/>
+		<e:Image x="691.5" y="80.18" anchorOffsetX="0" width="41" anchorOffsetY="0" height="40.33" source="libao_png"/>
 		<e:Image id="level3" width="127" height="29" x="603" y="120.01" source="66u6_png"/>
 		<e:Image id="level2" width="127" height="29" x="492" y="120.01" source="66u6_png"/>
 		<e:Image id="level1" width="127" height="29" x="384" top="121" source="lev_png"/>
@@ -94,24 +109,12 @@
 
 
 
-		<e:Group id="rankgroup" width="81" height="200" x="648" y="960.81">
-			
-			<e:Image width="68" height="312" x="8" y="-75.82" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" source="frame_png" scale9Grid="5,3,34,24"/>
-			<e:Image width="40" height="40" y="-59.82" x="22" scaleX="1" scaleY="1" source="libao_png"/>
-			<e:Image id="headicon1" width="54" height="54" y="12.75" x="15" scaleX="1" scaleY="1" source="eferfefe_03_png"/>
-			<e:Image id="headicon2" width="54" height="54" y="90.51" x="15" scaleX="1" scaleY="1" source="eferfefe_03_png"/>
-			<e:Image width="54" height="54" y="165.18" x="15" scaleX="1" scaleY="1" source="dfef_03_png"/>
-			<e:Image width="20" height="20" y="68.58" source="mmm_youxi_picture_02_png" x="32" scaleX="1" scaleY="1"/>
-			<e:Image width="20" height="20" y="146.35" source="mmm_youxi_picture_02_png" x="32" scaleX="1" scaleY="1"/>
-			<e:Image width="20" height="20" y="-10.29" source="mmm_youxi_picture_02_png" x="32" scaleX="1" scaleY="1"/>
-			<e:Label id="selfrank" text="?" x="22.5" y="175.18" textAlign="center" anchorOffsetX="0" width="37" scaleX="1" scaleY="1"/>
-		</e:Group>
 		<e:Group id="gp_guan" width="750" height="1334" x="0" y="0" scaleX="1" scaleY="1">
 			<e:Rect id="rect_guan" width="750" height="1386" x="-1" y="0" fillColor="0x000000" fillAlpha="0.7"/>
 			<e:Image id="img_guan" source="guan2_png" x="272" y="466.67"/>
 		</e:Group>
-		<e:Image id="penjian" width="215" height="104" x="375" y="719" source="mmm_youxi_Special effect_03_png" anchorOffsetX="107" anchorOffsetY="31" visible="false"/>
-		<e:Group id="orangeTween" width="390" height="390" x="372" y="518" anchorOffsetX="195" anchorOffsetY="195" locked="true" visible="false">
+		<e:Image id="penjian" width="215" height="104" x="375" y="719" anchorOffsetX="107" anchorOffsetY="31" source="" visible="false"/>
+		<e:Group id="orangeTween" width="390" height="390" x="372" y="518" anchorOffsetX="195" anchorOffsetY="195" visible="false">
 			<e:Image id="orange_left" source="orange_left_png" x="203.5" y="8.5" anchorOffsetX="198.5" anchorOffsetY="1.5" rotation="0"/>
 			<e:Image id="orange_right" source="orange_right_png" x="207.5" y="9" anchorOffsetX="35" anchorOffsetY="2" rotation="0"/>
 		</e:Group>

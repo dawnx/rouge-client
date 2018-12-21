@@ -16,8 +16,8 @@ class HallPanel extends eui.Component {
     private _rewardClose: eui.Image;
     // Marquee;
     private _marqueeText: eui.Label;
-    private marqueeIndex:number = 0;
-    private _marqueeMask:eui.Image;
+    private marqueeIndex: number = 0;
+    private _marqueeMask: eui.Image;
 
     public constructor(main: ShopMain) {
         super()
@@ -39,8 +39,8 @@ class HallPanel extends eui.Component {
             .call(() => {
                 this._marqueeText.x = 750
                 this.marqueeIndex++;
-                if (this.marqueeIndex>this.tempMarqueeContent.length-1) 
-                this.marqueeIndex = 0;
+                if (this.marqueeIndex > this.tempMarqueeContent.length - 1)
+                    this.marqueeIndex = 0;
                 // this._marqueeText.width =  this.tempMarqueeContent[this.marqueeIndex].length;
                 this._marqueeText.text = this.tempMarqueeContent[this.marqueeIndex];
             })
@@ -56,13 +56,17 @@ class HallPanel extends eui.Component {
         this._send.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onsend, this);
     }
     private init() {
+        // 进入游戏界面；
+        window['TDGA'].onEvent('进入游戏界面');
         // 绑定微信通用接口；
         OrderApi.wechatAPI();
         console.log("Hallll   绑定微信通用接口");
         // 获取今日分享次数，缓存到本地；
         ShareInfoApi.getShareInfo();
         // 绑定talkingData
-        this.bindAccountInfo();
+        if (Data.GameContext.player != null) {
+            this.bindAccountInfo();
+        }
     }
     // //注册、登录、切换帐户、唤醒游戏时传入玩家账户信息
     private bindAccountInfo() {
@@ -102,19 +106,19 @@ class HallPanel extends eui.Component {
         ShareInfoApi.sendShareComplateInfo();
     }
     private onclickStartGame() {
-        console.log("Data.DataManager.subGames    " + Data.DataManager.subGames);
+        window['TDGA'].onEvent('点击开始游戏');
+        window['TDGA'].onMissionBegin("进入游戏第一关");
         Data.DataManager.subGames.forEach(item => {
             //  体验模式
             if (item.gameType == Data.GameType.TI_YAN) {
                 LayerUtil.gameMain = null;
                 LayerUtil.gameMain = new GameMain(item, this._shopMain);
                 this.stage.addChild(LayerUtil.gameMain);
-                window['TDGA'].onMissionBegin("进入游戏第一关");
             }
         })
 
     }
-    
+
     public tempMarqueeContent = [
         "：）在12月5日通过第三关获得获得迪奥999系列口红一支",
         "大脸猫在12月5日通过第三关获得迪奥999系列口红一支",

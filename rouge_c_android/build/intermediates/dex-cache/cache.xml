@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Zeamo\.android\build-cache\2462d7fe343a119db9cd306a3b12276f45f7cade\output\jars\libs\egretNativeAndroid.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3bba31aaf0494d5d3a98bfddc023de05d4a354a1">
+        <dex dex="D:\1forwork\1rouge-client\rouge_c_android\app\build\intermediates\pre-dexed\debug\egretNativeAndroid_30c04472a34d83bc9b5bf0fd667eec85bdee2e98.jar" />
+    </item>
+
+</items>

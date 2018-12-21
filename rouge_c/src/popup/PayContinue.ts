@@ -38,6 +38,10 @@ class PayContinue extends eui.Component {
     private onclickQueding() {
         if (Data.GameContext.isFirstOrder) {
             console.log("chongzhi...");
+            // 玩家充值；
+            window['TDGA'].onEvent('玩家下单请求',{
+                CreateOrder:1,
+            });
             OrderApi.createOrder("喵喵游戏", 6);
             Data.GameContext.isFirstOrder = false;
         }
@@ -52,10 +56,10 @@ class PayContinue extends eui.Component {
                 shareAppMessage.title = "领取奖品";
                 shareAppMessage.desc = '多款礼品任意选择。';
                 // shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?bind=' + Data.GameContext.player.shareCode;
-                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?td_channelid='+ Data.ChannelInfo.channelInfo;
+                shareAppMessage.link = 'http://kh.chitugame.com/ct-admin/weixin/auth?td_channelid=' + Data.ChannelInfo.channelInfo;
                 shareAppMessage.imgUrl = 'http://kh.chitugame.com/game/icon.png';
                 shareAppMessage.success = function () {
-                     window["TDGA"].onEvent('ShareEvent', {
+                    window["TDGA"].onEvent('分享进入第3关', {
                         forPass: 1
                     });
                     EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
@@ -66,10 +70,10 @@ class PayContinue extends eui.Component {
                 var bodyMenuShareTimeline = new BodyMenuShareTimeline();
                 bodyMenuShareTimeline.title = "领取奖品";
                 // bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth?bind=" + Data.GameContext.player.shareCode;
-                bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth?td_channelid="+ Data.ChannelInfo.channelInfo;
+                bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth?td_channelid=" + Data.ChannelInfo.channelInfo;
                 bodyMenuShareTimeline.imgUrl = "http://kh.chitugame.com/game/icon.png";
                 bodyMenuShareTimeline.success = function () {
-                     window["TDGA"].onEvent('ShareEvent', {
+                    window["TDGA"].onEvent('ShareEvent', {
                         forPass: 1
                     });
                     EventManager.getInstance().SendEvent(ApiEvent.SHARE_SUCCESS);
@@ -102,6 +106,20 @@ class PayContinue extends eui.Component {
             LayerUtil.gameMain.stage.removeChild(this);
             LayerUtil.gameMain.guoguan();
             this.isShow = false;
+            //  接入talkingdata
+            // 玩家充值；
+            window['TDGA'].onEvent('充值成功',{
+                PaySuccess:6,
+            });
+            // 充值；
+            window['TDGA'].onChargeSuccess({
+                orderId: 'account123time0923173248',
+                iapId: '喵喵口红',
+                currencyAmount: 6,
+                currencyType: 'CNY',
+                virtualCurrencyAmount: 60,
+                paymentType: 'WeChatPay'
+            });
             window['TDGA'].onItemPurchase({
                 item: "payCNY6",
                 itemNumber: 6,

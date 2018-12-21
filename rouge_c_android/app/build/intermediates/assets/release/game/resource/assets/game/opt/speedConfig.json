@@ -1,0 +1,48 @@
+{
+    "lev0": {
+        "zhuansu": 1,
+        "time": 45,
+        "rougeNum": 3
+
+    },
+    "lev1": {
+        "zhuansu": 2.2,
+        "time": 30,
+        "rougeNum": 6
+
+    },
+    "lev2": {
+        "zhuansu": 2.5,
+        "time": 30,
+        "rougeNum": 9
+
+    },
+    "lev3": {
+        "zhuansu": 2.5,
+        "time": 30,
+        "rougeNum": 13
+
+    },
+    "lev4": {
+        "zhuansu": 5,
+        "time": 15,
+        "rougeNum": 15
+
+    },
+    "lev5": {
+        "zhuansu": 5,
+        "time": 15,
+        "rougeNum": 20
+
+    },
+    "速度转换时的速度加成最大值":"maxSpeed",
+    "maxSpeed": 3,
+    "速度转换时达到targetSpeed花费帧数,数值越小过度越快":"paceToTarget",
+    "paceToTarget":20,
+    "设置转换窗口时间，防止短时间频繁切换(数字表示帧数)":"switchLimit",
+    "switchLimit": 240,
+    "最后三次每次加速幅度":"extraSpeed",
+    "extraSpeed": 0,
+    "最后三次的基础速度":"extraSpeed",
+    "extraBase":2.5
+}

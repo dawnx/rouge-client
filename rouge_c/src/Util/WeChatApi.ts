@@ -42,7 +42,7 @@ class WeChatApi {
                 bodyMenuShareTimeline.link = "http://kh.chitugame.com/ct-admin/weixin/auth?td_channelid=" + Data.ChannelInfo.channelInfo;
                 bodyMenuShareTimeline.imgUrl = "http://kh.chitugame.com/game/icon.png";
                 bodyMenuShareTimeline.success = function () {
-                     window["TDGA"].onEvent('ShareEvent', {
+                     window["TDGA"].onEvent('普通分享', {
                         forPass: 0
                     });
                 };
@@ -76,15 +76,7 @@ class WeChatApi {
                         // 支付成功后的回调函数
                         EventManager.getInstance().SendEvent(ApiEvent.PAY_SUCCESS);
                         RougeGameApi.startGame(1002, 1);
-                        //  接入talkingdata
-                        window['TDGA'].onChargeSuccess({
-                            orderId: 'account123time0923173248',
-                            iapId: '喵喵口红',
-                            currencyAmount: 6,
-                            currencyType: 'CNY',
-                            virtualCurrencyAmount: 60,
-                            paymentType: 'WeChatPay'
-                        });
+                        
                     }
                 });
             });

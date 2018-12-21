@@ -40,7 +40,8 @@ class Main extends eui.UILayer {
         PlayerApi.getPlayerInfo();
         PlayerApi.getPlayerChannelInfo();
         GoodsApi.getGoodsInfo();
-
+        // 点击链接
+        window['TDGA'].onEvent('点击游戏链接');
         
         // 初始化WeChat模块；   这里可以选择不初始化这个模块 根据需要；
         console.log("Main Init !   1");

@@ -1,0 +1,31 @@
+{
+	"skins": {
+		"GameMain": "resource/eui_skins/GameMain.exml",
+		"ShopMain": "resource/eui_skins/shopmain.exml"
+	},
+	"autoGenerateExmlsList": true,
+	"exmls": [
+		"resource/eui_skins/ButtonSkin.exml",
+		"resource/eui_skins/CheckBoxSkin.exml",
+		"resource/eui_skins/HScrollBarSkin.exml",
+		"resource/eui_skins/HSliderSkin.exml",
+		"resource/eui_skins/ItemRendererSkin.exml",
+		"resource/eui_skins/PanelSkin.exml",
+		"resource/eui_skins/ProgressBarSkin.exml",
+		"resource/eui_skins/RadioButtonSkin.exml",
+		"resource/eui_skins/ScrollerSkin.exml",
+		"resource/eui_skins/TextInputSkin.exml",
+		"resource/eui_skins/ToggleSwitchSkin.exml",
+		"resource/eui_skins/VScrollBarSkin.exml",
+		"resource/eui_skins/VSliderSkin.exml",
+		"resource/skin/addressPanel.exml",
+		"resource/skin/gamemain.exml",
+		"resource/skin/guize.exml",
+		"resource/skin/hallPanel.exml",
+		"resource/skin/payContinue.exml",
+		"resource/skin/regame.exml",
+		"resource/skin/share.exml",
+		"resource/skin/shopmain.exml"
+	],
+	"path": "resource/default.thm.json"
+}

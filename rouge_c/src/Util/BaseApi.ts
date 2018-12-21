@@ -1,11 +1,16 @@
 class BaseApi {
 	public static host: string = "http://kh.chitugame.com/ct-admin/";
 	// public static host: string = "http://192.168.1.112:8080/ct-admin/";
-
+	public static isEditor: boolean = true;
 	public static get(uri: string,
 		onComplete: Function = null,
 		onError: Function = null,
 		onProgress: Function = null) {
+
+
+		// 上线前 注释掉此处！！！！
+		// if (this.isEditor) return;
+
 
 		var request = new egret.HttpRequest();
 		request.responseType = egret.HttpResponseType.TEXT;

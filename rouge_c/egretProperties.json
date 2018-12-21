@@ -36,5 +36,11 @@
       "name": "md5",
       "path": "../md5"
     }
-  ]
+  ],
+  "targets": {
+    "android": {
+      "appname": "110",
+      "packagename": "com.chitu.five"
+    }
+  }
 }

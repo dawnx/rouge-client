@@ -90,7 +90,33 @@ class AddressPanel extends eui.Component {
             this._tel.text != "" &&
             this._addr.text != "") {
             AddressApi.sendAddressInfo(this._name.text, this._tel.text, this._addr.text, this.itemId);
+            this.TalkingDataAward(this.itemId);
             this._sendGroup.visible = true;
+        }
+    }
+
+    private TalkingDataAward(itemID: number) {
+        switch (itemID) {
+            case 20000:
+                // 赠出奖品数
+                window['TDGA'].onEvent('赠出奖品数', {
+                    Dior: 1,
+                });
+                break;
+            case 20001:
+                // 赠出奖品数
+                window['TDGA'].onEvent('赠出奖品数', {
+                    Zippo: 1,
+                });
+                break;
+            case 20002:
+                // 赠出奖品数
+                window['TDGA'].onEvent('赠出奖品数', {
+                    Philips: 1,
+                });
+                break;
+            default:
+                break;
         }
     }
 }
